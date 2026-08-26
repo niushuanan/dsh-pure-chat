@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "kind": "xiaozhuang-dsh-plugin-export",
-  "createdAt": "2026-08-26T20:01:16.351Z",
-  "sourceCommit": "e2df7e1c32c8e323d0f00edc11605964b7eaf52c",
+  "createdAt": "2026-08-26T20:21:40.767Z",
+  "sourceCommit": "bc669848775dcba3ef51a98705c795a90d6cde83",
   "plugins": [
     {
       "id": "plain-chat",
@@ -867,8 +867,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/client.js",
-      "size": 474382,
-      "sha256": "449f623b9edc7dd3151d884ca3614c037ddd8e09daace0773e281e5cba09ceb6"
+      "size": 474714,
+      "sha256": "54b4e0a4468c1adf818e76f37aba4636a7ff173f0b175b0506dec72c348ca6d8"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/index.js",
@@ -1567,8 +1567,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/queue/QueueDock.tsx",
-      "size": 10668,
-      "sha256": "7ba6a7e0ab3b4a9bdff63c694e98665c207eab6ad44add6a5ccd7871e9805484"
+      "size": 11307,
+      "sha256": "1be7c1d127fb3d72cdf77efaf20ce8898a76dfbbce6f3de44285124982086dbc"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/queue/store.ts",

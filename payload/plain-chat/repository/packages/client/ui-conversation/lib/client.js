@@ -7105,127 +7105,131 @@ window.__ModuleLoader__.load({
 						id: listId,
 						className: QueueDock_module_css_default.list,
 						hidden: !listVisible,
-						children: listVisible && queue.map((row) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
-							className: QueueDock_module_css_default.row,
-							children: [
-								queue.length === 1 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-									className: QueueDock_module_css_default.lead,
-									"aria-hidden": true,
-									children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
-								}),
-								editing?.id === row.id ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("textarea", {
-									autoFocus: true,
-									className: QueueDock_module_css_default.editor,
-									rows: 2,
-									"aria-label": t("queue.edit"),
-									value: editing.text,
-									onChange: (event) => {
-										setEditing({
-											id: row.id,
-											text: event.currentTarget.value
-										});
-									},
-									onKeyDown: (event) => {
-										if (event.key === "Escape") {
-											setEditing(null);
-											return;
-										}
-										if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
-											event.preventDefault();
-											saveEdit();
-										}
-									}
-								}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-									className: QueueDock_module_css_default.preview,
-									children: row.preview
-								}),
-								queueMutable && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-									className: QueueDock_module_css_default.actions,
-									children: editing?.id === row.id ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
-										label: t("queue.save"),
-										side: "bottom",
-										delayMs: 500,
-										children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
-											type: "button",
-											className: QueueDock_module_css_default.action,
-											"aria-label": t("queue.save"),
-											disabled: busy !== null || editing.text.trim() === "",
-											onClick: () => {
-												saveEdit();
-											},
-											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, { size: 14 })
-										})
-									}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
-										label: t("queue.cancelEdit"),
-										side: "bottom",
-										delayMs: 500,
-										children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
-											type: "button",
-											className: QueueDock_module_css_default.action,
-											"aria-label": t("queue.cancelEdit"),
-											disabled: busy !== null,
-											onClick: () => {
+						children: listVisible && queue.map((row) => {
+							const hasText = row.content.some((block) => block.type === "text");
+							const initialText = row.text ?? row.content.flatMap((block) => block.type === "text" && typeof block.text === "string" ? [block.text] : []).join("\n");
+							return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
+								className: QueueDock_module_css_default.row,
+								children: [
+									queue.length === 1 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+										className: QueueDock_module_css_default.lead,
+										"aria-hidden": true,
+										children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
+									}),
+									editing?.id === row.id ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("textarea", {
+										autoFocus: true,
+										className: QueueDock_module_css_default.editor,
+										rows: 2,
+										"aria-label": t("queue.edit"),
+										value: editing.text,
+										onChange: (event) => {
+											setEditing({
+												id: row.id,
+												text: event.currentTarget.value
+											});
+										},
+										onKeyDown: (event) => {
+											if (event.key === "Escape") {
 												setEditing(null);
-											},
-											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCloseOutline16, { size: 14 })
-										})
-									})] }) : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
-										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
-											label: t("queue.edit"),
+												return;
+											}
+											if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
+												event.preventDefault();
+												saveEdit();
+											}
+										}
+									}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+										className: QueueDock_module_css_default.preview,
+										children: row.preview
+									}),
+									queueMutable && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
+										className: QueueDock_module_css_default.actions,
+										children: editing?.id === row.id ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+											label: t("queue.save"),
 											side: "bottom",
 											delayMs: 500,
-											disabled: row.text === null,
 											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: QueueDock_module_css_default.action,
-												"aria-label": t("queue.edit"),
-												title: row.text === null ? t("queue.edit.unsupported") : void 0,
-												disabled: busy !== null || row.text === null,
+												"aria-label": t("queue.save"),
+												disabled: busy !== null || editing.text.trim() === "",
 												onClick: () => {
-													if (row.text !== null) setEditing({
-														id: row.id,
-														text: row.text
-													});
+													saveEdit();
 												},
-												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconEditOutline16, { size: 14 })
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, { size: 14 })
 											})
-										}),
-										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
-											label: t("queue.remove"),
+										}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+											label: t("queue.cancelEdit"),
 											side: "bottom",
 											delayMs: 500,
 											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: QueueDock_module_css_default.action,
-												"aria-label": t("queue.remove"),
+												"aria-label": t("queue.cancelEdit"),
 												disabled: busy !== null,
 												onClick: () => {
-													applyAction(row.id, { kind: "remove" }, t("queue.removeFailed"));
+													setEditing(null);
 												},
-												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTrashOutline16, { size: 14 })
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCloseOutline16, { size: 14 })
 											})
-										}),
-										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
-											label: t("queue.steer"),
-											side: "bottom",
-											delayMs: 500,
-											disabled: !running,
-											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
-												type: "button",
-												className: QueueDock_module_css_default.action,
-												"aria-label": t("queue.steer"),
-												title: running ? void 0 : t("queue.steer.unavailable"),
-												disabled: busy !== null || !running,
-												onClick: () => {
-													applyAction(row.id, { kind: "steer" }, t("queue.steerFailed"));
-												},
-												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconSendOutline14, {})
+										})] }) : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+											/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+												label: t("queue.edit"),
+												side: "bottom",
+												delayMs: 500,
+												disabled: !hasText,
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
+													type: "button",
+													className: QueueDock_module_css_default.action,
+													"aria-label": t("queue.edit"),
+													title: !hasText ? t("queue.edit.unsupported") : void 0,
+													disabled: busy !== null || !hasText,
+													onClick: () => {
+														setEditing({
+															id: row.id,
+															text: initialText
+														});
+													},
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconEditOutline16, { size: 14 })
+												})
+											}),
+											/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+												label: t("queue.remove"),
+												side: "bottom",
+												delayMs: 500,
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
+													type: "button",
+													className: QueueDock_module_css_default.action,
+													"aria-label": t("queue.remove"),
+													disabled: busy !== null,
+													onClick: () => {
+														applyAction(row.id, { kind: "remove" }, t("queue.removeFailed"));
+													},
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTrashOutline16, { size: 14 })
+												})
+											}),
+											/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+												label: t("queue.steer"),
+												side: "bottom",
+												delayMs: 500,
+												disabled: !running,
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
+													type: "button",
+													className: QueueDock_module_css_default.action,
+													"aria-label": t("queue.steer"),
+													title: running ? void 0 : t("queue.steer.unavailable"),
+													disabled: busy !== null || !running,
+													onClick: () => {
+														applyAction(row.id, { kind: "steer" }, t("queue.steerFailed"));
+													},
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconSendOutline14, {})
+												})
 											})
-										})
-									] })
-								})
-							]
-						}, row.id))
+										] })
+									})
+								]
+							}, row.id);
+						})
 					})]
 				})
 			});
