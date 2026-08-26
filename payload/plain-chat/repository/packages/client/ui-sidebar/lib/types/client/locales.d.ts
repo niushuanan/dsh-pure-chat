@@ -3,6 +3,8 @@
 export declare const zh: {
     'session.new': string;
     'session.new.label': string;
+    'mode.switch': string;
+    'mode.agent': string;
     'toggle.open': string;
     'toggle.collapse': string;
 };
@@ -12,6 +14,8 @@ export type SidebarKey = keyof typeof zh;
 export declare const en: {
     'session.new': string;
     'session.new.label': string;
+    'mode.switch': string;
+    'mode.agent': string;
     'toggle.open': string;
     'toggle.collapse': string;
 };

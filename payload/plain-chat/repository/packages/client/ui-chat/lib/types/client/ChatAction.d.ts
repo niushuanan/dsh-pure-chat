@@ -4,8 +4,11 @@ export interface ChatActionInjected {
     startChat: () => void;
 }
 export type ChatActionProps = PropsRuntime<'sidebar.primary.action'> & PropsLocale<'chat'> & ChatActionInjected;
-/** Render the native Start chat action in wide and rail sidebar postures. */
-export declare function ChatAction({ wide, startChat, t }: ChatActionProps): import("react").JSX.Element;
+/**
+ * Render the native Start chat action: as the right segment of the sidebar's
+ * mode switch, or as a standalone capsule when mounted outside it.
+ */
+export declare function ChatAction({ wide, segment, active, startChat, t }: ChatActionProps): import("react").JSX.Element;
 declare module '@deepseek-ai/dsh-client-ui-slots' {
     interface LocaleNamespaceMap {
         chat: ChatKey;

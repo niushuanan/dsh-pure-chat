@@ -92,6 +92,10 @@ export interface SidebarSectionOwnerProps {
 export interface SidebarPrimaryActionOwnerProps {
     /** Whether the action renders its label or only its rail icon. */
     wide: boolean;
+    /** Rendered inside the shell's mode switch as its right segment. */
+    segment?: boolean;
+    /** The segment's pressed state; the shell computes it from the session. */
+    active?: boolean;
 }
 /**
  * Owner share of the sidebar settings seat: the column display state the
