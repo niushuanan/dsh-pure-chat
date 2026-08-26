@@ -1,0 +1,2747 @@
+{
+  "schemaVersion": 1,
+  "kind": "xiaozhuang-dsh-plugin-export",
+  "createdAt": "2026-08-26T11:46:43.982Z",
+  "sourceCommit": "49b1c5207b1556515752c6bf9e7902c1a5964ad9",
+  "plugins": [
+    {
+      "id": "plain-chat",
+      "name": "纯聊天",
+      "rows": [
+        {
+          "id": "ui-chat",
+          "name": "@deepseek-ai/dsh-client-ui-chat"
+        }
+      ],
+      "sources": [
+        {
+          "kind": "repository",
+          "path": "packages/client/ui-chat"
+        },
+        {
+          "kind": "repository",
+          "path": "packages/client/ui-sidebar"
+        },
+        {
+          "kind": "repository",
+          "path": "packages/client/ui-workspace"
+        },
+        {
+          "kind": "repository",
+          "path": "packages/client/ui-conversation"
+        },
+        {
+          "kind": "repository",
+          "path": "packages/client/ui-agent-preset"
+        },
+        {
+          "kind": "repository",
+          "path": "packages/client/ui-primitives"
+        },
+        {
+          "kind": "repository",
+          "path": "packages/client/runtime"
+        },
+        {
+          "kind": "repository",
+          "path": "apps/cli/config/agent-presets/chat"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "payload/plain-chat/repository/apps/cli/config/agent-presets/chat/agent.cordis.yml",
+      "size": 701,
+      "sha256": "77604b0ffb901f8fe38ec746f02c325fa87ee7082fbf1f178613239983ac6ba9"
+    },
+    {
+      "path": "payload/plain-chat/repository/apps/cli/config/agent-presets/chat/preset.yml",
+      "size": 119,
+      "sha256": "93000090ead40ac6630fc57abccbea37e080894da610053789fc19ed925b530e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/README.md",
+      "size": 21671,
+      "sha256": "0054d47cef7b3ad8430c2dc5c1d62061f3dae4b82c4908978a68fdde879c26b9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/README.zh.md",
+      "size": 20802,
+      "sha256": "2e56f263e9fa37b8de88c17b3f75c2d89506cebb4dd0303c5d751fce8d8bf296"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/client.js",
+      "size": 398873,
+      "sha256": "4e4b3805c94a9737bd5d4ebc20f9ab00c5d0f72df9929b4519383e634e584b6e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/index.js",
+      "size": 248,
+      "sha256": "94fb71d4483c8ed1d52470ed7c8acc87543d67b011c70496a8ebcce213271265"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/invariant.js",
+      "size": 1526,
+      "sha256": "593bde866432441e4c28b2ee42d8caff2cb226d90a2138f21661003852770602"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/agents/scope.d.ts",
+      "size": 1739,
+      "sha256": "eeaa3d419353b3f71240995e9c6bc445ff38f61abef8905a08b69dfcf87df867"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/contract/conversation.d.ts",
+      "size": 10597,
+      "sha256": "dc6222f4184f37136e9c556d41d23bdf699efb1ec5f55fb10f2703da29019eab"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/contract/session.d.ts",
+      "size": 4402,
+      "sha256": "d7e638d9cf1171dda4fc06394df470bd6499a5a7b664d4b8c503b7df0404f863"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/contract/sessions-port.d.ts",
+      "size": 2036,
+      "sha256": "ac7c73712d69c401ef88cdaa091b4e338c8c606ef19e6ced9cec7f61f5a78163"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/contract/sessions.d.ts",
+      "size": 7118,
+      "sha256": "37d65e3e9f84eec58168cc106e6dab74a9932761ae24df9af74138db61c41d70"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/contract/settings-scope.d.ts",
+      "size": 3774,
+      "sha256": "938e2871be2064f7c7857ec36440c05088a217f140864b949472f446bbb97c65"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/contract/store.d.ts",
+      "size": 4394,
+      "sha256": "efd8d33a4c71e20c43a727f9ca563a491953a59035701940ca6ef845fb863839"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/contract/workspaces.d.ts",
+      "size": 4488,
+      "sha256": "1ee86a6f0762ba9aa0af0865798179f3fe3999aaa9a02f86b8ff15550f5276d0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/conversation/definition-registry.d.ts",
+      "size": 1347,
+      "sha256": "4d90c332151328bb7b95b08ed74b0946394f8ab16928bad1514d7470d2bbda00"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/conversation/event-registry.d.ts",
+      "size": 1244,
+      "sha256": "110a9daf946f5dc3640fbd00571afa61416d2043b886a64765b0836bec68b7ce"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/conversation/view-registry.d.ts",
+      "size": 778,
+      "sha256": "2648f4e2dbff35cb0671865ef351d0c83abae88468ecacb1e0c00fa97cd44c5e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/drag-transfer.d.ts",
+      "size": 200,
+      "sha256": "0ec46d68e1d5a5ceda22121f9cbbda7fa61705eee6a7f9ad07f65cff1fd215f6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/index.d.ts",
+      "size": 9478,
+      "sha256": "e5c885fd03acfd9aa01f75790ccfa23afb8e586f2b629e6436770219bbe7797e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/ordered-baseline.d.ts",
+      "size": 648,
+      "sha256": "53af22aa688c5441fa978c17db9f804869d789ebfeb3807c8c67a34ef02ceafe"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/assistant-timing.d.ts",
+      "size": 1787,
+      "sha256": "568894f6f0eefc89587045ea1c75f0a6ea2ee90e4223937ef4783b759c571eba"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/context-provenance.d.ts",
+      "size": 2937,
+      "sha256": "7f8052dc12b5dbdc7f41381069c41101c532e553689f31a848194293dac079a6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/conversation-assembler.d.ts",
+      "size": 4658,
+      "sha256": "9adbbd1c059413b0789e6e42bb9ebdc37d99aa88982d22b1ec736d2aa5edca41"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/conversation-context.d.ts",
+      "size": 1247,
+      "sha256": "6ace9c5e23091cd03f02c03e49a2cde5f762466d551cd4bfe830ad8c66b5411c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/conversation-location-index.d.ts",
+      "size": 2939,
+      "sha256": "39f06ec0160ac63182db14d9210abf6e21df8526ff97c12cb965401fc70377ec"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/conversation.d.ts",
+      "size": 18786,
+      "sha256": "5a531a8ce7afbc36342fa1ccabba709bf61989c3d512323029bf7f10047347a0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/failure-display.d.ts",
+      "size": 320,
+      "sha256": "37b8a6664723e8e26b675d1ac7c0c15d76ee440888a4b4c4d2aaeadab89cca4f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/lineage.d.ts",
+      "size": 2447,
+      "sha256": "fff5965229a384a2c9bd82c9e8728e7518641bd7abc8445377b56c48cf869846"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/manager.d.ts",
+      "size": 13551,
+      "sha256": "0581f9fd81d0b7a967013f9aa4b3eda4f8e78c4b61b788a8aa621b175d24e08b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/notifier.d.ts",
+      "size": 1359,
+      "sha256": "002ef9a433e37308c53e840fc2947a4facd1b6b573135973d6e9a0d699eb57c2"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/partial.d.ts",
+      "size": 1687,
+      "sha256": "fe6220a43458285c919ebe74c57486256d66da4707eba27ae01ec79c1d748604"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/pending.d.ts",
+      "size": 2867,
+      "sha256": "3cf401d529208453f606a8a4eedb80e19f252aa854fa399f4dbd96403ce04412"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/projection-store.d.ts",
+      "size": 5563,
+      "sha256": "c7de1087da87e1a2e88faffeeb96f9c4bf9d6e4081904ec56205a6a84b8d0fa6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/provide.d.ts",
+      "size": 4098,
+      "sha256": "c9119b16008e9f65a02597c3113f4a8f7cc4f7248f875804b37191fbb3d51ec1"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/queue-mirror.d.ts",
+      "size": 1213,
+      "sha256": "03b61ba341960449a4d2f4b6912395836ef8c7383ece401045b66bf9b35dc2bb"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/remotes.d.ts",
+      "size": 458,
+      "sha256": "460c29cdc72930f476cba6d6c6e1f06efc2418487687e4b8f31c5db42dc695d5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/request-inspection.d.ts",
+      "size": 3536,
+      "sha256": "07e2aa9cf29d903b1b3ed74b22a5b490b22fa69a869ed68d4064d1dc98484671"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/service.d.ts",
+      "size": 20392,
+      "sha256": "30039a98ed98560b9dbe3a6e03334ce3562994f08cd2ee889e7938e58028535a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/session.d.ts",
+      "size": 15051,
+      "sha256": "05672f48e464a297a36b2b72c59bb8df0fe5aa6d105c4b1efa7e4b74706e36eb"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/steering-history.d.ts",
+      "size": 1038,
+      "sha256": "06072cbbe8c8dc599529fb4f2ff90b82ce0e2a9f6d7b70740eaa601ece415b42"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/subagent-lineage.d.ts",
+      "size": 1291,
+      "sha256": "e185ce28bc6ddda0f5ff15f0fa2b275abd03de34a08bd8b0fd495dc69103bb96"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/sessions/tool-call-tree.d.ts",
+      "size": 2070,
+      "sha256": "f285fbd16ee510120c42bda212267da9f03152ca490f15b7a34666c493fee1a5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/slots.d.ts",
+      "size": 9859,
+      "sha256": "a48ef383340fda5c7f744c65fe028505f6a0b88d5870367235632e540302e524"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/time-zone.d.ts",
+      "size": 351,
+      "sha256": "7a02109d080d039907772eb41e5624344c9aacf737903a04b05bcba44d6eed6f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/window-context.d.ts",
+      "size": 1976,
+      "sha256": "96a2e700583311c89ad57ea214d0ecfbaf83b94b014d9c784e5f31b6fd58d70c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/workspaces/manager.d.ts",
+      "size": 6973,
+      "sha256": "d314235f5511dad8773835c05560ff540b2ff550c3c16dcd160aa860ceb9359d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/workspaces/path.d.ts",
+      "size": 967,
+      "sha256": "69a97d259677bdb1a0c74b1442ed3e1a216b7b58fae9ec7521b5f601517da763"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/workspaces/service.d.ts",
+      "size": 8335,
+      "sha256": "d59d67eada37d755594a0221735d651d389e467802c8463a9d3685c36b32e762"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/client/workspaces/workspace.d.ts",
+      "size": 2547,
+      "sha256": "2a0e70dbb1c1cdbc60da39d5dbb8db956664fde63cc7df5953851fc6803675d2"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/index.d.ts",
+      "size": 251,
+      "sha256": "8cc911e8a7999696712ece9ac779e40437fb063a18eb23681f432c3ef34ebe5c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/lib/types/invariant.d.ts",
+      "size": 677,
+      "sha256": "3da1e7cf007529152e1be1208fc470011a14a0ef8fdd7d77f8c15bd230a1779c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/package.json",
+      "size": 3117,
+      "sha256": "4b5af34f78a2ba8c06dce9b869e27362af44c5b67b85a6ebf21b60e939b0c165"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/agents/scope.ts",
+      "size": 3404,
+      "sha256": "9bfabf6f97eb9fac4e0527ef2714fab48102887f5f34c2d4ae9c679ccfac9325"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/contract/conversation.ts",
+      "size": 10516,
+      "sha256": "4ec480a2d0ef2dc0c44c77ba1ac582a8485e738938cb4a0bebac8957f7383d08"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/contract/session.ts",
+      "size": 4175,
+      "sha256": "dda5df0812e68fdfd027aa799c4ec3a32156560cff73bfd5b6f7530e87750b15"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/contract/sessions-port.ts",
+      "size": 1917,
+      "sha256": "11cc92a727408e261835c226ee8249fa5b0c088bddeb5735d245e1bcb65d0809"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/contract/sessions.ts",
+      "size": 6776,
+      "sha256": "85c95ac0c236a64d7e52e0c29a59f26922444788637dd8ec3d7e0f3f09d42856"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/contract/settings-scope.ts",
+      "size": 3606,
+      "sha256": "0900ce5d3ffe47ef6742abc2b53ec4d80f8877b33cec422f7966a81d14c2ff43"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/contract/store.ts",
+      "size": 10084,
+      "sha256": "3db6741b4066974543c910906e4d74917a897d5a028f2e4d255b55f8d7a51e8e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/contract/workspaces.ts",
+      "size": 4262,
+      "sha256": "25ceee260d175f494bf0ba3d396bc8fd0d128e15a439a10d1275afefb99d6067"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/conversation/definition-registry.ts",
+      "size": 1960,
+      "sha256": "a384cd80bd689d0ffa8cdfce311a8b0dd19682d8f8fba8cafdb793eb1577d637"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/conversation/event-registry.ts",
+      "size": 2515,
+      "sha256": "d05b6f2ab2eb90c595b3eb189c4e1ef21ce7f5a4973166702331de8e0ec3cb16"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/conversation/view-registry.ts",
+      "size": 995,
+      "sha256": "454dbd05e125f1ab63319cc7af7bf6899b12dc83bfe9eb2dce2194a076e7548d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/drag-transfer.ts",
+      "size": 148,
+      "sha256": "495573a86d93e65607714c38c10197a761f638af401f93184708e019c7562619"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/index.ts",
+      "size": 12281,
+      "sha256": "82732871ed88e87a92ee73a17fafa2f211ca9b48ecb64868972df2597383162d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/ordered-baseline.ts",
+      "size": 1694,
+      "sha256": "0a7903af3ccce78150fed0d82d1eeab1784da4b434ab8db4f89edb1805678066"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/assistant-timing.ts",
+      "size": 2828,
+      "sha256": "b287b0ea199fbeed0c7090074440b2f8511297efed6da7a4f8595fd833dceaf9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/context-provenance.ts",
+      "size": 6049,
+      "sha256": "9f8be9fc250b793386056853630999594530c70f8fc417545c8f0342db082f9d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/conversation-assembler.ts",
+      "size": 30368,
+      "sha256": "ebe5dd6568de453a31c4138c21089fc8d7cebe334baf6897d3dfe9258e375a09"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/conversation-context.ts",
+      "size": 1161,
+      "sha256": "b9f435d0ca21a4be5606d7864d95ad8ed03f6980a69ec6d13ca4cfca499ff283"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/conversation-location-index.ts",
+      "size": 20639,
+      "sha256": "989af27950da30cfafa30e8af0dab7551125e451fea0a66dbabfa8a8c2df2771"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/conversation.ts",
+      "size": 19359,
+      "sha256": "f7325cb6a9b359fc9257fa16480501887fdb827edac94ad0bdda503f004e1372"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/failure-display.ts",
+      "size": 725,
+      "sha256": "9a8780c44766ade5da7582abf2b3fb504436c4ea214e92f253f43996993c8ca3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/lineage.ts",
+      "size": 4097,
+      "sha256": "c033ef5aac4301ec920d5aaaae3776d4834b1cfb0c6bb8f5c8d19b9cbd157089"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/manager.ts",
+      "size": 52901,
+      "sha256": "5bc49507f7208b7cb3d56998b8b2595ace51fb578591c93a6464f452138ef632"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/notifier.ts",
+      "size": 3491,
+      "sha256": "b80ff2b752faafef3e4f37ea41b89a70d775a2c66a623cbfc8647c9d76019f95"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/partial.ts",
+      "size": 4365,
+      "sha256": "f2a9fdad865fa8ffa5a4a59cb5027e24ab80525de3f0da6231af0367c8917675"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/pending.ts",
+      "size": 3632,
+      "sha256": "2637ac9c7823273f9d34d564d485f0a3b4e24f7f869d55af691c784575f6e331"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/projection-store.ts",
+      "size": 8217,
+      "sha256": "891835baf24fd15d9e11082997f12dc7319c9de38d31c884ee6f1c2d5cfd5161"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/provide.ts",
+      "size": 8234,
+      "sha256": "879e124d386c64aaceccf6712e36597b9e5076d81a88dd5d7e6d46ec4b4a2f19"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/queue-mirror.ts",
+      "size": 2492,
+      "sha256": "407e76872850a88d18d496e6c552abb2ad80a0f94ab240b1478456f3504d227f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/remotes.ts",
+      "size": 479,
+      "sha256": "644d0721050f332fb94635980696062f29e3ac4496c9568fd03f74a1e84270e8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/request-inspection.ts",
+      "size": 3365,
+      "sha256": "7716ea004bef508b447bf35719ceb1599c1cc5275ff35b68b5729d2c6e714deb"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/service.ts",
+      "size": 35155,
+      "sha256": "65a1067e3832462e42224286cde1f8594e47ca30006d6e033bb4a7eeb00a4afa"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/session.ts",
+      "size": 37480,
+      "sha256": "8f06e37c3a0b1556e4df0126ecff311585817434c93c1239abef7aa13cecac19"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/steering-history.ts",
+      "size": 2307,
+      "sha256": "27b7ea36ab8f69c53dfa3a2b885db2748b44319c458a051fcfafd37828885c8c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/subagent-lineage.ts",
+      "size": 2050,
+      "sha256": "a8bb813563c4580243d19117b7e80200a9b9ad5578b11fde54cc37f2bd93bfb0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/sessions/tool-call-tree.ts",
+      "size": 7345,
+      "sha256": "cb08779accfe8656e4b584cbca65064446a91d424f2ee39c400811f3e16c8455"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/slots.ts",
+      "size": 21270,
+      "sha256": "28787efb92dd9f6ccd41d1bc09ea391e176690d98c2d4cf54e934216e61a8f56"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/time-zone.ts",
+      "size": 521,
+      "sha256": "854e6893a62bcb558a5317987a8c5741790e905facdd17fd621e3821b717ea12"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/window-context.ts",
+      "size": 3433,
+      "sha256": "07b3dbfdf6b7055bd6b2b79f287ff0a50268a3321de8f193e9e352f0c5237b79"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/workspaces/manager.ts",
+      "size": 17768,
+      "sha256": "1a4686486a23f1c0029da506442e122dc76a3d605b64bf3791ebf015110a62e7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/workspaces/path.ts",
+      "size": 1703,
+      "sha256": "889dc544fe7ffeb5b5cd6c8ab2687630eca1a75bae95e97cc9b833f2760afb8c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/workspaces/service.ts",
+      "size": 16233,
+      "sha256": "974ac42cfd70b8769c7e89afda9b0767cf1b01f23767acc00d6f61f847a48f49"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/client/workspaces/workspace.ts",
+      "size": 4823,
+      "sha256": "f2721e382449d1ba900fb8bd81411e819327b20611b7dd47daa6d9a8b750f9ff"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/index.ts",
+      "size": 211,
+      "sha256": "e2187c89775817fcfe5dabaf7b53edecb775aead1ed404c9464269f4f1b6e7ac"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/src/invariant.ts",
+      "size": 2281,
+      "sha256": "74acf32ab7b074d36498f6cbd8a362a2af9dde5846d030a995479eaa38ff4e21"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/tsconfig.json",
+      "size": 1073,
+      "sha256": "915699e08e9fe7aa519f47d98904e796c13fdd39f992178dcc45c50a4777ea87"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/runtime/tsdown.config.ts",
+      "size": 165,
+      "sha256": "7b8b2a74bf7744d0a3bd02408709e3c3766cd8afbd3c2c9eb54618f3f1042dbc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/README.md",
+      "size": 10096,
+      "sha256": "ff19dddc3d623f87ade906ff67b00c2cedb601608aee9723e609ccbb4c2dc215"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/README.zh.md",
+      "size": 9615,
+      "sha256": "e39e1ef5008966efcba68f2b59df6bb09fa1dfe9695ffa12fcdcacfd0d8dade3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/client.js",
+      "size": 81587,
+      "sha256": "9d8c5a25f757b9365ebae904f9133fa3960711994a7174ed973af1c453bb240a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/index.js",
+      "size": 422,
+      "sha256": "dce7253b3bbe793a121b969751a25ebcb2d3eef480bd025a1f20a5ac9890b544"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/invariant.js",
+      "size": 987,
+      "sha256": "26c8c5ceecfd6fac5946e7b89f32a7ec8fa6b1a8c606262be6ac3569669eb780"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/AgentPresetLabel.d.ts",
+      "size": 1878,
+      "sha256": "61e3bd7a335a03ad99c07cc05d7e3c3c10e53c5882f1f733bf1c109915f9e6ac"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/AgentPresetRow.d.ts",
+      "size": 1678,
+      "sha256": "2317c6f646a128d2f96fbb51a63d8c5a6bd90366b13259b6954aa00d6be08857"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/AgentPresetSeat.d.ts",
+      "size": 1905,
+      "sha256": "a17cd1a547ae7ecc03a4fe4c81f701d5e16bbbd98d22d83b6ac33e30f1cc80ac"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/AgentPresetSection.d.ts",
+      "size": 3019,
+      "sha256": "93e800768dcf1b148db2c6ce483248cac4a97ca457f22daf8422fb0616605edb"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/PresetMenu.d.ts",
+      "size": 2043,
+      "sha256": "4fa24fbe03ce1d3fb44337e70745f77dadf2a455456c46125d165d1378be5191"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/index.d.ts",
+      "size": 1671,
+      "sha256": "12867ad4ae2e4d68042043786d995bf3ea65015b37accb8b2320ef0356f602bc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/locales.d.ts",
+      "size": 2456,
+      "sha256": "466892b2bf53116b98d56b65d1177e32a4a14168c3a411be49d6f7093aaf47ca"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/seat-store.d.ts",
+      "size": 4809,
+      "sha256": "f091cbb7dc53d5858312a799c50f1cd16fe154c74cc507a6cad73ffbcb166b3e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/section-store.d.ts",
+      "size": 8107,
+      "sha256": "b9720915870f124897c8397cd3612176d577b878a0ddf8dd1ab7a4e23b1c0cb2"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/session-switch-store.d.ts",
+      "size": 2560,
+      "sha256": "8a80d28f08577d0d1fe6b11dd9302f9901d4613070c097e6de95fefccfae256e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/settings-store.d.ts",
+      "size": 7421,
+      "sha256": "cb2355f49fd96c27858183b78173951d76c79b78a142b231e27956c2071e3ae8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/index.d.ts",
+      "size": 421,
+      "sha256": "49beb1b9da1a1ecf3d57f43c616f9867c94a6a9332f7eafdde1b9f403c6dac91"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/invariant.d.ts",
+      "size": 718,
+      "sha256": "584fc26e3f6f9b3c89c4aa8396f8b616cd1d1eea9d6c03b79ac661b0ca1d9748"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/package.json",
+      "size": 2594,
+      "sha256": "31c9faebcb99a3accbaaada0185732a5f09c5d9b81dbfbcaeeb4deeae0d0cf74"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/AgentPresetLabel.module.css",
+      "size": 1458,
+      "sha256": "6b69065113f9cb66cf63ed2bfafd9cc7d412f1ec2d29f2e883c5149236521965"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/AgentPresetLabel.tsx",
+      "size": 4644,
+      "sha256": "776655cd3f3d4bab5785c30076751eb356b2b7fa6dc8ccf26c5ad7e1b1cb9add"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/AgentPresetRow.module.css",
+      "size": 1031,
+      "sha256": "201624dd534365fe0f583eb548ba1e2a4844dc7bd826097c8c7c20277bbaff85"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/AgentPresetRow.tsx",
+      "size": 3412,
+      "sha256": "f9912fbb7dbc246c9c276a23f01d92e2e119de86e45819b084d1954e52bb7dc0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/AgentPresetSeat.module.css",
+      "size": 2448,
+      "sha256": "e71c45a5e2d90ef56cf8f1f7c94f4796e1a300fd2c3e2f1c47228fb5c33af228"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/AgentPresetSeat.tsx",
+      "size": 6532,
+      "sha256": "0df3554bec39f24b304efca3c7ba538d6f025b1f736a28f81a26c2577c48750b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/AgentPresetSection.module.css",
+      "size": 9110,
+      "sha256": "3a8905932e8c0e91d37c533e26120afd0fe8d6f3345e11390de7773c40a73573"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/AgentPresetSection.tsx",
+      "size": 18321,
+      "sha256": "4f97d10b31508fe70bf1b0b83c8889e5549cd553780498a9baec9fe9aa58404e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/PresetMenu.tsx",
+      "size": 3013,
+      "sha256": "064f9d6cdd111c9a71740630ba28c23dd4aa46579d4cd06928f9e7eb292467c7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/index.ts",
+      "size": 11550,
+      "sha256": "f41ca33417e32342085e23632da7cce2165698cbded409133a47d1c79d379341"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/locales.ts",
+      "size": 9193,
+      "sha256": "edcac05b86b1bb5c7c1a852b3813998614ff807999b80cddfd90a4f212ef8be6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/seat-store.ts",
+      "size": 7014,
+      "sha256": "6190b63c69d18cee4278f6382f7a46bf39a616a5648ef7afc9727ae53662a7ce"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/section-store.ts",
+      "size": 12609,
+      "sha256": "5fe76abfecc4ff63e22e6da9d9035e0d8439b21a52670ecb0e1c802f39fc1c2a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/session-switch-store.ts",
+      "size": 5032,
+      "sha256": "bc882a717cd72d0708c0b974e9034e12d1be009a513bbf610ed2e85546ce984e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/client/settings-store.ts",
+      "size": 10582,
+      "sha256": "4a877622caba02b8e48e1122459b78e3c3074e3642239c124d1175d386905ecc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/css-modules.d.ts",
+      "size": 99,
+      "sha256": "d4395f8ef04ea16601b9b84979df7de5af4ccfeb7b094c510f1442f3d8d5785a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/index.ts",
+      "size": 381,
+      "sha256": "aaebafa4968de2822986a600a280cb775a51918ab44804a44c3f75158b951472"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/src/invariant.ts",
+      "size": 1161,
+      "sha256": "52c7ec55fafbe22292d975a04efa5023a41d958264cd6900df25641fd6935bef"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/tsconfig.json",
+      "size": 689,
+      "sha256": "f8f2628bf98f4c887e0ea8eb1071308f31123776267a12c8cea68eebf58532a2"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/tsdown.config.ts",
+      "size": 173,
+      "sha256": "183473debbd94658080ae64992bfac420e1abeac05795c062dc388dcf760bb93"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/README.md",
+      "size": 2945,
+      "sha256": "cc88f98ad10c7c747da9d9f8b8f2df39a7f94566a7777feb2584eab4e31e25b1"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/README.zh.md",
+      "size": 2613,
+      "sha256": "639c3cc9e7fe4d2d068d2c38a87ec79d7e507aad7138b32f7d5489b6f7f847e6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/client.js",
+      "size": 4853,
+      "sha256": "5b3c06b8d35945b88ba0123be6d4ec656198dae502cfb6fc68c780eefc910e03"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/index.js",
+      "size": 185,
+      "sha256": "efa58eb493fdf38b0d48551dd7cf3d9ec2dc6c779163a9e37a944627c3f43f73"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/invariant.js",
+      "size": 390,
+      "sha256": "64a61fdb8ebace27cf342df9bb85dae02bc4f7563a1a693665f292cc2c908093"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/types/client/ChatAction.d.ts",
+      "size": 650,
+      "sha256": "5a923b44dcbae9b42a91e5f6521cf606e0874c16b25d9aa79304cddfc84421e5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/types/client/index.d.ts",
+      "size": 401,
+      "sha256": "6fc39458de7ece85dea4ebf91b1cdbebc73d9a6a1a2d993586803479504b4ef9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/types/client/locales.d.ts",
+      "size": 228,
+      "sha256": "985d84360ec3fab818a83919ed7a11dfe3d30b2bb78deb9dd3ed397134b65ae9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/types/client/start-chat.d.ts",
+      "size": 842,
+      "sha256": "5f6011db3b2251d5fcb68a31c228b0436abca1c0a5a90dffc1e6759236028820"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/types/index.d.ts",
+      "size": 179,
+      "sha256": "e16f0e0d9e03b35ac88ad920b83d113b90db84f1e7a493fee6cf714fb643dede"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/types/invariant.d.ts",
+      "size": 381,
+      "sha256": "3b64d1f4d2b97c583038f40fd71eb4fa9aa701277563bfe9391ce4681b0c846a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/package.json",
+      "size": 1918,
+      "sha256": "fcb6b8b32e28029ac233055023fa990f7ffa3606abb885be0bff2f5de8441153"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/ChatAction.module.css",
+      "size": 835,
+      "sha256": "f8f1ae28fca1cec0ddcfdd0a9525580d7690cbb607a9f047b513b571e6e7baa6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/ChatAction.tsx",
+      "size": 1158,
+      "sha256": "88ddbddeb22fc2125abf9ae8aed4a9ff096f9c863d49fac07903dcec52598625"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/index.ts",
+      "size": 1047,
+      "sha256": "af3d43db239a6e9728d00c8b4f75add2fcbf90c6bb52c4b40d7ac8d109ce153c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/locales.ts",
+      "size": 263,
+      "sha256": "5a15cfcecdc8415a9c8468bef6861ce77053377701414b99f98f3e2d3b1b9c3f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/start-chat.ts",
+      "size": 1648,
+      "sha256": "c473db006c44aca4b92065a5ff5c5164332fbe30274c98d74ac393625b10ba14"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/src/css-modules.d.ts",
+      "size": 109,
+      "sha256": "1b119eae282e4981c7ee24bbcf0ceafe34d57f6d5e6b148b2b7cc7c09cd89513"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/src/index.ts",
+      "size": 139,
+      "sha256": "ebd7bd07bb21fb3e3b26ede3512a55d9c311fc7dc44e46bf268c4a1d59444b9f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/src/invariant.ts",
+      "size": 719,
+      "sha256": "570bc3ade9b50d592e2caf0cbf7853b5d51d65e21d2a3622ed90441e71851de9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/tsconfig.json",
+      "size": 421,
+      "sha256": "bf9298e2084a5fb9f6d28e3935b3fdde4e61cba550e4df5c5487576796025fa3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-chat/tsdown.config.ts",
+      "size": 165,
+      "sha256": "7662b8d94421a743f4e7e08d0a4f45d273f3e775287797ed16eaa7702d8bb26b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/README.md",
+      "size": 32242,
+      "sha256": "6df19dd0d291b6932e16719e7a61ffc6a66cbf5a0944ba63fdc94691948bc3ec"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/README.zh.md",
+      "size": 30462,
+      "sha256": "78d93e38ddc335918709b15bd2daba8e1fe62dbb6f1ad7fee2f7fb9284e19352"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/client.js",
+      "size": 466740,
+      "sha256": "394a3616f67f2c8b8653afa3152a1e5a32b997790634258880b8e6ade7b7b4c5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/index.js",
+      "size": 1514,
+      "sha256": "eef46c73e65c2fa3c28808b6cf1337aaad60806605b92e7d3d24ab3b5cd02c2a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/invariant.js",
+      "size": 1079,
+      "sha256": "29569c60ec03133e7c1cdf9ffc18b0939def737f1809e8a97805e95beeb2ebd3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/apply.d.ts",
+      "size": 665,
+      "sha256": "18c368fa6156d73842fa6b9c00a63ca07a5d5d527bc89a1f3cd5319a3c9285fa"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/AssistantMarkdown.d.ts",
+      "size": 1167,
+      "sha256": "241d1a431f31f7d77caa6dbff398fa7ad372207a525c004e48a99642e625d12a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/AssistantNodeView.d.ts",
+      "size": 424,
+      "sha256": "43d214ecb22df6b1b601f0d699adb59ffa74c7b5cd24d577ff80f261504d5c2b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/ChatNodeSeat.d.ts",
+      "size": 1005,
+      "sha256": "8079183f32c167972cc64d7f7cc635368cc7b363ae4e969657dc452762e93a51"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/ChatView.d.ts",
+      "size": 468,
+      "sha256": "b99a8b9b592ed5cee167441a78f9d50c2435a8c465c04a5aba8c0caa2ad3fa16"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/CommandNodeView.d.ts",
+      "size": 790,
+      "sha256": "bed9df90df2bad0829c8bbe76d750c20d891e88ce828357f1cbd10f6865d587b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/CompactionCommandCard.d.ts",
+      "size": 466,
+      "sha256": "c657aaad4fcb8641ade42c629acb9c418f72062760c1619f9dad3559f98ef946"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/CompactionItem.d.ts",
+      "size": 932,
+      "sha256": "b2704cedd51052547b0b16b01a6288a1cf77e124ee52a563e6d126b366f7a658"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/ContextBody.d.ts",
+      "size": 5460,
+      "sha256": "5389e40213b40c867065ece23bf65b73d8f9ae44a33bafe0e52944ec93527ace"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/ContextInjectionRow.d.ts",
+      "size": 1466,
+      "sha256": "1fd594fe5e9b37e281f5cc703304be05a8d009947e6814d7dd8769153607029d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/GenericCommandCard.d.ts",
+      "size": 573,
+      "sha256": "4696825f26380adab1e668f32a348f73c2fa66b9d60a882c1bd539647d880589"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/MessageIconActions.d.ts",
+      "size": 1908,
+      "sha256": "a956d4ab73a2d150c914719a7905c68506b557251e8f9078d10b5161d0706f44"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/MessageItem.d.ts",
+      "size": 2890,
+      "sha256": "fafc90f41f0ee48490ac34b4e31f81ad74fa18f97ec09855580d22134be5e3f5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/ReasoningRow.d.ts",
+      "size": 583,
+      "sha256": "0bff0d0bf0e485d6602ffd0014281039be1736c3afc0556cec1363631b755e57"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/StatsLine.d.ts",
+      "size": 4204,
+      "sha256": "099fd21dc1ada4672fb12fc3baafddab8378d8de6987f23f221aad665754c0e5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/TurnTailNodeView.d.ts",
+      "size": 660,
+      "sha256": "d154c1d6d7f1ef36c88a9434c50dee7523a513155fb0c8f256620e0204f90d5d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/message-chrome.d.ts",
+      "size": 2437,
+      "sha256": "7427635559fa099e21b87c1c0f2d8fe0348cf507d0f92dd324330331efc655db"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/register-node-renderers.d.ts",
+      "size": 311,
+      "sha256": "f808cb70006f0662fef5c6384cfa53455787d361725b0c2904fdbed07690aef7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/tool-node-reader.d.ts",
+      "size": 907,
+      "sha256": "614cec97835f4851fcf58e74b7ce723f6a384ffa55ea751a80b6d9935696db96"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/turn-assistant.d.ts",
+      "size": 350,
+      "sha256": "daed04f212b7efbfc8269b65ed2a5707b9cb5d66d13f7b3f000d28bb9cea9d77"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/turn-metrics.d.ts",
+      "size": 1775,
+      "sha256": "be1ddd9289cf880e59f7d0a1007bb57a319dcdbdb6e019ca06fce59f83be53bd"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/use-calendar-day.d.ts",
+      "size": 249,
+      "sha256": "8827fc890ffa5f825d2138ca2e194ee7b9c06036420b3d4b3408e6cfb85bde0d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/chat/use-throttled-visual-update.d.ts",
+      "size": 467,
+      "sha256": "0499e518f27b2ff21d6be5e525f65d795276e87f1a13b0ad0932d862445b1f8c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/contract/chat-nodes.d.ts",
+      "size": 2950,
+      "sha256": "2f66e300d919fc059321abbda6c6bb28b18738e9d0acc0d165bf09b43a660fa1"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/contract/composer-submission.d.ts",
+      "size": 523,
+      "sha256": "03798c9299612624c87534061987935a1473bad48d2fe1dbb0f024c71233e125"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/contract/queue.d.ts",
+      "size": 636,
+      "sha256": "8a3c2d2dccbdb6a77b7eb7de7f9c8ea79ef86e2cf5ac562b39434bc2ee66b1a8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/contract/slots.d.ts",
+      "size": 44796,
+      "sha256": "902ca77a906f5bc93351ea158159e64e9da4eee6d49c8d7d41286a61fe61128c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/contract/views.d.ts",
+      "size": 1664,
+      "sha256": "e27739f398858881e819c9b943c4f101aba5ce99d45acce8f3ac28965caf5822"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/assistant.d.ts",
+      "size": 1499,
+      "sha256": "f23b637255504ba77e23f4aec4ea09a3de72880a9b6bccfda196fa70c80a3369"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/chat-snapshot-builder.d.ts",
+      "size": 1382,
+      "sha256": "e913a0ac01d0a6b42ee877691577b75a3d970d335f580526d1ded659be7f9593"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/command.d.ts",
+      "size": 2550,
+      "sha256": "72023a71ce48558ecc14af54f46defbd5d8e853e8044648f89f6affd2b7efead"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/common.d.ts",
+      "size": 1923,
+      "sha256": "45e05e2e589348ba94909b437fbf588a4f49ef1f09016227ed72c521e5d1ef4f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/compaction.d.ts",
+      "size": 912,
+      "sha256": "3e041a8cc6a4e5e4ee4ce1c15b486995638dce29fddfeab4e766f48fc40958f3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/fallback.d.ts",
+      "size": 767,
+      "sha256": "190261c9d7d5c011a2e89b2d0ac9b7f9e04c7d8eae1c4b654e9d60ae31905cba"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/inbox.d.ts",
+      "size": 911,
+      "sha256": "cd31e9e4417c9559c2b8671a91bfa26bdbc9ff29b598946a8ce87ce6f54999f6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/message.d.ts",
+      "size": 1514,
+      "sha256": "65ef9c6a74fd2a2e436797e830ebb0e0513783901da16b91a5f08bb98911b763"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/register.d.ts",
+      "size": 307,
+      "sha256": "b241fcf1256fc9e01e3e0639406f2cd86ea4b25321e8f08a118f812042f11b8b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/retry.d.ts",
+      "size": 989,
+      "sha256": "08649f68045a702bca26837d9c1543ab81e79e758dfa3022660a9ba9d2398f1b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/tool.d.ts",
+      "size": 993,
+      "sha256": "1f8e62889e3cfee28284ed6b6f3575f364bc668da7593b36b40bf5af07fb594b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/turn-error.d.ts",
+      "size": 1130,
+      "sha256": "df1d6d6e3c19fc7d63273ec104ccce9d116466ff08758c3c41427d711c4f007e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/turn-max-tokens.d.ts",
+      "size": 915,
+      "sha256": "4a0db2592322d5bd5b557fb4bc635c27667a2e3c5b2b127aa043f12c6c0c16d3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/conversation-nodes/turn-tail.d.ts",
+      "size": 1165,
+      "sha256": "11999fe2c7bfe7c0e23bc18caee66bce2ae6c8ea9de03f8fcc255be2fb12c36e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/image-labels.d.ts",
+      "size": 1128,
+      "sha256": "07d06fb1e23c5bbb82381b19693bfacf8ab1c70eb946317ccce7e44ecb6c506e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/index.d.ts",
+      "size": 2371,
+      "sha256": "99485b7cfe82cc907979caa9c9d69f6906e2ab63a9ceb5edaeedf315edc441bf"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/blocks.d.ts",
+      "size": 2602,
+      "sha256": "efc9f6a951031acc9a4c9a5c7740172653bdc0a8be0cd79dc33500abe2350604"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/contract.d.ts",
+      "size": 15863,
+      "sha256": "d8b411aac8f9edc48b9f26ef4dc26aa3c35310c42f3f892d43ad154603223fca"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/decorations.d.ts",
+      "size": 3466,
+      "sha256": "5a173e27c29abf613992167a117263d929a0a4c6f3f94e91564f3a75b3cbde75"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/facade.d.ts",
+      "size": 12576,
+      "sha256": "ec296ac375c10ef10a62a8d606e4678068581d7ce9956d240c7644c835347848"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/hub.d.ts",
+      "size": 4418,
+      "sha256": "bd1eff7b1ec7a594ac6825ffaf403e7e6b8a25355ab599d594bdc5e88cda8d22"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/machine.d.ts",
+      "size": 6825,
+      "sha256": "db268ed624fbfc52a5db7783097b8ecbc943bfabfe4b4d97405c51917d705d0f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/submission-policy.d.ts",
+      "size": 2326,
+      "sha256": "4a4830f4a40b83187e1d352b7cd1f1bad414220c6755258c715b6c2a989078d7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/locales.d.ts",
+      "size": 12299,
+      "sha256": "08b3276d69a950e469688cb671df38d3612351788071ac64cec81913653b8188"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/queue/QueueDock.d.ts",
+      "size": 1455,
+      "sha256": "c7291454d25223a1209f008ad4e4c38a5dce2c899a0e4b532caf5778359bf7e0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/queue/store.d.ts",
+      "size": 1035,
+      "sha256": "9caa6809a5e0e9442502ad1fbce3323ff0ed3b3172a062c91e632ea5ba679eb4"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/reference/ReferenceIcon.d.ts",
+      "size": 686,
+      "sha256": "e58d4515bdc9bd0a302fec3e84caf3c11d844f1b52108b5e1be86f88e6d4bb0d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/service.d.ts",
+      "size": 8795,
+      "sha256": "9ab9718c6c834be7c88cff6a01874da97b5db2be63aaffe19e154ae0e743a4d3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/settings/EnterBehaviorRow.d.ts",
+      "size": 1081,
+      "sha256": "afe3cdf1fb3bd586d7ee65245685901b9a120f5d39309b51c2428efab8ffa107"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/ApprovalPanel.d.ts",
+      "size": 870,
+      "sha256": "da98eee56435619efa45fc70318570729f9194fc2d57aaa65fd0bbf1381f7020"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/ComposerCommandAction.d.ts",
+      "size": 406,
+      "sha256": "f6acea5fcc312ccc42a85e007d241ed1744849bb2207557a320ecf86921a1a57"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/ContextMeter.d.ts",
+      "size": 780,
+      "sha256": "b8fc8f72d0a7dce3b52252693615c0fc96871d899fde71ac92c69d330d8ff4ed"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/ConversationRoot.d.ts",
+      "size": 450,
+      "sha256": "d412e9d0dd70aef32bc7c9e75976e5b6c1d4d5757018265973e0e71a1f11f8bf"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/ConversationSession.d.ts",
+      "size": 1536,
+      "sha256": "16aabfe4936914f88283a415f4e79656f6de3661caa907cb85501312cf40ee6c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/DetailsPanel.d.ts",
+      "size": 414,
+      "sha256": "7718d9e7f8d7eeafc2f5d1b9cf572e66966c3808b2ccd22741ad4a19019afec7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/EmptyHero.d.ts",
+      "size": 2554,
+      "sha256": "37521f632a1e37df79b99fcc935b59ccc805ac9cb4a8f8001203d979a8e29b87"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/InputBar.d.ts",
+      "size": 1282,
+      "sha256": "3fd0c6b543084c2b611927ef23bf9e3aca54bdca04de304fea6581da1826deb5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/PermissionSelect.d.ts",
+      "size": 762,
+      "sha256": "3c2193389d5f704c0f1c522efc9a437a43f1492cfb8f554d8adc7ec4412a5464"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/TodoPanel.d.ts",
+      "size": 1477,
+      "sha256": "43be3f9eab1b7bf49899f102409b417a37da48637291d546a20428306fc79d8b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/skeleton/safari.d.ts",
+      "size": 908,
+      "sha256": "6d6c7dde559be6b6e6e470fe1b10b75001913cdf61de06f3e7cb536bbd582871"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/stores.d.ts",
+      "size": 1115,
+      "sha256": "d33e543b3a41a41765ddf0dc2cb174de8475950945d089ab4495227fa2d07e13"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/index.d.ts",
+      "size": 563,
+      "sha256": "3463fb4cf7602c37d2b0763b7541008e60373a8b7b2818055b32fb164dcc02de"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/invariant.d.ts",
+      "size": 718,
+      "sha256": "c0bf35304bd259737ae4ef2931d13ca48f5258263033a967b3b735dcbc25a206"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/submission-settings.d.ts",
+      "size": 1263,
+      "sha256": "f7b5e53b48ba416f922217ce9b1ea605705edf2c688816b00cadfabf1cca81e3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/package.json",
+      "size": 4238,
+      "sha256": "9d58ed9121bea5a673471b44443e438f559d94b86432814c14c674c5005e56e3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/apply.ts",
+      "size": 21451,
+      "sha256": "3d7c1727b1041339f1581a776a354dd284a3bc86d6c150b17755699dacda791a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/AssistantMarkdown.module.css",
+      "size": 2266,
+      "sha256": "c6baf161e7d8a92f019626a7980fb0809bc00be5e54c93df38357587694db1ce"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/AssistantMarkdown.tsx",
+      "size": 4813,
+      "sha256": "4eed0e01f82c331179301d1c8a97be3ac18dec8e8a70ea1b5b006578e0ba7d57"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/AssistantNodeView.tsx",
+      "size": 1343,
+      "sha256": "892cdc320687a5be15201a5900623a7d7d103184855a447d2a6991ac7d564246"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/ChatNodeSeat.tsx",
+      "size": 2924,
+      "sha256": "67d63148abf375a0001e7a2f60e6a8730d2ca38d6ab0ca8bf84ac23752feb0f0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/ChatView.module.css",
+      "size": 5446,
+      "sha256": "4429001ba9968db0d4720b865f23d4d301c164d71ab4186dbce10104f86be169"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/ChatView.tsx",
+      "size": 22714,
+      "sha256": "333e6ca338c635c3647500f78187ba3b6055aba9bfa87530e681ab6021502bf1"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/CommandNodeView.tsx",
+      "size": 1475,
+      "sha256": "d6a6139993ef23d1d85a9457e64936f5522e86a72c2581203904a812a17b6dde"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/CompactionCommandCard.tsx",
+      "size": 1127,
+      "sha256": "e330adf34ad9d4191fdc45fb38684bf1c3439cec4107ff1cb3dabbd3fff65c01"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/CompactionItem.tsx",
+      "size": 3146,
+      "sha256": "e29da2d73e9adc57113e8050823557c47e55b02fdbc61c85a1d83fe8181fef98"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/ContextBody.module.css",
+      "size": 2769,
+      "sha256": "b3838bf9cf38af53b31fd6333b4766ad063024d9a59cd636a38e3e0e07d7bf61"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/ContextBody.tsx",
+      "size": 23140,
+      "sha256": "94f41356d59bdcdae7225f3cb8cd9b0c0b1a32d24153d82512bfba7c40443cc8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/ContextInjectionRow.module.css",
+      "size": 1395,
+      "sha256": "af61636789223d2476ec818a76d795bc7c13ca1a433f834d78702a825bd000de"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/ContextInjectionRow.tsx",
+      "size": 3274,
+      "sha256": "afb41e6285f2abaf0eb6a1f843dbc135c8480bd48848beed1f94e395ac0f68c8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/GenericCommandCard.module.css",
+      "size": 1571,
+      "sha256": "ff982d6a8d7ca6c3ae18b86eb9698cb752544d24563c6ceb4ff1d56dfa830278"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/GenericCommandCard.tsx",
+      "size": 3326,
+      "sha256": "24b0df16cf46c92d0f7dd837efc6b90b2a28e2fdd06e758213294264b7378d92"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/MessageIconActions.module.css",
+      "size": 2055,
+      "sha256": "c2c6b1722d2ea42bd1c8444c6c5e5e06ac096152d91c4dee24908f0dc628e778"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/MessageIconActions.tsx",
+      "size": 5888,
+      "sha256": "ce84579bdebb5cd2d1c07a25928787bd31a2cdf4cbcff9db5fac6b1cba257bec"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/MessageItem.module.css",
+      "size": 6435,
+      "sha256": "ce8d3813d164eb8951f7f435f5975bd73bf7815430ca8edfcdfa3757f66167c7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/MessageItem.tsx",
+      "size": 15796,
+      "sha256": "510197d275b73787d187fb168f7898d36a70dfcf9f33b788275403b3b3ce8947"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/ReasoningRow.module.css",
+      "size": 1376,
+      "sha256": "65076f5307517c50da8615efad48e3015b73cb9985b0c61e93bfcc2128430f84"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/ReasoningRow.tsx",
+      "size": 2581,
+      "sha256": "ba8f0d81e8a9bdc6526c626e2b83279069ce94f40df775a1b26d90ae30125740"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/StatsLine.module.css",
+      "size": 758,
+      "sha256": "0c010b4635a3ffd1de9aa595f6999d9cd4e7371b50b5463b314fde5df037f1d3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/StatsLine.tsx",
+      "size": 11688,
+      "sha256": "8654478a5f8bf5c7d565a9d0422d8e3c3372693d44eec2a0c1058f3259a36e13"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/TurnTailNodeView.module.css",
+      "size": 101,
+      "sha256": "6e63083adbc662de6030db1a149152d6a91a59df627e1057a4a7c93cde772d7c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/TurnTailNodeView.tsx",
+      "size": 2365,
+      "sha256": "2906e3f6457fb4e82c685ad978bd90ed9eb06e3459cca6304f4d1524289b781d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/accessibility.module.css",
+      "size": 137,
+      "sha256": "57cfa9a890cb754cbd2cf9ade7d7379873620b7ee86cb8f11f0177065065788d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/message-chrome.ts",
+      "size": 3658,
+      "sha256": "d839c12a538c4ec83e3fcfa12c41d908d8a6185f77fd78e9e5000c6262735610"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/register-node-renderers.ts",
+      "size": 2907,
+      "sha256": "89f3dbec34e9ca4ea3b9136f793ff6e54f00a364b5ada5418e44d4251b66527b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/tool-node-reader.ts",
+      "size": 1800,
+      "sha256": "340838efd5711893abfbbf470c1a8ec6eff20462dcdce7a9af0e410ca0322199"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/turn-assistant.ts",
+      "size": 386,
+      "sha256": "df7f9b057c3c64f3b7934cd84727b76999f117be5103e92aca7b3098c547989d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/turn-metrics.ts",
+      "size": 3784,
+      "sha256": "878658404f004830bb2451a68535524046eb90817e5dd5ba1e0601c2929e8f24"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/use-calendar-day.ts",
+      "size": 975,
+      "sha256": "7add01dcf998cb7b00b85c9f71679f33954c84210beeadb28d371e22410a63f7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/chat/use-throttled-visual-update.ts",
+      "size": 1345,
+      "sha256": "503b5698497c4d72044fa509a553f6ee50d22f8a0ed01aa7827feb45b263f395"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/contract/chat-nodes.ts",
+      "size": 2883,
+      "sha256": "347250df41cb9bc34a85c1ee73cd6e5fb893a6bb9f8607b47a567c230bea9334"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/contract/composer-submission.ts",
+      "size": 474,
+      "sha256": "fe98da79d5832de1cbc2e5706c5cc0b70c4d9b89442082e9931fc2f8be15ee12"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/contract/queue.ts",
+      "size": 603,
+      "sha256": "2c4f0f4ec324f45e7ba59ceb5866251eb06c90320a81088d427d44fa9324b433"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/contract/slots.ts",
+      "size": 42872,
+      "sha256": "327475ea4b0e28e796751a63a53ab3af194faf1cf1a2c3242f9e0b585a91e159"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/contract/views.ts",
+      "size": 1560,
+      "sha256": "86f37ac426bbdfa0a1aab2c90a2caee3df5eb0068841bf73d8068ca26065b522"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/assistant.ts",
+      "size": 10961,
+      "sha256": "db148397607a799717352acac04b7247bbc3cd672334a20b8d63470319b7be17"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/chat-snapshot-builder.ts",
+      "size": 20605,
+      "sha256": "43578a4c943a3acceca4a216824555315db2776d58ecf2a7fe87b10d1651b14f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/command.ts",
+      "size": 8515,
+      "sha256": "28a4baf4e56ca247901b67577fb300c2ef7f36ea66e8c8ec6cd6bd5fbe85b5de"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/common.ts",
+      "size": 2266,
+      "sha256": "5da0c5261cfd8ddcef6c42151be96c5c7ae56532b9b55e409e65644d4a2ab1c6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/compaction.ts",
+      "size": 2581,
+      "sha256": "118decae76fd4f1ac7b6d923f1d9438db02a2c149ab5cc0df4d214fff731aa83"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/fallback.ts",
+      "size": 1391,
+      "sha256": "42e15f4bba4eaccbe35bb32ff1728154aec43c78dd7120c398ae4d43581e8d8c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/inbox.ts",
+      "size": 2416,
+      "sha256": "6c1fa5bb22cf107ac43cf8c0701eac89aab511895869ccba24f9ecf21bca44ea"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/message.ts",
+      "size": 3429,
+      "sha256": "5db140adb4001699ce7b9360ffbd454e184b49e72a98c5c888acde2919d72759"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/register.ts",
+      "size": 1532,
+      "sha256": "9afa8d2bf06adb1b93d395a43d7e542a0276e8757166632022eeaf929ef25540"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/retry.ts",
+      "size": 3789,
+      "sha256": "381c25a2d744bd3927078799038604680e67f9e0e92ba2b91c3bd8448ed07626"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/tool.ts",
+      "size": 10739,
+      "sha256": "f761bf13f89567b83fd02aa70e8e3392e84011658b3934bf43cd7f8610f451e3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/turn-error.ts",
+      "size": 3431,
+      "sha256": "be3d2610d2b3911c3299ef7a79da2b5114bb464b8d16f62162a5ee65971c614b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/turn-max-tokens.ts",
+      "size": 3138,
+      "sha256": "16ee3996782691f58c067fe54c18bfa9acc215594c1332f85bff3bafb9270da1"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/conversation-nodes/turn-tail.ts",
+      "size": 7736,
+      "sha256": "9331315283ef7f59e428eab31fc4f8fc9fed200f7863753168f58dca85c5caf1"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/image-labels.ts",
+      "size": 2344,
+      "sha256": "bf6f3d21de8857e2f12c918e96894c6119b067aea466541694862fb2fcfb6548"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/index.ts",
+      "size": 2379,
+      "sha256": "37094831c956dfd5016c9df9caaf0330d979edc2168d8f40a95591f111db9675"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/blocks.ts",
+      "size": 3071,
+      "sha256": "b4835d79e12b2e234ee2fdc23f8a422205d6e1babea055d3efd7a44014eca392"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/contract.ts",
+      "size": 15312,
+      "sha256": "631f09c64f0f580ca0ca70257538ac6471c5ed397b6ef5cfe8d5b6f8b5e20466"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/decorations.ts",
+      "size": 5534,
+      "sha256": "66164d764b43a3388c683bd10e24fbfd83aca602e1bdc9411fb85946f81e0cef"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/facade.ts",
+      "size": 25358,
+      "sha256": "a04ec5ffa949fbcd1876ed9a87f9ad3a86ac43bd50d88805927b5d82d4f82c7b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/hub.ts",
+      "size": 9857,
+      "sha256": "634729f9ca542f066568e9fe7b7d3b76194ec8c96a4b61ad1c90b403085fbcad"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/machine.ts",
+      "size": 26649,
+      "sha256": "04134690b555d4f2b849d8f69f806b6c9283be3e68728551b09c8fb85ef85daa"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/submission-policy.ts",
+      "size": 3175,
+      "sha256": "af74381633c18d64950f8aaa4efbc7b651ba6c0deb72999ec44013f802f2bd87"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/locales.ts",
+      "size": 18654,
+      "sha256": "6761182aacf6ce5ba619839cc53296e9ad44f92756daf63dedc49c9cccd60d73"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/queue/QueueDock.module.css",
+      "size": 3982,
+      "sha256": "80d0142dec237c9824c5904f0b5b8b4895281eef7a593f270d55a6f2a7b0df85"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/queue/QueueDock.tsx",
+      "size": 10473,
+      "sha256": "3d68258744968480694de9e7959eabe85b14cd037c15865b69366d81b472ccb9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/queue/store.ts",
+      "size": 1105,
+      "sha256": "74b5c04f8dbfffa96a4f6834a6d5e36c5ca478b7755af4bcaedaae0189263329"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/reference/ReferenceIcon.tsx",
+      "size": 2061,
+      "sha256": "6315cb1ceafa830cd9e38ce296ddf5791ab93562e4f5a7bdbda1ef9ac6f7ed57"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/service.ts",
+      "size": 16847,
+      "sha256": "610e5a038ecd2028c374744eaf48a2e877cba91f7e409bf6d6901caf97c84293"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/settings/EnterBehaviorRow.module.css",
+      "size": 975,
+      "sha256": "73f0c41a6aef04bcc41249025040434d7de470c624f8eb4fd22b4f9b5630573f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/settings/EnterBehaviorRow.tsx",
+      "size": 2609,
+      "sha256": "7cbfe1f1ab4d6b7d8a7787f1a8285bf39d6d78cb7c33476ea4d154bccdbfee91"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/ApprovalPanel.module.css",
+      "size": 3623,
+      "sha256": "f3a209313858aef0085a902f97abc96a6b57c9288b1b07abeb28d93a2abdffce"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/ApprovalPanel.tsx",
+      "size": 4435,
+      "sha256": "2d890861b922814e0b8e9922f9a662342b4c53988e801049655a6a6566eb7734"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/ComposerCommandAction.tsx",
+      "size": 1117,
+      "sha256": "b1c4de7eddf3b7524adfdd46555cb9d417a44d6c382eb5b33b1214c8d3ddfb8a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/ContextMeter.module.css",
+      "size": 2747,
+      "sha256": "234c588e592d0b3ffecfdb14eae377507082f3faa328330d2d9a9c111f0f95d0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/ContextMeter.tsx",
+      "size": 6385,
+      "sha256": "744b98112dba9ae99fb1f8c78c0e8b52c4417a631fe7d95a3254f61eb076966e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/ConversationRoot.module.css",
+      "size": 13501,
+      "sha256": "63f383b0905a0d89595a7a735b1aebba6f8cefb092e091ecb3345529fd76776e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/ConversationRoot.tsx",
+      "size": 10129,
+      "sha256": "341d31ed3710258eb3945887765b422aef4a890e49234b32b17b746cadac1690"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/ConversationSession.tsx",
+      "size": 8748,
+      "sha256": "0e37cfa88fa768ae6d02c9832e479220ae3472a23c7bcb9a79d0820cb810ad20"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/DetailsPanel.module.css",
+      "size": 1974,
+      "sha256": "7fe3db8056db1cd9e30e92875b0f5034834102952fb92c2fd764b4487c2066c1"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/DetailsPanel.tsx",
+      "size": 5867,
+      "sha256": "6f04dfbd1e5fac22fa7d735be59475d8ae2c29f9602269d896bece583264bf7b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/EmptyHero.tsx",
+      "size": 5519,
+      "sha256": "5ba71ddd60b3d8fcad43284058b0a7f0858ff7bf7c4ec41f464d6b25576e315e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/HeroShell.module.css",
+      "size": 4749,
+      "sha256": "f5978323c9dbafa3536eb6e2bd3c8ac19902de702a8a3df49108bb6ad3f68b06"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/InputBar.module.css",
+      "size": 15618,
+      "sha256": "9b381c56f8c1cc02c9070684adfbb8bdf0fd5446e39704f6440746ff2a07208a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/InputBar.tsx",
+      "size": 47114,
+      "sha256": "de8a4f96a6fbe482f25484c8aa3c9f3533869aca7b49dc1a7ec380b8e54f4f9b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/PermissionSelect.module.css",
+      "size": 1900,
+      "sha256": "b91d279f880a3cdb021971e733c9f645fb44abc55d115c39ce01f6871ebf10bc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/PermissionSelect.tsx",
+      "size": 9824,
+      "sha256": "823aeb13b4b93c41b389124ab1bc34d66918e077dbb74d1ab98a2970f92713ca"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/TodoPanel.module.css",
+      "size": 3214,
+      "sha256": "37de0fd229e2b0f264e9deb3457338464b87377c39f3d490b5b248807b329de0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/TodoPanel.tsx",
+      "size": 7205,
+      "sha256": "ff439e2a827c7b8f3632a521b9824aa73a7482dfbe774e776be545d8fd51bb8e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/safari.ts",
+      "size": 1728,
+      "sha256": "6fa60fb7d6050218d95d5a9944021aaa52d4803ce290cae9f886e01bb6440c61"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/stores.ts",
+      "size": 1870,
+      "sha256": "83002e31959a4d0ac15e21060fe0405a39856737751c30d78e43bd6fab296a82"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/css-modules.d.ts",
+      "size": 123,
+      "sha256": "e28410d74a0d763364c04fa690c2ca2202ad3019c74f8f5205e8dc6cba69c02f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/index.ts",
+      "size": 877,
+      "sha256": "f2cf8b30ade3ae577df5bfa3a79995aeeebb5762e30a2a1675fad433837d0f7a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/invariant.ts",
+      "size": 1255,
+      "sha256": "bf4abf8624a66ac2002a6bcaa8ee077e54615efd8c5a3c1a717b73ef713d38d2"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/submission-settings.ts",
+      "size": 1292,
+      "sha256": "3f01ef83124ae33dd54b8f1e057818ea6ba8b971a558209ab7c34344273ae5a3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/tsconfig.json",
+      "size": 1375,
+      "sha256": "2cac96272cf7e4ba7dd8e436d209e6333e05acad08dc06f61bb1bef5048665c5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-conversation/tsdown.config.ts",
+      "size": 173,
+      "sha256": "ab0def62cb4f2bd3368ea99dccc8f268033f5081991464f741659fb740506f14"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/README.md",
+      "size": 15390,
+      "sha256": "f93b8538cb42a1ad02b3393f52a7012b04c4a77226afca96c4cb06f26ef29598"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/README.zh.md",
+      "size": 14882,
+      "sha256": "62e8f5d1597a33dbc48c2d77862d9548e8462e97b3369698fb88a8f51e2f34f7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/assets/computer-use.png",
+      "size": 1871,
+      "sha256": "6d2de6f60c6ec54e5e9813da85253754f73f0e48515b4d6d58a22754ad8546e7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/Button.module.css",
+      "size": 1718,
+      "sha256": "4666bf191abc8b6bcfd4e22355bab0c2f04391b85c2e918bd882a37ff68ef2b9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/ConnectionBanner.module.css",
+      "size": 267,
+      "sha256": "17588efc8567f1bf595e339619b9abf90d6129c048c93854ce58f0fa6a6d87fd"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/DiffBlock.module.css",
+      "size": 2987,
+      "sha256": "15b39aceeff5f9e0d26aa9f3fbc04222e9436b0efb9f6d29e15c4b7466b1650b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/DisclosureRow.module.css",
+      "size": 1027,
+      "sha256": "79a4b0fa82a516d76c7b7d7b0da0e354a1e2862536ca0386b9c0a7a995ad5ffe"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/HoverCard.module.css",
+      "size": 1266,
+      "sha256": "4d8fbf2368bd9f232f09422af94bf3527b4c9715445deaae18cf04fc1306475b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/Input.module.css",
+      "size": 691,
+      "sha256": "790195c01e1416a590e0b0353c5beeab1ae510151b2bd580fdea4ddbd4dca399"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/JsonTree.module.css",
+      "size": 4152,
+      "sha256": "7814c49cc5e2bb8970878d7d382b7a912ea81205da2c18973444efa6e9d7fe32"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/Menu.module.css",
+      "size": 5567,
+      "sha256": "1eee2a9fc186c7f872c466781ffda894d14a3f514cbb3cabd1777397e33405b8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/Modal.module.css",
+      "size": 2143,
+      "sha256": "ebfe5549125cb0e1b1d86858e2f1021d0209c25d590a466be9cd5127097a74dc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/OnboardingSurface.module.css",
+      "size": 593,
+      "sha256": "82c4cd7e345a8e64d2b4817d15823692fa344f3458852207c0863bf3dd414b56"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/Pill.module.css",
+      "size": 568,
+      "sha256": "c1c39eb6adc0e40326f7a33598a32195b388cb9db2627a9c723c009b44a94dab"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/ReadBlock.module.css",
+      "size": 2832,
+      "sha256": "f792edcceb6ad66fa2fd53500997c0a271a8b812cf1f6465bf752a063bcb491b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/RiskConfirmation.module.css",
+      "size": 1177,
+      "sha256": "c4c8e339a9f12ebf21c785cd6217898733f8a053f63d5aee936611fcd319ef27"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/SearchBlock.module.css",
+      "size": 2820,
+      "sha256": "95011c4d66a328615face9249956d8bdcb3dc1c0b72ce3f24a83fef2bdacd6ad"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/StateDot.module.css",
+      "size": 1559,
+      "sha256": "44b426f2016989477e5e7702f817057f328f6f46428c07ce0deae10dd8fad3b9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/TerminalBlock.module.css",
+      "size": 7089,
+      "sha256": "fccd47134a144ec41c4780c5b9d3a49a35bcba29c96eb29c8b86e9ba325b0621"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/Toast.module.css",
+      "size": 1838,
+      "sha256": "83b40e61e998525bdc2f3bf2457868d6ca1533c23fc31e04ef01e0bf5b96dc48"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/Tooltip.module.css",
+      "size": 1402,
+      "sha256": "9286defa4a20872df113af062b9b78d2ec465f857ffada668dbe32f9d55e41c5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/WebBlock.module.css",
+      "size": 3411,
+      "sha256": "04d8f1c0b4f9c009f81032dc7c78fba19df743c5a4498da29262fc2f082d890e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/index.js",
+      "size": 299261,
+      "sha256": "bc58227bb4daedb05491de6698dea622abd69ba66e7473ae65378f96641d6acd"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/invariant.js",
+      "size": 1032,
+      "sha256": "564460a0a9b36857d451b88c1ec500865998d753208cdd4d15b1347d548d0c56"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/markdown/CodeBlock.module.css",
+      "size": 2519,
+      "sha256": "cdc295dff342fbcc33db61d8260938228a29245da72e987287db870cc3a95821"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/markdown/JsonBlock.module.css",
+      "size": 630,
+      "sha256": "4b97662e09b18c7febf0697f566c57444ed9044c4e3f8432e75968ccce7af72e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/markdown/MarkdownText.module.css",
+      "size": 7401,
+      "sha256": "e226e878c45037b1cf537e4361f59e052ef979321593be3369bd31200d0342bc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/markdown/MessageText.module.css",
+      "size": 337,
+      "sha256": "95d227acaec1b949140345184a127bd53a72621af78c39af818bade0ec99e0a0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/BrandWordmark.d.ts",
+      "size": 770,
+      "sha256": "b57a15935fcfda056aa5d1f0758d7fd947268c909379d4696d9412d6a7e1c614"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/Button.d.ts",
+      "size": 840,
+      "sha256": "ee1b5fba4d9b49be6ec278bb49910eb4e0045a8da825aa356cdd6bac318b3312"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/ComputerUseIcon.d.ts",
+      "size": 449,
+      "sha256": "4e02201ffab03e0324b96380b3f254faad934502a4de3db7b0a165369b69647b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/ConnectionBanner.d.ts",
+      "size": 512,
+      "sha256": "a6f0414bb675882c753bed045f4ca6d965b20bb315c9f30c46b65bddab508bd5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/DiffBlock.d.ts",
+      "size": 1544,
+      "sha256": "2960bc01fd87fe8150405885f14aae0771add55961403a178c746d276be16f8a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/DisclosureRow.d.ts",
+      "size": 1365,
+      "sha256": "b5aaef22c5e2780ef8c8dbee6b75467281003da8849f4f04237b0147a928a93e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/FishLogo.d.ts",
+      "size": 446,
+      "sha256": "f80fd5dfe884c80ef615816fd6e81855c9a627c8a8c7dfa403cd55f727708b3d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/HoverCard.d.ts",
+      "size": 1239,
+      "sha256": "b4a506ebaffaca47f57ef2110b4d28b8e144870fc818b51df851136e99694108"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/Input.d.ts",
+      "size": 480,
+      "sha256": "aeded30e5830dfa5df230bed1ea940525ff2f2e6587245425ba1595e4d16fbf5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/JsonTree.d.ts",
+      "size": 2148,
+      "sha256": "34da8fb126df6396bd903f37d474abd3d9a2e9fc3cdd8bfd10c7551244dc25d5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/Menu.d.ts",
+      "size": 4313,
+      "sha256": "752b69d761736d64bdf22c55ba1a0573d0aeb70bc21148c00e818adec4ed64e0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/Modal.d.ts",
+      "size": 1468,
+      "sha256": "b99738cc38465d23104a5091550b40e26c4142ecc8904db89b6af5f7b6d79c11"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/OnboardingSurface.d.ts",
+      "size": 473,
+      "sha256": "23f74a815843c5e071c484c2826d416ac81f94e69f753dfb5c3ef7127e210d10"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/Pill.d.ts",
+      "size": 534,
+      "sha256": "f655291cb61aad6e0820c9b144f18cdf928f0669a25cb3834e2ddf5ed599278d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/ReadBlock.d.ts",
+      "size": 1777,
+      "sha256": "9fe741d50f6073106d06c1f1bc593fa48bb39e15e5eb7024cd4788955a2cfeb5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/RiskConfirmation.d.ts",
+      "size": 771,
+      "sha256": "ddce8ac22ebfca446d092d2b9cbe01b50ee96a81be2037b2d10ec5db7ff0bb23"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/SearchBlock.d.ts",
+      "size": 2562,
+      "sha256": "c5f331efb01aee7e93cef163a5d912768c424467ca94839d855e9d740dff7c50"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/StateDot.d.ts",
+      "size": 701,
+      "sha256": "7b5c63f7a221573898db1026cea5a0737a823058c887f0814ceb6ffada554bb6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/TerminalBlock.d.ts",
+      "size": 3251,
+      "sha256": "468de4fd5f808e898cfdefe54c8e30dff86c50c4e7911ac7cba786efcd69e58b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/Toast.d.ts",
+      "size": 1160,
+      "sha256": "e088f8ea24af2b1445950bc57025bcf768ffd063d236cdd7f8cfce477f4b12b7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/Tooltip.d.ts",
+      "size": 1798,
+      "sha256": "cbd4389654d4c1a49045aa47aacf677e26b628f2615290dafa22fd67c4c54dfc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/WebBlock.d.ts",
+      "size": 2225,
+      "sha256": "02d5ff880c50d139561c7ed061393d854058839946d6d18d91256c813e99ad0b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/ansi.d.ts",
+      "size": 780,
+      "sha256": "93e8a73b27d3fe48c83446c8d85a0b45a76976a63e0169120d527cb5cbc8f2e4"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/clipboard.d.ts",
+      "size": 404,
+      "sha256": "de9419281919828744eb97781e297dbf2af8222a58688448c52339123b190156"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/head-tail-cap.d.ts",
+      "size": 1123,
+      "sha256": "3426674ce41591b391c47d8fe43c64a0f6e112e5bba1add55b75b262ca2ff3f8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/icons/index.d.ts",
+      "size": 12831,
+      "sha256": "81bd7ee6910f47cc237d8d9f9c3a240b68f97e5e4f6161dd54af3763675f8845"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/icons/props.d.ts",
+      "size": 424,
+      "sha256": "7bcbcb09b4dbe2d6f72d7c9b06cb5b14833908752f8cf3d2c21f9ab39d48d9a1"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/index.d.ts",
+      "size": 3211,
+      "sha256": "d787257f3bc8ac3bc28c43d16daae8a5057ca3eff0d3b99be44f90e07e378d22"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/invariant.d.ts",
+      "size": 712,
+      "sha256": "f07a50f9426612d86361526ee12f0b49ff312fd1b8c25e721e5138d4d2ffdde0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/CodeBlock.d.ts",
+      "size": 828,
+      "sha256": "11fd89e081786730c63ca56dadba0aeeb3d4ec5dc79695736bf51b9db00af7db"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/JsonBlock.d.ts",
+      "size": 430,
+      "sha256": "2b81e64fd60bb6e1f3e94a6630a2261c37f4a32b4708927f81ea2aa525baa584"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/MarkdownText.d.ts",
+      "size": 2236,
+      "sha256": "f49bd5d3c9bd3b965685018b39bf24c3cb222ac49422ef109a4593592071b12f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/MessageText.d.ts",
+      "size": 140,
+      "sha256": "3689cd4f7cd74adb2d402f9e9e5647c7b10ff4377ceb9cd170e5d8796fbb1087"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/cjkFriendlyStrong.d.ts",
+      "size": 453,
+      "sha256": "0479bc3ba6036ae23364767c46662840a2ddbf88a6649d46842a1e873f7247c5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/highlight.d.ts",
+      "size": 4403,
+      "sha256": "cabfcb652c0b35a748687ab429db77e0c642428a7de273e77a9b6497b22ff40d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/incremental.d.ts",
+      "size": 3459,
+      "sha256": "1b32a5a787bbbb2e2767612e4863a3223239c583b875461478193e4c969b1677"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/katex.d.ts",
+      "size": 1566,
+      "sha256": "5dc81bddad1b981584a7cf934405b66a3713e36d3717ec39bb314b0b997e421f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/mathCompatibility.d.ts",
+      "size": 584,
+      "sha256": "1fa6563a699edb7e2febc089d35e19fa0e35797fa3fa09becc13e616d2c7e248"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/parse.d.ts",
+      "size": 1057,
+      "sha256": "d8dfd2fb0916623b1f1a629a86cf1cdd67e707ba27928caf85120cbdeddc47c5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/plain-text.d.ts",
+      "size": 1113,
+      "sha256": "6b3e108e0d4de9ba2eb39d1ca66980d2b86d278b8a088c02281b5cb2d6fee703"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/markdown/render.d.ts",
+      "size": 5718,
+      "sha256": "85145fd901c5cbe3cafd5a3a360bb757040ca13494228f1f9441ae2ee2826c50"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/pointer-grace.d.ts",
+      "size": 1013,
+      "sha256": "ee12a2e262f9595f52caa9dd07707fe9788bcb2c653fe76fbc566e587f228dbe"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/use-copy-feedback.d.ts",
+      "size": 652,
+      "sha256": "bd5da67b7be0a6856d3ac5a3e59d08dc782757e9d017acd8005f461695cbc8cc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/useAnchoredMaxHeight.d.ts",
+      "size": 637,
+      "sha256": "0d173eed3a3bdfc6883915979b6037312300d55869ef6ea1067916dcd32a4330"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/useAnchoredPosition.d.ts",
+      "size": 1608,
+      "sha256": "8203a0a09752f3e30386273251c6735d29849e0c276fbec42a210bd7cebaa4c4"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/lib/types/useDismissOnOutsidePointer.d.ts",
+      "size": 556,
+      "sha256": "561402c51818c8ec1062cec38148986be056c897e37e3b7307258bc28e605d7c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/package.json",
+      "size": 1952,
+      "sha256": "d121d407f8d2ae23b59297be1f202641caf4cdf92ffc3a8b7c3481abe0f1bcbe"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/BrandWordmark.tsx",
+      "size": 16620,
+      "sha256": "146a7382ff79d13910b7cf062eecbb034b61ec69b3f3292a16d4b68fb3c33ff7"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Button.module.css",
+      "size": 1718,
+      "sha256": "4666bf191abc8b6bcfd4e22355bab0c2f04391b85c2e918bd882a37ff68ef2b9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Button.tsx",
+      "size": 1190,
+      "sha256": "5f1db06042fa372c45d777feffaab3b1d0c9395a89fa00b735bd9cbc8a389371"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/ComputerUseIcon.tsx",
+      "size": 3926,
+      "sha256": "386b44516c145161e76da9b2c0561d74c70d5f4af5920e65e703c42922e82938"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/ConnectionBanner.module.css",
+      "size": 267,
+      "sha256": "17588efc8567f1bf595e339619b9abf90d6129c048c93854ce58f0fa6a6d87fd"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/ConnectionBanner.tsx",
+      "size": 879,
+      "sha256": "cab4f37d2eb351141af37f32b81425b767209e6d905a4931ad2675f82b2a535c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/DiffBlock.module.css",
+      "size": 2987,
+      "sha256": "15b39aceeff5f9e0d26aa9f3fbc04222e9436b0efb9f6d29e15c4b7466b1650b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/DiffBlock.tsx",
+      "size": 7664,
+      "sha256": "fa033c77f78ece12fb81f79606e500a9877066d5db2bbc6a3a593a1e3bf0582e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/DisclosureRow.module.css",
+      "size": 1027,
+      "sha256": "79a4b0fa82a516d76c7b7d7b0da0e354a1e2862536ca0386b9c0a7a995ad5ffe"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/DisclosureRow.tsx",
+      "size": 3256,
+      "sha256": "0c65c0f0f14f9fdaf4dda6aeea6c73bf803c4591d64f53784928aaa559cc9b96"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/FishLogo.tsx",
+      "size": 4371,
+      "sha256": "eddcc2bb93dca66614c6cbf9073465140eebc4e75b954412ec34cbbc4bd1ccc1"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/HoverCard.module.css",
+      "size": 1266,
+      "sha256": "4d8fbf2368bd9f232f09422af94bf3527b4c9715445deaae18cf04fc1306475b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/HoverCard.tsx",
+      "size": 8366,
+      "sha256": "c799c45a97074e7dbd0a6ea549a39ba11dea349c9760ef9f417ef1e650c2ab35"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Input.module.css",
+      "size": 691,
+      "sha256": "790195c01e1416a590e0b0353c5beeab1ae510151b2bd580fdea4ddbd4dca399"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Input.tsx",
+      "size": 809,
+      "sha256": "dcb73dad681f3f37975c08ed3aa97922a1f5337548b406806324877a5d398c51"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/JsonTree.module.css",
+      "size": 4152,
+      "sha256": "7814c49cc5e2bb8970878d7d382b7a912ea81205da2c18973444efa6e9d7fe32"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/JsonTree.tsx",
+      "size": 22367,
+      "sha256": "114c854472540e19db5ee758e1f90233d98588e9dd11a2e6fda5036c1677bda0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Menu.module.css",
+      "size": 5567,
+      "sha256": "1eee2a9fc186c7f872c466781ffda894d14a3f514cbb3cabd1777397e33405b8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Menu.tsx",
+      "size": 13904,
+      "sha256": "a15bd826967a8a1208d33b2b61206441b7718d617b999c470b3a7784955906b8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Modal.module.css",
+      "size": 2143,
+      "sha256": "ebfe5549125cb0e1b1d86858e2f1021d0209c25d590a466be9cd5127097a74dc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Modal.tsx",
+      "size": 3342,
+      "sha256": "1a285b6de8912d5d2410bb3721cdcdf178c7726e57153c74b6734b0060fb2bd2"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/OnboardingSurface.module.css",
+      "size": 593,
+      "sha256": "82c4cd7e345a8e64d2b4817d15823692fa344f3458852207c0863bf3dd414b56"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/OnboardingSurface.tsx",
+      "size": 1432,
+      "sha256": "281b1e6e3888e23ccb036d6a5ca24b9f88a767cfc9f5fd169e829e70b40bd3b6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Pill.module.css",
+      "size": 568,
+      "sha256": "c1c39eb6adc0e40326f7a33598a32195b388cb9db2627a9c723c009b44a94dab"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Pill.tsx",
+      "size": 1082,
+      "sha256": "7acf38a1d501cddcdbfcf14b07e9d4d04b45abb25367d596a2f7406c13f6391f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/ReadBlock.module.css",
+      "size": 2832,
+      "sha256": "f792edcceb6ad66fa2fd53500997c0a271a8b812cf1f6465bf752a063bcb491b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/ReadBlock.tsx",
+      "size": 7546,
+      "sha256": "20b382517bb9f22e29dcb7ed8a19033a87b39a4438f145da51abb52703ff41e9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/RiskConfirmation.module.css",
+      "size": 1177,
+      "sha256": "c4c8e339a9f12ebf21c785cd6217898733f8a053f63d5aee936611fcd319ef27"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/RiskConfirmation.tsx",
+      "size": 2095,
+      "sha256": "c207b7394393c190e6bc2b0eff21251f6902084702325d0df57313af880348bb"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/SearchBlock.module.css",
+      "size": 2820,
+      "sha256": "95011c4d66a328615face9249956d8bdcb3dc1c0b72ce3f24a83fef2bdacd6ad"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/SearchBlock.tsx",
+      "size": 11393,
+      "sha256": "890302d6802eedb9608cd9a09724f86d6a106ccd46f6b385e19c1375f2cb2868"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/StateDot.module.css",
+      "size": 1559,
+      "sha256": "44b426f2016989477e5e7702f817057f328f6f46428c07ce0deae10dd8fad3b9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/StateDot.tsx",
+      "size": 2092,
+      "sha256": "0e30ac9c250626eeea02da547275e7779562234a847267ec11805b1ec9b594b9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/TerminalBlock.module.css",
+      "size": 7089,
+      "sha256": "fccd47134a144ec41c4780c5b9d3a49a35bcba29c96eb29c8b86e9ba325b0621"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/TerminalBlock.tsx",
+      "size": 12610,
+      "sha256": "703b1a7b5b3499b727e76de36d53b18b71f7012987abf7e86d0d3d2bc2d7c0c5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Toast.module.css",
+      "size": 1838,
+      "sha256": "83b40e61e998525bdc2f3bf2457868d6ca1533c23fc31e04ef01e0bf5b96dc48"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Toast.tsx",
+      "size": 2456,
+      "sha256": "e7f6395c0b142cd41bf6b5b107951f34ec191dc3604b100cbe393dcfe24fe72b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Tooltip.module.css",
+      "size": 1402,
+      "sha256": "9286defa4a20872df113af062b9b78d2ec465f857ffada668dbe32f9d55e41c5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/Tooltip.tsx",
+      "size": 7888,
+      "sha256": "9e2c238d1c940df71910ffe1cefc7cd8a9e400216296f537108029b3b4c71409"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/WebBlock.module.css",
+      "size": 3411,
+      "sha256": "04d8f1c0b4f9c009f81032dc7c78fba19df743c5a4498da29262fc2f082d890e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/WebBlock.tsx",
+      "size": 8751,
+      "sha256": "2cd934d5d26fb96ec7c4d913a7c5aecee3338e705468e5c9966b810f025f7a15"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/ansi.ts",
+      "size": 20389,
+      "sha256": "774b3063a6f7ad108f2123887d089c022f92af89d718f71493667de3effd9196"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/clipboard.ts",
+      "size": 1712,
+      "sha256": "f3c5ff3d5ac550adda2366e245d33cf4d91d219bfb8692ef1943866d83748a0f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/css-modules.d.ts",
+      "size": 123,
+      "sha256": "e28410d74a0d763364c04fa690c2ca2202ad3019c74f8f5205e8dc6cba69c02f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/head-tail-cap.ts",
+      "size": 1522,
+      "sha256": "e93b5f6972fa57109f25bfe36e1d3e6f2c68981c425f4a7c486ceed92b1fbb19"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/icons/index.tsx",
+      "size": 114955,
+      "sha256": "7dba783d0f30c205ebce4537b8bfcebae9126b5c98ded37ba18001e7e0c31149"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/icons/props.ts",
+      "size": 377,
+      "sha256": "98d350861746bca58f07d5301a0caff7270035c9331ed5b605e702d7f590f1fb"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/index.ts",
+      "size": 3129,
+      "sha256": "8b36c15aad9dd716b95d8c36635e240498d453816f324ea193ea81acfd9a9623"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/invariant.ts",
+      "size": 1169,
+      "sha256": "f606f6d99f93f3eb93bbe9f1834f5067830ef6eb1774d263680a5528ca24e099"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/CodeBlock.module.css",
+      "size": 2519,
+      "sha256": "cdc295dff342fbcc33db61d8260938228a29245da72e987287db870cc3a95821"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/CodeBlock.tsx",
+      "size": 3301,
+      "sha256": "ae9db6dbf6dd6f0c7528bc1d878b5ccffc76ad9bd6172e577c6c88938c2293f6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/JsonBlock.module.css",
+      "size": 630,
+      "sha256": "4b97662e09b18c7febf0697f566c57444ed9044c4e3f8432e75968ccce7af72e"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/JsonBlock.tsx",
+      "size": 1588,
+      "sha256": "4efa8030ba642e2f7f91463407b9ea3544bb1406ac0648cc95b1a922249ce184"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/MarkdownText.module.css",
+      "size": 7401,
+      "sha256": "e226e878c45037b1cf537e4361f59e052ef979321593be3369bd31200d0342bc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/MarkdownText.tsx",
+      "size": 7662,
+      "sha256": "b0ce4cf0986cadf624436136186b16f108ed2365aec0350b195f02dae036017a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/MessageText.module.css",
+      "size": 337,
+      "sha256": "95d227acaec1b949140345184a127bd53a72621af78c39af818bade0ec99e0a0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/MessageText.tsx",
+      "size": 265,
+      "sha256": "3170d64381baaf3f253476beb07b1f783fa49bb32d086969f5dda1515075caea"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/cjkFriendlyStrong.ts",
+      "size": 2933,
+      "sha256": "bc4adf3183f7d0feea17e3a176e7c4b1db5bdddc29e7fc87261f627ff8a39b53"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/highlight.ts",
+      "size": 13891,
+      "sha256": "2a091572a23ec461007cc8a4ad5edc7230b7ff6c99d43e7dbd60a22b858f9ef3"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/incremental.ts",
+      "size": 5890,
+      "sha256": "2975a332ac74b931a7cb489e2eea28469aa3d9596328d5a474d41379b6c7b640"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/katex.tsx",
+      "size": 3956,
+      "sha256": "8227e04d29333d2568021ed012143237b457852bce25d82cf394d72b941e74a5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/mathCompatibility.ts",
+      "size": 11301,
+      "sha256": "5f8cec86fd613fd2f67510e22b0a9d661f4173b3d49fb13fef71b25f4abb652b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/parse.ts",
+      "size": 1677,
+      "sha256": "6be57559995c4e717d6d704207eb2fec86db9714c2a4bcc5b0c3f6648c8990f0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/plain-text.ts",
+      "size": 3543,
+      "sha256": "98a63f70ea7d227712915c56de7e9f12fada855d03c2041fcabf9fdcdaf9f878"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/markdown/render.tsx",
+      "size": 23934,
+      "sha256": "d4fefca41ab709526933e47144a01df14bd3d5619558cd6ed35b663d1640d779"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/pointer-grace.ts",
+      "size": 1864,
+      "sha256": "9b0504ccb33be56fdefef78ea7c2b73f396f5e98f381f0e101a769916c66a4e2"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/use-copy-feedback.ts",
+      "size": 1469,
+      "sha256": "b03ae0baacc2159bcd372980e6ff41c90973a677a55f11d318be30a465ebef5f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/useAnchoredMaxHeight.ts",
+      "size": 1590,
+      "sha256": "f017bd3133a67e7ca0b95aee66d34cac7c95541671b7c082f446f0220b4c5e65"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/useAnchoredPosition.ts",
+      "size": 3626,
+      "sha256": "26ec34ed7433d28c7ae1abc6bee0d2f468ea6bbe067319788e9ef5ed799aacf6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/src/useDismissOnOutsidePointer.ts",
+      "size": 1087,
+      "sha256": "ee42494da6a34ea099d24daee25c339bb80a994c4332f396d95fbb90ef3a80bc"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/tsconfig.json",
+      "size": 288,
+      "sha256": "7acfbfabe8b2395297f20505ef8de1ea108c470872a3e6d7f4362d2df759d64d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-primitives/tsdown.config.ts",
+      "size": 178,
+      "sha256": "5ea26c423ba767a4e91e9a7c6ccde36cbd27a34ba1c9353da60352bfe25b617b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/README.md",
+      "size": 4211,
+      "sha256": "34e82f52aab7e569faa6f04b83d556a78d892d93918fef8f48c21709d60c0f0c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/README.zh.md",
+      "size": 4020,
+      "sha256": "21ed1fa25f0c137c42b8e47f33b9b71a0495e407ba7fae92c98e7b91abb7f386"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/client.js",
+      "size": 16771,
+      "sha256": "992f5798e9c81cec7e48609bd635754c285d0344610937f4edac4ca31626c833"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/index.js",
+      "size": 181,
+      "sha256": "be323c589cda4dbb7714df563ebb66f581a3d37ed2ab6859fed85fcebf970aea"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/invariant.js",
+      "size": 1064,
+      "sha256": "762f7a77fc72287e8806411b1b27646a2430462ccb33bd2e5f4753d6a4269fae"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/types/client/SidebarRoot.d.ts",
+      "size": 448,
+      "sha256": "80288e4ba6b0973e508093f4e7d77d4376876c7f5d762d56d3dcb60d425c117d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/types/client/contract/slots.d.ts",
+      "size": 5562,
+      "sha256": "5474ce024d3cc3321a0950ef6985781ae2da71792a42cd679a5dee39688a4855"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/types/client/index.d.ts",
+      "size": 947,
+      "sha256": "2b68d831c460adbfab81f5e7e245f955e204738629403168b443b52596597cdb"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/types/client/locales.d.ts",
+      "size": 646,
+      "sha256": "04d6568a46a65d7a80d35d9a447bb6851a1ba1693a51a9696f9b1b1fc1eed428"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/types/index.d.ts",
+      "size": 175,
+      "sha256": "c907d47c2d72978e204e064d407b4a25a5d5d5ff768d1a1b00af8d5338c1580f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/types/invariant.d.ts",
+      "size": 703,
+      "sha256": "81846d83523d9551e6081688d239f150811e2335160b81ab044c87ea84762745"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/package.json",
+      "size": 2115,
+      "sha256": "c7e6cdbee542d2bc26b212a06273bddc8da58b56628cc23937db4fce3dd91af5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/SidebarRoot.module.css",
+      "size": 7986,
+      "sha256": "90af6aa7536eb8292758b5ffbfc77994bcda117a751efea2e3360e51a94d2e7d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/SidebarRoot.tsx",
+      "size": 8771,
+      "sha256": "b23233bf26e48341e893c6f6e4c864b181a5e28493d186147079c611063712cd"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/contract/slots.ts",
+      "size": 5326,
+      "sha256": "f49224199b4b4c654a8078fcdc13751574e03f5da087256b8206669c11c778d2"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/index.ts",
+      "size": 2491,
+      "sha256": "7961cd117e261a368e784fd304faa711b98f27334c1aee04aa1847491113a951"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/locales.ts",
+      "size": 719,
+      "sha256": "30e23e2015d2c7c1a13de3a385aa80876b1a9eb17b408dbf957bbb0fa907e911"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/css-modules.d.ts",
+      "size": 123,
+      "sha256": "e28410d74a0d763364c04fa690c2ca2202ad3019c74f8f5205e8dc6cba69c02f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/index.ts",
+      "size": 135,
+      "sha256": "5a683e2d5b799d6f7387bb2e1e527d95e5860e077b2030c232f1209092bdd95c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/invariant.ts",
+      "size": 1240,
+      "sha256": "fe00e3d164027bd75e8623176ab18804a5051d0c0dd3af258cc9b13cda532619"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/tsconfig.json",
+      "size": 508,
+      "sha256": "8513fae074d0348dd41747fa17cb680529116c8d8d759cdf62518334f577823a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-sidebar/tsdown.config.ts",
+      "size": 168,
+      "sha256": "bd7720ab419e02e4acdb47e7c7a94d9776b8f77ada9e1b15a73df69f4c84ffb5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/README.md",
+      "size": 10495,
+      "sha256": "df6f128efc6c83ce94cb09e869e1b2d32c2c4a7a48e919321cc1f5e8fa2cb96d"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/README.zh.md",
+      "size": 9966,
+      "sha256": "0c5124ea107ad517f6dab84f5699b47f54752928c4bcc576ac9a01f2385a7510"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/client.js",
+      "size": 117677,
+      "sha256": "45f8bce083dc32b406b3aca460b2f63ed559cd070658b21e408df5b60bb45335"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/index.js",
+      "size": 453,
+      "sha256": "e6cdc4b725585354102a5c4598c9d8c79d6abac62d7979c09919821716370438"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/invariant.js",
+      "size": 1071,
+      "sha256": "476ae409c372076bd7e7981541e01a4a980cbab335d0fcb058184105215b1dc6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/client/WorkspaceBrowser.d.ts",
+      "size": 688,
+      "sha256": "12cb51edd6c05054f785b0cf217b798668f4ca2f9d72df98fc1b551da0b8ffa0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/client/WorkspacePicker.d.ts",
+      "size": 3477,
+      "sha256": "9c03ea0bcee80ad00c653fa8085e8223b77c2548565a412b0e28feb69cf6e6ba"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/client/contract/slots.d.ts",
+      "size": 9140,
+      "sha256": "658413cd4aacc8fcce576d3433fc87a27d3a7176ee9de8797aa170e64f02fd37"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/client/index.d.ts",
+      "size": 1442,
+      "sha256": "e11f3893be9e81d7421afcd73f9b47e14a4382959ad77b3c82c0bbedfd0df068"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/client/locales.d.ts",
+      "size": 4545,
+      "sha256": "cf26fda1fdb19c09f1ebfa5ff80c873d4ffc2a0cbaee0ad9de10bd1b0cca0ac9"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/client/rows/Rows.d.ts",
+      "size": 5060,
+      "sha256": "49d3338a2372eb915c9386f2a8529389375a8683600d4a162477faf4a1aa96c6"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/client/stores.d.ts",
+      "size": 2490,
+      "sha256": "a865d7c9dcfd0a8f9692f992bf137f219886efc8df83c9bb19f56b9566ca2ac0"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/client/tree.d.ts",
+      "size": 7215,
+      "sha256": "b9780efb74f032c6aa9849b6bfb6612ef42f816af67debabbcc073f91680c87f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/index.d.ts",
+      "size": 452,
+      "sha256": "e8a5b090f2ea3c5f1c1c0cd4cc4e6625f8229d746330f4ab42d3f60842ca002b"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/lib/types/invariant.d.ts",
+      "size": 709,
+      "sha256": "f073151f253ea9f2e87f7a0509c52f9a4fc57477849de735cf3dafa63e428e7a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/package.json",
+      "size": 2491,
+      "sha256": "5e34b432bef44a6f90aa0c6b050032c652a272e82dcdfa78d710f9db3cb26b32"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/WorkspaceBrowser.module.css",
+      "size": 11016,
+      "sha256": "a09fdf87dab5c03454cb3967dfd968e8894b021eb50b6220345f24553b8981e2"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/WorkspaceBrowser.tsx",
+      "size": 56933,
+      "sha256": "3fc3dc7a06e344074480175234e333e1345b79f558e94be29eefc224b6f24011"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/WorkspacePicker.module.css",
+      "size": 408,
+      "sha256": "8b9252a27e4163be3c9b32b2ec30a750477e83d09b5d2a05af3346b628503db4"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/WorkspacePicker.tsx",
+      "size": 10182,
+      "sha256": "15d40fe72339bf06839ab107a00faa0d36eb341fa9388698d4ed7b2b7761b9ba"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/contract/slots.ts",
+      "size": 9006,
+      "sha256": "d8c83b67d35b2bc553eedc449e9bf3a8a6dfb0d63207cb8716e7f3893e6f7e67"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/index.ts",
+      "size": 6545,
+      "sha256": "db3d6eeab063b168ad64055b7c5be1b3ee409c613c9175caf528a335d59e0129"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/locales.ts",
+      "size": 5959,
+      "sha256": "7504e9eb7cf7012ee59c861ce619e750a0b439e70c4c7eb1ea3a14fdad9d5691"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/rows/Rows.module.css",
+      "size": 7007,
+      "sha256": "6eb8798f70f962a1c57106ba11eb456012b4a3d5688ca5a3c52b6d972aa497e8"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/rows/Rows.tsx",
+      "size": 20121,
+      "sha256": "60b5ad5b3a3b2f823d975828bd22af2ce9ea94a85b2e4084659ce6de1b5acb53"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/stores.ts",
+      "size": 3886,
+      "sha256": "8c6355addf9f04a3567d75d520eaa701ae53ad348f5634ad258f14d65e04636a"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/client/tree.ts",
+      "size": 17236,
+      "sha256": "45d4fbe39484144d66c177edec919c955cd528949bcd08aac39f18f6e5237cf5"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/css-modules.d.ts",
+      "size": 123,
+      "sha256": "e28410d74a0d763364c04fa690c2ca2202ad3019c74f8f5205e8dc6cba69c02f"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/index.ts",
+      "size": 412,
+      "sha256": "7a4f9356cd158169c0e87d92eee6871ca6b1527851fb905a9c5ab8d9e87cd864"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/src/invariant.ts",
+      "size": 1247,
+      "sha256": "a71023769dbbb8db3fe2a918ea6a7710d9db0f584cf5a1ac4f402f13bffc5335"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/tsconfig.json",
+      "size": 621,
+      "sha256": "e1300f132b9edf1973efa25bbaa78c91eb7c10bb2760fc843b0e7f6eda8f3e8c"
+    },
+    {
+      "path": "payload/plain-chat/repository/packages/client/ui-workspace/tsdown.config.ts",
+      "size": 170,
+      "sha256": "72cc5f60fa88057401e08fb8608e98aec12da4bb3e88239b2e8684ff74164007"
+    }
+  ],
+  "excludes": [
+    "node_modules",
+    "Git metadata",
+    "tests",
+    "caches",
+    "credentials",
+    "sessions",
+    "conversation history",
+    "user settings"
+  ],
+  "repository": "https://github.com/niushuanan/dsh-pure-chat",
+  "releaseTag": "xiaozhuang-v0.4.2",
+  "sourceRepository": "https://github.com/niushuanan/xiaozhuang-dsh"
+}
