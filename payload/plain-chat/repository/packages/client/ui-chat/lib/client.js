@@ -4,10 +4,10 @@ window.__ModuleLoader__.load({
 		var module = { exports: {} };
 		var exports = module.exports;
 		Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-		let react_jsx_runtime = require("react/jsx-runtime");
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
-		//#region \0dsh-css:dsh-source/packages/client/ui-chat/src/client/ChatAction.module.css.mjs
-		const css = ".bX_zYq_action{box-sizing:border-box;border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-button-elevated-fill);height:38px;color:var(--dsw-alias-label-primary);cursor:pointer;border-radius:12px;flex:none;justify-content:center;align-items:center;gap:6px;margin:0 2px 8px;padding:8px 16px;font-size:14px;font-weight:500;line-height:22px;display:flex;overflow:hidden}.bX_zYq_action:hover{background:var(--dsw-alias-button-floating-hover)}.bX_zYq_rail{background:0 0;border-color:#0000;align-self:flex-start;gap:0;width:36px;height:36px;margin:0 0 12px;padding:0}.bX_zYq_rail:hover{background:var(--dsw-alias-interactive-bg-hover)}.bX_zYq_label{white-space:nowrap;max-width:200px;overflow:hidden}";
+		let react_jsx_runtime = require("react/jsx-runtime");
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-chat/src/client/ChatAction.module.css.mjs
+		const css = ".MztKGW_action{box-sizing:border-box;background:var(--dsw-alias-button-primary-fill);height:38px;color:var(--dsw-alias-label-primary-foreground);cursor:pointer;border:1px solid #0000;border-radius:12px;flex:none;justify-content:center;align-items:center;gap:6px;margin:0 2px 8px;padding:8px 16px;font-size:14px;font-weight:500;line-height:22px;display:flex;overflow:hidden}.MztKGW_action:hover{background:var(--dsw-alias-button-primary-hover)}.MztKGW_rail{background:0 0;border-color:#0000;align-self:flex-start;gap:0;width:36px;height:36px;margin:0 0 12px;padding:0}.MztKGW_rail:hover{background:var(--dsw-alias-interactive-bg-hover)}.MztKGW_label{white-space:nowrap;max-width:200px;overflow:hidden}";
 		const tagId = "@deepseek-ai/dsh-client-ui-chat/ChatAction.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
 			const tag = document.createElement("style");
@@ -17,24 +17,24 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var ChatAction_module_css_default = {
-			"action": "bX_zYq_action",
-			"label": "bX_zYq_label",
-			"rail": "bX_zYq_rail"
+			"action": "MztKGW_action",
+			"label": "MztKGW_label",
+			"rail": "MztKGW_rail"
 		};
 		//#endregion
-		//#region lib/types/client/ChatAction.js
+		//#region src/client/ChatAction.tsx
 		/** Render the native Start chat action in wide and rail sidebar postures. */
 		function ChatAction({ wide, startChat, t }) {
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 				label: t("start.label"),
 				delayMs: 500,
 				disabled: wide,
-				children: (0, react_jsx_runtime.jsxs)("button", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 					type: "button",
 					className: `${ChatAction_module_css_default.action}${wide ? "" : ` ${ChatAction_module_css_default.rail}`}`,
 					"aria-label": t("start.label"),
 					onClick: startChat,
-					children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChatOutline16, { size: wide ? 14 : 18 }), wide && (0, react_jsx_runtime.jsx)("span", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChatOutline16, { size: wide ? 14 : 18 }), wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ChatAction_module_css_default.label,
 						children: t("start")
 					})]
@@ -42,7 +42,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/locales.js
+		//#region src/client/locales.ts
 		const zh = {
 			start: "开始聊天",
 			"start.label": "开始聊天"
@@ -52,7 +52,7 @@ window.__ModuleLoader__.load({
 			"start.label": "Start chat"
 		};
 		//#endregion
-		//#region lib/types/client/start-chat.js
+		//#region src/client/start-chat.ts
 		/** Durable internal preset that identifies a plain Chat Session. */
 		const CHAT_AGENT_PRESET = "chat";
 		/**
@@ -89,7 +89,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/index.js
+		//#region src/client/index.ts
 		const inject = [
 			"slots",
 			"sessions",

@@ -4,9 +4,9 @@ window.__ModuleLoader__.load({
 		var module = { exports: {} };
 		var exports = module.exports;
 		Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-		let react_jsx_runtime = require("react/jsx-runtime");
 		let react = require("react");
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
+		let react_jsx_runtime = require("react/jsx-runtime");
 		//#region ../../../node_modules/.pnpm/clsx@2.1.1/node_modules/clsx/dist/clsx.mjs
 		function r(e) {
 			var t, f, n = "";
@@ -22,8 +22,8 @@ window.__ModuleLoader__.load({
 			return n;
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-sidebar/src/client/SidebarRoot.module.css.mjs
-		const css = ".-hhiEW_root{--dsh-sidebar-inline-padding:12px;height:100%;padding:6px var(--dsh-sidebar-inline-padding);box-sizing:border-box;background:var(--dsw-specific-sidebar-fill);color:var(--dsw-alias-label-primary);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);flex-direction:column;font-size:14px;display:flex}.-hhiEW_root.-hhiEW_collapsed{padding:18px 10px 6px}.-hhiEW_root.-hhiEW_quietBars{--dsh-scrollbar-thumb:transparent;--dsh-scrollbar-thumb-hover:transparent}.-hhiEW_fading>*{opacity:0;transition:opacity .15s var(--ds-ease-in-out)}.-hhiEW_wide{animation:-hhiEW_wide-in .2s var(--ds-ease-in-out)}@keyframes -hhiEW_wide-in{0%{opacity:0}}.-hhiEW_railIn .-hhiEW_iconButton,.-hhiEW_railIn .-hhiEW_newSession,.-hhiEW_railIn .-hhiEW_regionArea{animation:-hhiEW_rail-in .15s var(--ds-ease-in-out) backwards}.-hhiEW_railIn .-hhiEW_footArea{animation:-hhiEW_rail-fade-in .15s var(--ds-ease-in-out) backwards}@keyframes -hhiEW_rail-in{0%{opacity:0;transform:translate(49px)}}@keyframes -hhiEW_rail-fade-in{0%{opacity:0}}.-hhiEW_logoRow{box-sizing:border-box;flex:none;justify-content:flex-end;align-items:center;gap:8px;height:60px;margin-bottom:8px;padding:8px 0 8px 4px;display:flex;overflow:hidden}.-hhiEW_collapsed .-hhiEW_logoRow{justify-content:flex-start;height:36px;margin-bottom:12px;padding:0}.-hhiEW_brand{min-width:0;color:inherit;cursor:pointer;background:0 0;border:none;flex:1;align-items:center;padding:0;display:inline-flex;overflow:hidden}.-hhiEW_brandIdentity{align-items:center;gap:8px;min-width:0;height:24px;display:inline-flex}.-hhiEW_brandMark{flex:none;justify-content:center;align-items:center;display:inline-flex}.-hhiEW_brandName{letter-spacing:.04em;align-items:center;gap:6px;min-width:0;height:24px;font-size:18px;font-weight:600;line-height:24px;display:inline-flex}.-hhiEW_iconButton{cursor:pointer;width:28px;height:28px;color:var(--dsw-alias-label-secondary);background:0 0;border:none;border-radius:50%;flex:none;justify-content:center;align-items:center;padding:0;display:inline-flex}.-hhiEW_iconButton:hover{background:var(--dsw-alias-interactive-bg-hover)}.-hhiEW_collapsed .-hhiEW_iconButton{width:36px;height:36px}.-hhiEW_collapsed .-hhiEW_toggle .-hhiEW_panelIcon{display:none}.-hhiEW_collapsed .-hhiEW_toggle:hover .-hhiEW_panelIcon{display:inline}.-hhiEW_collapsed .-hhiEW_toggle:hover .-hhiEW_railMark{display:none}.-hhiEW_railMark{justify-content:center;align-items:center;display:inline-flex}.-hhiEW_collapsed .-hhiEW_iconButton{color:var(--dsw-alias-label-primary)}.-hhiEW_newSession{box-sizing:border-box;border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-button-elevated-fill);height:38px;color:var(--dsw-alias-label-primary);cursor:pointer;border-radius:12px;flex:none;justify-content:center;align-items:center;gap:6px;margin:0 2px 8px;padding:8px 16px;font-size:14px;font-weight:500;line-height:22px;display:flex;overflow:hidden}.-hhiEW_newSession:hover{background:var(--dsw-alias-button-floating-hover)}.-hhiEW_collapsed .-hhiEW_newSession{background:0 0;border-color:#0000;align-self:flex-start;gap:0;width:36px;height:36px;margin:0 0 12px;padding:0}.-hhiEW_collapsed .-hhiEW_newSession:hover{background:var(--dsw-alias-interactive-bg-hover)}.-hhiEW_newSessionLabel{white-space:nowrap;max-width:200px;overflow:hidden}.-hhiEW_collapsed .-hhiEW_newSessionLabel{max-width:0}.-hhiEW_regionArea{min-height:0;margin-left:-4px;margin-right:calc(-1 * var(--dsh-sidebar-inline-padding));flex-direction:column;flex:1;padding-left:4px;display:flex;overflow:hidden}.-hhiEW_collapsed .-hhiEW_regionArea{margin-left:0;margin-right:0;padding-left:0}.-hhiEW_footArea{flex-direction:column;flex:none;display:flex}.-hhiEW_settingsArea,.-hhiEW_footerActions{flex:none;width:100%;min-width:0}.-hhiEW_footerActions{display:flex}.-hhiEW_collapsed .-hhiEW_footArea{align-items:center}.-hhiEW_collapsed .-hhiEW_settingsArea,.-hhiEW_collapsed .-hhiEW_footerActions{justify-content:center;width:auto;display:flex}@media (prefers-reduced-motion:reduce){.-hhiEW_wide,.-hhiEW_fading>*,.-hhiEW_railIn .-hhiEW_iconButton,.-hhiEW_railIn .-hhiEW_newSession,.-hhiEW_railIn .-hhiEW_footArea,.-hhiEW_railIn .-hhiEW_regionArea{transition:none;animation:none}}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-sidebar/src/client/SidebarRoot.module.css.mjs
+		const css = "._4VV_oa_root{--dsh-sidebar-inline-padding:12px;height:100%;padding:6px var(--dsh-sidebar-inline-padding);box-sizing:border-box;background:var(--dsw-specific-sidebar-fill);color:var(--dsw-alias-label-primary);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);flex-direction:column;font-size:14px;display:flex}._4VV_oa_root._4VV_oa_collapsed{padding:18px 10px 6px}._4VV_oa_root._4VV_oa_quietBars{--dsh-scrollbar-thumb:transparent;--dsh-scrollbar-thumb-hover:transparent}._4VV_oa_fading>*{opacity:0;transition:opacity .15s var(--ds-ease-in-out)}._4VV_oa_wide{animation:_4VV_oa_wide-in .2s var(--ds-ease-in-out)}@keyframes _4VV_oa_wide-in{0%{opacity:0}}._4VV_oa_railIn ._4VV_oa_iconButton,._4VV_oa_railIn ._4VV_oa_newSession,._4VV_oa_railIn ._4VV_oa_regionArea{animation:_4VV_oa_rail-in .15s var(--ds-ease-in-out) backwards}._4VV_oa_railIn ._4VV_oa_footArea{animation:_4VV_oa_rail-fade-in .15s var(--ds-ease-in-out) backwards}@keyframes _4VV_oa_rail-in{0%{opacity:0;transform:translate(49px)}}@keyframes _4VV_oa_rail-fade-in{0%{opacity:0}}._4VV_oa_logoRow{box-sizing:border-box;flex:none;justify-content:flex-end;align-items:center;gap:8px;height:60px;margin-bottom:8px;padding:8px 0 8px 4px;display:flex;overflow:hidden}._4VV_oa_collapsed ._4VV_oa_logoRow{justify-content:flex-start;height:36px;margin-bottom:12px;padding:0}._4VV_oa_brand{min-width:0;color:inherit;cursor:pointer;background:0 0;border:none;flex:1;align-items:center;padding:0;display:inline-flex;overflow:hidden}._4VV_oa_brandIdentity{align-items:center;gap:8px;min-width:0;height:24px;display:inline-flex}._4VV_oa_brandMark{flex:none;justify-content:center;align-items:center;display:inline-flex}._4VV_oa_brandName{letter-spacing:.04em;align-items:center;gap:6px;min-width:0;height:24px;font-size:18px;font-weight:600;line-height:24px;display:inline-flex}._4VV_oa_iconButton{cursor:pointer;width:28px;height:28px;color:var(--dsw-alias-label-secondary);background:0 0;border:none;border-radius:50%;flex:none;justify-content:center;align-items:center;padding:0;display:inline-flex}._4VV_oa_iconButton:hover{background:var(--dsw-alias-interactive-bg-hover)}._4VV_oa_collapsed ._4VV_oa_iconButton{width:36px;height:36px}._4VV_oa_collapsed ._4VV_oa_toggle ._4VV_oa_panelIcon{display:none}._4VV_oa_collapsed ._4VV_oa_toggle:hover ._4VV_oa_panelIcon{display:inline}._4VV_oa_collapsed ._4VV_oa_toggle:hover ._4VV_oa_railMark{display:none}._4VV_oa_railMark{justify-content:center;align-items:center;display:inline-flex}._4VV_oa_collapsed ._4VV_oa_iconButton{color:var(--dsw-alias-label-primary)}._4VV_oa_newSession{box-sizing:border-box;background:var(--dsw-alias-button-primary-fill);height:38px;color:var(--dsw-alias-label-primary-foreground);cursor:pointer;border:1px solid #0000;border-radius:12px;flex:none;justify-content:center;align-items:center;gap:6px;margin:0 2px 8px;padding:8px 16px;font-size:14px;font-weight:500;line-height:22px;display:flex;overflow:hidden}._4VV_oa_newSession:hover{background:var(--dsw-alias-button-primary-hover)}._4VV_oa_collapsed ._4VV_oa_newSession{background:0 0;border-color:#0000;align-self:flex-start;gap:0;width:36px;height:36px;margin:0 0 12px;padding:0}._4VV_oa_collapsed ._4VV_oa_newSession:hover{background:var(--dsw-alias-interactive-bg-hover)}._4VV_oa_newSessionLabel{white-space:nowrap;max-width:200px;overflow:hidden}._4VV_oa_collapsed ._4VV_oa_newSessionLabel{max-width:0}._4VV_oa_regionArea{min-height:0;margin-left:-4px;margin-right:calc(-1 * var(--dsh-sidebar-inline-padding));flex-direction:column;flex:1;padding-left:4px;display:flex;overflow:hidden}._4VV_oa_collapsed ._4VV_oa_regionArea{margin-left:0;margin-right:0;padding-left:0}._4VV_oa_footArea{flex-direction:column;flex:none;display:flex}._4VV_oa_settingsArea,._4VV_oa_footerActions{flex:none;width:100%;min-width:0}._4VV_oa_footerActions{display:flex}._4VV_oa_collapsed ._4VV_oa_footArea{align-items:center}._4VV_oa_collapsed ._4VV_oa_settingsArea,._4VV_oa_collapsed ._4VV_oa_footerActions{justify-content:center;width:auto;display:flex}@media (prefers-reduced-motion:reduce){._4VV_oa_wide,._4VV_oa_fading>*,._4VV_oa_railIn ._4VV_oa_iconButton,._4VV_oa_railIn ._4VV_oa_newSession,._4VV_oa_railIn ._4VV_oa_footArea,._4VV_oa_railIn ._4VV_oa_regionArea{transition:none;animation:none}}";
 		const tagId = "@deepseek-ai/dsh-client-ui-sidebar/SidebarRoot.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
 			const tag = document.createElement("style");
@@ -33,33 +33,33 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var SidebarRoot_module_css_default = {
-			"brand": "-hhiEW_brand",
-			"brandIdentity": "-hhiEW_brandIdentity",
-			"brandMark": "-hhiEW_brandMark",
-			"brandName": "-hhiEW_brandName",
-			"collapsed": "-hhiEW_collapsed",
-			"fading": "-hhiEW_fading",
-			"footArea": "-hhiEW_footArea",
-			"footerActions": "-hhiEW_footerActions",
-			"iconButton": "-hhiEW_iconButton",
-			"logoRow": "-hhiEW_logoRow",
-			"newSession": "-hhiEW_newSession",
-			"newSessionLabel": "-hhiEW_newSessionLabel",
-			"panelIcon": "-hhiEW_panelIcon",
-			"quietBars": "-hhiEW_quietBars",
-			"rail-fade-in": "-hhiEW_rail-fade-in",
-			"rail-in": "-hhiEW_rail-in",
-			"railIn": "-hhiEW_railIn",
-			"railMark": "-hhiEW_railMark",
-			"regionArea": "-hhiEW_regionArea",
-			"root": "-hhiEW_root",
-			"settingsArea": "-hhiEW_settingsArea",
-			"toggle": "-hhiEW_toggle",
-			"wide": "-hhiEW_wide",
-			"wide-in": "-hhiEW_wide-in"
+			"brand": "_4VV_oa_brand",
+			"brandIdentity": "_4VV_oa_brandIdentity",
+			"brandMark": "_4VV_oa_brandMark",
+			"brandName": "_4VV_oa_brandName",
+			"collapsed": "_4VV_oa_collapsed",
+			"fading": "_4VV_oa_fading",
+			"footArea": "_4VV_oa_footArea",
+			"footerActions": "_4VV_oa_footerActions",
+			"iconButton": "_4VV_oa_iconButton",
+			"logoRow": "_4VV_oa_logoRow",
+			"newSession": "_4VV_oa_newSession",
+			"newSessionLabel": "_4VV_oa_newSessionLabel",
+			"panelIcon": "_4VV_oa_panelIcon",
+			"quietBars": "_4VV_oa_quietBars",
+			"rail-fade-in": "_4VV_oa_rail-fade-in",
+			"rail-in": "_4VV_oa_rail-in",
+			"railIn": "_4VV_oa_railIn",
+			"railMark": "_4VV_oa_railMark",
+			"regionArea": "_4VV_oa_regionArea",
+			"root": "_4VV_oa_root",
+			"settingsArea": "_4VV_oa_settingsArea",
+			"toggle": "_4VV_oa_toggle",
+			"wide": "_4VV_oa_wide",
+			"wide-in": "_4VV_oa_wide-in"
 		};
 		//#endregion
-		//#region lib/types/client/SidebarRoot.js
+		//#region src/client/SidebarRoot.tsx
 		/**
 		* Sidebar shell: column geometry only. Collapse is a slide plus crossfade:
 		* content freezes at its expanded width (inline style) and fades out in place
@@ -139,7 +139,7 @@ window.__ModuleLoader__.load({
 					cancelLinger();
 				};
 			}, [pointerInside]);
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				ref: column,
 				className: clsx(SidebarRoot_module_css_default.root, !wide && SidebarRoot_module_css_default.collapsed, !wide && everWide.current && SidebarRoot_module_css_default.railIn, collapsed && wide && SidebarRoot_module_css_default.fading, !pointerInside && SidebarRoot_module_css_default.quietBars),
 				style: wide ? { width: collapsed ? lastWideWidth.current : width } : void 0,
@@ -151,66 +151,66 @@ window.__ModuleLoader__.load({
 					armLinger();
 				},
 				children: [
-					(0, react_jsx_runtime.jsxs)("div", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						className: SidebarRoot_module_css_default.logoRow,
-						children: [wide && (0, react_jsx_runtime.jsx)("button", {
+						children: [wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 							type: "button",
 							className: clsx(SidebarRoot_module_css_default.brand, SidebarRoot_module_css_default.wide),
 							"aria-label": t("session.new.label"),
 							onClick: () => {
 								startSession();
 							},
-							children: (0, react_jsx_runtime.jsxs)("span", {
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 								className: SidebarRoot_module_css_default.brandIdentity,
 								"aria-hidden": "true",
-								children: [(0, react_jsx_runtime.jsx)("span", {
+								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: SidebarRoot_module_css_default.brandMark,
-									children: renderSlot("sidebar.brand.mark", { size: 24 }, { fallback: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.FishLogo, { size: 24 }) })
-								}), (0, react_jsx_runtime.jsx)("span", {
+									children: renderSlot("sidebar.brand.mark", { size: 24 }, { fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.FishLogo, { size: 24 }) })
+								}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: SidebarRoot_module_css_default.brandName,
-									children: renderSlot("sidebar.brand.name", {}, { fallback: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.BrandWordmark, { includeMark: false }) })
+									children: renderSlot("sidebar.brand.name", {}, { fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.BrandWordmark, { includeMark: false }) })
 								})]
 							})
-						}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 							label: collapsed ? t("toggle.open") : t("toggle.collapse"),
 							delayMs: 500,
-							children: (0, react_jsx_runtime.jsxs)("button", {
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 								type: "button",
 								className: clsx(SidebarRoot_module_css_default.iconButton, SidebarRoot_module_css_default.toggle),
 								"aria-label": collapsed ? t("toggle.open") : t("toggle.collapse"),
 								onClick: () => {
 									toggleSidebar();
 								},
-								children: [!wide && (0, react_jsx_runtime.jsx)("span", {
+								children: [!wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: SidebarRoot_module_css_default.railMark,
 									"aria-hidden": "true",
-									children: renderSlot("sidebar.brand.mark", { size: 24 }, { fallback: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.FishLogo, { size: 24 }) })
-								}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPanelLeftOutline16, {
+									children: renderSlot("sidebar.brand.mark", { size: 24 }, { fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.FishLogo, { size: 24 }) })
+								}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPanelLeftOutline16, {
 									className: SidebarRoot_module_css_default.panelIcon,
 									size: wide ? 16 : 18
 								})]
 							})
 						})]
 					}),
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 						label: t("session.new.label"),
 						delayMs: 500,
 						disabled: wide,
-						children: (0, react_jsx_runtime.jsxs)("button", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 							type: "button",
 							className: SidebarRoot_module_css_default.newSession,
 							"aria-label": t("session.new.label"),
 							onClick: () => {
 								startSession();
 							},
-							children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconNewChatOutline16, { size: wide ? 14 : 18 }), wide && (0, react_jsx_runtime.jsx)("span", {
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconNewChatOutline16, { size: wide ? 14 : 18 }), wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: clsx(SidebarRoot_module_css_default.newSessionLabel, SidebarRoot_module_css_default.wide),
 								children: t("session.new")
 							})]
 						})
 					}),
 					renderSlot("sidebar.primary.action", { wide }),
-					(0, react_jsx_runtime.jsx)("div", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: SidebarRoot_module_css_default.regionArea,
 						children: renderSlot("sidebar.workspaces", {
 							wide,
@@ -219,12 +219,12 @@ window.__ModuleLoader__.load({
 							}
 						})
 					}),
-					(0, react_jsx_runtime.jsxs)("div", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						className: SidebarRoot_module_css_default.footArea,
-						children: [(0, react_jsx_runtime.jsx)("div", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: SidebarRoot_module_css_default.footerActions,
 							children: renderSlot("sidebar.footer.action", { wide })
-						}), (0, react_jsx_runtime.jsx)("div", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: SidebarRoot_module_css_default.settingsArea,
 							children: renderSlot("sidebar.settings", { wide })
 						})]
@@ -233,7 +233,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/locales.js
+		//#region src/client/locales.ts
 		/** `sidebar` namespace dictionaries: shell controls (brand row, New Session, fold toggle). */
 		/** Simplified Chinese dictionary (the key-set source of truth). */
 		const zh = {
@@ -250,7 +250,7 @@ window.__ModuleLoader__.load({
 			"toggle.collapse": "Collapse sidebar"
 		};
 		//#endregion
-		//#region lib/types/client/index.js
+		//#region src/client/index.ts
 		/** Dictionary namespace owned by this plugin (shell controls copy). */
 		const NS = "sidebar";
 		/** Services required by the sidebar plugin. */

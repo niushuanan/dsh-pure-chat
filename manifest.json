@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "kind": "xiaozhuang-dsh-plugin-export",
-  "createdAt": "2026-08-26T19:28:29.408Z",
-  "sourceCommit": "0eb74a7dbc796668dfa886ba2f63741e5f6eaf89",
+  "createdAt": "2026-08-26T20:01:16.351Z",
+  "sourceCommit": "e2df7e1c32c8e323d0f00edc11605964b7eaf52c",
   "plugins": [
     {
       "id": "plain-chat",
@@ -757,8 +757,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/client.js",
-      "size": 4853,
-      "sha256": "5b3c06b8d35945b88ba0123be6d4ec656198dae502cfb6fc68c780eefc910e03"
+      "size": 4925,
+      "sha256": "37843fcf8bf7b386df5e1f574b38dccaab409e3e3221143908f7c37ad99dd025"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/index.js",
@@ -807,8 +807,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/ChatAction.module.css",
-      "size": 835,
-      "sha256": "f8f1ae28fca1cec0ddcfdd0a9525580d7690cbb607a9f047b513b571e6e7baa6"
+      "size": 979,
+      "sha256": "e9d2b3586bd24a31542ab661f6c53c8d4e86be92a002b69b0d3c5d3a2e7569c6"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/ChatAction.tsx",
@@ -2472,8 +2472,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/client.js",
-      "size": 16771,
-      "sha256": "992f5798e9c81cec7e48609bd635754c285d0344610937f4edac4ca31626c833"
+      "size": 17221,
+      "sha256": "5f6e039f3db0f5fe8b5e9a5c62e385ddd4b9cddc49e8e6c3fbbd07282e0182d5"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/index.js",
@@ -2522,8 +2522,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/SidebarRoot.module.css",
-      "size": 7986,
-      "sha256": "90af6aa7536eb8292758b5ffbfc77994bcda117a751efea2e3360e51a94d2e7d"
+      "size": 8130,
+      "sha256": "03aa992003b0f7a05869c73c7cff2b8402b814ac99d26ddc62883f94a00b0cb3"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/SidebarRoot.tsx",
