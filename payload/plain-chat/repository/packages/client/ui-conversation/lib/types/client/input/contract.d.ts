@@ -242,7 +242,7 @@ export interface SubmitAttempt {
  * undo-log push are atomic inside dispatch(). Events carrying `at` stamp the
  * injected clock reading; only single-char typing coalescing reads it.
  */
-export type InputEvent =
+export type InputEvent = 
 /** Full next draft from the textarea; editRange narrows the occurrence math (absent → diff scan). */
 {
     readonly type: 'draft-changed';

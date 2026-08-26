@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "kind": "xiaozhuang-dsh-plugin-export",
-  "createdAt": "2026-08-26T11:46:43.982Z",
-  "sourceCommit": "49b1c5207b1556515752c6bf9e7902c1a5964ad9",
+  "createdAt": "2026-08-26T19:28:29.408Z",
+  "sourceCommit": "0eb74a7dbc796668dfa886ba2f63741e5f6eaf89",
   "plugins": [
     {
       "id": "plain-chat",
@@ -867,8 +867,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/client.js",
-      "size": 466740,
-      "sha256": "394a3616f67f2c8b8653afa3152a1e5a32b997790634258880b8e6ade7b7b4c5"
+      "size": 474382,
+      "sha256": "449f623b9edc7dd3151d884ca3614c037ddd8e09daace0773e281e5cba09ceb6"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/index.js",
@@ -1107,8 +1107,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/contract.d.ts",
-      "size": 15863,
-      "sha256": "d8b411aac8f9edc48b9f26ef4dc26aa3c35310c42f3f892d43ad154603223fca"
+      "size": 15864,
+      "sha256": "55f068442d272910272adf5f5d0cb7f760fb774b69497d366332ea18ee28db90"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/decorations.d.ts",
@@ -1562,13 +1562,13 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/queue/QueueDock.module.css",
-      "size": 3982,
-      "sha256": "80d0142dec237c9824c5904f0b5b8b4895281eef7a593f270d55a6f2a7b0df85"
+      "size": 4434,
+      "sha256": "271a4adc2607892d4c7a47a77fcc8efffed3c00db4fdcd8e974be311ea67e813"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/queue/QueueDock.tsx",
-      "size": 10473,
-      "sha256": "3d68258744968480694de9e7959eabe85b14cd037c15865b69366d81b472ccb9"
+      "size": 10668,
+      "sha256": "7ba6a7e0ab3b4a9bdff63c694e98665c207eab6ad44add6a5ccd7871e9805484"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/queue/store.ts",

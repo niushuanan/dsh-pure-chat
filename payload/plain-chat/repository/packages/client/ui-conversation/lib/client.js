@@ -7,9 +7,9 @@ window.__ModuleLoader__.load({
 		let _deepseek_ai_dsh_client_ui_slots = require("@deepseek-ai/dsh-client-ui-slots");
 		let _deepseek_ai_dsh_client_runtime_client = require("@deepseek-ai/dsh-client-runtime/client");
 		let _deepseek_ai_cordis = require("@deepseek-ai/cordis");
-		let react_jsx_runtime = require("react/jsx-runtime");
 		let react = require("react");
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
+		let react_jsx_runtime = require("react/jsx-runtime");
 		const REFERENCE_PLACEHOLDER_RE = /[\uE100-\uE11D\uFFFC]/gu;
 		/**
 		* Build the inline draft text whose leading marker is decorated as the
@@ -600,7 +600,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/stores.js
+		//#region src/client/stores.ts
 		/**
 		* Per-session chat store shared by conversation and details registrations.
 		* The plugin creates its handle at apply time so identity follows the fiber.
@@ -640,7 +640,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/service.js
+		//#region src/client/service.ts
 		/**
 		* Scope-addressed conversation send, cancel, and history orchestration.
 		*
@@ -925,7 +925,7 @@ window.__ModuleLoader__.load({
 			if (url.startsWith("blob:")) URL.revokeObjectURL(url);
 		}
 		//#endregion
-		//#region lib/types/client/input/blocks.js
+		//#region src/client/input/blocks.ts
 		/**
 		* Composer blocks: the one way another plugin stops a session's input.
 		*
@@ -962,7 +962,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/queue/store.js
+		//#region src/client/queue/store.ts
 		/**
 		* Project a session's transient inbox rows as a bare observable (subscribe/getSnapshot).
 		* The wiring layer overlays this onto InputState.queue; the runtime
@@ -978,7 +978,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/input/facade.js
+		//#region src/client/input/facade.ts
 		/** Guard tier from the machine phase. */
 		function guardOf(phase) {
 			switch (phase) {
@@ -1511,7 +1511,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/input/hub.js
+		//#region src/client/input/hub.ts
 		/** Session-addressed input facade registry (SessionInputResolver face + composer-layer extras). */
 		var InputHub = class {
 			rootCtx;
@@ -2460,7 +2460,7 @@ window.__ModuleLoader__.load({
 			"preserve"
 		], ({ inner }, isInner) => inner.toString(isInner));
 		//#endregion
-		//#region lib/types/submission-settings.js
+		//#region src/submission-settings.ts
 		/** Busy-Enter preference stored in the Host user-settings document. */
 		/** Settings namespace owned by the conversation plugin. */
 		const CONVERSATION_SETTINGS_NAMESPACE = "ui-conversation";
@@ -2472,7 +2472,7 @@ window.__ModuleLoader__.load({
 		const DEFAULT_BUSY_ENTER_BEHAVIOR = "queue";
 		Schema.object({ [BUSY_ENTER_FIELD]: Schema.union([...BUSY_ENTER_BEHAVIORS]).default(DEFAULT_BUSY_ENTER_BEHAVIOR) });
 		//#endregion
-		//#region lib/types/client/input/submission-policy.js
+		//#region src/client/input/submission-policy.ts
 		/**
 		* Composer submission policy. It owns the live busy-Enter
 		* preference and resolves keyboard gestures into queue/steer delivery modes;
@@ -2551,7 +2551,7 @@ window.__ModuleLoader__.load({
 			return n;
 		}
 		//#endregion
-		//#region lib/types/client/input/decorations.js
+		//#region src/client/input/decorations.ts
 		/** Token matcher: a trigger char at line start or after whitespace, then a word-ish name (never crosses \n). */
 		const TEXT_REF_RE = /(^|\s)([/@])([\w-]+)/g;
 		const FOLDER_REF_RE = /(^|\s)(@(?:"[^"\n]*\/|[^\s"]+\/))/g;
@@ -2632,8 +2632,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/image-labels.js
-		/** Attachment error and limit copy owned by the conversation input flow. */
+		//#region src/client/image-labels.ts
 		/**
 		* Byte count as user-facing megabytes (`10MB`, `2.5MB`).
 		* @param bytes - the byte count.
@@ -2677,7 +2676,7 @@ window.__ModuleLoader__.load({
 			return t("image.sendFailed", { reason });
 		}
 		//#endregion
-		//#region lib/types/client/reference/ReferenceIcon.js
+		//#region src/client/reference/ReferenceIcon.tsx
 		/**
 		* Render the icon that identifies one inline reference domain.
 		* @param props - Reference kind, optional size, and optional CSS class.
@@ -2685,31 +2684,31 @@ window.__ModuleLoader__.load({
 		*/
 		function ReferenceIcon({ kind, size = 16, className }) {
 			switch (kind) {
-				case "session": return (0, react_jsx_runtime.jsx)("svg", {
+				case "session": return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 					width: size,
 					height: size,
 					className,
 					viewBox: "0 0 16 16",
 					fill: "none",
 					"aria-hidden": true,
-					children: (0, react_jsx_runtime.jsx)("path", {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M8 0.597656C3.91296 0.597656 0.599716 3.91103 0.599609 7.99805C0.599609 9.13171 0.854567 10.2079 1.31152 11.1699L1.59277 11.7607L2.77441 11.1992L2.49414 10.6084L2.36035 10.3076C2.06865 9.59612 1.90723 8.81645 1.90723 7.99805C1.90733 4.63362 4.63554 1.90625 8 1.90625C11.3644 1.90635 14.0917 4.63368 14.0918 7.99805C14.0918 11.3625 11.3644 14.0907 8 14.0908C7.311 14.0908 6.80642 14.0414 6.35938 13.918C5.919 13.7963 5.50105 13.5929 5.00098 13.2441C4.26805 12.7329 3.21756 12.5526 2.35156 13.0996L2.33789 13.1084L2.32422 13.1182L1.74805 13.5234L2.18164 14.8184L3.05957 14.2002C3.37505 14.0068 3.84248 14.0319 4.25195 14.3174C4.84447 14.7307 5.39718 15.009 6.01172 15.1787C6.61963 15.3465 7.25579 15.3984 8 15.3984C12.087 15.3983 15.4004 12.0851 15.4004 7.99805C15.4003 3.9111 12.087 0.59776 8 0.597656ZM4.56836 8.50977V9.80371H8.12402V8.50977H4.56836ZM4.56836 7.30078H11.4619V6.00684H4.56836V7.30078Z",
 						fill: "currentColor"
 					})
 				});
-				case "file": return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBrowseOutline16, {
+				case "file": return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBrowseOutline16, {
 					size,
 					className
 				});
-				case "folder": return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderClose16, {
+				case "folder": return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderClose16, {
 					size,
 					className
 				});
 			}
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/skeleton/InputBar.module.css.mjs
-		const css$20 = ".ynLGWW_root{padding:0 var(--dsh-composer-side-clearance) 8px;flex-direction:column;align-items:center;display:flex}.ynLGWW_hero{padding:0 var(--dsh-composer-side-clearance)}.ynLGWW_notice{width:100%;max-width:var(--dsh-composer-card-max-width);background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-secondary);border-radius:8px;margin-bottom:6px;padding:4px 8px;font-size:12px;line-height:18px}.ynLGWW_card{box-sizing:border-box;width:100%;max-width:var(--dsh-composer-card-max-width);border:1px solid var(--dsw-alias-border-l2-darkmode-thin);background:var(--dsw-specific-input-major);box-shadow:var(--dsw-shadow-lv1);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:22px;flex-direction:column;gap:12px;padding-top:10px;font-size:16px;line-height:24px;display:flex;position:relative}.ynLGWW_cardWorkspaceTrigger{cursor:pointer;border-color:#0000}.ynLGWW_cardWorkspaceTrigger:after{content:\"\";background:var(--dsw-alias-border-l4);pointer-events:none;border-radius:22px;transition:background-color .1s;position:absolute;inset:-1px;-webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='none' rx='22' ry='22' stroke='black' stroke-width='2' stroke-dasharray='4 4'/%3E%3C/svg%3E\");mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='none' rx='22' ry='22' stroke='black' stroke-width='2' stroke-dasharray='4 4'/%3E%3C/svg%3E\")}.ynLGWW_cardWorkspaceTrigger :disabled{pointer-events:none}.ynLGWW_cardWorkspaceTrigger:hover:after{background:var(--dsw-alias-state-business-primary)}.ynLGWW_accessory{align-items:center;gap:8px;padding:10px 12px 0;display:flex}.ynLGWW_overlayAnchor{height:0;position:absolute;inset:0 0 auto}.ynLGWW_scroll{max-height:var(--dsh-composer-text-max-height);overflow-y:auto}.ynLGWW_grow{position:relative}.ynLGWW_backdrop{color:var(--dsw-alias-label-primary);pointer-events:none;position:absolute;inset:0;overflow:hidden}.ynLGWW_backdropDisabled,.ynLGWW_backdropDisabled :is(.ynLGWW_hlToken,.ynLGWW_hint,.ynLGWW_textRef,.ynLGWW_chip,.ynLGWW_chipInvalid){color:var(--dsw-alias-label-tertiary)}.ynLGWW_hlToken{color:var(--dsw-alias-state-warn-label);background-color:#0000}.ynLGWW_hlSegment{color:#0000;background-color:#0000;border-radius:4px}.ynLGWW_hint{color:var(--dsw-alias-label-caption)}.ynLGWW_pending{background:var(--dsw-alias-state-business-primary);border-radius:50%;width:8px;height:8px;animation:1s ease-in-out infinite alternate ynLGWW_input-pending}@keyframes ynLGWW_input-pending{0%{opacity:.35}to{opacity:1}}.ynLGWW_input{resize:none;color:#0000;-webkit-text-fill-color:transparent;width:100%;height:100%;caret-color:var(--dsw-alias-state-business-primary);background:0 0;border:none;outline:none;position:absolute;inset:0;overflow:hidden}.ynLGWW_input,.ynLGWW_mirror,.ynLGWW_backdrop{box-sizing:border-box;font-family:var(--dsw-font-family);font-size:inherit;line-height:inherit;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;padding:4px 12px 0 16px}.ynLGWW_input::placeholder{color:var(--dsw-alias-label-caption);-webkit-text-fill-color:var(--dsw-alias-label-caption);user-select:none}.ynLGWW_input:disabled{color:#0000;-webkit-text-fill-color:transparent;cursor:not-allowed}.ynLGWW_input[aria-haspopup=menu]{cursor:pointer}.ynLGWW_mirror{visibility:hidden;pointer-events:none}.ynLGWW_hero .ynLGWW_mirror{min-height:52px}.ynLGWW_row{flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;min-width:0;padding:2px 8px 6px;display:flex;container-type:inline-size}.ynLGWW_tools,.ynLGWW_modes,.ynLGWW_trailing{align-items:center;min-width:0;display:flex}.ynLGWW_tools{gap:16px}.ynLGWW_modes{gap:12px}.ynLGWW_trailing{flex:none;gap:12px;margin-left:auto}.ynLGWW_add{background:var(--dsw-specific-selector);width:28px;height:28px;color:var(--dsw-alias-label-primary);cursor:pointer;border:none;border-radius:999px;flex:none;place-items:center;display:grid}.ynLGWW_add:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover-solid)}.ynLGWW_add:disabled{opacity:.5;cursor:default}.ynLGWW_select{max-width:220px;height:28px;color:var(--dsw-alias-label-secondary);white-space:nowrap;cursor:pointer;appearance:none;background-color:#0000;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%2381858C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\");background-position:right 4px center;background-repeat:no-repeat;background-size:12px 12px;border:none;border-radius:8px;outline:none;padding:0 20px 0 8px;font-size:13px;font-weight:500;line-height:20px}.ynLGWW_select:hover:not(:disabled){background-color:var(--dsw-alias-interactive-bg-hover)}.ynLGWW_select:disabled{opacity:.5;cursor:default}.ynLGWW_primary{background:var(--dsw-alias-button-info-fill);color:#fff;cursor:pointer;border:none;border-radius:999px;flex:none;place-items:center;width:34px;height:34px;transition:background-color .1s;display:grid;transform:translateY(-2px)}.ynLGWW_primary:hover:not(:disabled){background:var(--dsw-alias-button-info-hover)}.ynLGWW_primary:disabled{opacity:.4;cursor:default}.ynLGWW_retry{color:inherit;cursor:pointer;background:0 0;border:1px solid;border-radius:4px;margin-left:8px;padding:1px 8px;font-size:12px}.ynLGWW_textRef{color:var(--dsw-alias-state-business-primary);-webkit-box-decoration-break:clone;box-decoration-break:clone;background-color:#0000}.ynLGWW_textRef:after{display:none}.ynLGWW_textRefTrigger{position:relative}.ynLGWW_textRefTriggerGlyph{color:#0000}.ynLGWW_textRefIcon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.ynLGWW_chip{color:var(--dsw-alias-state-business-primary);-webkit-box-decoration-break:clone;box-decoration-break:clone;background:0 0;position:relative}.ynLGWW_chipTrigger{position:relative}.ynLGWW_chipTriggerGlyph{color:#0000}.ynLGWW_chipIcon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.ynLGWW_chipInvalid{opacity:.7;color:var(--dsw-alias-state-error-primary);text-decoration:line-through}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/skeleton/InputBar.module.css.mjs
+		const css$20 = ".Yxn_Ca_root{padding:0 var(--dsh-composer-side-clearance) 8px;flex-direction:column;align-items:center;display:flex}.Yxn_Ca_hero{padding:0 var(--dsh-composer-side-clearance)}.Yxn_Ca_notice{width:100%;max-width:var(--dsh-composer-card-max-width);background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-secondary);border-radius:8px;margin-bottom:6px;padding:4px 8px;font-size:12px;line-height:18px}.Yxn_Ca_card{box-sizing:border-box;width:100%;max-width:var(--dsh-composer-card-max-width);border:1px solid var(--dsw-alias-border-l2-darkmode-thin);background:var(--dsw-specific-input-major);box-shadow:var(--dsw-shadow-lv1);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:22px;flex-direction:column;gap:12px;padding-top:10px;font-size:16px;line-height:24px;display:flex;position:relative}.Yxn_Ca_cardWorkspaceTrigger{cursor:pointer;border-color:#0000}.Yxn_Ca_cardWorkspaceTrigger:after{content:\"\";background:var(--dsw-alias-border-l4);pointer-events:none;border-radius:22px;transition:background-color .1s;position:absolute;inset:-1px;-webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='none' rx='22' ry='22' stroke='black' stroke-width='2' stroke-dasharray='4 4'/%3E%3C/svg%3E\");mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='none' rx='22' ry='22' stroke='black' stroke-width='2' stroke-dasharray='4 4'/%3E%3C/svg%3E\")}.Yxn_Ca_cardWorkspaceTrigger :disabled{pointer-events:none}.Yxn_Ca_cardWorkspaceTrigger:hover:after{background:var(--dsw-alias-state-business-primary)}.Yxn_Ca_accessory{align-items:center;gap:8px;padding:10px 12px 0;display:flex}.Yxn_Ca_overlayAnchor{height:0;position:absolute;inset:0 0 auto}.Yxn_Ca_scroll{max-height:var(--dsh-composer-text-max-height);overflow-y:auto}.Yxn_Ca_grow{position:relative}.Yxn_Ca_backdrop{color:var(--dsw-alias-label-primary);pointer-events:none;position:absolute;inset:0;overflow:hidden}.Yxn_Ca_backdropDisabled,.Yxn_Ca_backdropDisabled :is(.Yxn_Ca_hlToken,.Yxn_Ca_hint,.Yxn_Ca_textRef,.Yxn_Ca_chip,.Yxn_Ca_chipInvalid){color:var(--dsw-alias-label-tertiary)}.Yxn_Ca_hlToken{color:var(--dsw-alias-state-warn-label);background-color:#0000}.Yxn_Ca_hlSegment{color:#0000;background-color:#0000;border-radius:4px}.Yxn_Ca_hint{color:var(--dsw-alias-label-caption)}.Yxn_Ca_pending{background:var(--dsw-alias-state-business-primary);border-radius:50%;width:8px;height:8px;animation:1s ease-in-out infinite alternate Yxn_Ca_input-pending}@keyframes Yxn_Ca_input-pending{0%{opacity:.35}to{opacity:1}}.Yxn_Ca_input{resize:none;color:#0000;-webkit-text-fill-color:transparent;width:100%;height:100%;caret-color:var(--dsw-alias-state-business-primary);background:0 0;border:none;outline:none;position:absolute;inset:0;overflow:hidden}.Yxn_Ca_input,.Yxn_Ca_mirror,.Yxn_Ca_backdrop{box-sizing:border-box;font-family:var(--dsw-font-family);font-size:inherit;line-height:inherit;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;padding:4px 12px 0 16px}.Yxn_Ca_input::placeholder{color:var(--dsw-alias-label-caption);-webkit-text-fill-color:var(--dsw-alias-label-caption);user-select:none}.Yxn_Ca_input:disabled{color:#0000;-webkit-text-fill-color:transparent;cursor:not-allowed}.Yxn_Ca_input[aria-haspopup=menu]{cursor:pointer}.Yxn_Ca_mirror{visibility:hidden;pointer-events:none}.Yxn_Ca_hero .Yxn_Ca_mirror{min-height:52px}.Yxn_Ca_row{flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;min-width:0;padding:2px 8px 6px;display:flex;container-type:inline-size}.Yxn_Ca_tools,.Yxn_Ca_modes,.Yxn_Ca_trailing{align-items:center;min-width:0;display:flex}.Yxn_Ca_tools{gap:16px}.Yxn_Ca_modes{gap:12px}.Yxn_Ca_trailing{flex:none;gap:12px;margin-left:auto}.Yxn_Ca_add{background:var(--dsw-specific-selector);width:28px;height:28px;color:var(--dsw-alias-label-primary);cursor:pointer;border:none;border-radius:999px;flex:none;place-items:center;display:grid}.Yxn_Ca_add:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover-solid)}.Yxn_Ca_add:disabled{opacity:.5;cursor:default}.Yxn_Ca_select{max-width:220px;height:28px;color:var(--dsw-alias-label-secondary);white-space:nowrap;cursor:pointer;appearance:none;background-color:#0000;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%2381858C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\");background-position:right 4px center;background-repeat:no-repeat;background-size:12px 12px;border:none;border-radius:8px;outline:none;padding:0 20px 0 8px;font-size:13px;font-weight:500;line-height:20px}.Yxn_Ca_select:hover:not(:disabled){background-color:var(--dsw-alias-interactive-bg-hover)}.Yxn_Ca_select:disabled{opacity:.5;cursor:default}.Yxn_Ca_primary{background:var(--dsw-alias-button-info-fill);color:#fff;cursor:pointer;border:none;border-radius:999px;flex:none;place-items:center;width:34px;height:34px;transition:background-color .1s;display:grid;transform:translateY(-2px)}.Yxn_Ca_primary:hover:not(:disabled){background:var(--dsw-alias-button-info-hover)}.Yxn_Ca_primary:disabled{opacity:.4;cursor:default}.Yxn_Ca_retry{color:inherit;cursor:pointer;background:0 0;border:1px solid;border-radius:4px;margin-left:8px;padding:1px 8px;font-size:12px}.Yxn_Ca_textRef{color:var(--dsw-alias-state-business-primary);-webkit-box-decoration-break:clone;box-decoration-break:clone;background-color:#0000}.Yxn_Ca_textRef:after{display:none}.Yxn_Ca_textRefTrigger{position:relative}.Yxn_Ca_textRefTriggerGlyph{color:#0000}.Yxn_Ca_textRefIcon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.Yxn_Ca_chip{color:var(--dsw-alias-state-business-primary);-webkit-box-decoration-break:clone;box-decoration-break:clone;background:0 0;position:relative}.Yxn_Ca_chipTrigger{position:relative}.Yxn_Ca_chipTriggerGlyph{color:#0000}.Yxn_Ca_chipIcon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.Yxn_Ca_chipInvalid{opacity:.7;color:var(--dsw-alias-state-error-primary);text-decoration:line-through}";
 		const tagId$20 = "@deepseek-ai/dsh-client-ui-conversation/InputBar.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$20) + "]") === null) {
 			const tag = document.createElement("style");
@@ -2719,54 +2718,54 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var InputBar_module_css_default = {
-			"accessory": "ynLGWW_accessory",
-			"add": "ynLGWW_add",
-			"backdrop": "ynLGWW_backdrop",
-			"backdropDisabled": "ynLGWW_backdropDisabled",
-			"card": "ynLGWW_card",
-			"cardWorkspaceTrigger": "ynLGWW_cardWorkspaceTrigger",
-			"chip": "ynLGWW_chip",
-			"chipIcon": "ynLGWW_chipIcon",
-			"chipInvalid": "ynLGWW_chipInvalid",
-			"chipTrigger": "ynLGWW_chipTrigger",
-			"chipTriggerGlyph": "ynLGWW_chipTriggerGlyph",
-			"grow": "ynLGWW_grow",
-			"hero": "ynLGWW_hero",
-			"hint": "ynLGWW_hint",
-			"hlSegment": "ynLGWW_hlSegment",
-			"hlToken": "ynLGWW_hlToken",
-			"input": "ynLGWW_input",
-			"input-pending": "ynLGWW_input-pending",
-			"mirror": "ynLGWW_mirror",
-			"modes": "ynLGWW_modes",
-			"notice": "ynLGWW_notice",
-			"overlayAnchor": "ynLGWW_overlayAnchor",
-			"pending": "ynLGWW_pending",
-			"primary": "ynLGWW_primary",
-			"retry": "ynLGWW_retry",
-			"root": "ynLGWW_root",
-			"row": "ynLGWW_row",
-			"scroll": "ynLGWW_scroll",
-			"select": "ynLGWW_select",
-			"textRef": "ynLGWW_textRef",
-			"textRefIcon": "ynLGWW_textRefIcon",
-			"textRefTrigger": "ynLGWW_textRefTrigger",
-			"textRefTriggerGlyph": "ynLGWW_textRefTriggerGlyph",
-			"tools": "ynLGWW_tools",
-			"trailing": "ynLGWW_trailing"
+			"accessory": "Yxn_Ca_accessory",
+			"add": "Yxn_Ca_add",
+			"backdrop": "Yxn_Ca_backdrop",
+			"backdropDisabled": "Yxn_Ca_backdropDisabled",
+			"card": "Yxn_Ca_card",
+			"cardWorkspaceTrigger": "Yxn_Ca_cardWorkspaceTrigger",
+			"chip": "Yxn_Ca_chip",
+			"chipIcon": "Yxn_Ca_chipIcon",
+			"chipInvalid": "Yxn_Ca_chipInvalid",
+			"chipTrigger": "Yxn_Ca_chipTrigger",
+			"chipTriggerGlyph": "Yxn_Ca_chipTriggerGlyph",
+			"grow": "Yxn_Ca_grow",
+			"hero": "Yxn_Ca_hero",
+			"hint": "Yxn_Ca_hint",
+			"hlSegment": "Yxn_Ca_hlSegment",
+			"hlToken": "Yxn_Ca_hlToken",
+			"input": "Yxn_Ca_input",
+			"input-pending": "Yxn_Ca_input-pending",
+			"mirror": "Yxn_Ca_mirror",
+			"modes": "Yxn_Ca_modes",
+			"notice": "Yxn_Ca_notice",
+			"overlayAnchor": "Yxn_Ca_overlayAnchor",
+			"pending": "Yxn_Ca_pending",
+			"primary": "Yxn_Ca_primary",
+			"retry": "Yxn_Ca_retry",
+			"root": "Yxn_Ca_root",
+			"row": "Yxn_Ca_row",
+			"scroll": "Yxn_Ca_scroll",
+			"select": "Yxn_Ca_select",
+			"textRef": "Yxn_Ca_textRef",
+			"textRefIcon": "Yxn_Ca_textRefIcon",
+			"textRefTrigger": "Yxn_Ca_textRefTrigger",
+			"textRefTriggerGlyph": "Yxn_Ca_textRefTriggerGlyph",
+			"tools": "Yxn_Ca_tools",
+			"trailing": "Yxn_Ca_trailing"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/ComposerCommandAction.js
+		//#region src/client/skeleton/ComposerCommandAction.tsx
 		function ComposerCommandAction({ disabled, commandMenuOpen, onToggleCommandMenu, focusInput, t }) {
 			const keepFocus = (event) => {
 				event.preventDefault();
 				focusInput();
 			};
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 				label: t("input.commands"),
 				side: "top",
 				delayMs: 500,
-				children: (0, react_jsx_runtime.jsx)("button", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 					type: "button",
 					className: InputBar_module_css_default.add,
 					"aria-label": t("input.commands"),
@@ -2775,12 +2774,12 @@ window.__ModuleLoader__.load({
 					disabled,
 					onMouseDown: keepFocus,
 					onClick: onToggleCommandMenu,
-					children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPlusOutline16, { size: 14 })
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPlusOutline16, { size: 14 })
 				})
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/message-chrome.js
+		//#region src/client/chat/message-chrome.ts
 		function pad2(n) {
 			return String(n).padStart(2, "0");
 		}
@@ -2861,7 +2860,7 @@ window.__ModuleLoader__.load({
 			return `${d.getFullYear() === n.getFullYear() ? t("clock.md", params) : t("clock.ymd", params)} ${clock}`;
 		}
 		//#endregion
-		//#region lib/types/client/chat/turn-metrics.js
+		//#region src/client/chat/turn-metrics.ts
 		function usageOutputTokens(usage) {
 			if (typeof usage !== "object" || usage === null) return null;
 			const value = usage.outputTokens;
@@ -2926,8 +2925,8 @@ window.__ModuleLoader__.load({
 			return metrics;
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/StatsLine.module.css.mjs
-		const css$19 = ".goQVPG_root{text-align:center;max-width:var(--dsh-chat-content-width);box-sizing:border-box;width:100%;padding:4px calc(var(--dsh-composer-side-clearance) + 16px) 0px;color:var(--dsw-alias-label-tertiary);white-space:nowrap;text-overflow:ellipsis;margin:0 auto;font-size:12px;line-height:20px;display:block;overflow:hidden}.goQVPG_sep{color:var(--dsw-alias-separator-primary);margin:0 10px}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/StatsLine.module.css.mjs
+		const css$19 = "._51vd_W_root{text-align:center;max-width:var(--dsh-chat-content-width);box-sizing:border-box;width:100%;padding:4px calc(var(--dsh-composer-side-clearance) + 16px) 0px;color:var(--dsw-alias-label-tertiary);white-space:nowrap;text-overflow:ellipsis;margin:0 auto;font-size:12px;line-height:20px;display:block;overflow:hidden}._51vd_W_sep{color:var(--dsw-alias-separator-primary);margin:0 10px}";
 		const tagId$19 = "@deepseek-ai/dsh-client-ui-conversation/StatsLine.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$19) + "]") === null) {
 			const tag = document.createElement("style");
@@ -2937,11 +2936,11 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var StatsLine_module_css_default = {
-			"root": "goQVPG_root",
-			"sep": "goQVPG_sep"
+			"root": "_51vd_W_root",
+			"sep": "_51vd_W_sep"
 		};
 		//#endregion
-		//#region lib/types/client/chat/StatsLine.js
+		//#region src/client/chat/StatsLine.tsx
 		/**
 		* Fold assistant and tool-result nodes into window-scoped display totals —
 		* the FALLBACK for assemblies without the `sessionStats` projection.
@@ -3137,25 +3136,25 @@ window.__ModuleLoader__.load({
 				};
 			}, [line]);
 			if (groups.length === 0) return null;
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 				label: line,
 				side: "top",
 				delayMs: 500,
 				disabled: !truncated,
-				children: (0, react_jsx_runtime.jsx)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					ref: rootRef,
 					className: StatsLine_module_css_default.root,
-					children: groups.map((group, i) => (0, react_jsx_runtime.jsxs)(react.Fragment, { children: [i > 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+					children: groups.map((group, i) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react.Fragment, { children: [i > 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: StatsLine_module_css_default.sep,
 						"aria-hidden": true,
 						children: "|"
-					}), " "] }), (0, react_jsx_runtime.jsx)("span", { children: group })] }, group))
+					}), " "] }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", { children: group })] }, group))
 				})
 			});
 		});
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/skeleton/ContextMeter.module.css.mjs
-		const css$18 = ".Qg3D7q_root{display:inline-flex;position:relative}.Qg3D7q_trigger{width:28px;height:28px;color:var(--dsw-alias-label-secondary);cursor:pointer;background:0 0;border:none;border-radius:999px;flex:none;place-items:center;display:grid}.Qg3D7q_trigger:hover{background:var(--dsw-alias-interactive-bg-hover)}.Qg3D7q_track{fill:none;stroke:var(--dsw-alias-border-l3);stroke-width:2px}.Qg3D7q_fill{fill:none;stroke:var(--dsw-alias-label-tertiary);stroke-width:2px;stroke-linecap:round}.Qg3D7q_panel{z-index:100;box-sizing:border-box;border:1px solid var(--dsw-alias-border-inverted);background:var(--dsw-specific-menu);width:264px;box-shadow:var(--dsw-shadow-lv3);color:var(--dsw-alias-label-secondary);cursor:default;border-radius:12px;padding:12px;font-size:12px;line-height:20px;position:absolute;bottom:calc(100% + 8px);right:0}.Qg3D7q_header{align-items:center;gap:6px;display:flex}.Qg3D7q_figures{font-variant-numeric:tabular-nums;color:var(--dsw-alias-label-primary);margin-left:auto;font-weight:500}.Qg3D7q_percent{color:var(--dsw-alias-label-primary);font-weight:500}.Qg3D7q_headline{color:var(--dsw-alias-label-tertiary)}.Qg3D7q_headline:empty{display:none}.Qg3D7q_bar{background:var(--dsw-alias-interactive-bg-hover);border-radius:999px;gap:1px;height:4px;margin:10px 0 12px;display:flex;overflow:hidden}.Qg3D7q_segment{background:var(--meter-tint,var(--dsw-alias-label-tertiary));border-radius:1px;flex:none;min-width:2px;height:100%}.Qg3D7q_swatch{background:var(--meter-tint);vertical-align:baseline;border-radius:2px;width:8px;height:8px;margin-right:6px;display:inline-block}.Qg3D7q_colorSystem{--meter-tint:var(--dsw-static-neutral-bluish-400)}.Qg3D7q_colorTools{--meter-tint:#a78bfa}.Qg3D7q_colorMessages{--meter-tint:var(--dsw-static-blue-450)}.Qg3D7q_rows{margin:6px 0 0}.Qg3D7q_row{justify-content:space-between;align-items:center;gap:12px;padding:2px 0;display:flex}.Qg3D7q_row dt{color:var(--dsw-alias-label-secondary)}.Qg3D7q_row dd{font-variant-numeric:tabular-nums;color:var(--dsw-alias-label-primary);margin:0}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/skeleton/ContextMeter.module.css.mjs
+		const css$18 = ".yVdBcG_root{display:inline-flex;position:relative}.yVdBcG_trigger{width:28px;height:28px;color:var(--dsw-alias-label-secondary);cursor:pointer;background:0 0;border:none;border-radius:999px;flex:none;place-items:center;display:grid}.yVdBcG_trigger:hover{background:var(--dsw-alias-interactive-bg-hover)}.yVdBcG_track{fill:none;stroke:var(--dsw-alias-border-l3);stroke-width:2px}.yVdBcG_fill{fill:none;stroke:var(--dsw-alias-label-tertiary);stroke-width:2px;stroke-linecap:round}.yVdBcG_panel{z-index:100;box-sizing:border-box;border:1px solid var(--dsw-alias-border-inverted);background:var(--dsw-specific-menu);width:264px;box-shadow:var(--dsw-shadow-lv3);color:var(--dsw-alias-label-secondary);cursor:default;border-radius:12px;padding:12px;font-size:12px;line-height:20px;position:absolute;bottom:calc(100% + 8px);right:0}.yVdBcG_header{align-items:center;gap:6px;display:flex}.yVdBcG_figures{font-variant-numeric:tabular-nums;color:var(--dsw-alias-label-primary);margin-left:auto;font-weight:500}.yVdBcG_percent{color:var(--dsw-alias-label-primary);font-weight:500}.yVdBcG_headline{color:var(--dsw-alias-label-tertiary)}.yVdBcG_headline:empty{display:none}.yVdBcG_bar{background:var(--dsw-alias-interactive-bg-hover);border-radius:999px;gap:1px;height:4px;margin:10px 0 12px;display:flex;overflow:hidden}.yVdBcG_segment{background:var(--meter-tint,var(--dsw-alias-label-tertiary));border-radius:1px;flex:none;min-width:2px;height:100%}.yVdBcG_swatch{background:var(--meter-tint);vertical-align:baseline;border-radius:2px;width:8px;height:8px;margin-right:6px;display:inline-block}.yVdBcG_colorSystem{--meter-tint:var(--dsw-static-neutral-bluish-400)}.yVdBcG_colorTools{--meter-tint:#a78bfa}.yVdBcG_colorMessages{--meter-tint:var(--dsw-static-blue-450)}.yVdBcG_rows{margin:6px 0 0}.yVdBcG_row{justify-content:space-between;align-items:center;gap:12px;padding:2px 0;display:flex}.yVdBcG_row dt{color:var(--dsw-alias-label-secondary)}.yVdBcG_row dd{font-variant-numeric:tabular-nums;color:var(--dsw-alias-label-primary);margin:0}";
 		const tagId$18 = "@deepseek-ai/dsh-client-ui-conversation/ContextMeter.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$18) + "]") === null) {
 			const tag = document.createElement("style");
@@ -3165,26 +3164,26 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var ContextMeter_module_css_default = {
-			"bar": "Qg3D7q_bar",
-			"colorMessages": "Qg3D7q_colorMessages",
-			"colorSystem": "Qg3D7q_colorSystem",
-			"colorTools": "Qg3D7q_colorTools",
-			"figures": "Qg3D7q_figures",
-			"fill": "Qg3D7q_fill",
-			"header": "Qg3D7q_header",
-			"headline": "Qg3D7q_headline",
-			"panel": "Qg3D7q_panel",
-			"percent": "Qg3D7q_percent",
-			"root": "Qg3D7q_root",
-			"row": "Qg3D7q_row",
-			"rows": "Qg3D7q_rows",
-			"segment": "Qg3D7q_segment",
-			"swatch": "Qg3D7q_swatch",
-			"track": "Qg3D7q_track",
-			"trigger": "Qg3D7q_trigger"
+			"bar": "yVdBcG_bar",
+			"colorMessages": "yVdBcG_colorMessages",
+			"colorSystem": "yVdBcG_colorSystem",
+			"colorTools": "yVdBcG_colorTools",
+			"figures": "yVdBcG_figures",
+			"fill": "yVdBcG_fill",
+			"header": "yVdBcG_header",
+			"headline": "yVdBcG_headline",
+			"panel": "yVdBcG_panel",
+			"percent": "yVdBcG_percent",
+			"root": "yVdBcG_root",
+			"row": "yVdBcG_row",
+			"rows": "yVdBcG_rows",
+			"segment": "yVdBcG_segment",
+			"swatch": "yVdBcG_swatch",
+			"track": "yVdBcG_track",
+			"trigger": "yVdBcG_trigger"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/ContextMeter.js
+		//#region src/client/skeleton/ContextMeter.tsx
 		/** Composer context-occupancy meter: a ring beside the send button fed by the
 		* `contextPressure` projection, with a click-open panel of the heuristic
 		* `contextBreakdown` composition (system prompt, tools, conversation).
@@ -3257,15 +3256,15 @@ window.__ModuleLoader__.load({
 				color: row.color,
 				width: percent * breakdown[row.key] / breakdownTotal
 			}))).filter((part) => part.width > 0);
-			return (0, react_jsx_runtime.jsxs)("span", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 				ref: rootRef,
 				className: ContextMeter_module_css_default.root,
-				children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 					label: t("context.aria", { percent: reading }),
 					side: "top",
 					delayMs: 200,
 					disabled: open,
-					children: (0, react_jsx_runtime.jsx)("button", {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 						type: "button",
 						className: ContextMeter_module_css_default.trigger,
 						"aria-label": t("context.aria", { percent: reading }),
@@ -3274,17 +3273,17 @@ window.__ModuleLoader__.load({
 						onClick: () => {
 							setOpen(!open);
 						},
-						children: (0, react_jsx_runtime.jsxs)("svg", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 							viewBox: "0 0 14 14",
 							width: "14",
 							height: "14",
 							"aria-hidden": true,
-							children: [(0, react_jsx_runtime.jsx)("circle", {
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 								className: ContextMeter_module_css_default.track,
 								cx: "7",
 								cy: "7",
 								r: RADIUS
-							}), (0, react_jsx_runtime.jsx)("circle", {
+							}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 								className: ContextMeter_module_css_default.fill,
 								cx: "7",
 								cy: "7",
@@ -3294,47 +3293,47 @@ window.__ModuleLoader__.load({
 							})]
 						})
 					})
-				}), open && (0, react_jsx_runtime.jsxs)("div", {
+				}), open && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ContextMeter_module_css_default.panel,
 					role: "dialog",
 					"aria-label": t("context.used"),
 					children: [
-						(0, react_jsx_runtime.jsxs)("div", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							className: ContextMeter_module_css_default.header,
 							children: [
-								(0, react_jsx_runtime.jsx)("span", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: ContextMeter_module_css_default.headline,
 									children: headBefore
 								}),
-								(0, react_jsx_runtime.jsx)("span", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: ContextMeter_module_css_default.percent,
 									children: reading
 								}),
-								(0, react_jsx_runtime.jsx)("span", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: ContextMeter_module_css_default.headline,
 									children: headAfter
 								}),
-								(0, react_jsx_runtime.jsx)("span", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: ContextMeter_module_css_default.figures,
 									children: `~${formatTokens(context.usedTokens)} / ${formatTokens(context.contextWindow)}`
 								})
 							]
 						}),
-						(0, react_jsx_runtime.jsx)("div", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: ContextMeter_module_css_default.bar,
-							children: segments.map((segment) => (0, react_jsx_runtime.jsx)("div", {
+							children: segments.map((segment) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: segment.color === void 0 ? ContextMeter_module_css_default.segment : `${ContextMeter_module_css_default.segment} ${segment.color}`,
 								style: { width: `${segment.width}%` }
 							}, segment.key))
 						}),
-						breakdown !== void 0 && (0, react_jsx_runtime.jsx)("dl", {
+						breakdown !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dl", {
 							className: ContextMeter_module_css_default.rows,
-							children: ROWS.map((row) => (0, react_jsx_runtime.jsxs)("div", {
+							children: ROWS.map((row) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 								className: ContextMeter_module_css_default.row,
-								children: [(0, react_jsx_runtime.jsxs)("dt", { children: [(0, react_jsx_runtime.jsx)("span", {
+								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("dt", { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: `${ContextMeter_module_css_default.swatch} ${row.color}`,
 									"aria-hidden": true
-								}), t(row.label)] }), (0, react_jsx_runtime.jsx)("dd", { children: `~${formatTokens(breakdown[row.key])}` })]
+								}), t(row.label)] }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", { children: `~${formatTokens(breakdown[row.key])}` })]
 							}, row.key))
 						})
 					]
@@ -3342,8 +3341,8 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/skeleton/PermissionSelect.module.css.mjs
-		const css$17 = "._67Od6q_trigger{min-width:0;max-width:220px;height:28px;color:var(--dsw-alias-label-secondary);cursor:pointer;background:0 0;border:none;border-radius:24px;outline:none;align-items:center;gap:4px;padding:0 4px 0 8px;font-size:13px;font-weight:500;line-height:20px;display:inline-flex}._67Od6q_trigger:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}._67Od6q_trigger:focus-visible{box-shadow:0 0 0 2px var(--dsw-alias-border-l3)}._67Od6q_trigger:disabled{color:var(--dsw-alias-label-dimmed);cursor:default}._67Od6q_triggerIcon{flex:none;display:inline-flex}._67Od6q_triggerIcon svg{width:14px;height:14px}._67Od6q_triggerLabel{text-overflow:ellipsis;white-space:nowrap;min-width:0;overflow:hidden}._67Od6q_chevron{color:var(--dsw-alias-label-caption);flex:none;transition:transform .12s;display:inline-flex}@container (width<=460px){._67Od6q_trigger:has(._67Od6q_triggerIcon) ._67Od6q_triggerLabel{display:none}}._67Od6q_chevronOpen{transform:rotate(180deg)}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/skeleton/PermissionSelect.module.css.mjs
+		const css$17 = ".JSh6gW_trigger{min-width:0;max-width:220px;height:28px;color:var(--dsw-alias-label-secondary);cursor:pointer;background:0 0;border:none;border-radius:24px;outline:none;align-items:center;gap:4px;padding:0 4px 0 8px;font-size:13px;font-weight:500;line-height:20px;display:inline-flex}.JSh6gW_trigger:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.JSh6gW_trigger:focus-visible{box-shadow:0 0 0 2px var(--dsw-alias-border-l3)}.JSh6gW_trigger:disabled{color:var(--dsw-alias-label-dimmed);cursor:default}.JSh6gW_triggerIcon{flex:none;display:inline-flex}.JSh6gW_triggerIcon svg{width:14px;height:14px}.JSh6gW_triggerLabel{text-overflow:ellipsis;white-space:nowrap;min-width:0;overflow:hidden}.JSh6gW_chevron{color:var(--dsw-alias-label-caption);flex:none;transition:transform .12s;display:inline-flex}@container (width<=460px){.JSh6gW_trigger:has(.JSh6gW_triggerIcon) .JSh6gW_triggerLabel{display:none}}.JSh6gW_chevronOpen{transform:rotate(180deg)}";
 		const tagId$17 = "@deepseek-ai/dsh-client-ui-conversation/PermissionSelect.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$17) + "]") === null) {
 			const tag = document.createElement("style");
@@ -3353,81 +3352,81 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var PermissionSelect_module_css_default = {
-			"chevron": "_67Od6q_chevron",
-			"chevronOpen": "_67Od6q_chevronOpen",
-			"trigger": "_67Od6q_trigger",
-			"triggerIcon": "_67Od6q_triggerIcon",
-			"triggerLabel": "_67Od6q_triggerLabel"
+			"chevron": "JSh6gW_chevron",
+			"chevronOpen": "JSh6gW_chevronOpen",
+			"trigger": "JSh6gW_trigger",
+			"triggerIcon": "JSh6gW_triggerIcon",
+			"triggerLabel": "JSh6gW_triggerLabel"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/PermissionSelect.js
+		//#region src/client/skeleton/PermissionSelect.tsx
 		const FULL_ACCESS = "danger-full-access";
 		const TEAMWORK_OPTION = "teamwork-toggle";
 		const shieldOutline = "M8.20554 0.899994L14.7901 3.36857V7.01026C14.7901 12 11.0466 14.2103 8.20554 15.3C5.36446 14.2103 1.62012 12 1.62012 7.01026V3.36857L8.20554 0.899994Z";
 		const permissionGlyphs = new Map([
-			["read-only", (0, react_jsx_runtime.jsxs)("svg", {
+			["read-only", /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: "16",
 				height: "16",
 				viewBox: "0 0 16 16",
 				fill: "none",
 				"aria-hidden": true,
-				children: [(0, react_jsx_runtime.jsx)("path", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 					d: shieldOutline,
 					stroke: "currentColor",
 					strokeWidth: "1.31831",
 					strokeLinejoin: "round"
-				}), (0, react_jsx_runtime.jsx)("path", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 					d: "M12.1654 5.7552L8.9447 9.41475C8.73044 9.65816 8.53628 9.8804 8.35774 10.0423C8.1713 10.2114 7.94235 10.3717 7.64016 10.4254C7.48207 10.4535 7.32 10.4552 7.16151 10.4294C6.85843 10.3801 6.62728 10.2223 6.43836 10.0559C6.25752 9.89653 6.06037 9.67732 5.84264 9.43705L4.72925 8.20897L5.63557 7.38707L6.74897 8.61594C6.98603 8.87755 7.12974 9.03533 7.24673 9.13839C7.31033 9.19443 7.34485 9.21476 7.35823 9.22122C7.38068 9.22484 7.40352 9.22515 7.42593 9.22122C7.40522 9.22502 7.42893 9.23294 7.53583 9.136C7.65132 9.03126 7.79316 8.87139 8.02643 8.60638L11.2479 4.94763L12.1654 5.7552Z",
 					fill: "currentColor"
 				})]
 			})],
-			["workspace-write", (0, react_jsx_runtime.jsxs)("svg", {
+			["workspace-write", /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: "16",
 				height: "16",
 				viewBox: "0 0 16 16",
 				fill: "none",
 				"aria-hidden": true,
 				children: [
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M8.08887 0.251709C8.20479 0.23085 8.32486 0.241168 8.43652 0.282959L15.0215 2.75171C15.2787 2.84819 15.4492 3.09414 15.4492 3.3689V7.0105C15.4492 7.10986 15.4441 7.2081 15.4414 7.30542C15.0285 7.07175 14.5905 6.87695 14.1309 6.73022V3.82495L8.20508 1.60327L2.2793 3.82495V7.0105C2.27936 9.7171 3.4745 11.5379 5.02734 12.7947C5.01025 12.9942 5 13.1962 5 13.4001C5.00001 13.7617 5.02722 14.1169 5.08008 14.4636C2.91555 13.0393 0.961014 10.752 0.960938 7.0105V3.3689C0.960938 3.09417 1.13146 2.84821 1.38867 2.75171L7.97461 0.282959L8.08887 0.251709Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M11.3525 5.64688V6.85688H5V5.64688H11.3525Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M9.5824 8.29376V9.50376H5V8.29376H9.5824Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M14.6647 15.6852H10.0338C10.3878 15.3751 10.7567 15.0517 11.0772 14.7706C11.2531 14.6164 11.4144 14.4746 11.5511 14.3547H14.6647V15.6852Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M8.14852 14.1308L7.33925 15.4976C7.22458 15.6912 7.42245 15.9194 7.63037 15.8333L9.09785 15.2254L15.0399 10.0719L14.0905 8.97733L8.14852 14.1308Z",
 						fill: "currentColor"
 					})
 				]
 			})],
-			[FULL_ACCESS, (0, react_jsx_runtime.jsxs)("svg", {
+			[FULL_ACCESS, /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: "16",
 				height: "16",
 				viewBox: "0 0 16 16",
 				fill: "none",
 				"aria-hidden": true,
 				children: [
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: shieldOutline,
 						stroke: "currentColor",
 						strokeWidth: "1.31831",
 						strokeLinejoin: "round"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M9.10094 4.5V8.75939H7.59888V4.5H9.10094Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M9.10094 9.8114V11.5H7.59888V9.8114H9.10094Z",
 						fill: "currentColor"
 					})
@@ -3506,7 +3505,7 @@ window.__ModuleLoader__.load({
 			}, {
 				id: TEAMWORK_OPTION,
 				label: "Teamwork",
-				icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTeamworkOutline16, {})
+				icon: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTeamworkOutline16, {})
 			});
 			const submit = (id) => {
 				setPick(id);
@@ -3542,7 +3541,7 @@ window.__ModuleLoader__.load({
 				closeConfirmation();
 				submit(id);
 			};
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
 				open,
 				items,
 				selectedIds: [currentValue, ...teamworkActive ? [TEAMWORK_OPTION] : []],
@@ -3551,7 +3550,7 @@ window.__ModuleLoader__.load({
 					setOpen(false);
 				},
 				side: "top",
-				anchor: (0, react_jsx_runtime.jsxs)("button", {
+				anchor: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 					type: "button",
 					className: PermissionSelect_module_css_default.trigger,
 					"aria-label": t("input.accessMode", { name: combinedLabel }),
@@ -3561,23 +3560,23 @@ window.__ModuleLoader__.load({
 						setOpen(!open);
 					},
 					children: [
-						permissionGlyph(currentValue) !== void 0 && (0, react_jsx_runtime.jsx)("span", {
+						permissionGlyph(currentValue) !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: PermissionSelect_module_css_default.triggerIcon,
 							"aria-hidden": true,
 							children: permissionGlyph(currentValue)
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: PermissionSelect_module_css_default.triggerLabel,
 							children: combinedLabel
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: clsx(PermissionSelect_module_css_default.chevron, open && PermissionSelect_module_css_default.chevronOpen),
 							"aria-hidden": true,
-							children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
 						})
 					]
 				})
-			}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.RiskConfirmation, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.RiskConfirmation, {
 				open: confirmation !== null,
 				title: t("access.confirm.title"),
 				description: t("access.confirm.description"),
@@ -3592,8 +3591,7 @@ window.__ModuleLoader__.load({
 			})] });
 		}
 		//#endregion
-		//#region lib/types/client/skeleton/safari.js
-		/** Safari-specific textarea layout recovery for the conversation composer. */
+		//#region src/client/skeleton/safari.ts
 		const ALTERNATE_IOS_BROWSER = /\b(?:CriOS|FxiOS|EdgiOS|OPiOS|OPT|DuckDuckGo|Brave)(?:\/|\b)/;
 		/**
 		* Detect Safari's `Version/... Safari/...` form while excluding known alternate iOS browser tokens.
@@ -3623,7 +3621,7 @@ window.__ModuleLoader__.load({
 			scrollport.offsetHeight;
 		}
 		//#endregion
-		//#region lib/types/client/skeleton/InputBar.js
+		//#region src/client/skeleton/InputBar.tsx
 		/** The default composer body: the 'conversation.composer.bar' slot entry.
 		* Machine state arrives through the standard provide channel
 		* (useInput + inputActions); the keyboard/DOM command face and stop arrive
@@ -4084,7 +4082,7 @@ window.__ModuleLoader__.load({
 				/* v8 ignore next -- defensive: the primary button is disabled while empty||disabled, so a click cannot reach the false arm. */
 				if (!empty && !disabled && !machineBusy) inputActions.submit();
 			};
-			const accessSelect = command === void 0 || plainChat ? null : (0, react_jsx_runtime.jsx)(PermissionSelect, {
+			const accessSelect = command === void 0 || plainChat ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(PermissionSelect, {
 				value: permissions,
 				teamwork,
 				locked,
@@ -4100,7 +4098,7 @@ window.__ModuleLoader__.load({
 					cursor = upTo;
 				};
 				if (deco.token !== null) {
-					backdrop.push((0, react_jsx_runtime.jsx)("mark", {
+					backdrop.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)("mark", {
 						className: InputBar_module_css_default.hlToken,
 						"data-decoration": "token",
 						children: draft.slice(deco.token.start, deco.token.end)
@@ -4122,41 +4120,41 @@ window.__ModuleLoader__.load({
 					pushPlain(b.at);
 					if (b.kind === "chip") {
 						const chip = b.chip;
-						if (chip.presentation === "dock") backdrop.push((0, react_jsx_runtime.jsx)("span", {
+						if (chip.presentation === "dock") backdrop.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							"data-decoration": "dock-reference",
 							children: chip.text
 						}, `dock-reference-${chip.occurrenceId}`));
-						else backdrop.push((0, react_jsx_runtime.jsxs)("span", {
+						else backdrop.push(/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 							className: clsx(InputBar_module_css_default.chip, chip.invalid && InputBar_module_css_default.chipInvalid),
 							"data-decoration": "chip",
 							"data-reference-appearance": chip.appearance,
 							"data-occurrence": chip.occurrenceId,
 							"data-invalid": chip.invalid || void 0,
 							title: chip.label,
-							children: [chip.appearance === void 0 ? chip.text[0] : (0, react_jsx_runtime.jsxs)("span", {
+							children: [chip.appearance === void 0 ? chip.text[0] : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 								className: InputBar_module_css_default.chipTrigger,
-								children: [(0, react_jsx_runtime.jsx)("span", {
+								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: InputBar_module_css_default.chipTriggerGlyph,
 									children: chip.text[0]
-								}), (0, react_jsx_runtime.jsx)(ReferenceIcon, {
+								}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ReferenceIcon, {
 									kind: chip.appearance,
 									size: 16,
 									className: InputBar_module_css_default.chipIcon
 								})]
-							}), (0, react_jsx_runtime.jsx)("span", { children: chip.text.slice(1) })]
+							}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", { children: chip.text.slice(1) })]
 						}, `chip-${chip.occurrenceId}`));
 						cursor = chip.offset + chip.length;
 					} else {
 						const text = draft.slice(b.ref.start, b.ref.end);
-						backdrop.push((0, react_jsx_runtime.jsx)("mark", {
+						backdrop.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)("mark", {
 							className: InputBar_module_css_default.textRef,
 							"data-decoration": "text-ref",
-							children: b.ref.appearance === "folder" ? (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsxs)("span", {
+							children: b.ref.appearance === "folder" ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 								className: InputBar_module_css_default.textRefTrigger,
-								children: [(0, react_jsx_runtime.jsx)("span", {
+								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: InputBar_module_css_default.textRefTriggerGlyph,
 									children: text[0]
-								}), (0, react_jsx_runtime.jsx)(ReferenceIcon, {
+								}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ReferenceIcon, {
 									kind: "folder",
 									size: 16,
 									className: InputBar_module_css_default.textRefIcon
@@ -4172,28 +4170,28 @@ window.__ModuleLoader__.load({
 					const hintKey = `hint.${commandName === "goal" && hasGoal ? "goal.active" : commandName}`;
 					const translated = t(hintKey);
 					const displayHint = translated !== hintKey ? translated : deco.hint;
-					backdrop.push((0, react_jsx_runtime.jsx)("span", {
+					backdrop.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: InputBar_module_css_default.hint,
 						"data-decoration": "hint",
 						children: displayHint
 					}, "hint"));
 				}
 			}
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: clsx(InputBar_module_css_default.root, variant === "hero" && InputBar_module_css_default.hero),
 				children: [
-					toast !== null && (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Toast, {
+					toast !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Toast, {
 						text: toast.text,
-						icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconWarningOutline16, {}),
+						icon: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconWarningOutline16, {}),
 						anchor: cardRef.current,
 						onDone: dismissToast
 					}, toast.seq),
-					notice?.level === "info" && (0, react_jsx_runtime.jsx)("div", {
+					notice?.level === "info" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: InputBar_module_css_default.notice,
 						role: "status",
 						children: notice.text
 					}),
-					(0, react_jsx_runtime.jsxs)("div", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						ref: cardRef,
 						className: clsx(InputBar_module_css_default.card, workspaceTrigger && InputBar_module_css_default.cardWorkspaceTrigger),
 						"data-composer-card": true,
@@ -4202,11 +4200,11 @@ window.__ModuleLoader__.load({
 							e.stopPropagation();
 						} : void 0,
 						children: [
-							overlay !== void 0 && (0, react_jsx_runtime.jsx)("div", {
+							overlay !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: InputBar_module_css_default.overlayAnchor,
 								children: overlay
 							}),
-							accessory !== void 0 && (0, react_jsx_runtime.jsx)("div", {
+							accessory !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: InputBar_module_css_default.accessory,
 								children: accessory
 							}),
@@ -4222,21 +4220,21 @@ window.__ModuleLoader__.load({
 									size: imageSizeText(imageLimits.maxImageBytes)
 								}
 							}),
-							(0, react_jsx_runtime.jsx)("div", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								ref: scrollRef,
 								className: InputBar_module_css_default.scroll,
 								"data-input-scroll": true,
-								children: (0, react_jsx_runtime.jsxs)("div", {
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 									className: InputBar_module_css_default.grow,
 									children: [
-										(0, react_jsx_runtime.jsx)("div", {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 											"aria-hidden": true,
 											className: clsx(InputBar_module_css_default.backdrop, textareaDisabled && InputBar_module_css_default.backdropDisabled),
 											"data-input-backdrop": true,
 											"data-disabled": textareaDisabled || void 0,
 											children: backdrop
 										}),
-										(0, react_jsx_runtime.jsx)("textarea", {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)("textarea", {
 											ref: inputRef,
 											className: InputBar_module_css_default.input,
 											value: draft,
@@ -4261,7 +4259,7 @@ window.__ModuleLoader__.load({
 											onCompositionStart,
 											onCompositionEnd
 										}),
-										(0, react_jsx_runtime.jsx)("div", {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 											ref: mirrorRef,
 											"aria-hidden": true,
 											className: InputBar_module_css_default.mirror,
@@ -4271,9 +4269,9 @@ window.__ModuleLoader__.load({
 									]
 								})
 							}),
-							(0, react_jsx_runtime.jsxs)("div", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 								className: InputBar_module_css_default.row,
-								children: [(0, react_jsx_runtime.jsxs)("div", {
+								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 									className: InputBar_module_css_default.tools,
 									children: [
 										renderSlot("conversation.input.add", {
@@ -4291,7 +4289,7 @@ window.__ModuleLoader__.load({
 											onAddImages: intakeImages,
 											onAddTextFiles: addTextFiles,
 											focusInput
-										}, { fallback: (0, react_jsx_runtime.jsx)(ComposerCommandAction, {
+										}, { fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ComposerCommandAction, {
 											mode: plainChat ? "chat" : "work",
 											disabled: locked || toggleCommandMenu === void 0,
 											commandMenuOpen,
@@ -4308,38 +4306,38 @@ window.__ModuleLoader__.load({
 											focusInput,
 											t
 										}) }),
-										!plainChat && (0, react_jsx_runtime.jsx)("div", {
+										!plainChat && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 											className: InputBar_module_css_default.modes,
 											children: accessSelect
 										}),
 										!plainChat && leftItems
 									]
-								}), (0, react_jsx_runtime.jsxs)("div", {
+								}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 									className: InputBar_module_css_default.trailing,
 									children: [
 										!plainChat && rightItems,
 										renderSlot("conversation.input.model", { locked: modelSeatLocked }),
-										(0, react_jsx_runtime.jsx)(ContextMeter, {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(ContextMeter, {
 											useProjection,
 											t
 										}),
-										interruptible && (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+										interruptible && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: t("input.stop"),
 											side: "top",
 											delayMs: 500,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: InputBar_module_css_default.primary,
 												"aria-label": t("input.stop"),
 												disabled: stop === void 0,
 												onMouseDown: keepFocus,
 												onClick: stop,
-												children: (0, react_jsx_runtime.jsx)("svg", {
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 													viewBox: "0 0 16 16",
 													width: "16",
 													height: "16",
 													"aria-hidden": true,
-													children: (0, react_jsx_runtime.jsx)("rect", {
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("rect", {
 														x: "3",
 														y: "3",
 														width: "10",
@@ -4350,23 +4348,23 @@ window.__ModuleLoader__.load({
 												})
 											})
 										}),
-										(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: primaryLabel,
 											side: "top",
 											delayMs: 500,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: InputBar_module_css_default.primary,
 												"aria-label": primaryLabel,
 												disabled: primaryStops ? stop === void 0 : empty || disabled || machineBusy,
 												onMouseDown: keepFocus,
 												onClick: onPrimary,
-												children: primaryStops ? (0, react_jsx_runtime.jsx)("svg", {
+												children: primaryStops ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 													viewBox: "0 0 16 16",
 													width: "16",
 													height: "16",
 													"aria-hidden": true,
-													children: (0, react_jsx_runtime.jsx)("rect", {
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("rect", {
 														x: "3",
 														y: "3",
 														width: "10",
@@ -4374,12 +4372,12 @@ window.__ModuleLoader__.load({
 														rx: "3",
 														fill: "currentColor"
 													})
-												}) : (0, react_jsx_runtime.jsx)("svg", {
+												}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 													viewBox: "0 0 16 16",
 													width: "16",
 													height: "16",
 													"aria-hidden": true,
-													children: (0, react_jsx_runtime.jsx)("path", {
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 														d: "M8.3125 0.980183C8.66767 1.0531 8.97902 1.20418 9.2627 1.43233C9.48724 1.61297 9.73029 1.85793 9.97949 2.10714L14.707 6.83468L13.293 8.24874L9 3.95577V15.0417H7V3.95577L2.70703 8.24874L1.29297 6.83468L6.02051 2.10714C6.26971 1.85793 6.51277 1.61297 6.7373 1.43233C6.97662 1.23986 7.28445 1.04402 7.6875 0.980183C7.8973 0.947006 8.1031 0.95516 8.3125 0.980183Z",
 														fill: "currentColor"
 													})
@@ -4396,8 +4394,8 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/settings/EnterBehaviorRow.module.css.mjs
-		const css$16 = ".JPGxKa_row{border-bottom:1px solid var(--dsw-alias-border-l2);align-items:center;gap:8px;padding:16px 0;display:flex}.JPGxKa_rowText{flex-direction:column;flex:1;gap:4px;min-width:0;padding-right:48px;display:flex}.JPGxKa_title{color:var(--dsw-alias-label-primary);font-size:14px;font-weight:400;line-height:22px}.JPGxKa_desc{color:var(--dsw-alias-label-tertiary);font-size:12px;font-weight:400;line-height:18px}.JPGxKa_selector{background:var(--dsw-alias-bg-module-platform);height:36px;font:inherit;color:var(--dsw-alias-label-primary);cursor:pointer;border:none;border-radius:18px;align-items:center;gap:12px;padding:0 14px;font-size:14px;line-height:22px;display:inline-flex}.JPGxKa_selector:hover{background:var(--dsw-alias-interactive-bg-hover)}.JPGxKa_chevron{flex:none}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/settings/EnterBehaviorRow.module.css.mjs
+		const css$16 = "._2hRKsG_row{border-bottom:1px solid var(--dsw-alias-border-l2);align-items:center;gap:8px;padding:16px 0;display:flex}._2hRKsG_rowText{flex-direction:column;flex:1;gap:4px;min-width:0;padding-right:48px;display:flex}._2hRKsG_title{color:var(--dsw-alias-label-primary);font-size:14px;font-weight:400;line-height:22px}._2hRKsG_desc{color:var(--dsw-alias-label-tertiary);font-size:12px;font-weight:400;line-height:18px}._2hRKsG_selector{background:var(--dsw-alias-bg-module-platform);height:36px;font:inherit;color:var(--dsw-alias-label-primary);cursor:pointer;border:none;border-radius:18px;align-items:center;gap:12px;padding:0 14px;font-size:14px;line-height:22px;display:inline-flex}._2hRKsG_selector:hover{background:var(--dsw-alias-interactive-bg-hover)}._2hRKsG_chevron{flex:none}";
 		const tagId$16 = "@deepseek-ai/dsh-client-ui-conversation/EnterBehaviorRow.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$16) + "]") === null) {
 			const tag = document.createElement("style");
@@ -4407,15 +4405,15 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var EnterBehaviorRow_module_css_default = {
-			"chevron": "JPGxKa_chevron",
-			"desc": "JPGxKa_desc",
-			"row": "JPGxKa_row",
-			"rowText": "JPGxKa_rowText",
-			"selector": "JPGxKa_selector",
-			"title": "JPGxKa_title"
+			"chevron": "_2hRKsG_chevron",
+			"desc": "_2hRKsG_desc",
+			"row": "_2hRKsG_row",
+			"rowText": "_2hRKsG_rowText",
+			"selector": "_2hRKsG_selector",
+			"title": "_2hRKsG_title"
 		};
 		//#endregion
-		//#region lib/types/client/settings/EnterBehaviorRow.js
+		//#region src/client/settings/EnterBehaviorRow.tsx
 		/** General Settings row for the Composer's busy-state Enter preference. */
 		const OPTIONS = [{
 			id: "queue",
@@ -4433,18 +4431,18 @@ window.__ModuleLoader__.load({
 			const behavior = useBusyEnter((value) => value);
 			const [open, setOpen] = (0, react.useState)(false);
 			const selectedLabel = behavior === "queue" ? "settings.enter.queue" : "settings.enter.steer";
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: EnterBehaviorRow_module_css_default.row,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: EnterBehaviorRow_module_css_default.rowText,
-					children: [(0, react_jsx_runtime.jsx)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: EnterBehaviorRow_module_css_default.title,
 						children: t("settings.enter.title")
-					}), (0, react_jsx_runtime.jsx)("div", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: EnterBehaviorRow_module_css_default.desc,
 						children: t("settings.enter.description")
 					})]
-				}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
 					open,
 					onClose: () => {
 						setOpen(false);
@@ -4460,7 +4458,7 @@ window.__ModuleLoader__.load({
 					},
 					align: "end",
 					portal: true,
-					anchor: (0, react_jsx_runtime.jsxs)("button", {
+					anchor: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 						type: "button",
 						className: EnterBehaviorRow_module_css_default.selector,
 						"aria-haspopup": "menu",
@@ -4468,14 +4466,14 @@ window.__ModuleLoader__.load({
 						onClick: () => {
 							setOpen((value) => !value);
 						},
-						children: [t(selectedLabel), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, { className: EnterBehaviorRow_module_css_default.chevron })]
+						children: [t(selectedLabel), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, { className: EnterBehaviorRow_module_css_default.chevron })]
 					})
 				})]
 			});
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/MessageItem.module.css.mjs
-		const css$15 = ".SVcpiq_userRow{flex-direction:column;align-items:flex-end;gap:6px;display:flex}.SVcpiq_userStack{flex-direction:column;align-items:flex-end;gap:8px;min-width:0;max-width:min(525px,82%);display:flex}.SVcpiq_bubble{background:var(--dsw-specific-bubble);max-width:100%;color:var(--dsw-alias-label-primary);border-radius:22px;padding:10px 16px;font-size:16px;line-height:24px}.SVcpiq_selectionReferences{flex-wrap:wrap;gap:6px;margin:0 0 6px;display:flex}.SVcpiq_selectionReference{border:1px solid var(--dsw-alias-border-l1);background:color-mix(in srgb,var(--dsw-specific-input-major) 75%,transparent);height:26px;color:var(--dsw-alias-label-secondary);white-space:nowrap;border-radius:9px;align-items:center;gap:6px;padding:0 8px 0 5px;font-size:12px;line-height:18px;display:inline-flex}.SVcpiq_selectionMarker{background:var(--dsw-alias-state-business-primary);color:#fff;border-radius:5px 5px 5px 1px;place-items:center;width:16px;height:16px;font-size:10px;line-height:1;display:inline-grid}.SVcpiq_referenceSummary{color:var(--dsw-alias-label-tertiary);font-size:12px;line-height:18px}.SVcpiq_contextRow,.SVcpiq_compactionRow{padding:2px 0}.SVcpiq_compactionButton{width:100%;min-width:0;height:24px;color:inherit;font:inherit;text-align:left;background:0 0;border:none;border-radius:6px;align-items:center;padding:0;display:flex}.SVcpiq_compactionButton:not(:disabled){cursor:pointer}.SVcpiq_compactionButton:not(:disabled):hover{background:var(--dsw-alias-interactive-bg-hover)}.SVcpiq_compactionLeading{width:16px;height:16px;color:var(--dsw-alias-label-secondary);flex:none;place-items:center;margin-right:6px;display:inline-grid}.SVcpiq_compactionContextIcon,.SVcpiq_compactionDisclosureIcon{grid-area:1/1;justify-content:center;align-items:center;display:inline-flex}.SVcpiq_compactionDisclosureIcon,.SVcpiq_compactionButton:not(:disabled):hover .SVcpiq_compactionContextIcon,.SVcpiq_compactionButton:not(:disabled):focus-visible .SVcpiq_compactionContextIcon{opacity:0}.SVcpiq_compactionButton:not(:disabled):hover .SVcpiq_compactionDisclosureIcon,.SVcpiq_compactionButton:not(:disabled):focus-visible .SVcpiq_compactionDisclosureIcon{opacity:1}.SVcpiq_compactionTitle{color:var(--dsw-alias-label-primary-dimmed);flex:none;font-size:14px;line-height:24px}.SVcpiq_compactionSep{background:var(--dsw-alias-label-caption);border-radius:1px;flex:none;width:2px;height:2px;margin:0 8px}.SVcpiq_compactionSummary{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:14px;line-height:24px;overflow:hidden}.SVcpiq_compactionBody{color:var(--dsw-alias-label-tertiary);padding:4px 0 4px 22px;font-size:14px;line-height:24px}.SVcpiq_retryRow{color:var(--dsw-alias-label-tertiary);font-size:13px;line-height:20px}.SVcpiq_retrySummary{width:fit-content;color:inherit;cursor:pointer;user-select:none;border-radius:3px;align-items:center;gap:7px;padding:2px 0;list-style:none;display:inline-flex}.SVcpiq_retrySummary::-webkit-details-marker{display:none}.SVcpiq_retrySummary:after{content:\"\";opacity:.8;border-bottom:1.5px solid;border-right:1.5px solid;width:6px;height:6px;transition:transform .12s;transform:rotate(-45deg)}.SVcpiq_retrySummary:hover{color:var(--dsw-alias-label-secondary)}.SVcpiq_retrySummary:focus-visible{outline:1.5px solid var(--dsw-alias-button-info-fill);outline-offset:2px}.SVcpiq_retryText{color:inherit}.SVcpiq_retryRow[data-active] .SVcpiq_retryText{background:linear-gradient(90deg, var(--dsw-alias-label-tertiary) 0%, var(--dsw-alias-label-tertiary) 40%, var(--dsw-alias-label-secondary) 50%, var(--dsw-alias-label-tertiary) 60%, var(--dsw-alias-label-tertiary) 100%);color:#0000;background-position:100%;background-size:200% 100%;background-clip:text;animation:1.6s ease-in-out infinite SVcpiq_retry-shimmer}.SVcpiq_retryRow[open] .SVcpiq_retrySummary:after{transform:rotate(45deg)}.SVcpiq_retryDetails{overflow-wrap:anywhere;gap:2px;margin-top:3px;padding-left:14px;font-size:12px;line-height:18px;display:grid}.SVcpiq_retryDetailLabel{color:var(--dsw-alias-label-secondary)}.SVcpiq_turnErrorRow{grid-template-columns:10px minmax(0,1fr) auto;align-items:start;gap:8px;padding:2px 0;font-size:13px;line-height:20px;display:grid}.SVcpiq_turnErrorDot{margin-top:5px}.SVcpiq_turnErrorCopy{overflow-wrap:anywhere;min-width:0}.SVcpiq_turnErrorTitle{color:var(--dsw-alias-state-error-primary);margin-right:6px;font-weight:600}.SVcpiq_turnErrorMessage{color:var(--dsw-alias-label-secondary)}.SVcpiq_turnErrorCode{color:var(--dsw-alias-label-tertiary);font:var(--dsw-font-markdown-code-block-small)}.SVcpiq_maxTokensTitle{color:var(--dsw-alias-state-warn-primary);margin-right:6px;font-weight:600}@keyframes SVcpiq_retry-shimmer{0%{background-position:100%}to{background-position:0}}@media (prefers-reduced-motion:reduce){.SVcpiq_retryRow[data-active] .SVcpiq_retryText{color:inherit;background:0 0;animation:none}}.SVcpiq_refChip{color:var(--dsw-alias-state-business-primary);white-space:nowrap;vertical-align:baseline;align-items:center;gap:4px;margin:0 2px;font-weight:500;display:inline-flex}.SVcpiq_refIcon{flex:none}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/MessageItem.module.css.mjs
+		const css$15 = ".TYBpEq_userRow{flex-direction:column;align-items:flex-end;gap:6px;display:flex}.TYBpEq_userStack{flex-direction:column;align-items:flex-end;gap:8px;min-width:0;max-width:min(525px,82%);display:flex}.TYBpEq_bubble{background:var(--dsw-specific-bubble);max-width:100%;color:var(--dsw-alias-label-primary);border-radius:22px;padding:10px 16px;font-size:16px;line-height:24px}.TYBpEq_selectionReferences{flex-wrap:wrap;gap:6px;margin:0 0 6px;display:flex}.TYBpEq_selectionReference{border:1px solid var(--dsw-alias-border-l1);background:color-mix(in srgb,var(--dsw-specific-input-major) 75%,transparent);height:26px;color:var(--dsw-alias-label-secondary);white-space:nowrap;border-radius:9px;align-items:center;gap:6px;padding:0 8px 0 5px;font-size:12px;line-height:18px;display:inline-flex}.TYBpEq_selectionMarker{background:var(--dsw-alias-state-business-primary);color:#fff;border-radius:5px 5px 5px 1px;place-items:center;width:16px;height:16px;font-size:10px;line-height:1;display:inline-grid}.TYBpEq_referenceSummary{color:var(--dsw-alias-label-tertiary);font-size:12px;line-height:18px}.TYBpEq_contextRow,.TYBpEq_compactionRow{padding:2px 0}.TYBpEq_compactionButton{width:100%;min-width:0;height:24px;color:inherit;font:inherit;text-align:left;background:0 0;border:none;border-radius:6px;align-items:center;padding:0;display:flex}.TYBpEq_compactionButton:not(:disabled){cursor:pointer}.TYBpEq_compactionButton:not(:disabled):hover{background:var(--dsw-alias-interactive-bg-hover)}.TYBpEq_compactionLeading{width:16px;height:16px;color:var(--dsw-alias-label-secondary);flex:none;place-items:center;margin-right:6px;display:inline-grid}.TYBpEq_compactionContextIcon,.TYBpEq_compactionDisclosureIcon{grid-area:1/1;justify-content:center;align-items:center;display:inline-flex}.TYBpEq_compactionDisclosureIcon,.TYBpEq_compactionButton:not(:disabled):hover .TYBpEq_compactionContextIcon,.TYBpEq_compactionButton:not(:disabled):focus-visible .TYBpEq_compactionContextIcon{opacity:0}.TYBpEq_compactionButton:not(:disabled):hover .TYBpEq_compactionDisclosureIcon,.TYBpEq_compactionButton:not(:disabled):focus-visible .TYBpEq_compactionDisclosureIcon{opacity:1}.TYBpEq_compactionTitle{color:var(--dsw-alias-label-primary-dimmed);flex:none;font-size:14px;line-height:24px}.TYBpEq_compactionSep{background:var(--dsw-alias-label-caption);border-radius:1px;flex:none;width:2px;height:2px;margin:0 8px}.TYBpEq_compactionSummary{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:14px;line-height:24px;overflow:hidden}.TYBpEq_compactionBody{color:var(--dsw-alias-label-tertiary);padding:4px 0 4px 22px;font-size:14px;line-height:24px}.TYBpEq_retryRow{color:var(--dsw-alias-label-tertiary);font-size:13px;line-height:20px}.TYBpEq_retrySummary{width:fit-content;color:inherit;cursor:pointer;user-select:none;border-radius:3px;align-items:center;gap:7px;padding:2px 0;list-style:none;display:inline-flex}.TYBpEq_retrySummary::-webkit-details-marker{display:none}.TYBpEq_retrySummary:after{content:\"\";opacity:.8;border-bottom:1.5px solid;border-right:1.5px solid;width:6px;height:6px;transition:transform .12s;transform:rotate(-45deg)}.TYBpEq_retrySummary:hover{color:var(--dsw-alias-label-secondary)}.TYBpEq_retrySummary:focus-visible{outline:1.5px solid var(--dsw-alias-button-info-fill);outline-offset:2px}.TYBpEq_retryText{color:inherit}.TYBpEq_retryRow[data-active] .TYBpEq_retryText{background:linear-gradient(90deg, var(--dsw-alias-label-tertiary) 0%, var(--dsw-alias-label-tertiary) 40%, var(--dsw-alias-label-secondary) 50%, var(--dsw-alias-label-tertiary) 60%, var(--dsw-alias-label-tertiary) 100%);color:#0000;background-position:100%;background-size:200% 100%;background-clip:text;animation:1.6s ease-in-out infinite TYBpEq_retry-shimmer}.TYBpEq_retryRow[open] .TYBpEq_retrySummary:after{transform:rotate(45deg)}.TYBpEq_retryDetails{overflow-wrap:anywhere;gap:2px;margin-top:3px;padding-left:14px;font-size:12px;line-height:18px;display:grid}.TYBpEq_retryDetailLabel{color:var(--dsw-alias-label-secondary)}.TYBpEq_turnErrorRow{grid-template-columns:10px minmax(0,1fr) auto;align-items:start;gap:8px;padding:2px 0;font-size:13px;line-height:20px;display:grid}.TYBpEq_turnErrorDot{margin-top:5px}.TYBpEq_turnErrorCopy{overflow-wrap:anywhere;min-width:0}.TYBpEq_turnErrorTitle{color:var(--dsw-alias-state-error-primary);margin-right:6px;font-weight:600}.TYBpEq_turnErrorMessage{color:var(--dsw-alias-label-secondary)}.TYBpEq_turnErrorCode{color:var(--dsw-alias-label-tertiary);font:var(--dsw-font-markdown-code-block-small)}.TYBpEq_maxTokensTitle{color:var(--dsw-alias-state-warn-primary);margin-right:6px;font-weight:600}@keyframes TYBpEq_retry-shimmer{0%{background-position:100%}to{background-position:0}}@media (prefers-reduced-motion:reduce){.TYBpEq_retryRow[data-active] .TYBpEq_retryText{color:inherit;background:0 0;animation:none}}.TYBpEq_refChip{color:var(--dsw-alias-state-business-primary);white-space:nowrap;vertical-align:baseline;align-items:center;gap:4px;margin:0 2px;font-weight:500;display:inline-flex}.TYBpEq_refIcon{flex:none}";
 		const tagId$15 = "@deepseek-ai/dsh-client-ui-conversation/MessageItem.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$15) + "]") === null) {
 			const tag = document.createElement("style");
@@ -4485,41 +4483,41 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var MessageItem_module_css_default = {
-			"bubble": "SVcpiq_bubble",
-			"compactionBody": "SVcpiq_compactionBody",
-			"compactionButton": "SVcpiq_compactionButton",
-			"compactionContextIcon": "SVcpiq_compactionContextIcon",
-			"compactionDisclosureIcon": "SVcpiq_compactionDisclosureIcon",
-			"compactionLeading": "SVcpiq_compactionLeading",
-			"compactionRow": "SVcpiq_compactionRow",
-			"compactionSep": "SVcpiq_compactionSep",
-			"compactionSummary": "SVcpiq_compactionSummary",
-			"compactionTitle": "SVcpiq_compactionTitle",
-			"contextRow": "SVcpiq_contextRow",
-			"maxTokensTitle": "SVcpiq_maxTokensTitle",
-			"refChip": "SVcpiq_refChip",
-			"refIcon": "SVcpiq_refIcon",
-			"referenceSummary": "SVcpiq_referenceSummary",
-			"retry-shimmer": "SVcpiq_retry-shimmer",
-			"retryDetailLabel": "SVcpiq_retryDetailLabel",
-			"retryDetails": "SVcpiq_retryDetails",
-			"retryRow": "SVcpiq_retryRow",
-			"retrySummary": "SVcpiq_retrySummary",
-			"retryText": "SVcpiq_retryText",
-			"selectionMarker": "SVcpiq_selectionMarker",
-			"selectionReference": "SVcpiq_selectionReference",
-			"selectionReferences": "SVcpiq_selectionReferences",
-			"turnErrorCode": "SVcpiq_turnErrorCode",
-			"turnErrorCopy": "SVcpiq_turnErrorCopy",
-			"turnErrorDot": "SVcpiq_turnErrorDot",
-			"turnErrorMessage": "SVcpiq_turnErrorMessage",
-			"turnErrorRow": "SVcpiq_turnErrorRow",
-			"turnErrorTitle": "SVcpiq_turnErrorTitle",
-			"userRow": "SVcpiq_userRow",
-			"userStack": "SVcpiq_userStack"
+			"bubble": "TYBpEq_bubble",
+			"compactionBody": "TYBpEq_compactionBody",
+			"compactionButton": "TYBpEq_compactionButton",
+			"compactionContextIcon": "TYBpEq_compactionContextIcon",
+			"compactionDisclosureIcon": "TYBpEq_compactionDisclosureIcon",
+			"compactionLeading": "TYBpEq_compactionLeading",
+			"compactionRow": "TYBpEq_compactionRow",
+			"compactionSep": "TYBpEq_compactionSep",
+			"compactionSummary": "TYBpEq_compactionSummary",
+			"compactionTitle": "TYBpEq_compactionTitle",
+			"contextRow": "TYBpEq_contextRow",
+			"maxTokensTitle": "TYBpEq_maxTokensTitle",
+			"refChip": "TYBpEq_refChip",
+			"refIcon": "TYBpEq_refIcon",
+			"referenceSummary": "TYBpEq_referenceSummary",
+			"retry-shimmer": "TYBpEq_retry-shimmer",
+			"retryDetailLabel": "TYBpEq_retryDetailLabel",
+			"retryDetails": "TYBpEq_retryDetails",
+			"retryRow": "TYBpEq_retryRow",
+			"retrySummary": "TYBpEq_retrySummary",
+			"retryText": "TYBpEq_retryText",
+			"selectionMarker": "TYBpEq_selectionMarker",
+			"selectionReference": "TYBpEq_selectionReference",
+			"selectionReferences": "TYBpEq_selectionReferences",
+			"turnErrorCode": "TYBpEq_turnErrorCode",
+			"turnErrorCopy": "TYBpEq_turnErrorCopy",
+			"turnErrorDot": "TYBpEq_turnErrorDot",
+			"turnErrorMessage": "TYBpEq_turnErrorMessage",
+			"turnErrorRow": "TYBpEq_turnErrorRow",
+			"turnErrorTitle": "TYBpEq_turnErrorTitle",
+			"userRow": "TYBpEq_userRow",
+			"userStack": "TYBpEq_userStack"
 		};
 		//#endregion
-		//#region lib/types/client/chat/CompactionItem.js
+		//#region src/client/chat/CompactionItem.tsx
 		/**
 		* The collapsed-by-default compaction marker.
 		* @param props - the marker node off the snapshot cache.
@@ -4533,9 +4531,9 @@ window.__ModuleLoader__.load({
 				items: node.shadowedItemCount,
 				tokens: node.shadowedTokenCount
 			}) : fallbackSummary ?? (expandable ? t("message.compaction.expand") : t("message.compaction.unavailable"));
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: MessageItem_module_css_default.compactionRow,
-				children: [(0, react_jsx_runtime.jsxs)("button", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 					type: "button",
 					className: MessageItem_module_css_default.compactionButton,
 					disabled: !expandable,
@@ -4544,41 +4542,41 @@ window.__ModuleLoader__.load({
 						setExpanded((value) => !value);
 					},
 					children: [
-						(0, react_jsx_runtime.jsxs)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 							className: MessageItem_module_css_default.compactionLeading,
 							"aria-hidden": true,
-							children: [(0, react_jsx_runtime.jsx)("span", {
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: MessageItem_module_css_default.compactionContextIcon,
 								"data-compaction-icon": "context",
-								children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconApiOutline14, {})
-							}), (0, react_jsx_runtime.jsx)("span", {
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconApiOutline14, {})
+							}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: MessageItem_module_css_default.compactionDisclosureIcon,
 								"data-compaction-disclosure": open ? "expanded" : "collapsed",
-								children: open ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronRightOutline14, {})
+								children: open ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronRightOutline14, {})
 							})]
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.compactionTitle,
 							children: title ?? t("message.compaction")
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.compactionSep,
 							"aria-hidden": true
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.compactionSummary,
 							children: summary
 						})
 					]
-				}), open && node.summary !== null && (0, react_jsx_runtime.jsx)("div", {
+				}), open && node.summary !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: MessageItem_module_css_default.compactionBody,
-					children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MarkdownText, { text: node.summary })
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MarkdownText, { text: node.summary })
 				})]
 			});
 		});
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/ContextBody.module.css.mjs
-		const css$14 = ".BKMiLW_text{color:var(--dsw-alias-label-secondary);font:inherit;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}.BKMiLW_fields{border-top:1px solid var(--dsw-alias-line-secondary);flex-direction:column;gap:2px;margin:8px 0 0;padding-top:8px;display:flex}.BKMiLW_field{gap:8px;min-width:0;display:flex}.BKMiLW_fieldKey{min-width:96px;color:var(--dsw-alias-label-caption);flex:none}.BKMiLW_fieldValue{min-width:0;color:var(--dsw-alias-label-tertiary);overflow-wrap:anywhere;flex:auto;margin:0}.BKMiLW_files{flex-wrap:wrap;gap:4px 12px;margin:0 0 8px;padding:0;list-style:none;display:flex}.BKMiLW_file{align-items:baseline;gap:6px;min-width:0;display:flex}.BKMiLW_filePath{color:var(--dsw-alias-label-secondary);overflow-wrap:anywhere}.BKMiLW_fileAction{color:var(--dsw-alias-label-caption)}.BKMiLW_catalogNotice{color:var(--dsw-alias-label-caption);margin:0 0 6px}.BKMiLW_entries{flex-direction:column;gap:4px;margin:0;padding:0;list-style:none;display:flex}.BKMiLW_entry{gap:8px;min-width:0;display:flex}.BKMiLW_entryName{color:var(--dsw-alias-label-secondary);flex:none}.BKMiLW_entryDescription{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;overflow:hidden}.BKMiLW_sections{flex-direction:column;gap:8px;margin:0;display:flex}.BKMiLW_section{flex-direction:column;gap:2px;min-width:0;display:flex}.BKMiLW_sectionName{color:var(--dsw-alias-label-caption)}.BKMiLW_sectionText{color:var(--dsw-alias-label-secondary);white-space:pre-wrap;overflow-wrap:anywhere;margin:0}.BKMiLW_relaySender{color:var(--dsw-alias-label-caption);overflow-wrap:anywhere;margin:0 0 6px}.BKMiLW_recalls{flex-direction:column;gap:2px;margin:0 0 8px;padding:0;list-style:none;display:flex}.BKMiLW_recall{gap:8px;min-width:0;display:flex}.BKMiLW_recallLabel{color:var(--dsw-alias-label-secondary);overflow-wrap:anywhere}.BKMiLW_recallCounts{color:var(--dsw-alias-label-caption);flex:none}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/ContextBody.module.css.mjs
+		const css$14 = ".O9dgqW_text{color:var(--dsw-alias-label-secondary);font:inherit;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}.O9dgqW_fields{border-top:1px solid var(--dsw-alias-line-secondary);flex-direction:column;gap:2px;margin:8px 0 0;padding-top:8px;display:flex}.O9dgqW_field{gap:8px;min-width:0;display:flex}.O9dgqW_fieldKey{min-width:96px;color:var(--dsw-alias-label-caption);flex:none}.O9dgqW_fieldValue{min-width:0;color:var(--dsw-alias-label-tertiary);overflow-wrap:anywhere;flex:auto;margin:0}.O9dgqW_files{flex-wrap:wrap;gap:4px 12px;margin:0 0 8px;padding:0;list-style:none;display:flex}.O9dgqW_file{align-items:baseline;gap:6px;min-width:0;display:flex}.O9dgqW_filePath{color:var(--dsw-alias-label-secondary);overflow-wrap:anywhere}.O9dgqW_fileAction{color:var(--dsw-alias-label-caption)}.O9dgqW_catalogNotice{color:var(--dsw-alias-label-caption);margin:0 0 6px}.O9dgqW_entries{flex-direction:column;gap:4px;margin:0;padding:0;list-style:none;display:flex}.O9dgqW_entry{gap:8px;min-width:0;display:flex}.O9dgqW_entryName{color:var(--dsw-alias-label-secondary);flex:none}.O9dgqW_entryDescription{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;overflow:hidden}.O9dgqW_sections{flex-direction:column;gap:8px;margin:0;display:flex}.O9dgqW_section{flex-direction:column;gap:2px;min-width:0;display:flex}.O9dgqW_sectionName{color:var(--dsw-alias-label-caption)}.O9dgqW_sectionText{color:var(--dsw-alias-label-secondary);white-space:pre-wrap;overflow-wrap:anywhere;margin:0}.O9dgqW_relaySender{color:var(--dsw-alias-label-caption);overflow-wrap:anywhere;margin:0 0 6px}.O9dgqW_recalls{flex-direction:column;gap:2px;margin:0 0 8px;padding:0;list-style:none;display:flex}.O9dgqW_recall{gap:8px;min-width:0;display:flex}.O9dgqW_recallLabel{color:var(--dsw-alias-label-secondary);overflow-wrap:anywhere}.O9dgqW_recallCounts{color:var(--dsw-alias-label-caption);flex:none}";
 		const tagId$14 = "@deepseek-ai/dsh-client-ui-conversation/ContextBody.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$14) + "]") === null) {
 			const tag = document.createElement("style");
@@ -4588,32 +4586,32 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var ContextBody_module_css_default = {
-			"catalogNotice": "BKMiLW_catalogNotice",
-			"entries": "BKMiLW_entries",
-			"entry": "BKMiLW_entry",
-			"entryDescription": "BKMiLW_entryDescription",
-			"entryName": "BKMiLW_entryName",
-			"field": "BKMiLW_field",
-			"fieldKey": "BKMiLW_fieldKey",
-			"fieldValue": "BKMiLW_fieldValue",
-			"fields": "BKMiLW_fields",
-			"file": "BKMiLW_file",
-			"fileAction": "BKMiLW_fileAction",
-			"filePath": "BKMiLW_filePath",
-			"files": "BKMiLW_files",
-			"recall": "BKMiLW_recall",
-			"recallCounts": "BKMiLW_recallCounts",
-			"recallLabel": "BKMiLW_recallLabel",
-			"recalls": "BKMiLW_recalls",
-			"relaySender": "BKMiLW_relaySender",
-			"section": "BKMiLW_section",
-			"sectionName": "BKMiLW_sectionName",
-			"sectionText": "BKMiLW_sectionText",
-			"sections": "BKMiLW_sections",
-			"text": "BKMiLW_text"
+			"catalogNotice": "O9dgqW_catalogNotice",
+			"entries": "O9dgqW_entries",
+			"entry": "O9dgqW_entry",
+			"entryDescription": "O9dgqW_entryDescription",
+			"entryName": "O9dgqW_entryName",
+			"field": "O9dgqW_field",
+			"fieldKey": "O9dgqW_fieldKey",
+			"fieldValue": "O9dgqW_fieldValue",
+			"fields": "O9dgqW_fields",
+			"file": "O9dgqW_file",
+			"fileAction": "O9dgqW_fileAction",
+			"filePath": "O9dgqW_filePath",
+			"files": "O9dgqW_files",
+			"recall": "O9dgqW_recall",
+			"recallCounts": "O9dgqW_recallCounts",
+			"recallLabel": "O9dgqW_recallLabel",
+			"recalls": "O9dgqW_recalls",
+			"relaySender": "O9dgqW_relaySender",
+			"section": "O9dgqW_section",
+			"sectionName": "O9dgqW_sectionName",
+			"sectionText": "O9dgqW_sectionText",
+			"sections": "O9dgqW_sections",
+			"text": "O9dgqW_text"
 		};
 		//#endregion
-		//#region lib/types/client/chat/ContextBody.js
+		//#region src/client/chat/ContextBody.tsx
 		/** Model-facing text stays bounded at the disclosure, not at the producer. */
 		const MAX_CHARS = 2e4;
 		/** Rows a list body materializes before summarizing the remainder. */
@@ -4675,15 +4673,15 @@ window.__ModuleLoader__.load({
 			const hidden = formRendered ? ["kind", "form"] : ["kind"];
 			const rows = Object.entries(record).filter(([key]) => !hidden.includes(key));
 			if (rows.length === 0) return null;
-			return (0, react_jsx_runtime.jsx)("dl", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dl", {
 				className: ContextBody_module_css_default.fields,
 				"data-context-fields": true,
-				children: rows.map(([key, value]) => (0, react_jsx_runtime.jsxs)("div", {
+				children: rows.map(([key, value]) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ContextBody_module_css_default.field,
-					children: [(0, react_jsx_runtime.jsx)("dt", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", {
 						className: ContextBody_module_css_default.fieldKey,
 						children: key
-					}), (0, react_jsx_runtime.jsx)("dd", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", {
 						className: ContextBody_module_css_default.fieldValue,
 						children: fieldValue(value, t)
 					})]
@@ -4698,7 +4696,7 @@ window.__ModuleLoader__.load({
 		* @returns One generic JSON block per unknown entry.
 		*/
 		function UnknownBlocks({ blocks, t }) {
-			return (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: blocks.map((block, index) => (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: blocks.map((block, index) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 				label: t("message.unknownBlock"),
 				payload: block,
 				truncatedLabel: (total) => t("json.truncated", { total })
@@ -4712,11 +4710,11 @@ window.__ModuleLoader__.load({
 		* @returns The content blocks as the model received them.
 		*/
 		function ModelFacingContent({ content, t }) {
-			return (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: contentRuns(content).map((run, index) => "text" in run ? run.text !== "" && (0, react_jsx_runtime.jsx)("pre", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: contentRuns(content).map((run, index) => "text" in run ? run.text !== "" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("pre", {
 				className: ContextBody_module_css_default.text,
 				"data-context-text": true,
 				children: boundedText(run.text, t)
-			}, index) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+			}, index) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 				label: t("message.unknownBlock"),
 				payload: run.block,
 				truncatedLabel: (total) => t("json.truncated", { total })
@@ -4730,10 +4728,10 @@ window.__ModuleLoader__.load({
 		* @returns The opaque context body.
 		*/
 		function OpaqueBody({ content, source, t }) {
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
-			}), (0, react_jsx_runtime.jsx)(SourceFields, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(SourceFields, {
 				source,
 				formRendered: false,
 				t
@@ -4796,27 +4794,27 @@ window.__ModuleLoader__.load({
 		*/
 		function InstructionsBody({ content, source, t }) {
 			const changes = instructionChanges(source);
-			if (changes === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (changes === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
 			});
 			const baseline = asRecord(source)?.["baseline"] === true;
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("ul", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 				className: ContextBody_module_css_default.files,
 				"data-context-files": true,
-				children: changes.map((change) => (0, react_jsx_runtime.jsxs)("li", {
+				children: changes.map((change) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 					className: ContextBody_module_css_default.file,
 					title: change.digest,
-					children: [(0, react_jsx_runtime.jsx)("span", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextBody_module_css_default.filePath,
 						children: change.path
-					}), (0, react_jsx_runtime.jsx)("span", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextBody_module_css_default.fileAction,
 						children: t(instructionAction(change.action, baseline))
 					})]
 				}, change.path))
-			}), (0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
 			})] });
@@ -4857,7 +4855,7 @@ window.__ModuleLoader__.load({
 		*/
 		function CatalogBody({ content, source, t }) {
 			const entries = catalogEntries(source);
-			if (entries === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (entries === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
@@ -4865,32 +4863,32 @@ window.__ModuleLoader__.load({
 			const update = asRecord(source)?.["update"] === true;
 			const shown = entries.slice(0, MAX_ENTRIES);
 			const rest = unknownBlocks(content);
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
-				update && (0, react_jsx_runtime.jsx)("p", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+				update && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
 					className: ContextBody_module_css_default.catalogNotice,
 					"data-context-catalog-update": true,
 					children: t("message.context.catalog.replaced")
 				}),
-				(0, react_jsx_runtime.jsx)("ul", {
+				/* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 					className: ContextBody_module_css_default.entries,
 					"data-context-entries": true,
-					children: shown.map((entry, index) => (0, react_jsx_runtime.jsxs)("li", {
+					children: shown.map((entry, index) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 						className: ContextBody_module_css_default.entry,
-						children: [(0, react_jsx_runtime.jsx)("code", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("code", {
 							className: ContextBody_module_css_default.entryName,
 							children: entry.name
-						}), (0, react_jsx_runtime.jsx)("span", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: ContextBody_module_css_default.entryDescription,
 							children: entry.description
 						})]
 					}, index))
 				}),
-				shown.length < entries.length && (0, react_jsx_runtime.jsx)("p", {
+				shown.length < entries.length && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
 					className: ContextBody_module_css_default.catalogNotice,
 					"data-context-entries-truncated": true,
 					children: t("message.context.catalog.more", { count: entries.length - shown.length })
 				}),
-				(0, react_jsx_runtime.jsx)(UnknownBlocks, {
+				/* @__PURE__ */ (0, react_jsx_runtime.jsx)(UnknownBlocks, {
 					blocks: rest,
 					t
 				})
@@ -4934,24 +4932,24 @@ window.__ModuleLoader__.load({
 		function SnapshotBody({ content, source, t }) {
 			const sections = snapshotSections(source);
 			/* v8 ignore next -- contextBody reads the sections before choosing this body. */
-			if (sections === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (sections === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
 			});
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("p", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
 				className: ContextBody_module_css_default.catalogNotice,
 				"data-context-snapshot-supersedes": true,
 				children: t("message.context.snapshot.supersedes")
-			}), (0, react_jsx_runtime.jsx)("dl", {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dl", {
 				className: ContextBody_module_css_default.sections,
 				"data-context-sections": true,
-				children: sections.map((section, index) => (0, react_jsx_runtime.jsxs)("div", {
+				children: sections.map((section, index) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ContextBody_module_css_default.section,
-					children: [(0, react_jsx_runtime.jsx)("dt", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", {
 						className: ContextBody_module_css_default.sectionName,
 						children: section.name
-					}), (0, react_jsx_runtime.jsx)("dd", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", {
 						className: ContextBody_module_css_default.sectionText,
 						children: boundedText(section.text, t)
 					})]
@@ -4967,7 +4965,7 @@ window.__ModuleLoader__.load({
 		* @returns The notice context body.
 		*/
 		function NoticeBody({ content, t }) {
-			return (0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
 			});
@@ -4983,16 +4981,16 @@ window.__ModuleLoader__.load({
 		function RelayBody({ content, source, t }) {
 			const sender = relaySender(source);
 			/* v8 ignore next -- contextBody resolves the sender before choosing this body. */
-			if (sender === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (sender === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
 			});
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("p", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
 				className: ContextBody_module_css_default.relaySender,
 				"data-context-relay-sender": true,
 				children: t("message.context.relay.from", { session: sender })
-			}), (0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
 			})] });
@@ -5037,35 +5035,35 @@ window.__ModuleLoader__.load({
 		*/
 		function RecallBody({ content, source, t }) {
 			const sessions = recalledSessions(source);
-			if (sessions === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (sessions === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
 			});
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("ul", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 				className: ContextBody_module_css_default.recalls,
 				"data-context-recalls": true,
-				children: sessions.map((session, index) => (0, react_jsx_runtime.jsxs)("li", {
+				children: sessions.map((session, index) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 					className: ContextBody_module_css_default.recall,
 					children: [
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: ContextBody_module_css_default.recallLabel,
 							children: session.label
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: ContextBody_module_css_default.recallCounts,
 							children: t("message.context.recall.counts", {
 								retained: session.retained,
 								omitted: session.omitted
 							})
 						}),
-						session.truncated && (0, react_jsx_runtime.jsx)("span", {
+						session.truncated && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: ContextBody_module_css_default.recallCounts,
 							children: t("message.context.recall.truncated")
 						})
 					]
 				}, index))
-			}), (0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
 			})] });
@@ -5091,41 +5089,41 @@ window.__ModuleLoader__.load({
 			const opaque = {
 				rendered: null,
 				summary: null,
-				body: (0, react_jsx_runtime.jsx)(OpaqueBody, { ...props })
+				body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, { ...props })
 			};
 			switch (form) {
 				case "instructions": return instructionChanges(props.source) === null ? opaque : {
 					rendered: "instructions",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(InstructionsBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(InstructionsBody, { ...props })
 				};
 				case "catalog": return catalogEntries(props.source) === null ? opaque : {
 					rendered: "catalog",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(CatalogBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CatalogBody, { ...props })
 				};
 				case "snapshot": return snapshotSections(props.source) === null ? opaque : {
 					rendered: "snapshot",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(SnapshotBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(SnapshotBody, { ...props })
 				};
 				case "notice": {
 					const summary = noticeSummary(props.source);
 					return summary === null ? opaque : {
 						rendered: "notice",
 						summary,
-						body: (0, react_jsx_runtime.jsx)(NoticeBody, { ...props })
+						body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(NoticeBody, { ...props })
 					};
 				}
 				case "relay": return relaySender(props.source) === null ? opaque : {
 					rendered: "relay",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(RelayBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(RelayBody, { ...props })
 				};
 				case "recall": return recalledSessions(props.source) === null ? opaque : {
 					rendered: "recall",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(RecallBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(RecallBody, { ...props })
 				};
 				case null: return opaque;
 				/* v8 ignore next 4 -- closed-union backstop; the compiler rejects a new
@@ -5134,8 +5132,8 @@ window.__ModuleLoader__.load({
 			}
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/ContextInjectionRow.module.css.mjs
-		const css$13 = ".dO1Paq_root{min-width:0}.dO1Paq_root[data-open]{padding-bottom:4px}.dO1Paq_chevron{color:var(--dsw-alias-label-secondary)}.dO1Paq_sep{background:var(--dsw-alias-label-caption);border-radius:1px;flex:none;width:2px;height:2px;margin:0 8px}.dO1Paq_source{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:none;font-size:14px;line-height:24px;overflow:hidden}.dO1Paq_summary{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:14px;line-height:24px;overflow:hidden}.dO1Paq_body{box-sizing:border-box;background:var(--dsw-alias-markdown-code-block);width:calc(100% - 22px);max-height:141px;color:var(--dsw-alias-label-tertiary);font:400 11px/16px var(--ds-font-family-code);border:none;border-radius:8px;margin:4px 0 0 22px;padding:10px 16px 12px 12px;overflow:auto}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/ContextInjectionRow.module.css.mjs
+		const css$13 = ".z9eBRW_root{min-width:0}.z9eBRW_root[data-open]{padding-bottom:4px}.z9eBRW_chevron{color:var(--dsw-alias-label-secondary)}.z9eBRW_sep{background:var(--dsw-alias-label-caption);border-radius:1px;flex:none;width:2px;height:2px;margin:0 8px}.z9eBRW_source{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:none;font-size:14px;line-height:24px;overflow:hidden}.z9eBRW_summary{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:14px;line-height:24px;overflow:hidden}.z9eBRW_body{box-sizing:border-box;background:var(--dsw-alias-markdown-code-block);width:calc(100% - 22px);max-height:141px;color:var(--dsw-alias-label-tertiary);font:400 11px/16px var(--ds-font-family-code);border:none;border-radius:8px;margin:4px 0 0 22px;padding:10px 16px 12px 12px;overflow:auto}";
 		const tagId$13 = "@deepseek-ai/dsh-client-ui-conversation/ContextInjectionRow.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$13) + "]") === null) {
 			const tag = document.createElement("style");
@@ -5145,15 +5143,15 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var ContextInjectionRow_module_css_default = {
-			"body": "dO1Paq_body",
-			"chevron": "dO1Paq_chevron",
-			"root": "dO1Paq_root",
-			"sep": "dO1Paq_sep",
-			"source": "dO1Paq_source",
-			"summary": "dO1Paq_summary"
+			"body": "z9eBRW_body",
+			"chevron": "z9eBRW_chevron",
+			"root": "z9eBRW_root",
+			"sep": "z9eBRW_sep",
+			"source": "z9eBRW_source",
+			"summary": "z9eBRW_summary"
 		};
 		//#endregion
-		//#region lib/types/client/chat/ContextInjectionRow.js
+		//#region src/client/chat/ContextInjectionRow.tsx
 		/**
 		* Render logged context with the Tool calls disclosure chrome from Figma.
 		*
@@ -5172,28 +5170,28 @@ window.__ModuleLoader__.load({
 				source,
 				t
 			});
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
 				className: ContextInjectionRow_module_css_default.root,
-				icon: provenance.role === "recall" ? (0, react_jsx_runtime.jsx)("span", {
+				icon: provenance.role === "recall" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					"data-context-recall-icon": true,
-					children: (0, react_jsx_runtime.jsx)(ReferenceIcon, { kind: "session" })
-				}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBrowseOutline16, { size: 14 }),
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ReferenceIcon, { kind: "session" })
+				}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBrowseOutline16, { size: 14 }),
 				chevronClassName: ContextInjectionRow_module_css_default.chevron,
 				title: t(provenance.role === "recall" ? "message.contextRecall" : "message.contextInjection"),
-				collapsedContent: provenance.label === null ? void 0 : (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
-					(0, react_jsx_runtime.jsx)("span", {
+				collapsedContent: provenance.label === null ? void 0 : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextInjectionRow_module_css_default.sep,
 						"aria-hidden": true
 					}),
-					(0, react_jsx_runtime.jsx)("span", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextInjectionRow_module_css_default.source,
 						"data-context-source": true,
 						children: provenance.label
 					}),
-					summary !== null && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+					summary !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextInjectionRow_module_css_default.sep,
 						"aria-hidden": true
-					}), (0, react_jsx_runtime.jsx)("span", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextInjectionRow_module_css_default.summary,
 						"data-context-summary": true,
 						children: summary
@@ -5206,7 +5204,7 @@ window.__ModuleLoader__.load({
 				onToggle: () => {
 					setOpen((value) => !value);
 				},
-				children: (0, react_jsx_runtime.jsx)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: ContextInjectionRow_module_css_default.body,
 					"data-context-injection-body": true,
 					"data-context-form": rendered ?? void 0,
@@ -5215,7 +5213,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/use-calendar-day.js
+		//#region src/client/chat/use-calendar-day.ts
 		/**
 		* Local calendar-day epoch that advances at each local midnight.
 		* @returns Midnight ms for the current local day; updates after the boundary.
@@ -5237,8 +5235,8 @@ window.__ModuleLoader__.load({
 			return day;
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/MessageIconActions.module.css.mjs
-		const css$12 = ".PDgzYq_actions{align-items:center;gap:10px;height:28px;display:flex}.PDgzYq_timeStart{color:var(--dsw-alias-label-tertiary);white-space:nowrap;padding-right:12px;font-size:14px;line-height:24px}.PDgzYq_timeEnd{color:var(--dsw-alias-label-tertiary);white-space:nowrap;padding-left:12px;font-size:14px;line-height:24px}.PDgzYq_runTimeDot{margin:0 10px}@media (hover:hover){[data-time-hover-root] :is(.PDgzYq_timeStart,.PDgzYq_timeEnd){opacity:0;transition:opacity 80ms}[data-time-hover-root]:hover :is(.PDgzYq_timeStart,.PDgzYq_timeEnd),[data-time-hover-root]:focus-within :is(.PDgzYq_timeStart,.PDgzYq_timeEnd){opacity:1}}.PDgzYq_action{width:28px;height:28px;color:var(--dsw-alias-label-tertiary);cursor:pointer;background:0 0;border:none;border-radius:28px;justify-content:center;align-items:center;padding:6px;display:inline-flex}.PDgzYq_action:hover{background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-secondary)}.PDgzYq_action[data-unavailable]{cursor:default;opacity:.4}.PDgzYq_action[data-unavailable]:hover{color:var(--dsw-alias-label-tertiary);background:0 0}.PDgzYq_visuallyHidden{clip:rect(0 0 0 0);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/MessageIconActions.module.css.mjs
+		const css$12 = ".OPrYuq_actions{align-items:center;gap:10px;height:28px;display:flex}.OPrYuq_timeStart{color:var(--dsw-alias-label-tertiary);white-space:nowrap;padding-right:12px;font-size:14px;line-height:24px}.OPrYuq_timeEnd{color:var(--dsw-alias-label-tertiary);white-space:nowrap;padding-left:12px;font-size:14px;line-height:24px}.OPrYuq_runTimeDot{margin:0 10px}@media (hover:hover){[data-time-hover-root] :is(.OPrYuq_timeStart,.OPrYuq_timeEnd){opacity:0;transition:opacity 80ms}[data-time-hover-root]:hover :is(.OPrYuq_timeStart,.OPrYuq_timeEnd),[data-time-hover-root]:focus-within :is(.OPrYuq_timeStart,.OPrYuq_timeEnd){opacity:1}}.OPrYuq_action{width:28px;height:28px;color:var(--dsw-alias-label-tertiary);cursor:pointer;background:0 0;border:none;border-radius:28px;justify-content:center;align-items:center;padding:6px;display:inline-flex}.OPrYuq_action:hover{background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-secondary)}.OPrYuq_action[data-unavailable]{cursor:default;opacity:.4}.OPrYuq_action[data-unavailable]:hover{color:var(--dsw-alias-label-tertiary);background:0 0}.OPrYuq_visuallyHidden{clip:rect(0 0 0 0);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}";
 		const tagId$12 = "@deepseek-ai/dsh-client-ui-conversation/MessageIconActions.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$12) + "]") === null) {
 			const tag = document.createElement("style");
@@ -5248,15 +5246,15 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var MessageIconActions_module_css_default = {
-			"action": "PDgzYq_action",
-			"actions": "PDgzYq_actions",
-			"runTimeDot": "PDgzYq_runTimeDot",
-			"timeEnd": "PDgzYq_timeEnd",
-			"timeStart": "PDgzYq_timeStart",
-			"visuallyHidden": "PDgzYq_visuallyHidden"
+			"action": "OPrYuq_action",
+			"actions": "OPrYuq_actions",
+			"runTimeDot": "OPrYuq_runTimeDot",
+			"timeEnd": "OPrYuq_timeEnd",
+			"timeStart": "OPrYuq_timeStart",
+			"visuallyHidden": "OPrYuq_visuallyHidden"
 		};
 		//#endregion
-		//#region lib/types/client/chat/MessageIconActions.js
+		//#region src/client/chat/MessageIconActions.tsx
 		/**
 		* Copy / branch (/ clock) IconActions row shared by user and assistant chrome.
 		* @param props - Copy text, event time, clock side, branch callback, className.
@@ -5289,13 +5287,13 @@ window.__ModuleLoader__.load({
 					}, 1e3);
 				});
 			}, [copied, text]);
-			const clockEl = time === void 0 ? null : (0, react_jsx_runtime.jsxs)("span", {
+			const clockEl = time === void 0 ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 				className: clock === "start" ? MessageIconActions_module_css_default.timeStart : MessageIconActions_module_css_default.timeEnd,
 				children: [
 					formatMessageClock(time, t, day),
-					runMs !== void 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+					runMs !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
 						" ",
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageIconActions_module_css_default.runTimeDot,
 							"aria-hidden": true,
 							children: "·"
@@ -5303,9 +5301,9 @@ window.__ModuleLoader__.load({
 						" ",
 						t("message.ranFor", { duration: formatRunDuration(runMs, t) })
 					] }),
-					ttftMs !== void 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+					ttftMs !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
 						" ",
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageIconActions_module_css_default.runTimeDot,
 							"aria-hidden": true,
 							children: "·"
@@ -5313,9 +5311,9 @@ window.__ModuleLoader__.load({
 						" ",
 						t("message.ttft", { seconds: formatLatencySeconds(ttftMs) })
 					] }),
-					tokensPerSecond !== void 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+					tokensPerSecond !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
 						" ",
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageIconActions_module_css_default.runTimeDot,
 							"aria-hidden": true,
 							children: "·"
@@ -5325,26 +5323,26 @@ window.__ModuleLoader__.load({
 					] })
 				]
 			});
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: className === void 0 ? MessageIconActions_module_css_default.actions : `${MessageIconActions_module_css_default.actions} ${className}`,
 				children: [
 					clock === "start" ? clockEl : null,
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 						label: copied ? t("copied") : t("copy"),
 						side: "bottom",
-						children: (0, react_jsx_runtime.jsx)("button", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 							type: "button",
 							className: MessageIconActions_module_css_default.action,
 							"aria-label": copied ? t("copied") : t("copy"),
 							onClick: onCopy,
-							children: copied ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, {}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCopyOutline16, {})
+							children: copied ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, {}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCopyOutline16, {})
 						})
 					}),
 					extraActions,
-					onBranch !== void 0 && (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+					onBranch !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 						label: branchUnavailable ? t("message.branchUnavailable") : t("message.branch"),
 						side: "bottom",
-						children: (0, react_jsx_runtime.jsx)("button", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 							type: "button",
 							className: MessageIconActions_module_css_default.action,
 							"aria-label": t("message.branch"),
@@ -5352,10 +5350,10 @@ window.__ModuleLoader__.load({
 							"aria-describedby": branchUnavailable ? reasonId : void 0,
 							"data-unavailable": branchUnavailable || void 0,
 							onClick: branchUnavailable ? void 0 : onBranch,
-							children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBranchOutline16, {})
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBranchOutline16, {})
 						})
 					}),
-					onBranch !== void 0 && branchUnavailable && (0, react_jsx_runtime.jsx)("span", {
+					onBranch !== void 0 && branchUnavailable && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						id: reasonId,
 						className: MessageIconActions_module_css_default.visuallyHidden,
 						children: t("message.branchUnavailable")
@@ -5365,7 +5363,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/MessageItem.js
+		//#region src/client/chat/MessageItem.tsx
 		const QUOTED_SELECTION_RE = /(?:^|[\t \r\n]+)(?:The following JSON[^\n]*\n)?<quoted_selection>\s*([\s\S]*?)\s*<\/quoted_selection>(?=[\t \r\n]|$)/gu;
 		/** Remove model-only selected-text envelopes while retaining a durable user-facing annotation. */
 		function extractQuotedSelections(text) {
@@ -5432,12 +5430,12 @@ window.__ModuleLoader__.load({
 			}, [active, deadline]);
 			const label = active ? t("message.retry.active") : node.retryState === "cancelled" ? t("message.retry.cancelled") : node.retryState === "started" ? t("message.retry.started") : t("message.retry.scheduled");
 			const seconds = active ? remainingSeconds : scheduledSeconds;
-			return (0, react_jsx_runtime.jsxs)("details", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("details", {
 				className: MessageItem_module_css_default.retryRow,
 				"data-active": active || void 0,
-				children: [(0, react_jsx_runtime.jsx)("summary", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("summary", {
 					className: MessageItem_module_css_default.retrySummary,
-					children: (0, react_jsx_runtime.jsx)("span", {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: MessageItem_module_css_default.retryText,
 						role: "status",
 						children: t("message.retry.status", {
@@ -5447,16 +5445,16 @@ window.__ModuleLoader__.load({
 							seconds
 						})
 					})
-				}), (0, react_jsx_runtime.jsxs)("div", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: MessageItem_module_css_default.retryDetails,
-					children: [(0, react_jsx_runtime.jsxs)("div", { children: [
-						(0, react_jsx_runtime.jsx)("span", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", { children: [
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.retryDetailLabel,
 							children: t("message.retry.delay")
 						}),
 						Math.round(node.delayMs),
 						"ms"
-					] }), (0, react_jsx_runtime.jsxs)("div", { children: [(0, react_jsx_runtime.jsx)("span", {
+					] }), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: MessageItem_module_css_default.retryDetailLabel,
 						children: t("message.retry.failure")
 					}), node.failure.message] })]
@@ -5465,25 +5463,25 @@ window.__ModuleLoader__.load({
 		}
 		/** Persistent, turn-positioned feedback for a terminal failure. */
 		function TurnErrorItem({ node, t }) {
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: MessageItem_module_css_default.turnErrorRow,
 				role: "status",
 				children: [
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, {
 						state: "error",
 						className: MessageItem_module_css_default.turnErrorDot
 					}),
-					(0, react_jsx_runtime.jsxs)("div", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						className: MessageItem_module_css_default.turnErrorCopy,
-						children: [(0, react_jsx_runtime.jsx)("span", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.turnErrorTitle,
 							children: t("message.turnError")
-						}), (0, react_jsx_runtime.jsx)("span", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.turnErrorMessage,
 							children: node.message
 						})]
 					}),
-					node.code !== void 0 && (0, react_jsx_runtime.jsx)("code", {
+					node.code !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("code", {
 						className: MessageItem_module_css_default.turnErrorCode,
 						children: node.code
 					})
@@ -5492,18 +5490,18 @@ window.__ModuleLoader__.load({
 		}
 		/** Persistent, turn-positioned notice for a turn ended at the output-token cap. */
 		function TurnMaxTokensItem({ t }) {
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: MessageItem_module_css_default.turnErrorRow,
 				role: "status",
-				children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, {
 					state: "warning",
 					className: MessageItem_module_css_default.turnErrorDot
-				}), (0, react_jsx_runtime.jsxs)("div", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: MessageItem_module_css_default.turnErrorCopy,
-					children: [(0, react_jsx_runtime.jsx)("span", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: MessageItem_module_css_default.maxTokensTitle,
 						children: t("message.maxTokens")
-					}), (0, react_jsx_runtime.jsx)("span", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: MessageItem_module_css_default.turnErrorMessage,
 						children: t("message.maxTokens.hint")
 					})]
@@ -5554,14 +5552,14 @@ window.__ModuleLoader__.load({
 			for (const range of ranges) {
 				if (range.start < cursor) continue;
 				const { start: tokenStart, end, label, kind } = range;
-				if (tokenStart > cursor) parts.push((0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MessageText, { text: text.slice(cursor, tokenStart) }, cursor));
+				if (tokenStart > cursor) parts.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MessageText, { text: text.slice(cursor, tokenStart) }, cursor));
 				const referenceKind = kind === "session" ? "session" : label.startsWith("@") ? label.endsWith("/") ? "folder" : "file" : void 0;
 				const displayLabel = referenceKind === void 0 ? label : referenceKind === "session" ? label.slice(1) : label.slice(1).replace(/^"|"$/gu, "").split(/[\\/]/u).filter(Boolean).at(-1) ?? label.slice(1);
-				parts.push((0, react_jsx_runtime.jsxs)("span", {
+				parts.push(/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 					className: MessageItem_module_css_default.refChip,
 					"data-ref-chip": referenceKind ?? "skill",
 					title: label,
-					children: [referenceKind !== void 0 && (0, react_jsx_runtime.jsx)(ReferenceIcon, {
+					children: [referenceKind !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ReferenceIcon, {
 						kind: referenceKind,
 						size: 16,
 						className: MessageItem_module_css_default.refIcon
@@ -5569,9 +5567,9 @@ window.__ModuleLoader__.load({
 				}, tokenStart));
 				cursor = end;
 			}
-			if (parts.length === 0) return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MessageText, { text });
-			if (cursor < text.length) parts.push((0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MessageText, { text: text.slice(cursor) }, cursor));
-			return (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: parts });
+			if (parts.length === 0) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MessageText, { text });
+			if (cursor < text.length) parts.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MessageText, { text: text.slice(cursor) }, cursor));
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: parts });
 		}
 		/** Right-aligned bubble shared by user and steering rows. */
 		function UserStyleBubble({ content, renderMessageImages, actions, pending, referenceLabels = [], messageSeq, t }) {
@@ -5579,7 +5577,7 @@ window.__ModuleLoader__.load({
 			const { text, selections } = extractQuotedSelections(rawText);
 			const truncated = (total) => t("json.truncated", { total });
 			const showBubble = text !== "" || selections.length > 0 || rest.length > 0;
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: MessageItem_module_css_default.userRow,
 				"data-pending-prompt": pending === "prompt" || void 0,
 				"data-pending-steering": pending === "steering" || void 0,
@@ -5587,23 +5585,23 @@ window.__ModuleLoader__.load({
 				"data-dsh-message": messageSeq === void 0 ? void 0 : "",
 				"data-dsh-message-role": messageSeq === void 0 ? void 0 : "user",
 				"data-dsh-message-seq": messageSeq,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: MessageItem_module_css_default.userStack,
 					children: [
 						renderMessageImages({
 							images,
 							align: "end"
 						}),
-						showBubble && (0, react_jsx_runtime.jsxs)("div", {
+						showBubble && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							className: MessageItem_module_css_default.bubble,
 							children: [
-								selections.length > 0 && (0, react_jsx_runtime.jsx)("div", {
+								selections.length > 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 									className: MessageItem_module_css_default.selectionReferences,
-									children: selections.map((selection, index) => (0, react_jsx_runtime.jsxs)("span", {
+									children: selections.map((selection, index) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 										className: MessageItem_module_css_default.selectionReference,
 										title: selection.selectedText,
 										children: [
-											(0, react_jsx_runtime.jsx)("span", {
+											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 												className: MessageItem_module_css_default.selectionMarker,
 												children: index + 1
 											}),
@@ -5613,14 +5611,14 @@ window.__ModuleLoader__.load({
 									}, index))
 								}),
 								text === "" ? null : projectUserText(text, referenceLabels),
-								rest.map((block, i) => (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+								rest.map((block, i) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 									label: t("message.extraBlock"),
 									payload: block,
 									truncatedLabel: truncated
 								}, i))
 							]
 						}),
-						referenceLabels.length > 0 && (0, react_jsx_runtime.jsx)("div", {
+						referenceLabels.length > 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: MessageItem_module_css_default.referenceSummary,
 							children: t("message.referenceSummary", { labels: referenceLabels.join(t("message.referenceSeparator")) })
 						})
@@ -5635,12 +5633,12 @@ window.__ModuleLoader__.load({
 		* @returns the pending steering bubble.
 		*/
 		function PendingSteeringBubble({ content, renderMessageImages, t }) {
-			return (0, react_jsx_runtime.jsx)(UserStyleBubble, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(UserStyleBubble, {
 				content,
 				renderMessageImages,
 				pending: "steering",
 				t,
-				actions: (text) => (0, react_jsx_runtime.jsx)(MessageIconActions, {
+				actions: (text) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(MessageIconActions, {
 					text,
 					clock: "start",
 					className: MessageItem_module_css_default.actions,
@@ -5651,7 +5649,7 @@ window.__ModuleLoader__.load({
 		/** Render a browser-local submission until its durable user/message event arrives. */
 		function OptimisticUserBubble({ message, renderMessageImages, t }) {
 			const textContent = message.content.flatMap((block) => block.type === "text" ? [block] : []);
-			return (0, react_jsx_runtime.jsx)(UserStyleBubble, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(UserStyleBubble, {
 				content: message.content.filter((block) => block.type === "image").length === 0 ? textContent : [...textContent, {
 					type: "text",
 					text: `${textContent.length === 0 ? "" : "\n"}${t("image.pending")}`
@@ -5659,7 +5657,7 @@ window.__ModuleLoader__.load({
 				renderMessageImages,
 				pending: "prompt",
 				t,
-				actions: (text) => (0, react_jsx_runtime.jsx)(MessageIconActions, {
+				actions: (text) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(MessageIconActions, {
 					text,
 					clock: "start",
 					className: MessageItem_module_css_default.actions,
@@ -5670,13 +5668,13 @@ window.__ModuleLoader__.load({
 		/** User and admitted-steering keyed Chat renderer. */
 		const UserMessageNodeView = (0, react.memo)(function UserMessageNodeView({ node, renderMessageImages, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)(UserStyleBubble, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(UserStyleBubble, {
 				content: data.content,
 				renderMessageImages,
 				...data.referenceLabels === void 0 ? {} : { referenceLabels: data.referenceLabels },
 				messageSeq: data.seq,
 				t,
-				actions: (text) => (0, react_jsx_runtime.jsx)(MessageIconActions, {
+				actions: (text) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(MessageIconActions, {
 					text,
 					time: data.time,
 					clock: "start",
@@ -5688,7 +5686,7 @@ window.__ModuleLoader__.load({
 		/** Injected-context keyed Chat renderer. */
 		const ContextMessageNodeView = (0, react.memo)(function ContextMessageNodeView({ node, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)(ContextInjectionRow, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ContextInjectionRow, {
 				content: data.content,
 				source: data.source,
 				provenance: data.provenance,
@@ -5698,7 +5696,7 @@ window.__ModuleLoader__.load({
 		});
 		/** Automatic compaction keyed Chat renderer. */
 		const CompactionNodeView = (0, react.memo)(function CompactionNodeView({ node, t }) {
-			return (0, react_jsx_runtime.jsx)(CompactionItem, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompactionItem, {
 				node: node.data,
 				t
 			});
@@ -5706,7 +5704,7 @@ window.__ModuleLoader__.load({
 		/** Correlated retry-chain keyed Chat renderer. */
 		const RetryNodeView = (0, react.memo)(function RetryNodeView({ node, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)(ModelRetryItem, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelRetryItem, {
 				node: data.current,
 				active: data.current.retryState === "scheduled",
 				t
@@ -5714,21 +5712,21 @@ window.__ModuleLoader__.load({
 		});
 		/** Terminal turn-error keyed Chat renderer. */
 		const TurnErrorNodeView = (0, react.memo)(function TurnErrorNodeView({ node, t }) {
-			return (0, react_jsx_runtime.jsx)(TurnErrorItem, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(TurnErrorItem, {
 				node: node.data,
 				t
 			});
 		});
 		/** Max-tokens turn-end notice keyed Chat renderer. */
 		const TurnMaxTokensNodeView = (0, react.memo)(function TurnMaxTokensNodeView({ t }) {
-			return (0, react_jsx_runtime.jsx)(TurnMaxTokensItem, { t });
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(TurnMaxTokensItem, { t });
 		});
 		/** Explicit unknown-surface keyed Chat renderer. */
 		const UnknownNodeView = (0, react.memo)(function UnknownNodeView({ node, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: MessageItem_module_css_default.contextRow,
-				children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 					label: t("message.unknownSurface", { type: data.type }),
 					payload: data.data,
 					truncatedLabel: (total) => t("json.truncated", { total })
@@ -5736,8 +5734,8 @@ window.__ModuleLoader__.load({
 			});
 		});
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/ChatView.module.css.mjs
-		const css$11 = ".MmKv_G_root{flex-direction:column;flex:auto;min-height:0;display:flex;position:relative}.MmKv_G_scroll{min-height:0;padding:16px calc(var(--dsh-composer-side-clearance) + 16px);flex:auto;overflow-y:auto;container-type:inline-size}[data-conversation-scroll] .MmKv_G_root{flex:none;height:auto;min-height:auto}[data-conversation-scroll] .MmKv_G_scroll{flex:none;min-height:auto;overflow:visible}.MmKv_G_column{max-width:var(--dsh-chat-content-width);flex-direction:column;gap:16px;width:100%;margin:0 auto;display:flex}.MmKv_G_flowItem{min-width:0}.MmKv_G_flowItem:empty{display:none}.MmKv_G_callRow{border-radius:6px}.MmKv_G_turnStatus{height:26px;font:var(--dsw-font-s-strong-14);white-space:nowrap;background:linear-gradient(90deg, var(--dsw-static-deepseek-500) 0%, var(--dsw-static-deepseek-500) 40%, var(--dsw-static-deepseek-200) 50%, var(--dsw-static-deepseek-500) 60%, var(--dsw-static-deepseek-500) 100%);color:#0000;-webkit-text-fill-color:transparent;background-position:100% 0;background-size:250% 100%;-webkit-background-clip:text;background-clip:text;flex:none;align-self:flex-start;align-items:center;animation:1.8s linear infinite MmKv_G_dsh-turn-status-shimmer;display:inline-flex}.MmKv_G_turnStatusClock{font:var(--dsw-font-xs-13);font-variant-numeric:tabular-nums;color:var(--dsw-alias-label-caption);-webkit-text-fill-color:var(--dsw-alias-label-caption);margin-left:8px;font-weight:400}@keyframes MmKv_G_dsh-turn-status-shimmer{to{background-position:0 0}}@media (prefers-reduced-motion:reduce){.MmKv_G_turnStatus{background-position:0 0;background-size:100% 100%;animation:none}}.MmKv_G_hint{color:var(--dsw-alias-label-tertiary);font-size:12px;line-height:18px}.MmKv_G_openError{color:var(--dsw-alias-state-error-primary);font-size:12px;line-height:18px}.MmKv_G_older{justify-content:center;display:flex}.MmKv_G_older button{color:var(--dsw-alias-label-secondary);background:var(--dsw-alias-interactive-bg-hover-solid);cursor:pointer;border:none;border-radius:14px;padding:4px 12px;font-size:12px}.MmKv_G_older button:disabled{cursor:default;opacity:.6}.MmKv_G_toBottomSlot{z-index:8;height:0;padding-right:max(0px, calc((100% - var(--dsh-chat-content-width)) / 2));pointer-events:none;justify-content:flex-end;display:flex;position:sticky;bottom:16px}[data-conversation-scroll] .MmKv_G_toBottomSlot{bottom:calc(var(--dsh-composer-height,152px) + 16px)}.MmKv_G_toBottom{border:1px solid var(--dsw-alias-border-l2);width:34px;height:34px;color:var(--dsw-alias-label-primary);background:var(--dsw-alias-button-floating-fill);box-shadow:var(--dsw-shadow-lv2);cursor:pointer;pointer-events:auto;border-radius:100px;justify-content:center;align-items:center;margin-top:-34px;padding:0;display:flex}.MmKv_G_toBottom:hover{background:var(--dsw-alias-button-floating-hover)}.MmKv_G_modalAction{min-width:72px}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/ChatView.module.css.mjs
+		const css$11 = "._69ynqq_root{flex-direction:column;flex:auto;min-height:0;display:flex;position:relative}._69ynqq_scroll{min-height:0;padding:16px calc(var(--dsh-composer-side-clearance) + 16px);flex:auto;overflow-y:auto;container-type:inline-size}[data-conversation-scroll] ._69ynqq_root{flex:none;height:auto;min-height:auto}[data-conversation-scroll] ._69ynqq_scroll{flex:none;min-height:auto;overflow:visible}._69ynqq_column{max-width:var(--dsh-chat-content-width);flex-direction:column;gap:16px;width:100%;margin:0 auto;display:flex}._69ynqq_flowItem{min-width:0}._69ynqq_flowItem:empty{display:none}._69ynqq_callRow{border-radius:6px}._69ynqq_turnStatus{height:26px;font:var(--dsw-font-s-strong-14);white-space:nowrap;background:linear-gradient(90deg, var(--dsw-static-deepseek-500) 0%, var(--dsw-static-deepseek-500) 40%, var(--dsw-static-deepseek-200) 50%, var(--dsw-static-deepseek-500) 60%, var(--dsw-static-deepseek-500) 100%);color:#0000;-webkit-text-fill-color:transparent;background-position:100% 0;background-size:250% 100%;-webkit-background-clip:text;background-clip:text;flex:none;align-self:flex-start;align-items:center;animation:1.8s linear infinite _69ynqq_dsh-turn-status-shimmer;display:inline-flex}._69ynqq_turnStatusClock{font:var(--dsw-font-xs-13);font-variant-numeric:tabular-nums;color:var(--dsw-alias-label-caption);-webkit-text-fill-color:var(--dsw-alias-label-caption);margin-left:8px;font-weight:400}@keyframes _69ynqq_dsh-turn-status-shimmer{to{background-position:0 0}}@media (prefers-reduced-motion:reduce){._69ynqq_turnStatus{background-position:0 0;background-size:100% 100%;animation:none}}._69ynqq_hint{color:var(--dsw-alias-label-tertiary);font-size:12px;line-height:18px}._69ynqq_openError{color:var(--dsw-alias-state-error-primary);font-size:12px;line-height:18px}._69ynqq_older{justify-content:center;display:flex}._69ynqq_older button{color:var(--dsw-alias-label-secondary);background:var(--dsw-alias-interactive-bg-hover-solid);cursor:pointer;border:none;border-radius:14px;padding:4px 12px;font-size:12px}._69ynqq_older button:disabled{cursor:default;opacity:.6}._69ynqq_toBottomSlot{z-index:8;height:0;padding-right:max(0px, calc((100% - var(--dsh-chat-content-width)) / 2));pointer-events:none;justify-content:flex-end;display:flex;position:sticky;bottom:16px}[data-conversation-scroll] ._69ynqq_toBottomSlot{bottom:calc(var(--dsh-composer-height,152px) + 16px)}._69ynqq_toBottom{border:1px solid var(--dsw-alias-border-l2);width:34px;height:34px;color:var(--dsw-alias-label-primary);background:var(--dsw-alias-button-floating-fill);box-shadow:var(--dsw-shadow-lv2);cursor:pointer;pointer-events:auto;border-radius:100px;justify-content:center;align-items:center;margin-top:-34px;padding:0;display:flex}._69ynqq_toBottom:hover{background:var(--dsw-alias-button-floating-hover)}._69ynqq_modalAction{min-width:72px}";
 		const tagId$11 = "@deepseek-ai/dsh-client-ui-conversation/ChatView.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$11) + "]") === null) {
 			const tag = document.createElement("style");
@@ -5747,23 +5745,23 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var ChatView_module_css_default = {
-			"callRow": "MmKv_G_callRow",
-			"column": "MmKv_G_column",
-			"dsh-turn-status-shimmer": "MmKv_G_dsh-turn-status-shimmer",
-			"flowItem": "MmKv_G_flowItem",
-			"hint": "MmKv_G_hint",
-			"modalAction": "MmKv_G_modalAction",
-			"older": "MmKv_G_older",
-			"openError": "MmKv_G_openError",
-			"root": "MmKv_G_root",
-			"scroll": "MmKv_G_scroll",
-			"toBottom": "MmKv_G_toBottom",
-			"toBottomSlot": "MmKv_G_toBottomSlot",
-			"turnStatus": "MmKv_G_turnStatus",
-			"turnStatusClock": "MmKv_G_turnStatusClock"
+			"callRow": "_69ynqq_callRow",
+			"column": "_69ynqq_column",
+			"dsh-turn-status-shimmer": "_69ynqq_dsh-turn-status-shimmer",
+			"flowItem": "_69ynqq_flowItem",
+			"hint": "_69ynqq_hint",
+			"modalAction": "_69ynqq_modalAction",
+			"older": "_69ynqq_older",
+			"openError": "_69ynqq_openError",
+			"root": "_69ynqq_root",
+			"scroll": "_69ynqq_scroll",
+			"toBottom": "_69ynqq_toBottom",
+			"toBottomSlot": "_69ynqq_toBottomSlot",
+			"turnStatus": "_69ynqq_turnStatus",
+			"turnStatusClock": "_69ynqq_turnStatusClock"
 		};
 		//#endregion
-		//#region lib/types/client/chat/ChatNodeSeat.js
+		//#region src/client/chat/ChatNodeSeat.tsx
 		/** Stable source identity owned by the conversation row, outside pluggable renderers. */
 		function messageAnchor(node) {
 			if (node.kind !== "assistant-step" || node.data.status === "running") return void 0;
@@ -5800,7 +5798,7 @@ window.__ModuleLoader__.load({
 				...owner,
 				node: routedNode
 			};
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ChatView_module_css_default.flowItem,
 				"data-chat-anchor-key": routedNode.key,
 				"data-chat-flow-key": routedNode.key,
@@ -5811,7 +5809,7 @@ window.__ModuleLoader__.load({
 				children: renderSlot("conversation.chat.node", routedOwner, {
 					entryKey: routedNode.kind,
 					hookContext: nodeKey,
-					fallback: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+					fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 						label: t("message.unknownSurface", { type: routedNode.kind }),
 						payload: routedNode.data,
 						truncatedLabel: (total) => t("json.truncated", { total })
@@ -5820,7 +5818,7 @@ window.__ModuleLoader__.load({
 			});
 		});
 		//#endregion
-		//#region lib/types/client/chat/ChatView.js
+		//#region src/client/chat/ChatView.tsx
 		const EMPTY_OPTIMISTIC_USER_MESSAGES = [];
 		/** Active column host when present; otherwise the view-local scroller. */
 		function scrollerOf(from) {
@@ -5904,11 +5902,11 @@ window.__ModuleLoader__.load({
 				};
 			}, [anchor]);
 			const showClock = elapsedMs >= 15e3;
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: ChatView_module_css_default.turnStatus,
 				role: "status",
 				"aria-live": "polite",
-				children: ["Deep diving...", showClock && (0, react_jsx_runtime.jsx)("span", {
+				children: ["Deep diving...", showClock && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					className: ChatView_module_css_default.turnStatusClock,
 					"aria-hidden": true,
 					children: formatRunDuration(elapsedMs, t)
@@ -6126,37 +6124,37 @@ window.__ModuleLoader__.load({
 				}
 				loadOlder();
 			};
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: ChatView_module_css_default.root,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					ref: listRef,
 					className: ChatView_module_css_default.scroll,
-					children: [(0, react_jsx_runtime.jsxs)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						ref: columnRef,
 						className: ChatView_module_css_default.column,
 						"data-chat-flow": "",
 						children: [
-							openState === "loading" && (0, react_jsx_runtime.jsx)("div", {
+							openState === "loading" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: ChatView_module_css_default.hint,
 								children: t("chat.loadingHistory")
 							}),
-							openState === "error" && openError !== null && (0, react_jsx_runtime.jsx)("div", {
+							openState === "error" && openError !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: ChatView_module_css_default.openError,
 								children: t("chat.loadError", {
 									message: openError.message,
 									code: openError.code
 								})
 							}),
-							hasMore && (0, react_jsx_runtime.jsx)("div", {
+							hasMore && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: ChatView_module_css_default.older,
-								children: (0, react_jsx_runtime.jsx)("button", {
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 									type: "button",
 									disabled: loadingOlder,
 									onClick: loadOlderAnchored,
 									children: loadingOlder ? t("loading") : t("chat.loadOlder")
 								})
 							}),
-							order.map((nodeKey) => (0, react_jsx_runtime.jsx)(ChatNodeSeat, {
+							order.map((nodeKey) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ChatNodeSeat, {
 								nodeKey,
 								useSession,
 								selectedCallId,
@@ -6169,24 +6167,24 @@ window.__ModuleLoader__.load({
 								renderSlot,
 								t
 							}, nodeKey)),
-							optimisticUserMessages.map((message) => (0, react_jsx_runtime.jsx)(OptimisticUserBubble, {
+							optimisticUserMessages.map((message) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OptimisticUserBubble, {
 								message,
 								renderMessageImages,
 								t
 							}, message.id)),
-							running && (0, react_jsx_runtime.jsx)(TurnStatus, {
+							running && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(TurnStatus, {
 								startTime: runningTurnStart,
 								t
 							}),
-							pendingSteering.map((item) => (0, react_jsx_runtime.jsx)(PendingSteeringBubble, {
+							pendingSteering.map((item) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(PendingSteeringBubble, {
 								content: item.content,
 								renderMessageImages,
 								t
 							}, item.id))
 						]
-					}), !atBottom && (0, react_jsx_runtime.jsx)("div", {
+					}), !atBottom && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: ChatView_module_css_default.toBottomSlot,
-						children: (0, react_jsx_runtime.jsx)("button", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 							type: "button",
 							className: ChatView_module_css_default.toBottom,
 							"aria-label": t("chat.toBottom"),
@@ -6195,10 +6193,10 @@ window.__ModuleLoader__.load({
 								/* v8 ignore next -- ref-null guard: the button only renders alongside the mounted list. */
 								if (local !== null) toBottom(scrollerOf(local));
 							},
-							children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
 						})
 					})]
-				}), fileOpenError !== null && (0, react_jsx_runtime.jsx)(FileOpenErrorDialog, {
+				}), fileOpenError !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(FileOpenErrorDialog, {
 					path: fileOpenError.path,
 					message: fileOpenError.message,
 					busy: fileOpenBusy,
@@ -6212,18 +6210,18 @@ window.__ModuleLoader__.load({
 		}
 		/** In-page Host open-path refusal: the wire reason plus a retry of the same path. */
 		function FileOpenErrorDialog({ path, message, busy, onClose, onRetry, t }) {
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Modal, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Modal, {
 				open: true,
 				onClose,
 				closeLabel: t("close"),
 				title: t(isFolderOpenPath(path) ? "fileOpen.folderTitle" : "fileOpen.title"),
 				description: message,
-				footer: (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+				footer: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
 					variant: "outline",
 					className: ChatView_module_css_default.modalAction,
 					onClick: onClose,
 					children: t("cancel")
-				}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
 					variant: "primary",
 					className: ChatView_module_css_default.modalAction,
 					disabled: busy,
@@ -6233,7 +6231,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/contract/slots.js
+		//#region src/client/contract/slots.ts
 		/**
 		* Approval domain face over the carrier (the ui-user-questions PendingQuestion
 		* pattern): render identity and question material forwarded transparently;
@@ -6284,7 +6282,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/chat/tool-node-reader.js
+		//#region src/client/chat/tool-node-reader.ts
 		function toolNode(node) {
 			return node?.kind === "tool-call" ? node : void 0;
 		}
@@ -6319,8 +6317,8 @@ window.__ModuleLoader__.load({
 			}
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/skeleton/ApprovalPanel.module.css.mjs
-		const css$10 = ".GhkIaq_root{padding:8px calc(var(--dsh-composer-side-clearance) + 16px) 12px;flex-direction:column;align-items:center;display:flex}.GhkIaq_card{width:100%;max-width:var(--dsh-chat-content-width);border:1px solid var(--dsw-alias-state-warn-secondary);background:var(--dsw-specific-input-major);box-shadow:var(--dsw-shadow-lv2);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:20px;overflow:hidden}.GhkIaq_strip{background:var(--dsw-alias-state-warn-tertiary);color:var(--dsw-alias-state-warn-primary);align-items:center;gap:8px;padding:10px 16px;font-size:13px;line-height:18px;display:flex}.GhkIaq_dot{background:var(--dsw-alias-state-warn-primary);border-radius:50%;width:8px;height:8px}.GhkIaq_body{box-sizing:border-box;max-height:var(--dsh-composer-text-max-height);flex-direction:column;gap:6px;padding:12px 16px 0;display:flex;overflow-y:auto}.GhkIaq_headline{color:var(--dsw-alias-label-primary);font-size:15px;font-weight:500;line-height:24px}.GhkIaq_command{color:var(--dsw-alias-label-tertiary);font-family:var(--ds-font-family-code);word-break:break-all;font-size:13px;line-height:20px}.GhkIaq_actionRow{justify-content:flex-end;gap:8px;padding:14px 16px;display:flex}.GhkIaq_reject:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover-danger);color:var(--dsw-alias-state-error-primary);border-color:#0000}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/skeleton/ApprovalPanel.module.css.mjs
+		const css$10 = "._8kMPbq_root{padding:8px calc(var(--dsh-composer-side-clearance) + 16px) 12px;flex-direction:column;align-items:center;display:flex}._8kMPbq_card{width:100%;max-width:var(--dsh-chat-content-width);border:1px solid var(--dsw-alias-state-warn-secondary);background:var(--dsw-specific-input-major);box-shadow:var(--dsw-shadow-lv2);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:20px;overflow:hidden}._8kMPbq_strip{background:var(--dsw-alias-state-warn-tertiary);color:var(--dsw-alias-state-warn-primary);align-items:center;gap:8px;padding:10px 16px;font-size:13px;line-height:18px;display:flex}._8kMPbq_dot{background:var(--dsw-alias-state-warn-primary);border-radius:50%;width:8px;height:8px}._8kMPbq_body{box-sizing:border-box;max-height:var(--dsh-composer-text-max-height);flex-direction:column;gap:6px;padding:12px 16px 0;display:flex;overflow-y:auto}._8kMPbq_headline{color:var(--dsw-alias-label-primary);font-size:15px;font-weight:500;line-height:24px}._8kMPbq_command{color:var(--dsw-alias-label-tertiary);font-family:var(--ds-font-family-code);word-break:break-all;font-size:13px;line-height:20px}._8kMPbq_actionRow{justify-content:flex-end;gap:8px;padding:14px 16px;display:flex}._8kMPbq_reject:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover-danger);color:var(--dsw-alias-state-error-primary);border-color:#0000}";
 		const tagId$10 = "@deepseek-ai/dsh-client-ui-conversation/ApprovalPanel.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$10) + "]") === null) {
 			const tag = document.createElement("style");
@@ -6330,18 +6328,18 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var ApprovalPanel_module_css_default = {
-			"actionRow": "GhkIaq_actionRow",
-			"body": "GhkIaq_body",
-			"card": "GhkIaq_card",
-			"command": "GhkIaq_command",
-			"dot": "GhkIaq_dot",
-			"headline": "GhkIaq_headline",
-			"reject": "GhkIaq_reject",
-			"root": "GhkIaq_root",
-			"strip": "GhkIaq_strip"
+			"actionRow": "_8kMPbq_actionRow",
+			"body": "_8kMPbq_body",
+			"card": "_8kMPbq_card",
+			"command": "_8kMPbq_command",
+			"dot": "_8kMPbq_dot",
+			"headline": "_8kMPbq_headline",
+			"reject": "_8kMPbq_reject",
+			"root": "_8kMPbq_root",
+			"strip": "_8kMPbq_strip"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/ApprovalPanel.js
+		//#region src/client/skeleton/ApprovalPanel.tsx
 		/** Extract the shell command from an approval's paired running call (bash-family args carry `command`); undefined hides the line. */
 		function commandOf(call) {
 			if (call === void 0) return void 0;
@@ -6367,7 +6365,7 @@ window.__ModuleLoader__.load({
 				if (root === void 0) return void 0;
 				return root.callId === approval.callId && !("kind" in root) ? commandOf(root) : void 0;
 			});
-			return (0, react_jsx_runtime.jsx)(ApprovalFlow, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ApprovalFlow, {
 				pending: approval,
 				t: props.t,
 				...command === void 0 ? {} : { command }
@@ -6381,33 +6379,33 @@ window.__ModuleLoader__.load({
 					setAnswered(false);
 				});
 			};
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ApprovalPanel_module_css_default.root,
 				"data-approval-key": pending.key,
-				children: (0, react_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ApprovalPanel_module_css_default.card,
 					children: [
-						(0, react_jsx_runtime.jsxs)("div", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							className: ApprovalPanel_module_css_default.strip,
-							children: [(0, react_jsx_runtime.jsx)("span", { className: ApprovalPanel_module_css_default.dot }), t("approval.waiting")]
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", { className: ApprovalPanel_module_css_default.dot }), t("approval.waiting")]
 						}),
-						(0, react_jsx_runtime.jsxs)("div", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							className: ApprovalPanel_module_css_default.body,
 							"data-approval-scroll": "",
 							tabIndex: 0,
 							role: "group",
 							"aria-label": t("approval.detail.aria"),
-							children: [(0, react_jsx_runtime.jsx)("div", {
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: ApprovalPanel_module_css_default.headline,
 								children: pending.reason ?? t("approval.escalation", { toolName: pending.toolName })
-							}), command !== void 0 && (0, react_jsx_runtime.jsx)("div", {
+							}), command !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: ApprovalPanel_module_css_default.command,
 								children: command
 							})]
 						}),
-						(0, react_jsx_runtime.jsxs)("div", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							className: ApprovalPanel_module_css_default.actionRow,
-							children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
 								variant: "outline",
 								className: ApprovalPanel_module_css_default.reject,
 								disabled: answered,
@@ -6415,7 +6413,7 @@ window.__ModuleLoader__.load({
 									answer("rejected");
 								},
 								children: t("approval.reject")
-							}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+							}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
 								variant: "primary",
 								disabled: answered,
 								onClick: () => {
@@ -6429,7 +6427,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/locales.js
+		//#region src/client/locales.ts
 		/** `conversation` namespace dictionaries. */
 		/** Dictionary namespace owned by this plugin. */
 		const NS = "conversation";
@@ -6792,8 +6790,8 @@ window.__ModuleLoader__.load({
 			"clock.ymd": "{y}-{m}-{d}"
 		};
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/skeleton/TodoPanel.module.css.mjs
-		const css$9 = ".NKZS6G_root{box-sizing:border-box;width:calc(100% - var(--dsh-composer-side-clearance) - var(--dsh-composer-side-clearance) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));max-width:calc(var(--dsh-composer-card-max-width) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));border:1px solid var(--dsw-alias-border-l1);background:var(--dsw-specific-tip);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:12px;flex:none;margin:0 auto;overflow:hidden}.NKZS6G_body{flex-direction:column;gap:8px;padding:6px 12px;display:flex}.NKZS6G_header{text-align:left;cursor:pointer;background:0 0;border:none;align-items:center;gap:10px;width:100%;padding:0;display:flex}.NKZS6G_lead{color:var(--dsw-alias-label-tertiary);flex:none;place-items:center;display:grid}.NKZS6G_title{color:var(--dsw-alias-label-primary);flex:none;font-size:13px;font-weight:500;line-height:24px}.NKZS6G_progress{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:13px;font-weight:400;line-height:20px;overflow:hidden}.NKZS6G_chevron{color:var(--dsw-alias-label-tertiary);flex:none;place-items:center;display:grid}.NKZS6G_list{flex-direction:column;gap:8px;max-height:180px;margin:0;padding:0;list-style:none;display:flex;overflow-y:auto}.NKZS6G_item{min-width:0;color:var(--dsw-alias-label-secondary);align-items:center;gap:10px;font-size:13px;line-height:20px;display:flex}.NKZS6G_glyph{flex:none;place-items:center;width:16px;height:16px;display:grid}.NKZS6G_glyphCompleted{color:var(--dsw-alias-state-success-primary)}.NKZS6G_glyphPending{color:var(--dsw-alias-label-caption)}.NKZS6G_glyphProgress{color:var(--dsw-alias-state-business-primary);animation:1s linear infinite NKZS6G_todo-progress-spin}@keyframes NKZS6G_todo-progress-spin{to{transform:rotate(360deg)}}.NKZS6G_content{text-overflow:ellipsis;white-space:nowrap;min-width:0;overflow:hidden}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/skeleton/TodoPanel.module.css.mjs
+		const css$9 = ".b3lcZa_root{box-sizing:border-box;width:calc(100% - var(--dsh-composer-side-clearance) - var(--dsh-composer-side-clearance) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));max-width:calc(var(--dsh-composer-card-max-width) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));border:1px solid var(--dsw-alias-border-l1);background:var(--dsw-specific-tip);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:12px;flex:none;margin:0 auto;overflow:hidden}.b3lcZa_body{flex-direction:column;gap:8px;padding:6px 12px;display:flex}.b3lcZa_header{text-align:left;cursor:pointer;background:0 0;border:none;align-items:center;gap:10px;width:100%;padding:0;display:flex}.b3lcZa_lead{color:var(--dsw-alias-label-tertiary);flex:none;place-items:center;display:grid}.b3lcZa_title{color:var(--dsw-alias-label-primary);flex:none;font-size:13px;font-weight:500;line-height:24px}.b3lcZa_progress{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:13px;font-weight:400;line-height:20px;overflow:hidden}.b3lcZa_chevron{color:var(--dsw-alias-label-tertiary);flex:none;place-items:center;display:grid}.b3lcZa_list{flex-direction:column;gap:8px;max-height:180px;margin:0;padding:0;list-style:none;display:flex;overflow-y:auto}.b3lcZa_item{min-width:0;color:var(--dsw-alias-label-secondary);align-items:center;gap:10px;font-size:13px;line-height:20px;display:flex}.b3lcZa_glyph{flex:none;place-items:center;width:16px;height:16px;display:grid}.b3lcZa_glyphCompleted{color:var(--dsw-alias-state-success-primary)}.b3lcZa_glyphPending{color:var(--dsw-alias-label-caption)}.b3lcZa_glyphProgress{color:var(--dsw-alias-state-business-primary);animation:1s linear infinite b3lcZa_todo-progress-spin}@keyframes b3lcZa_todo-progress-spin{to{transform:rotate(360deg)}}.b3lcZa_content{text-overflow:ellipsis;white-space:nowrap;min-width:0;overflow:hidden}";
 		const tagId$9 = "@deepseek-ai/dsh-client-ui-conversation/TodoPanel.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$9) + "]") === null) {
 			const tag = document.createElement("style");
@@ -6803,24 +6801,24 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var TodoPanel_module_css_default = {
-			"body": "NKZS6G_body",
-			"chevron": "NKZS6G_chevron",
-			"content": "NKZS6G_content",
-			"glyph": "NKZS6G_glyph",
-			"glyphCompleted": "NKZS6G_glyphCompleted",
-			"glyphPending": "NKZS6G_glyphPending",
-			"glyphProgress": "NKZS6G_glyphProgress",
-			"header": "NKZS6G_header",
-			"item": "NKZS6G_item",
-			"lead": "NKZS6G_lead",
-			"list": "NKZS6G_list",
-			"progress": "NKZS6G_progress",
-			"root": "NKZS6G_root",
-			"title": "NKZS6G_title",
-			"todo-progress-spin": "NKZS6G_todo-progress-spin"
+			"body": "b3lcZa_body",
+			"chevron": "b3lcZa_chevron",
+			"content": "b3lcZa_content",
+			"glyph": "b3lcZa_glyph",
+			"glyphCompleted": "b3lcZa_glyphCompleted",
+			"glyphPending": "b3lcZa_glyphPending",
+			"glyphProgress": "b3lcZa_glyphProgress",
+			"header": "b3lcZa_header",
+			"item": "b3lcZa_item",
+			"lead": "b3lcZa_lead",
+			"list": "b3lcZa_list",
+			"progress": "b3lcZa_progress",
+			"root": "b3lcZa_root",
+			"title": "b3lcZa_title",
+			"todo-progress-spin": "b3lcZa_todo-progress-spin"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/TodoPanel.js
+		//#region src/client/skeleton/TodoPanel.tsx
 		/** Local exhaustiveness helper — client packages do not depend on `dsh-llm`. */
 		/* v8 ignore next 3 -- closed-union backstop; only reached if status is forged */
 		function assertNever(value) {
@@ -6828,20 +6826,20 @@ window.__ModuleLoader__.load({
 		}
 		/** Status glyphs share the figma 14×14 artboard; the 16×16 `.glyph` cell centers them. */
 		function CompletedGlyph() {
-			return (0, react_jsx_runtime.jsxs)("svg", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: 14,
 				height: 14,
 				viewBox: "0 0 14 14",
 				fill: "none",
 				"aria-hidden": "true",
 				className: TodoPanel_module_css_default.glyphCompleted,
-				children: [(0, react_jsx_runtime.jsx)("circle", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 					cx: "7",
 					cy: "7",
 					r: "6.4",
 					stroke: "currentColor",
 					strokeWidth: "1.2"
-				}), (0, react_jsx_runtime.jsx)("path", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 					d: "M10.9631 5.71411L7.70154 8.97571C7.48011 9.19714 7.27736 9.40099 7.09229 9.54993C6.89742 9.70669 6.66314 9.85279 6.3634 9.90027C6.2049 9.92534 6.04339 9.92534 5.88489 9.90027C5.58515 9.85279 5.35087 9.70669 5.15601 9.54993C4.97093 9.40099 4.76818 9.19714 4.54675 8.97571L3.03516 7.46411L3.96313 6.53613L5.47473 8.04773C5.7169 8.28989 5.86196 8.43389 5.97888 8.52795C6.08597 8.61409 6.10875 8.60701 6.08997 8.604C6.11259 8.60758 6.13571 8.60758 6.15833 8.604C6.13954 8.60701 6.16232 8.61409 6.26941 8.52795C6.38633 8.43389 6.53139 8.28989 6.77356 8.04773L10.0352 4.78613L10.9631 5.71411Z",
 					fill: "currentColor"
 				})]
@@ -6850,26 +6848,26 @@ window.__ModuleLoader__.load({
 		/** In-progress: business-blue ring fading out; CSS spins the svg. */
 		function ProgressGlyph() {
 			const gradientId = (0, react.useId)();
-			return (0, react_jsx_runtime.jsxs)("svg", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: 14,
 				height: 14,
 				viewBox: "0 0 14 14",
 				fill: "none",
 				"aria-hidden": "true",
 				className: TodoPanel_module_css_default.glyphProgress,
-				children: [(0, react_jsx_runtime.jsx)("defs", { children: (0, react_jsx_runtime.jsxs)("linearGradient", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("linearGradient", {
 					id: gradientId,
 					x1: "2.5",
 					y1: "12",
 					x2: "10.5",
 					y2: "3.5",
 					gradientUnits: "userSpaceOnUse",
-					children: [(0, react_jsx_runtime.jsx)("stop", { stopColor: "currentColor" }), (0, react_jsx_runtime.jsx)("stop", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("stop", { stopColor: "currentColor" }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("stop", {
 						offset: "1",
 						stopColor: "currentColor",
 						stopOpacity: "0"
 					})]
-				}) }), (0, react_jsx_runtime.jsx)("circle", {
+				}) }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 					cx: "7",
 					cy: "7",
 					r: "6.4",
@@ -6880,14 +6878,14 @@ window.__ModuleLoader__.load({
 		}
 		/** Pending: dashed unstarted ring (figma dash 2.4 2.4). */
 		function PendingGlyph() {
-			return (0, react_jsx_runtime.jsx)("svg", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 				width: 14,
 				height: 14,
 				viewBox: "0 0 14 14",
 				fill: "none",
 				"aria-hidden": "true",
 				className: TodoPanel_module_css_default.glyphPending,
-				children: (0, react_jsx_runtime.jsx)("circle", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 					cx: "7",
 					cy: "7",
 					r: "6.4",
@@ -6899,9 +6897,9 @@ window.__ModuleLoader__.load({
 		}
 		function StatusGlyph({ status }) {
 			switch (status) {
-				case "completed": return (0, react_jsx_runtime.jsx)(CompletedGlyph, {});
-				case "in_progress": return (0, react_jsx_runtime.jsx)(ProgressGlyph, {});
-				case "pending": return (0, react_jsx_runtime.jsx)(PendingGlyph, {});
+				case "completed": return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompletedGlyph, {});
+				case "in_progress": return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ProgressGlyph, {});
+				case "pending": return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(PendingGlyph, {});
 				/* v8 ignore next -- closed TodoItem status union */
 				default: return assertNever(status);
 			}
@@ -6920,13 +6918,13 @@ window.__ModuleLoader__.load({
 		function TodoPanel({ todos, t }) {
 			const [collapsed, setCollapsed] = (0, react.useState)(true);
 			if (todos.length === 0) return null;
-			return (0, react_jsx_runtime.jsx)("section", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("section", {
 				className: TodoPanel_module_css_default.root,
 				"data-testid": "todo-panel",
 				"aria-label": t("todo.title"),
-				children: (0, react_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: TodoPanel_module_css_default.body,
-					children: [(0, react_jsx_runtime.jsxs)("button", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 						type: "button",
 						className: TodoPanel_module_css_default.header,
 						"aria-expanded": !collapsed,
@@ -6934,35 +6932,35 @@ window.__ModuleLoader__.load({
 							setCollapsed((v) => !v);
 						},
 						children: [
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.lead,
 								"aria-hidden": true,
-								children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChecklistOutline14, {})
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChecklistOutline14, {})
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.title,
 								children: t("todo.title")
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.progress,
 								children: progressLabel(todos, t)
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.chevron,
 								"aria-hidden": true,
-								children: collapsed ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronUpOutline14, {}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
+								children: collapsed ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronUpOutline14, {}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
 							})
 						]
-					}), !collapsed && (0, react_jsx_runtime.jsx)("ul", {
+					}), !collapsed && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 						className: TodoPanel_module_css_default.list,
-						children: todos.map((item) => (0, react_jsx_runtime.jsxs)("li", {
+						children: todos.map((item) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 							className: TodoPanel_module_css_default.item,
 							"data-status": item.status,
-							children: [(0, react_jsx_runtime.jsx)("span", {
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.glyph,
 								"aria-hidden": true,
-								children: (0, react_jsx_runtime.jsx)(StatusGlyph, { status: item.status })
-							}), (0, react_jsx_runtime.jsx)("span", {
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(StatusGlyph, { status: item.status })
+							}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.content,
 								children: item.content
 							})]
@@ -6973,7 +6971,7 @@ window.__ModuleLoader__.load({
 		}
 		/** Dock adapter: reads the host-computed 'todos' projection (whole list; absent or null renders nothing). */
 		function TodoDock({ useProjection, t }) {
-			return (0, react_jsx_runtime.jsx)(TodoPanel, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(TodoPanel, {
 				todos: useProjection("todos") ?? [],
 				t
 			});
@@ -6999,8 +6997,8 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/queue/QueueDock.module.css.mjs
-		const css$8 = "._4n5WFG_dock{box-sizing:border-box;width:calc(100% - var(--dsh-composer-side-clearance) - var(--dsh-composer-side-clearance) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));max-width:calc(var(--dsh-composer-card-max-width) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));margin:0 auto calc(0px - var(--dsh-composer-stack-gap) - 3px);padding:0 var(--dsh-composer-dock-inset);flex:none}._4n5WFG_panel{background:var(--dsw-specific-tip);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:12px 12px 0 0;width:100%;padding:2px 0;position:relative;overflow:hidden}._4n5WFG_panel:after{border:1px solid var(--dsw-alias-border-l1);border-radius:inherit;content:\"\";pointer-events:none;border-bottom:none;position:absolute;inset:0}._4n5WFG_header{box-sizing:border-box;width:100%;height:36px;color:var(--dsw-alias-label-primary);text-align:left;cursor:pointer;background:0 0;border:none;border-radius:8px;align-items:center;gap:10px;padding:4px 12px;display:flex}._4n5WFG_header:focus-visible{outline:2px solid var(--dsw-alias-label-tertiary);outline-offset:-2px}._4n5WFG_header:disabled{cursor:default}._4n5WFG_lead{color:var(--dsw-alias-label-tertiary);flex:none;place-items:center;display:grid}._4n5WFG_count{min-width:0;font-family:Inter, var(--dsw-font-family);flex:auto;font-size:13px;font-weight:500;line-height:24px}._4n5WFG_chevron{width:14px;height:14px;color:var(--dsw-alias-label-tertiary);flex:none;place-items:center;display:grid}._4n5WFG_list{max-height:180px;margin:0;padding:0;list-style:none;overflow-y:auto}._4n5WFG_row{box-sizing:border-box;border-radius:8px;align-items:center;gap:10px;width:100%;height:36px;padding:4px 5px 4px 12px;display:flex}._4n5WFG_row+._4n5WFG_row{box-shadow:inset 0 1px 0 var(--dsw-alias-border-l1)}._4n5WFG_preview,._4n5WFG_editor{min-width:0;font:var(--dsw-font-xs-13);font-family:Inter, var(--dsw-font-family);flex:auto}._4n5WFG_preview{color:var(--dsw-alias-label-primary-dimmed);text-overflow:ellipsis;white-space:nowrap;word-break:break-word;overflow:hidden}._4n5WFG_editor{box-sizing:border-box;border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-base);height:28px;color:var(--dsw-alias-label-primary);border-radius:6px;outline:none;padding:0 8px}._4n5WFG_editor:focus{border-color:var(--dsw-alias-state-business-primary)}._4n5WFG_actions{flex:none;align-items:center;gap:10px;display:flex}._4n5WFG_action{width:28px;height:28px;color:var(--dsw-alias-label-tertiary);cursor:pointer;background:0 0;border:none;border-radius:999px;flex:none;place-items:center;padding:0;display:grid}._4n5WFG_action:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}._4n5WFG_action:focus-visible{outline:2px solid var(--dsw-alias-label-tertiary);outline-offset:-2px}._4n5WFG_action:disabled{cursor:default;opacity:.45}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/queue/QueueDock.module.css.mjs
+		const css$8 = ".J8Nr1G_dock{box-sizing:border-box;width:calc(100% - var(--dsh-composer-side-clearance) - var(--dsh-composer-side-clearance) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));max-width:calc(var(--dsh-composer-card-max-width) - var(--dsh-composer-dock-inset) - var(--dsh-composer-dock-inset));margin:0 auto calc(0px - var(--dsh-composer-stack-gap) - 3px);padding:0 var(--dsh-composer-dock-inset);flex:none}.J8Nr1G_panel{background:var(--dsw-specific-tip);--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:12px 12px 0 0;width:100%;padding:2px 0;position:relative;overflow:hidden}.J8Nr1G_panel:after{border:1px solid var(--dsw-alias-border-l1);border-radius:inherit;content:\"\";pointer-events:none;border-bottom:none;position:absolute;inset:0}.J8Nr1G_header{box-sizing:border-box;width:100%;height:36px;color:var(--dsw-alias-label-primary);text-align:left;cursor:pointer;background:0 0;border:none;border-radius:8px;align-items:center;gap:10px;padding:4px 12px;display:flex}.J8Nr1G_header:focus-visible{outline:2px solid var(--dsw-alias-label-tertiary);outline-offset:-2px}.J8Nr1G_header:disabled{cursor:default}.J8Nr1G_lead{color:var(--dsw-alias-label-tertiary);flex:none;place-items:center;display:grid}.J8Nr1G_count{min-width:0;font-family:Inter, var(--dsw-font-family);flex:auto;font-size:13px;font-weight:500;line-height:24px}.J8Nr1G_chevron{width:14px;height:14px;color:var(--dsw-alias-label-tertiary);flex:none;place-items:center;display:grid}.J8Nr1G_list{max-height:240px;margin:0;padding:0;list-style:none;overflow-y:auto}.J8Nr1G_row{box-sizing:border-box;border-radius:8px;align-items:center;gap:10px;width:100%;min-height:36px;padding:4px 5px 4px 12px;display:flex}.J8Nr1G_row+.J8Nr1G_row{box-shadow:inset 0 1px 0 var(--dsw-alias-border-l1)}.J8Nr1G_preview,.J8Nr1G_editor{min-width:0;font:var(--dsw-font-xs-13);font-family:Inter, var(--dsw-font-family);flex:auto}.J8Nr1G_preview{color:var(--dsw-alias-label-primary-dimmed);-webkit-line-clamp:3;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;-webkit-box-orient:vertical;display:-webkit-box;overflow:hidden}.J8Nr1G_editor{box-sizing:border-box;border:1px solid var(--dsw-alias-border-l2);resize:none;background:var(--dsw-alias-bg-base);min-height:48px;max-height:120px;color:var(--dsw-alias-label-primary);white-space:pre-wrap;border-radius:6px;outline:none;padding:5px 8px;overflow-y:auto}.J8Nr1G_editor:focus{border-color:var(--dsw-alias-state-business-primary)}.J8Nr1G_actions{flex:none;align-items:center;gap:10px;display:flex}.J8Nr1G_action{width:28px;height:28px;color:var(--dsw-alias-label-tertiary);cursor:pointer;background:0 0;border:none;border-radius:999px;flex:none;place-items:center;padding:0;display:grid}.J8Nr1G_action:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.J8Nr1G_action:focus-visible{outline:2px solid var(--dsw-alias-label-tertiary);outline-offset:-2px}.J8Nr1G_action:disabled{cursor:default;opacity:.45}";
 		const tagId$8 = "@deepseek-ai/dsh-client-ui-conversation/QueueDock.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$8) + "]") === null) {
 			const tag = document.createElement("style");
@@ -7010,21 +7008,21 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var QueueDock_module_css_default = {
-			"action": "_4n5WFG_action",
-			"actions": "_4n5WFG_actions",
-			"chevron": "_4n5WFG_chevron",
-			"count": "_4n5WFG_count",
-			"dock": "_4n5WFG_dock",
-			"editor": "_4n5WFG_editor",
-			"header": "_4n5WFG_header",
-			"lead": "_4n5WFG_lead",
-			"list": "_4n5WFG_list",
-			"panel": "_4n5WFG_panel",
-			"preview": "_4n5WFG_preview",
-			"row": "_4n5WFG_row"
+			"action": "J8Nr1G_action",
+			"actions": "J8Nr1G_actions",
+			"chevron": "J8Nr1G_chevron",
+			"count": "J8Nr1G_count",
+			"dock": "J8Nr1G_dock",
+			"editor": "J8Nr1G_editor",
+			"header": "J8Nr1G_header",
+			"lead": "J8Nr1G_lead",
+			"list": "J8Nr1G_list",
+			"panel": "J8Nr1G_panel",
+			"preview": "J8Nr1G_preview",
+			"row": "J8Nr1G_row"
 		};
 		//#endregion
-		//#region lib/types/client/queue/QueueDock.js
+		//#region src/client/queue/QueueDock.tsx
 		/**
 		* Queue strip: one item renders directly; multiple items default to a
 		* collapsible count header; an empty queue renders nothing.
@@ -7073,12 +7071,12 @@ window.__ModuleLoader__.load({
 					}]
 				}, t("queue.editFailed"))) setEditing(null);
 			};
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: QueueDock_module_css_default.dock,
 				"data-queue-dock": "",
-				children: (0, react_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: QueueDock_module_css_default.panel,
-					children: [queue.length > 1 && (0, react_jsx_runtime.jsxs)("button", {
+					children: [queue.length > 1 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 						type: "button",
 						className: QueueDock_module_css_default.header,
 						"aria-controls": listId,
@@ -7088,36 +7086,37 @@ window.__ModuleLoader__.load({
 							setCollapsed((value) => !value);
 						},
 						children: [
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: QueueDock_module_css_default.lead,
 								"aria-hidden": true,
-								children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: QueueDock_module_css_default.count,
 								children: t("queue.count", { n: queue.length })
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: QueueDock_module_css_default.chevron,
 								"aria-hidden": true,
-								children: expanded ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronUpOutline14, {})
+								children: expanded ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronUpOutline14, {})
 							})
 						]
-					}), (0, react_jsx_runtime.jsx)("ul", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 						id: listId,
 						className: QueueDock_module_css_default.list,
 						hidden: !listVisible,
-						children: listVisible && queue.map((row) => (0, react_jsx_runtime.jsxs)("li", {
+						children: listVisible && queue.map((row) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 							className: QueueDock_module_css_default.row,
 							children: [
-								queue.length === 1 && (0, react_jsx_runtime.jsx)("span", {
+								queue.length === 1 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: QueueDock_module_css_default.lead,
 									"aria-hidden": true,
-									children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
+									children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
 								}),
-								editing?.id === row.id ? (0, react_jsx_runtime.jsx)("input", {
+								editing?.id === row.id ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("textarea", {
 									autoFocus: true,
 									className: QueueDock_module_css_default.editor,
+									rows: 2,
 									"aria-label": t("queue.edit"),
 									value: editing.text,
 									onChange: (event) => {
@@ -7131,22 +7130,22 @@ window.__ModuleLoader__.load({
 											setEditing(null);
 											return;
 										}
-										if (event.key === "Enter" && !event.nativeEvent.isComposing) {
+										if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
 											event.preventDefault();
 											saveEdit();
 										}
 									}
-								}) : (0, react_jsx_runtime.jsx)("span", {
+								}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: QueueDock_module_css_default.preview,
 									children: row.preview
 								}),
-								queueMutable && (0, react_jsx_runtime.jsx)("div", {
+								queueMutable && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 									className: QueueDock_module_css_default.actions,
-									children: editing?.id === row.id ? (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+									children: editing?.id === row.id ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 										label: t("queue.save"),
 										side: "bottom",
 										delayMs: 500,
-										children: (0, react_jsx_runtime.jsx)("button", {
+										children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 											type: "button",
 											className: QueueDock_module_css_default.action,
 											"aria-label": t("queue.save"),
@@ -7154,13 +7153,13 @@ window.__ModuleLoader__.load({
 											onClick: () => {
 												saveEdit();
 											},
-											children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, { size: 14 })
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, { size: 14 })
 										})
-									}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+									}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 										label: t("queue.cancelEdit"),
 										side: "bottom",
 										delayMs: 500,
-										children: (0, react_jsx_runtime.jsx)("button", {
+										children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 											type: "button",
 											className: QueueDock_module_css_default.action,
 											"aria-label": t("queue.cancelEdit"),
@@ -7168,15 +7167,15 @@ window.__ModuleLoader__.load({
 											onClick: () => {
 												setEditing(null);
 											},
-											children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCloseOutline16, { size: 14 })
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCloseOutline16, { size: 14 })
 										})
-									})] }) : (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
-										(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+									})] }) : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: t("queue.edit"),
 											side: "bottom",
 											delayMs: 500,
 											disabled: row.text === null,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: QueueDock_module_css_default.action,
 												"aria-label": t("queue.edit"),
@@ -7188,14 +7187,14 @@ window.__ModuleLoader__.load({
 														text: row.text
 													});
 												},
-												children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconEditOutline16, { size: 14 })
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconEditOutline16, { size: 14 })
 											})
 										}),
-										(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: t("queue.remove"),
 											side: "bottom",
 											delayMs: 500,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: QueueDock_module_css_default.action,
 												"aria-label": t("queue.remove"),
@@ -7203,15 +7202,15 @@ window.__ModuleLoader__.load({
 												onClick: () => {
 													applyAction(row.id, { kind: "remove" }, t("queue.removeFailed"));
 												},
-												children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTrashOutline16, { size: 14 })
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTrashOutline16, { size: 14 })
 											})
 										}),
-										(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: t("queue.steer"),
 											side: "bottom",
 											delayMs: 500,
 											disabled: !running,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: QueueDock_module_css_default.action,
 												"aria-label": t("queue.steer"),
@@ -7220,7 +7219,7 @@ window.__ModuleLoader__.load({
 												onClick: () => {
 													applyAction(row.id, { kind: "steer" }, t("queue.steerFailed"));
 												},
-												children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconSendOutline14, {})
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconSendOutline14, {})
 											})
 										})
 									] })
@@ -7268,8 +7267,8 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/skeleton/HeroShell.module.css.mjs
-		const css$7 = "._2XuQzq_root{justify-content:center;align-items:center;min-width:0;height:100%;padding:0 24px;display:flex}._2XuQzq_stack{width:100%;max-width:var(--dsh-composer-card-max-width);flex-direction:column;align-items:stretch;gap:12px;display:flex;overflow:visible}._2XuQzq_headline{color:var(--dsw-alias-label-primary);grid-template-columns:34px auto auto;justify-content:center;align-items:center;column-gap:10px;font-size:26px;font-weight:500;line-height:32px;display:grid}._2XuQzq_headlineText{grid-area:1/2}._2XuQzq_previewBadge{border:1px solid var(--dsw-alias-interactive-bg-hover);background:var(--dsw-alias-state-business-tertiary);color:var(--dsw-alias-label-primary-bluish);font-family:var(--ds-font-family-code);white-space:nowrap;border-radius:24px;grid-area:1/3;align-self:start;margin-top:2px;margin-left:-3px;padding:1px 7px 0;font-size:12px;font-weight:500;line-height:18px}._2XuQzq_fishHitbox{grid-area:1/1;justify-content:center;align-items:center;display:inline-flex}._2XuQzq_fish{color:var(--dsw-alias-label-primary);transform-origin:50% 60%}@keyframes _2XuQzq_hero-fish-swim{0%,to{transform:translate(0)rotate(0)}35%{transform:translate(-1px,-1px)rotate(-5deg)}70%{transform:translate(1px)rotate(3deg)}}@media (hover:hover) and (prefers-reduced-motion:no-preference){._2XuQzq_fishHitbox:hover ._2XuQzq_fish{animation:_2XuQzq_hero-fish-swim var(--ds-transition-duration-slow) var(--ds-ease-in-out)}}._2XuQzq_body{flex-direction:column;gap:12px;min-width:0;display:flex;position:relative;overflow:visible}._2XuQzq_body>*{z-index:1;position:relative}._2XuQzq_body>._2XuQzq_workspaceRow{z-index:10;align-items:center;min-width:0;padding-left:8px;display:flex}._2XuQzq_workspace{max-width:min(100%,360px);min-height:28px;color:var(--dsw-alias-label-primary);cursor:pointer;background:0 0;border:none;border-radius:16px;align-items:center;gap:4px;padding:0 8px;font-size:13px;font-weight:500;line-height:20px;display:inline-flex}._2XuQzq_workspace:not(:disabled):hover,._2XuQzq_workspace[aria-expanded=true]{background:var(--dsw-alias-interactive-bg-hover)}._2XuQzq_workspace:disabled{cursor:default}._2XuQzq_folder{color:var(--dsw-alias-label-primary);flex:none}._2XuQzq_workspaceLabel{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}._2XuQzq_chevron{color:var(--dsw-alias-label-caption);flex:none}._2XuQzq_modalInput{box-sizing:border-box;border:1px solid var(--dsw-alias-border-l2);width:100%;height:44px;color:var(--dsw-alias-label-primary);background:0 0;border-radius:22px;outline:none;padding:7px 14px;font-size:14px;font-weight:400;line-height:22px}._2XuQzq_modalInput::placeholder{color:var(--dsw-alias-label-caption)}._2XuQzq_modalInput:disabled{color:var(--dsw-alias-label-dimmed)}._2XuQzq_modalAction{min-width:72px}._2XuQzq_modalError{color:var(--dsw-alias-state-error-primary);margin-top:8px;font-size:12px;line-height:18px}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/skeleton/HeroShell.module.css.mjs
+		const css$7 = ".HJMhcW_root{justify-content:center;align-items:center;min-width:0;height:100%;padding:0 24px;display:flex}.HJMhcW_stack{width:100%;max-width:var(--dsh-composer-card-max-width);flex-direction:column;align-items:stretch;gap:12px;display:flex;overflow:visible}.HJMhcW_headline{color:var(--dsw-alias-label-primary);grid-template-columns:34px auto auto;justify-content:center;align-items:center;column-gap:10px;font-size:26px;font-weight:500;line-height:32px;display:grid}.HJMhcW_headlineText{grid-area:1/2}.HJMhcW_previewBadge{border:1px solid var(--dsw-alias-interactive-bg-hover);background:var(--dsw-alias-state-business-tertiary);color:var(--dsw-alias-label-primary-bluish);font-family:var(--ds-font-family-code);white-space:nowrap;border-radius:24px;grid-area:1/3;align-self:start;margin-top:2px;margin-left:-3px;padding:1px 7px 0;font-size:12px;font-weight:500;line-height:18px}.HJMhcW_fishHitbox{grid-area:1/1;justify-content:center;align-items:center;display:inline-flex}.HJMhcW_fish{color:var(--dsw-alias-label-primary);transform-origin:50% 60%}@keyframes HJMhcW_hero-fish-swim{0%,to{transform:translate(0)rotate(0)}35%{transform:translate(-1px,-1px)rotate(-5deg)}70%{transform:translate(1px)rotate(3deg)}}@media (hover:hover) and (prefers-reduced-motion:no-preference){.HJMhcW_fishHitbox:hover .HJMhcW_fish{animation:HJMhcW_hero-fish-swim var(--ds-transition-duration-slow) var(--ds-ease-in-out)}}.HJMhcW_body{flex-direction:column;gap:12px;min-width:0;display:flex;position:relative;overflow:visible}.HJMhcW_body>*{z-index:1;position:relative}.HJMhcW_body>.HJMhcW_workspaceRow{z-index:10;align-items:center;min-width:0;padding-left:8px;display:flex}.HJMhcW_workspace{max-width:min(100%,360px);min-height:28px;color:var(--dsw-alias-label-primary);cursor:pointer;background:0 0;border:none;border-radius:16px;align-items:center;gap:4px;padding:0 8px;font-size:13px;font-weight:500;line-height:20px;display:inline-flex}.HJMhcW_workspace:not(:disabled):hover,.HJMhcW_workspace[aria-expanded=true]{background:var(--dsw-alias-interactive-bg-hover)}.HJMhcW_workspace:disabled{cursor:default}.HJMhcW_folder{color:var(--dsw-alias-label-primary);flex:none}.HJMhcW_workspaceLabel{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.HJMhcW_chevron{color:var(--dsw-alias-label-caption);flex:none}.HJMhcW_modalInput{box-sizing:border-box;border:1px solid var(--dsw-alias-border-l2);width:100%;height:44px;color:var(--dsw-alias-label-primary);background:0 0;border-radius:22px;outline:none;padding:7px 14px;font-size:14px;font-weight:400;line-height:22px}.HJMhcW_modalInput::placeholder{color:var(--dsw-alias-label-caption)}.HJMhcW_modalInput:disabled{color:var(--dsw-alias-label-dimmed)}.HJMhcW_modalAction{min-width:72px}.HJMhcW_modalError{color:var(--dsw-alias-state-error-primary);margin-top:8px;font-size:12px;line-height:18px}";
 		const tagId$7 = "@deepseek-ai/dsh-client-ui-conversation/HeroShell.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$7) + "]") === null) {
 			const tag = document.createElement("style");
@@ -7279,26 +7278,26 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var HeroShell_module_css_default = {
-			"body": "_2XuQzq_body",
-			"chevron": "_2XuQzq_chevron",
-			"fish": "_2XuQzq_fish",
-			"fishHitbox": "_2XuQzq_fishHitbox",
-			"folder": "_2XuQzq_folder",
-			"headline": "_2XuQzq_headline",
-			"headlineText": "_2XuQzq_headlineText",
-			"hero-fish-swim": "_2XuQzq_hero-fish-swim",
-			"modalAction": "_2XuQzq_modalAction",
-			"modalError": "_2XuQzq_modalError",
-			"modalInput": "_2XuQzq_modalInput",
-			"previewBadge": "_2XuQzq_previewBadge",
-			"root": "_2XuQzq_root",
-			"stack": "_2XuQzq_stack",
-			"workspace": "_2XuQzq_workspace",
-			"workspaceLabel": "_2XuQzq_workspaceLabel",
-			"workspaceRow": "_2XuQzq_workspaceRow"
+			"body": "HJMhcW_body",
+			"chevron": "HJMhcW_chevron",
+			"fish": "HJMhcW_fish",
+			"fishHitbox": "HJMhcW_fishHitbox",
+			"folder": "HJMhcW_folder",
+			"headline": "HJMhcW_headline",
+			"headlineText": "HJMhcW_headlineText",
+			"hero-fish-swim": "HJMhcW_hero-fish-swim",
+			"modalAction": "HJMhcW_modalAction",
+			"modalError": "HJMhcW_modalError",
+			"modalInput": "HJMhcW_modalInput",
+			"previewBadge": "HJMhcW_previewBadge",
+			"root": "HJMhcW_root",
+			"stack": "HJMhcW_stack",
+			"workspace": "HJMhcW_workspace",
+			"workspaceLabel": "HJMhcW_workspaceLabel",
+			"workspaceRow": "HJMhcW_workspaceRow"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/EmptyHero.js
+		//#region src/client/skeleton/EmptyHero.tsx
 		/**
 		* Basename label for the workspace chip (the shared derivation);
 		* separator-only paths echo the raw cwd.
@@ -7321,7 +7320,7 @@ window.__ModuleLoader__.load({
 		* @returns the chip button element.
 		*/
 		function WorkspaceChip({ buttonRef, label, menuOpen = false, onClick, t }) {
-			return (0, react_jsx_runtime.jsxs)("button", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 				ref: buttonRef,
 				type: "button",
 				className: HeroShell_module_css_default.workspace,
@@ -7330,18 +7329,18 @@ window.__ModuleLoader__.load({
 				"aria-expanded": menuOpen,
 				onClick,
 				children: [
-					label === void 0 ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderClose16, {
+					label === void 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderClose16, {
 						className: HeroShell_module_css_default.folder,
 						size: 16
-					}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderOpen16, {
+					}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderOpen16, {
 						className: HeroShell_module_css_default.folder,
 						size: 16
 					}),
-					(0, react_jsx_runtime.jsx)("span", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: HeroShell_module_css_default.workspaceLabel,
 						children: label ?? t("hero.chooseWorkspace")
 					}),
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {
 						className: HeroShell_module_css_default.chevron,
 						size: 12
 					})
@@ -7357,12 +7356,12 @@ window.__ModuleLoader__.load({
 		*/
 		function HeroGlow({ className }) {
 			const glowFilterId = `empty-glow-${(0, react.useId)().replace(/:/g, "")}`;
-			return (0, react_jsx_runtime.jsxs)("svg", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				className,
 				viewBox: "0 0 1051 468",
 				fill: "none",
 				"aria-hidden": "true",
-				children: [(0, react_jsx_runtime.jsx)("defs", { children: (0, react_jsx_runtime.jsxs)("filter", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("filter", {
 					id: glowFilterId,
 					x: "0",
 					y: "0",
@@ -7371,24 +7370,24 @@ window.__ModuleLoader__.load({
 					filterUnits: "userSpaceOnUse",
 					colorInterpolationFilters: "sRGB",
 					children: [
-						(0, react_jsx_runtime.jsx)("feFlood", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("feFlood", {
 							floodOpacity: "0",
 							result: "BackgroundImageFix"
 						}),
-						(0, react_jsx_runtime.jsx)("feBlend", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("feBlend", {
 							mode: "normal",
 							in: "SourceGraphic",
 							in2: "BackgroundImageFix",
 							result: "shape"
 						}),
-						(0, react_jsx_runtime.jsx)("feGaussianBlur", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("feGaussianBlur", {
 							stdDeviation: "50",
 							result: "effect1_foregroundBlur"
 						})
 					]
-				}) }), (0, react_jsx_runtime.jsx)("g", {
+				}) }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("g", {
 					filter: `url(#${glowFilterId})`,
-					children: (0, react_jsx_runtime.jsx)("ellipse", {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("ellipse", {
 						cx: "525.5",
 						cy: "234",
 						rx: "425.5",
@@ -7406,39 +7405,39 @@ window.__ModuleLoader__.load({
 		* @returns the centered hero element tree.
 		*/
 		function HeroShell({ t, renderSlot, children }) {
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: HeroShell_module_css_default.root,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: HeroShell_module_css_default.stack,
-					children: [(0, react_jsx_runtime.jsxs)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						className: HeroShell_module_css_default.headline,
 						children: [
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: HeroShell_module_css_default.fishHitbox,
 								children: renderSlot("conversation.hero.brand.mark", {
 									size: 34,
 									className: HeroShell_module_css_default.fish
-								}, { fallback: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.FishLogo, {
+								}, { fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.FishLogo, {
 									size: 34,
 									className: HeroShell_module_css_default.fish
 								}) })
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: HeroShell_module_css_default.headlineText,
 								children: t("hero.headline")
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: HeroShell_module_css_default.previewBadge,
 								children: t("hero.preview")
 							})
 						]
-					}), (0, react_jsx_runtime.jsx)("div", { className: HeroShell_module_css_default.body })]
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", { className: HeroShell_module_css_default.body })]
 				}), children]
 			});
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/skeleton/ConversationRoot.module.css.mjs
-		const css$6 = ".N0_2Ca_root{background:var(--dsw-alias-bg-base);--dsh-chat-content-width:748px;--dsh-composer-card-max-width:calc(var(--dsh-chat-content-width) + 32px);--dsh-composer-side-clearance:16px;--dsh-composer-dock-inset:8px;flex-direction:column;min-width:0;height:100%;display:flex}.N0_2Ca_workspaceFrame{flex:1;min-width:0;min-height:0;display:flex;position:relative;container-type:inline-size}.N0_2Ca_conversationColumn{flex-direction:column;flex:auto;min-width:min(360px,50%);min-height:0;display:flex;container-type:inline-size}.N0_2Ca_composerDock{display:contents}.N0_2Ca_root[data-embedded-pane],html[data-dsh-split-panes=true] .N0_2Ca_root{--dsh-chat-content-width:100%;--dsh-composer-side-clearance:10px}.N0_2Ca_root[data-embedded-pane] .N0_2Ca_conversationColumn,.N0_2Ca_workspaceFrame:has([data-multi-pane-group]) .N0_2Ca_conversationColumn{flex:1 1 0;min-width:0}.N0_2Ca_root[data-embedded-pane] .N0_2Ca_header{padding-right:44px}html[data-dsh-split-panes=true] .N0_2Ca_headerActions,html[data-dsh-split-panes=true] .N0_2Ca_headerUtilities,html[data-dsh-split-panes=true] .N0_2Ca_composerDock{display:none}html[data-dsh-split-panes=true] [data-computer-use-workspace]{display:none}.N0_2Ca_header{border-bottom:1px solid #0000;flex:none;padding:12px 28px 0 20px;position:relative}.N0_2Ca_header:after{content:\"\";z-index:0;background:var(--dsw-alias-border-l2);pointer-events:none;height:1px;position:absolute;bottom:1px;left:0;right:0}.N0_2Ca_headerHidden{display:none}.N0_2Ca_titleRow{align-items:center;gap:0;min-height:32px;display:flex}.N0_2Ca_titleCluster{--dsh-session-header-action-color:var(--dsw-alias-label-secondary);--dsh-session-header-action-hover-color:var(--dsw-alias-label-primary);--dsh-session-header-action-font-size:12px;--dsh-session-header-action-font-weight:400;--dsh-session-header-action-line-height:18px;flex:1;align-items:center;gap:10px;min-width:0;display:flex}.N0_2Ca_crumbs{white-space:nowrap;align-items:center;gap:4px;min-width:0;display:flex;overflow:hidden}.N0_2Ca_crumbSeg{align-items:center;gap:4px;min-width:0;display:inline-flex}.N0_2Ca_crumbSep{color:var(--dsw-alias-label-caption);font-size:14px;line-height:20px}.N0_2Ca_crumb{max-width:220px;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;cursor:pointer;background:0 0;border:none;border-radius:12px;padding:4px 8px;font-size:14px;line-height:20px;overflow:hidden}.N0_2Ca_crumbSubagent{font-size:12px;line-height:18px}.N0_2Ca_crumb:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.N0_2Ca_crumbCurrent{color:var(--dsw-alias-label-primary);cursor:default;font-weight:500}.N0_2Ca_headerActions{flex:none;align-items:center;gap:8px;display:flex}.N0_2Ca_headerUtilities{flex:none;align-items:center;gap:8px;margin-left:20px;display:flex}.N0_2Ca_headerUtilities:empty{display:none}@container (width<=520px){.N0_2Ca_header{padding:8px 12px 0}.N0_2Ca_titleRow{flex-direction:column;align-items:stretch;gap:2px}.N0_2Ca_titleCluster,.N0_2Ca_headerUtilities{width:100%}.N0_2Ca_headerUtilities{gap:4px;margin-left:0;overflow:hidden}.N0_2Ca_crumb{max-width:152px;padding-inline:4px}.N0_2Ca_tabs{gap:24px;margin-top:2px}}.N0_2Ca_tabs{z-index:1;gap:36px;margin-top:4px;padding-left:8px;display:flex;position:relative}.N0_2Ca_tab{color:var(--dsw-alias-label-tertiary);cursor:pointer;background:0 0;border:none;padding:0 0 11px;font-size:13px;font-weight:500;line-height:16px;position:relative}.N0_2Ca_tab:after{content:\"\";background:0 0;border-radius:2px;height:2px;position:absolute;bottom:1px;left:0;right:0}.N0_2Ca_tabActive{color:var(--dsw-alias-state-business-primary)}.N0_2Ca_tabActive:after{background:var(--dsw-alias-state-business-primary)}.N0_2Ca_viewArea{flex-direction:column;flex:1;min-height:0;display:flex}.N0_2Ca_composerStack{--dsh-composer-stack-gap:6px;gap:var(--dsh-composer-stack-gap);flex-direction:column;display:flex}.N0_2Ca_composerSeat{--dsh-composer-text-max-height:336px;flex-direction:column;flex:none;display:flex}.N0_2Ca_root[data-phase=active]{overflow:hidden}.N0_2Ca_root[data-phase=active] .N0_2Ca_header{flex:none}.N0_2Ca_scrollBody{scrollbar-gutter:stable;flex-direction:column;flex:1;min-height:0;display:flex;overflow:hidden auto}.N0_2Ca_root[data-phase=active] .N0_2Ca_viewArea{flex:1 0 auto;min-height:auto}.N0_2Ca_root[data-phase=active] .N0_2Ca_composerSeat{z-index:7;background:linear-gradient(180deg, color-mix(in srgb, var(--dsw-alias-bg-base) 0%, transparent) 0px, var(--dsw-alias-bg-base) 36px);position:sticky;bottom:0}.N0_2Ca_scrollBody:has([data-conversation-composer-overlay]){scrollbar-gutter:auto;position:relative;overflow:hidden auto}.N0_2Ca_scrollBody:has([data-conversation-composer-overlay])>[data-slot=conversation\\.session]>.N0_2Ca_viewArea{flex:1 1 0;min-height:0;overflow:hidden}.N0_2Ca_scrollBody:has([data-conversation-composer-overlay])>.N0_2Ca_composerSeat{right:var(--dsh-scrollbar-width);position:absolute;bottom:0;left:0}.N0_2Ca_composerHero{width:min(calc(var(--dsh-composer-card-max-width) + 2 * var(--dsh-composer-side-clearance)), 100%);z-index:1;align-self:center;gap:8px;padding-bottom:32px;position:relative}.N0_2Ca_heroGlow{z-index:-1;aspect-ratio:1051/468;pointer-events:none;width:135.438%;position:absolute;bottom:92px;left:50%;transform:translate(-50%,50%)}.N0_2Ca_heroWorkspaceRow{align-items:center;gap:2px;min-width:0;margin-top:4px;padding-left:20px;display:flex}.N0_2Ca_root[data-phase=hero] .N0_2Ca_scrollBody{justify-content:center;overflow-y:auto}.N0_2Ca_root[data-phase=settling] .N0_2Ca_composerSeat{visibility:hidden}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/skeleton/ConversationRoot.module.css.mjs
+		const css$6 = ".X3p44q_root{background:var(--dsw-alias-bg-base);--dsh-chat-content-width:748px;--dsh-composer-card-max-width:calc(var(--dsh-chat-content-width) + 32px);--dsh-composer-side-clearance:16px;--dsh-composer-dock-inset:8px;flex-direction:column;min-width:0;height:100%;display:flex}.X3p44q_workspaceFrame{flex:1;min-width:0;min-height:0;display:flex;position:relative;container-type:inline-size}.X3p44q_conversationColumn{flex-direction:column;flex:auto;min-width:min(360px,50%);min-height:0;display:flex;container-type:inline-size}.X3p44q_composerDock{display:contents}.X3p44q_root[data-embedded-pane],html[data-dsh-split-panes=true] .X3p44q_root{--dsh-chat-content-width:100%;--dsh-composer-side-clearance:10px}.X3p44q_root[data-embedded-pane] .X3p44q_conversationColumn,.X3p44q_workspaceFrame:has([data-multi-pane-group]) .X3p44q_conversationColumn{flex:1 1 0;min-width:0}.X3p44q_root[data-embedded-pane] .X3p44q_header{padding-right:44px}html[data-dsh-split-panes=true] .X3p44q_headerActions,html[data-dsh-split-panes=true] .X3p44q_headerUtilities,html[data-dsh-split-panes=true] .X3p44q_composerDock{display:none}html[data-dsh-split-panes=true] [data-computer-use-workspace]{display:none}.X3p44q_header{border-bottom:1px solid #0000;flex:none;padding:12px 28px 0 20px;position:relative}.X3p44q_header:after{content:\"\";z-index:0;background:var(--dsw-alias-border-l2);pointer-events:none;height:1px;position:absolute;bottom:1px;left:0;right:0}.X3p44q_headerHidden{display:none}.X3p44q_titleRow{align-items:center;gap:0;min-height:32px;display:flex}.X3p44q_titleCluster{--dsh-session-header-action-color:var(--dsw-alias-label-secondary);--dsh-session-header-action-hover-color:var(--dsw-alias-label-primary);--dsh-session-header-action-font-size:12px;--dsh-session-header-action-font-weight:400;--dsh-session-header-action-line-height:18px;flex:1;align-items:center;gap:10px;min-width:0;display:flex}.X3p44q_crumbs{white-space:nowrap;align-items:center;gap:4px;min-width:0;display:flex;overflow:hidden}.X3p44q_crumbSeg{align-items:center;gap:4px;min-width:0;display:inline-flex}.X3p44q_crumbSep{color:var(--dsw-alias-label-caption);font-size:14px;line-height:20px}.X3p44q_crumb{max-width:220px;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;cursor:pointer;background:0 0;border:none;border-radius:12px;padding:4px 8px;font-size:14px;line-height:20px;overflow:hidden}.X3p44q_crumbSubagent{font-size:12px;line-height:18px}.X3p44q_crumb:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.X3p44q_crumbCurrent{color:var(--dsw-alias-label-primary);cursor:default;font-weight:500}.X3p44q_headerActions{flex:none;align-items:center;gap:8px;display:flex}.X3p44q_headerUtilities{flex:none;align-items:center;gap:8px;margin-left:20px;display:flex}.X3p44q_headerUtilities:empty{display:none}@container (width<=520px){.X3p44q_header{padding:8px 12px 0}.X3p44q_titleRow{flex-direction:column;align-items:stretch;gap:2px}.X3p44q_titleCluster,.X3p44q_headerUtilities{width:100%}.X3p44q_headerUtilities{gap:4px;margin-left:0;overflow:hidden}.X3p44q_crumb{max-width:152px;padding-inline:4px}.X3p44q_tabs{gap:24px;margin-top:2px}}.X3p44q_tabs{z-index:1;gap:36px;margin-top:4px;padding-left:8px;display:flex;position:relative}.X3p44q_tab{color:var(--dsw-alias-label-tertiary);cursor:pointer;background:0 0;border:none;padding:0 0 11px;font-size:13px;font-weight:500;line-height:16px;position:relative}.X3p44q_tab:after{content:\"\";background:0 0;border-radius:2px;height:2px;position:absolute;bottom:1px;left:0;right:0}.X3p44q_tabActive{color:var(--dsw-alias-state-business-primary)}.X3p44q_tabActive:after{background:var(--dsw-alias-state-business-primary)}.X3p44q_viewArea{flex-direction:column;flex:1;min-height:0;display:flex}.X3p44q_composerStack{--dsh-composer-stack-gap:6px;gap:var(--dsh-composer-stack-gap);flex-direction:column;display:flex}.X3p44q_composerSeat{--dsh-composer-text-max-height:336px;flex-direction:column;flex:none;display:flex}.X3p44q_root[data-phase=active]{overflow:hidden}.X3p44q_root[data-phase=active] .X3p44q_header{flex:none}.X3p44q_scrollBody{scrollbar-gutter:stable;flex-direction:column;flex:1;min-height:0;display:flex;overflow:hidden auto}.X3p44q_root[data-phase=active] .X3p44q_viewArea{flex:1 0 auto;min-height:auto}.X3p44q_root[data-phase=active] .X3p44q_composerSeat{z-index:7;background:linear-gradient(180deg, color-mix(in srgb, var(--dsw-alias-bg-base) 0%, transparent) 0px, var(--dsw-alias-bg-base) 36px);position:sticky;bottom:0}.X3p44q_scrollBody:has([data-conversation-composer-overlay]){scrollbar-gutter:auto;position:relative;overflow:hidden auto}.X3p44q_scrollBody:has([data-conversation-composer-overlay])>[data-slot=conversation\\.session]>.X3p44q_viewArea{flex:1 1 0;min-height:0;overflow:hidden}.X3p44q_scrollBody:has([data-conversation-composer-overlay])>.X3p44q_composerSeat{right:var(--dsh-scrollbar-width);position:absolute;bottom:0;left:0}.X3p44q_composerHero{width:min(calc(var(--dsh-composer-card-max-width) + 2 * var(--dsh-composer-side-clearance)), 100%);z-index:1;align-self:center;gap:8px;padding-bottom:32px;position:relative}.X3p44q_heroGlow{z-index:-1;aspect-ratio:1051/468;pointer-events:none;width:135.438%;position:absolute;bottom:92px;left:50%;transform:translate(-50%,50%)}.X3p44q_heroWorkspaceRow{align-items:center;gap:2px;min-width:0;margin-top:4px;padding-left:20px;display:flex}.X3p44q_root[data-phase=hero] .X3p44q_scrollBody{justify-content:center;overflow-y:auto}.X3p44q_root[data-phase=settling] .X3p44q_composerSeat{visibility:hidden}";
 		const tagId$6 = "@deepseek-ai/dsh-client-ui-conversation/ConversationRoot.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$6) + "]") === null) {
 			const tag = document.createElement("style");
@@ -7448,35 +7447,35 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var ConversationRoot_module_css_default = {
-			"composerDock": "N0_2Ca_composerDock",
-			"composerHero": "N0_2Ca_composerHero",
-			"composerSeat": "N0_2Ca_composerSeat",
-			"composerStack": "N0_2Ca_composerStack",
-			"conversationColumn": "N0_2Ca_conversationColumn",
-			"crumb": "N0_2Ca_crumb",
-			"crumbCurrent": "N0_2Ca_crumbCurrent",
-			"crumbSeg": "N0_2Ca_crumbSeg",
-			"crumbSep": "N0_2Ca_crumbSep",
-			"crumbSubagent": "N0_2Ca_crumbSubagent",
-			"crumbs": "N0_2Ca_crumbs",
-			"header": "N0_2Ca_header",
-			"headerActions": "N0_2Ca_headerActions",
-			"headerHidden": "N0_2Ca_headerHidden",
-			"headerUtilities": "N0_2Ca_headerUtilities",
-			"heroGlow": "N0_2Ca_heroGlow",
-			"heroWorkspaceRow": "N0_2Ca_heroWorkspaceRow",
-			"root": "N0_2Ca_root",
-			"scrollBody": "N0_2Ca_scrollBody",
-			"tab": "N0_2Ca_tab",
-			"tabActive": "N0_2Ca_tabActive",
-			"tabs": "N0_2Ca_tabs",
-			"titleCluster": "N0_2Ca_titleCluster",
-			"titleRow": "N0_2Ca_titleRow",
-			"viewArea": "N0_2Ca_viewArea",
-			"workspaceFrame": "N0_2Ca_workspaceFrame"
+			"composerDock": "X3p44q_composerDock",
+			"composerHero": "X3p44q_composerHero",
+			"composerSeat": "X3p44q_composerSeat",
+			"composerStack": "X3p44q_composerStack",
+			"conversationColumn": "X3p44q_conversationColumn",
+			"crumb": "X3p44q_crumb",
+			"crumbCurrent": "X3p44q_crumbCurrent",
+			"crumbSeg": "X3p44q_crumbSeg",
+			"crumbSep": "X3p44q_crumbSep",
+			"crumbSubagent": "X3p44q_crumbSubagent",
+			"crumbs": "X3p44q_crumbs",
+			"header": "X3p44q_header",
+			"headerActions": "X3p44q_headerActions",
+			"headerHidden": "X3p44q_headerHidden",
+			"headerUtilities": "X3p44q_headerUtilities",
+			"heroGlow": "X3p44q_heroGlow",
+			"heroWorkspaceRow": "X3p44q_heroWorkspaceRow",
+			"root": "X3p44q_root",
+			"scrollBody": "X3p44q_scrollBody",
+			"tab": "X3p44q_tab",
+			"tabActive": "X3p44q_tabActive",
+			"tabs": "X3p44q_tabs",
+			"titleCluster": "X3p44q_titleCluster",
+			"titleRow": "X3p44q_titleRow",
+			"viewArea": "X3p44q_viewArea",
+			"workspaceFrame": "X3p44q_workspaceFrame"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/ConversationRoot.js
+		//#region src/client/skeleton/ConversationRoot.tsx
 		function ConversationRoot({ sessionId, useSession, useSessions, useWorkspaces, useInput, useComposerBlock, renderSlot, renderSlotChain, selectWorkspace, t }) {
 			const embeddedPane = (0, _deepseek_ai_dsh_client_runtime_client.isEmbeddedDshPane)();
 			const openState = useSession((s) => s.openState);
@@ -7521,10 +7520,10 @@ window.__ModuleLoader__.load({
 				input: inputState
 			};
 			const chipTitle = pendingWorkspace?.title ?? (sessionId === void 0 ? void 0 : sessionWorkspace?.title ?? (workspaces.phase === "ready" || cwd === void 0 || cwd === "" ? void 0 : workspaceLabel(cwd)));
-			const heroWorkspaceRow = plainChat ? null : (0, react_jsx_runtime.jsxs)("div", {
+			const heroWorkspaceRow = plainChat ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: ConversationRoot_module_css_default.heroWorkspaceRow,
 				children: [
-					(0, react_jsx_runtime.jsx)(WorkspaceChip, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(WorkspaceChip, {
 						buttonRef: pickerAnchor,
 						label: chipTitle,
 						menuOpen: pickerOpen,
@@ -7571,16 +7570,16 @@ window.__ModuleLoader__.load({
 				overlay: renderSlot("conversation.input.overlay", {}),
 				leftItems: zone === void 0 || plainChat ? null : renderSlot("conversation.input.left", zone),
 				rightItems: zone === void 0 || plainChat ? null : renderSlot("conversation.input.right", zone),
-				footer: !hero && zone !== void 0 && !embeddedPane ? (0, react_jsx_runtime.jsx)("div", {
+				footer: !hero && zone !== void 0 && !embeddedPane ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: ConversationRoot_module_css_default.composerDock,
 					children: renderSlot("conversation.composer.dock", zone)
 				}) : null
 			});
-			const composerBar = (0, react_jsx_runtime.jsxs)("div", {
+			const composerBar = /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: clsx(ConversationRoot_module_css_default.composerStack, hero && ConversationRoot_module_css_default.composerHero),
 				children: [
-					hero && (0, react_jsx_runtime.jsx)(HeroGlow, { className: ConversationRoot_module_css_default.heroGlow }),
-					hero && (0, react_jsx_runtime.jsx)(HeroShell, {
+					hero && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(HeroGlow, { className: ConversationRoot_module_css_default.heroGlow }),
+					hero && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(HeroShell, {
 						t,
 						renderSlot
 					}),
@@ -7597,22 +7596,22 @@ window.__ModuleLoader__.load({
 				fallback: composerBar,
 				overlay: true
 			});
-			const composerSeat = (0, react_jsx_runtime.jsx)("div", {
+			const composerSeat = /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				ref: seatResizeRef,
 				className: ConversationRoot_module_css_default.composerSeat,
 				"data-composer-seat": "",
 				children: composer
 			});
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ConversationRoot_module_css_default.root,
 				"data-phase": phase,
 				"data-embedded-pane": embeddedPane || void 0,
-				children: (0, react_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ConversationRoot_module_css_default.workspaceFrame,
 					children: [
-						(0, react_jsx_runtime.jsxs)("div", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							className: ConversationRoot_module_css_default.conversationColumn,
-							children: [renderSlot("conversation.session.header", {}), (0, react_jsx_runtime.jsxs)("div", {
+							children: [renderSlot("conversation.session.header", {}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 								className: ConversationRoot_module_css_default.scrollBody,
 								"data-conversation-scroll": "",
 								children: [renderSlot("conversation.session", {}), composerSeat]
@@ -7625,7 +7624,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/skeleton/ConversationSession.js
+		//#region src/client/skeleton/ConversationSession.tsx
 		/** Strict per-session header/body content inserted into the resident conversation layout. */
 		const DEFAULT_VIEW_ID = "chat";
 		/** Resolve by id and keep stale persisted selections on the stable Chat fallback. */
@@ -7671,20 +7670,20 @@ window.__ModuleLoader__.load({
 			const ancestry = useSessions((s) => deriveAncestry(s, sessionId), equalBreadcrumbs);
 			const composerPhase = useSession((s) => s.composerPhase);
 			const hideChrome = useSession((s) => s.blank) && composerPhase === "blank";
-			return (0, react_jsx_runtime.jsx)("header", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("header", {
 				className: clsx(ConversationRoot_module_css_default.header, hideChrome && ConversationRoot_module_css_default.headerHidden),
 				"aria-hidden": hideChrome || void 0,
-				children: !hideChrome && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: !hideChrome && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ConversationRoot_module_css_default.titleRow,
-					children: [(0, react_jsx_runtime.jsxs)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						className: ConversationRoot_module_css_default.titleCluster,
-						children: [(0, react_jsx_runtime.jsxs)("nav", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("nav", {
 							className: ConversationRoot_module_css_default.crumbs,
 							"aria-label": t("session.hierarchy"),
 							children: [ancestry.map((summary, index) => {
 								const last = index === ancestry.length - 1;
 								const backLabel = ancestry.length === 2 && !last && !summary.subagent ? t("session.backToMain") : void 0;
-								const title = (0, react_jsx_runtime.jsx)("button", {
+								const title = /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 									type: "button",
 									className: clsx(ConversationRoot_module_css_default.crumb, summary.subagent && ConversationRoot_module_css_default.crumbSubagent, last && ConversationRoot_module_css_default.crumbCurrent),
 									disabled: last,
@@ -7702,29 +7701,29 @@ window.__ModuleLoader__.load({
 										open(summary.id);
 									} }
 								};
-								return (0, react_jsx_runtime.jsxs)("span", {
+								return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 									className: ConversationRoot_module_css_default.crumbSeg,
-									children: [index > 0 && (0, react_jsx_runtime.jsx)("span", {
+									children: [index > 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 										className: ConversationRoot_module_css_default.crumbSep,
 										children: "/"
-									}), lineage ? summary.subagent ? renderSlot("conversation.session.header.lineage", lineageOwner, { fallback: title }) : (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [title, renderSlot("conversation.session.header.lineage", lineageOwner, { fallback: null })] }) : title]
+									}), lineage ? summary.subagent ? renderSlot("conversation.session.header.lineage", lineageOwner, { fallback: title }) : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [title, renderSlot("conversation.session.header.lineage", lineageOwner, { fallback: null })] }) : title]
 								}, summary.id);
-							}), ancestry.length === 0 && (0, react_jsx_runtime.jsx)("span", {
+							}), ancestry.length === 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: ConversationRoot_module_css_default.crumbCurrent,
 								children: sessionId
 							})]
-						}), embeddedPane ? null : (0, react_jsx_runtime.jsx)("div", {
+						}), embeddedPane ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: ConversationRoot_module_css_default.headerActions,
 							children: renderSlot("conversation.session.header.actions", {})
 						})]
-					}), embeddedPane ? null : (0, react_jsx_runtime.jsx)("div", {
+					}), embeddedPane ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: ConversationRoot_module_css_default.headerUtilities,
 						children: renderSlot("conversation.session.header.utilities", {})
 					})]
-				}), tabs.length > 1 && (0, react_jsx_runtime.jsx)("div", {
+				}), tabs.length > 1 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: ConversationRoot_module_css_default.tabs,
 					role: "tablist",
-					children: tabs.map((viewTab) => (0, react_jsx_runtime.jsx)("button", {
+					children: tabs.map((viewTab) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 						type: "button",
 						role: "tab",
 						"aria-selected": viewTab.id === active?.id,
@@ -7766,7 +7765,7 @@ window.__ModuleLoader__.load({
 				releaseSessionImages(sessionId);
 			}, [releaseSessionImages, sessionId]);
 			if (blank && composerPhase === "blank") return null;
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ConversationRoot_module_css_default.viewArea,
 				"data-dsh-session-id": sessionId,
 				children: active !== void 0 && renderSlot("conversation.view", {
@@ -7778,8 +7777,8 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/skeleton/DetailsPanel.module.css.mjs
-		const css$5 = ".Lyn3kG_root{border-left:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-base);flex-direction:column;min-width:0;height:100%;display:flex}.Lyn3kG_header{border-bottom:1px solid var(--dsw-alias-border-l2);justify-content:space-between;align-items:center;gap:8px;padding:14px 12px 12px;display:flex}.Lyn3kG_title{color:var(--dsw-alias-label-primary);text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:500;line-height:20px;overflow:hidden}.Lyn3kG_close{width:28px;height:28px;color:var(--dsw-alias-label-secondary);cursor:pointer;background:0 0;border:none;border-radius:999px;flex:none;place-items:center;display:grid}.Lyn3kG_close:hover{background:var(--dsw-alias-interactive-bg-hover)}.Lyn3kG_body{flex:1;min-height:0;padding:12px 16px;overflow-y:auto}.Lyn3kG_empty{color:var(--dsw-alias-label-tertiary);padding:8px 0;font-size:13px;line-height:20px}.Lyn3kG_section{margin-bottom:16px}.Lyn3kG_sectionLabel{color:var(--dsw-alias-label-secondary);margin-bottom:6px;font-size:12px;font-weight:500;line-height:18px}.Lyn3kG_code{background:var(--dsw-alias-markdown-code-block);font-family:var(--ds-font-family-code);color:var(--dsw-alias-label-primary);white-space:pre-wrap;word-break:break-word;border-radius:12px;margin:0;padding:16px;font-size:13px;line-height:22px}.Lyn3kG_code[data-error]{color:var(--dsw-alias-state-error-primary)}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/skeleton/DetailsPanel.module.css.mjs
+		const css$5 = "._1iL0Mq_root{border-left:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-base);flex-direction:column;min-width:0;height:100%;display:flex}._1iL0Mq_header{border-bottom:1px solid var(--dsw-alias-border-l2);justify-content:space-between;align-items:center;gap:8px;padding:14px 12px 12px;display:flex}._1iL0Mq_title{color:var(--dsw-alias-label-primary);text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:500;line-height:20px;overflow:hidden}._1iL0Mq_close{width:28px;height:28px;color:var(--dsw-alias-label-secondary);cursor:pointer;background:0 0;border:none;border-radius:999px;flex:none;place-items:center;display:grid}._1iL0Mq_close:hover{background:var(--dsw-alias-interactive-bg-hover)}._1iL0Mq_body{flex:1;min-height:0;padding:12px 16px;overflow-y:auto}._1iL0Mq_empty{color:var(--dsw-alias-label-tertiary);padding:8px 0;font-size:13px;line-height:20px}._1iL0Mq_section{margin-bottom:16px}._1iL0Mq_sectionLabel{color:var(--dsw-alias-label-secondary);margin-bottom:6px;font-size:12px;font-weight:500;line-height:18px}._1iL0Mq_code{background:var(--dsw-alias-markdown-code-block);font-family:var(--ds-font-family-code);color:var(--dsw-alias-label-primary);white-space:pre-wrap;word-break:break-word;border-radius:12px;margin:0;padding:16px;font-size:13px;line-height:22px}._1iL0Mq_code[data-error]{color:var(--dsw-alias-state-error-primary)}";
 		const tagId$5 = "@deepseek-ai/dsh-client-ui-conversation/DetailsPanel.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$5) + "]") === null) {
 			const tag = document.createElement("style");
@@ -7789,18 +7788,18 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var DetailsPanel_module_css_default = {
-			"body": "Lyn3kG_body",
-			"close": "Lyn3kG_close",
-			"code": "Lyn3kG_code",
-			"empty": "Lyn3kG_empty",
-			"header": "Lyn3kG_header",
-			"root": "Lyn3kG_root",
-			"section": "Lyn3kG_section",
-			"sectionLabel": "Lyn3kG_sectionLabel",
-			"title": "Lyn3kG_title"
+			"body": "_1iL0Mq_body",
+			"close": "_1iL0Mq_close",
+			"code": "_1iL0Mq_code",
+			"empty": "_1iL0Mq_empty",
+			"header": "_1iL0Mq_header",
+			"root": "_1iL0Mq_root",
+			"section": "_1iL0Mq_section",
+			"sectionLabel": "_1iL0Mq_sectionLabel",
+			"title": "_1iL0Mq_title"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/DetailsPanel.js
+		//#region src/client/skeleton/DetailsPanel.tsx
 		/** Material of a settled result node (native call or run_code sub-dispatch). */
 		function settledMaterial(node, callId) {
 			return {
@@ -7841,26 +7840,26 @@ window.__ModuleLoader__.load({
 			const sessionCwd = useSessions((list) => list.byId[sessionId]?.cwd);
 			const callId = selection?.callId;
 			const material = useSession((s) => callId === void 0 ? null : materialFor(s, callId), (a, b) => (0, _deepseek_ai_dsh_client_runtime_client.shallowEqual)(a, b));
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: DetailsPanel_module_css_default.root,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: DetailsPanel_module_css_default.header,
-					children: [(0, react_jsx_runtime.jsx)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: DetailsPanel_module_css_default.title,
 						children: selection === null ? t("details.title") : material?.name ?? selection.toolName ?? t("details.title")
-					}), (0, react_jsx_runtime.jsx)("button", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 						type: "button",
 						className: DetailsPanel_module_css_default.close,
 						"aria-label": t("details.close"),
 						onClick: () => {
 							closeDetails();
 						},
-						children: (0, react_jsx_runtime.jsx)("svg", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 							viewBox: "0 0 16 16",
 							width: "14",
 							height: "14",
 							"aria-hidden": true,
-							children: (0, react_jsx_runtime.jsx)("path", {
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 								d: "M4 4l8 8M12 4l-8 8",
 								stroke: "currentColor",
 								strokeWidth: "1.5",
@@ -7868,38 +7867,38 @@ window.__ModuleLoader__.load({
 							})
 						})
 					})]
-				}), (0, react_jsx_runtime.jsx)("div", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: DetailsPanel_module_css_default.body,
-					children: selection === null || callId === void 0 ? (0, react_jsx_runtime.jsx)("div", {
+					children: selection === null || callId === void 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: DetailsPanel_module_css_default.empty,
 						children: t("details.empty")
-					}) : material === null ? (0, react_jsx_runtime.jsx)("div", {
+					}) : material === null ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: DetailsPanel_module_css_default.empty,
 						children: t("details.notInWindow")
-					}) : (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [material.argsRaw !== null && (0, react_jsx_runtime.jsxs)("section", {
+					}) : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [material.argsRaw !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("section", {
 						className: DetailsPanel_module_css_default.section,
-						children: [(0, react_jsx_runtime.jsx)("div", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: DetailsPanel_module_css_default.sectionLabel,
 							children: t("details.input")
-						}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.CodeBlock, {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.CodeBlock, {
 							code: pretty(material.argsRaw),
 							lang: "json",
 							copyLabel: t("copy"),
 							copiedLabel: t("copied")
 						})]
-					}), (0, react_jsx_runtime.jsxs)("section", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("section", {
 						className: DetailsPanel_module_css_default.section,
-						children: [(0, react_jsx_runtime.jsx)("div", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: DetailsPanel_module_css_default.sectionLabel,
 							children: t("details.output")
-						}), (0, react_jsx_runtime.jsx)(react.Fragment, { children: renderSlot("conversation.details.tool", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(react.Fragment, { children: renderSlot("conversation.details.tool", {
 							block: material.block,
 							cwd: sessionCwd
-						}, { fallback: "kind" in material.block ? (0, react_jsx_runtime.jsx)("pre", {
+						}, { fallback: "kind" in material.block ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("pre", {
 							className: DetailsPanel_module_css_default.code,
 							"data-error": material.block.isError || void 0,
 							children: rawResultText(material.block)
-						}) : (0, react_jsx_runtime.jsx)("div", {
+						}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: DetailsPanel_module_css_default.empty,
 							children: t("details.running")
 						}) }) }, callId)]
@@ -7908,7 +7907,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/common.js
+		//#region src/client/conversation-nodes/common.ts
 		/**
 		* Relative positions in one durable event's seq neighborhood: interrupted
 		* Assistant, its follow-up Nodes, then follow-ups to an ordinary final. The
@@ -7951,7 +7950,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/assistant.js
+		//#region src/client/conversation-nodes/assistant.ts
 		function initialState(turn, step) {
 			return {
 				turn,
@@ -8209,7 +8208,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(assistantDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/contract/chat-nodes.js
+		//#region src/client/contract/chat-nodes.ts
 		/**
 		* Test whether a Tool root has settled.
 		* @param block - Tool root lifecycle value.
@@ -8227,7 +8226,7 @@ window.__ModuleLoader__.load({
 			return !isSettledTool(block);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/chat-snapshot-builder.js
+		//#region src/client/conversation-nodes/chat-snapshot-builder.ts
 		const EMPTY_KEYS = [];
 		const EMPTY_TURNS = [];
 		const EMPTY_LIST = [];
@@ -8662,7 +8661,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationViews.register(chatViewDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/command.js
+		//#region src/client/conversation-nodes/command.ts
 		const COMPACT_PLUGIN = "compact";
 		function commandFromRun(match) {
 			if (match.event.type !== "command/run") throw new Error("command start requires command/run");
@@ -8833,7 +8832,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(commandDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/compaction.js
+		//#region src/client/conversation-nodes/compaction.ts
 		function fallbackState$2(context) {
 			const summary = context.matches.find((match) => match.event.type === "compaction/summary");
 			const checkpoint = context.matches.find((match) => compactSource(match.event) !== void 0);
@@ -8880,7 +8879,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(compactionDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/fallback.js
+		//#region src/client/conversation-nodes/fallback.ts
 		/** Unclaimed append-surface fallback Definition. */
 		const unknownFallbackDefinition = {
 			kind: "unknown-surface",
@@ -8907,7 +8906,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.registerFallback(unknownFallbackDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/inbox.js
+		//#region src/client/conversation-nodes/inbox.ts
 		function applySplice(previous, splice) {
 			const pending = [...previous?.state.pending ?? []];
 			const claimed = new Set(previous?.state.claimed ?? []);
@@ -8948,7 +8947,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(nextStepInboxDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/message.js
+		//#region src/client/conversation-nodes/message.ts
 		function isCompactionCheckpoint(event) {
 			if (event.type !== "user/message" || !(0, _deepseek_ai_dsh_client_runtime_client.isReplacementSurfaceEvent)(event)) return false;
 			const source = event.data.source;
@@ -9003,7 +9002,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(messageDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/retry.js
+		//#region src/client/conversation-nodes/retry.ts
 		function scheduledNode(match) {
 			if (match.event.type !== "llm/retry") return void 0;
 			return {
@@ -9092,7 +9091,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(retryDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/tool.js
+		//#region src/client/conversation-nodes/tool.ts
 		const MAX_DEPTH = 256;
 		const projectedBlocks = /* @__PURE__ */ new WeakMap();
 		function jsonArguments(value) {
@@ -9344,7 +9343,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(toolDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/turn-error.js
+		//#region src/client/conversation-nodes/turn-error.ts
 		function lastStep$1(context) {
 			const location = context.start?.location ?? context.matches[0]?.location;
 			if (location?.kind !== "turn" && location?.kind !== "step") return 0;
@@ -9424,7 +9423,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(turnErrorDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/turn-max-tokens.js
+		//#region src/client/conversation-nodes/turn-max-tokens.ts
 		function lastStep(context) {
 			const location = context.start?.location ?? context.matches[0]?.location;
 			if (location?.kind !== "turn" && location?.kind !== "step") return 0;
@@ -9488,7 +9487,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(turnMaxTokensDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/turn-tail.js
+		//#region src/client/conversation-nodes/turn-tail.ts
 		function hasTextAssistant(event) {
 			return event.type === "assistant/message" && (0, _deepseek_ai_dsh_client_runtime_client.isAppendSurfaceEvent)(event) && (0, _deepseek_ai_dsh_client_runtime_client.toAssistantBlocks)(event.data.message.content).some((block) => block.kind === "text" && block.text.trim() !== "");
 		}
@@ -9633,7 +9632,7 @@ window.__ModuleLoader__.load({
 			ctx.conversationEvents.register(turnTailDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/register.js
+		//#region src/client/conversation-nodes/register.ts
 		/**
 		* Register the Chat business Definitions and target builder contributed by this package.
 		* @param ctx - owning UI Conversation context.
@@ -9653,7 +9652,7 @@ window.__ModuleLoader__.load({
 			registerChatConversationView(ctx);
 		}
 		//#endregion
-		//#region lib/types/client/chat/use-throttled-visual-update.js
+		//#region src/client/chat/use-throttled-visual-update.ts
 		/** Frame-throttled scheduling for non-essential visual alignment. */
 		const DEFAULT_INTERVAL_FRAMES = 3;
 		/**
@@ -9687,8 +9686,8 @@ window.__ModuleLoader__.load({
 			}, [intervalFrames]);
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/accessibility.module.css.mjs
-		const css$4 = ".xq5lmq_visuallyHidden{clip:rect(0 0 0 0);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/accessibility.module.css.mjs
+		const css$4 = ".NERQsW_visuallyHidden{clip:rect(0 0 0 0);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}";
 		const tagId$4 = "@deepseek-ai/dsh-client-ui-conversation/accessibility.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$4) + "]") === null) {
 			const tag = document.createElement("style");
@@ -9697,10 +9696,10 @@ window.__ModuleLoader__.load({
 			tag.textContent = css$4;
 			document.head.appendChild(tag);
 		}
-		var accessibility_module_css_default = { "visuallyHidden": "xq5lmq_visuallyHidden" };
+		var accessibility_module_css_default = { "visuallyHidden": "NERQsW_visuallyHidden" };
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/ReasoningRow.module.css.mjs
-		const css$3 = ".OF6hPG_root{flex-direction:column;display:flex}.OF6hPG_row{position:relative;overflow:hidden}.OF6hPG_root[data-state=running] .OF6hPG_row:after{content:\"\";inset-block:0;background:linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--dsw-alias-bg-base) 60%, transparent) 55%, transparent 100%);pointer-events:none;width:300px;animation:2.6s ease-out infinite OF6hPG_dsh-reasoning-row-sweep;position:absolute;left:0}@keyframes OF6hPG_dsh-reasoning-row-sweep{0%{left:-300px}90%,to{left:100%}}.OF6hPG_leading{flex-shrink:0}.OF6hPG_chevron{color:var(--dsw-alias-label-secondary)}.OF6hPG_title{font-weight:400}.OF6hPG_separator{background:var(--dsw-alias-label-caption);border-radius:1px;flex:none;width:2px;height:2px;margin:0 8px}.OF6hPG_summary{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:14px;line-height:24px;overflow:hidden}.OF6hPG_summary[data-follow-end]{text-overflow:clip}.OF6hPG_thinkBody{color:var(--dsw-alias-label-tertiary);white-space:pre-wrap;word-break:break-word;padding:4px 0 4px 22px;font-size:14px;line-height:24px}@media (prefers-reduced-motion:reduce){.OF6hPG_root[data-state=running] .OF6hPG_row:after{animation:none}}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/ReasoningRow.module.css.mjs
+		const css$3 = ".dgtrda_root{flex-direction:column;display:flex}.dgtrda_row{position:relative;overflow:hidden}.dgtrda_root[data-state=running] .dgtrda_row:after{content:\"\";inset-block:0;background:linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--dsw-alias-bg-base) 60%, transparent) 55%, transparent 100%);pointer-events:none;width:300px;animation:2.6s ease-out infinite dgtrda_dsh-reasoning-row-sweep;position:absolute;left:0}@keyframes dgtrda_dsh-reasoning-row-sweep{0%{left:-300px}90%,to{left:100%}}.dgtrda_leading{flex-shrink:0}.dgtrda_chevron{color:var(--dsw-alias-label-secondary)}.dgtrda_title{font-weight:400}.dgtrda_separator{background:var(--dsw-alias-label-caption);border-radius:1px;flex:none;width:2px;height:2px;margin:0 8px}.dgtrda_summary{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:14px;line-height:24px;overflow:hidden}.dgtrda_summary[data-follow-end]{text-overflow:clip}.dgtrda_thinkBody{color:var(--dsw-alias-label-tertiary);white-space:pre-wrap;word-break:break-word;padding:4px 0 4px 22px;font-size:14px;line-height:24px}@media (prefers-reduced-motion:reduce){.dgtrda_root[data-state=running] .dgtrda_row:after{animation:none}}";
 		const tagId$3 = "@deepseek-ai/dsh-client-ui-conversation/ReasoningRow.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$3) + "]") === null) {
 			const tag = document.createElement("style");
@@ -9710,18 +9709,18 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var ReasoningRow_module_css_default = {
-			"chevron": "OF6hPG_chevron",
-			"dsh-reasoning-row-sweep": "OF6hPG_dsh-reasoning-row-sweep",
-			"leading": "OF6hPG_leading",
-			"root": "OF6hPG_root",
-			"row": "OF6hPG_row",
-			"separator": "OF6hPG_separator",
-			"summary": "OF6hPG_summary",
-			"thinkBody": "OF6hPG_thinkBody",
-			"title": "OF6hPG_title"
+			"chevron": "dgtrda_chevron",
+			"dsh-reasoning-row-sweep": "dgtrda_dsh-reasoning-row-sweep",
+			"leading": "dgtrda_leading",
+			"root": "dgtrda_root",
+			"row": "dgtrda_row",
+			"separator": "dgtrda_separator",
+			"summary": "dgtrda_summary",
+			"thinkBody": "dgtrda_thinkBody",
+			"title": "dgtrda_title"
 		};
 		//#endregion
-		//#region lib/types/client/chat/ReasoningRow.js
+		//#region src/client/chat/ReasoningRow.tsx
 		/** Assistant reasoning disclosure, independent of Tool-call presentation. */
 		function firstLine(text) {
 			const newline = text.indexOf("\n");
@@ -9755,19 +9754,19 @@ window.__ModuleLoader__.load({
 				scheduleSummaryScroll,
 				summary
 			]);
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: ReasoningRow_module_css_default.root,
 				"data-variant": "think",
 				"data-state": running ? "running" : "ok",
-				children: [running && (0, react_jsx_runtime.jsx)("span", {
+				children: [running && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					className: accessibility_module_css_default.visuallyHidden,
 					children: t("row.running")
-				}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
 					rowClassName: ReasoningRow_module_css_default.row,
 					leadingClassName: ReasoningRow_module_css_default.leading,
 					titleClassName: ReasoningRow_module_css_default.title,
 					chevronClassName: ReasoningRow_module_css_default.chevron,
-					icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconThinkOutline14, { size: 14 }),
+					icon: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconThinkOutline14, { size: 14 }),
 					title: "Think",
 					open: expanded,
 					expandable: true,
@@ -9775,16 +9774,16 @@ window.__ModuleLoader__.load({
 					onToggle: () => {
 						setExpanded((value) => !value);
 					},
-					collapsedContent: (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+					collapsedContent: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ReasoningRow_module_css_default.separator,
 						"aria-hidden": true
-					}), (0, react_jsx_runtime.jsx)("span", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						ref: summaryRef,
 						className: ReasoningRow_module_css_default.summary,
 						"data-follow-end": running || void 0,
 						children: summary
 					})] }),
-					children: (0, react_jsx_runtime.jsx)("div", {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: ReasoningRow_module_css_default.thinkBody,
 						children: text
 					})
@@ -9792,8 +9791,8 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/AssistantMarkdown.module.css.mjs
-		const css$2 = ".TZrh7W_root{color:var(--dsw-alias-label-primary);flex-direction:column;font-size:16px;line-height:28px;display:flex}.TZrh7W_body{flex-direction:column;gap:16px;display:flex}.TZrh7W_body .md-table-wide{--dsh-table-spare:max(0px, calc((100cqw - var(--dsh-chat-content-width)) / 2));--dsh-table-lead:calc(var(--dsh-table-spare) + min(var(--dsh-chat-content-width), 100cqw) - 100%);box-sizing:border-box;width:calc(100% + var(--dsh-table-lead) + var(--dsh-table-spare));max-width:none;margin-left:calc(-1 * var(--dsh-table-lead));padding-left:var(--dsh-table-lead)}.TZrh7W_stopped{background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-tertiary);border-radius:6px;align-self:flex-start;padding:0 6px;font-size:11px;line-height:18px}.TZrh7W_actions{margin-top:16px;margin-left:-6px}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/AssistantMarkdown.module.css.mjs
+		const css$2 = ".gvKfza_root{color:var(--dsw-alias-label-primary);flex-direction:column;font-size:16px;line-height:28px;display:flex}.gvKfza_body{flex-direction:column;gap:16px;display:flex}.gvKfza_body .md-table-wide{--dsh-table-spare:max(0px, calc((100cqw - var(--dsh-chat-content-width)) / 2));--dsh-table-lead:calc(var(--dsh-table-spare) + min(var(--dsh-chat-content-width), 100cqw) - 100%);box-sizing:border-box;width:calc(100% + var(--dsh-table-lead) + var(--dsh-table-spare));max-width:none;margin-left:calc(-1 * var(--dsh-table-lead));padding-left:var(--dsh-table-lead)}.gvKfza_stopped{background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-tertiary);border-radius:6px;align-self:flex-start;padding:0 6px;font-size:11px;line-height:18px}.gvKfza_actions{margin-top:16px;margin-left:-6px}";
 		const tagId$2 = "@deepseek-ai/dsh-client-ui-conversation/AssistantMarkdown.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$2) + "]") === null) {
 			const tag = document.createElement("style");
@@ -9803,13 +9802,13 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var AssistantMarkdown_module_css_default = {
-			"actions": "TZrh7W_actions",
-			"body": "TZrh7W_body",
-			"root": "TZrh7W_root",
-			"stopped": "TZrh7W_stopped"
+			"actions": "gvKfza_actions",
+			"body": "gvKfza_body",
+			"root": "gvKfza_root",
+			"stopped": "gvKfza_stopped"
 		};
 		//#endregion
-		//#region lib/types/client/chat/AssistantMarkdown.js
+		//#region src/client/chat/AssistantMarkdown.tsx
 		/** Reasoning block as the Think variant summary row (figma 39:28304). */
 		const AssistantMarkdown = (0, react.memo)(function AssistantMarkdown({ blocks, streaming, interrupted, renderMessageImages, mentions, t }) {
 			const codeLabels = (0, react.useMemo)(() => ({
@@ -9824,7 +9823,7 @@ window.__ModuleLoader__.load({
 				if (block === void 0) continue;
 				switch (block.kind) {
 					case "text":
-						rendered.push((0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MarkdownText, {
+						rendered.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MarkdownText, {
 							text: block.text,
 							streaming,
 							codeLabels,
@@ -9832,7 +9831,7 @@ window.__ModuleLoader__.load({
 						}, i));
 						break;
 					case "reasoning":
-						rendered.push((0, react_jsx_runtime.jsx)(ReasoningRow, {
+						rendered.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(ReasoningRow, {
 							text: block.text,
 							running: streaming && i === last,
 							t
@@ -9847,26 +9846,26 @@ window.__ModuleLoader__.load({
 							group.push(next);
 							i += 1;
 						}
-						rendered.push((0, react_jsx_runtime.jsx)(react.Fragment, { children: renderMessageImages({
+						rendered.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(react.Fragment, { children: renderMessageImages({
 							images: group.map(({ attachment }) => ({ attachment })),
 							align: "start"
 						}) }, start));
 						break;
 					}
 					case "tool-call": break;
-					default: rendered.push((0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+					default: rendered.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 						label: t("message.unknownBlock"),
 						payload: block.block,
 						truncatedLabel: (total) => t("json.truncated", { total })
 					}, i));
 				}
 			}
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: AssistantMarkdown_module_css_default.root,
 				"data-streaming": streaming || void 0,
-				children: (0, react_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: AssistantMarkdown_module_css_default.body,
-					children: [rendered, interrupted && (0, react_jsx_runtime.jsx)("span", {
+					children: [rendered, interrupted && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: AssistantMarkdown_module_css_default.stopped,
 						children: t("message.stopped")
 					})]
@@ -9874,7 +9873,7 @@ window.__ModuleLoader__.load({
 			});
 		});
 		//#endregion
-		//#region lib/types/client/chat/AssistantNodeView.js
+		//#region src/client/chat/AssistantNodeView.tsx
 		/** Streaming, settled, and interrupted Assistant states share one keyed renderer instance. */
 		const AssistantNodeView = (0, react.memo)(function AssistantNodeView({ node, useTurnData, openFile, renderMessageImages, fileMentions, t }) {
 			const data = node.data;
@@ -9895,7 +9894,7 @@ window.__ModuleLoader__.load({
 				turn
 			]);
 			const mentions = (0, react.useMemo)(() => owner === void 0 ? void 0 : fileMentions(owner), [fileMentions, owner]);
-			return (0, react_jsx_runtime.jsx)(AssistantMarkdown, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(AssistantMarkdown, {
 				blocks: data.blocks,
 				streaming: data.status === "running",
 				interrupted: data.status === "interrupted",
@@ -9905,8 +9904,8 @@ window.__ModuleLoader__.load({
 			});
 		});
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/GenericCommandCard.module.css.mjs
-		const css$1 = ".pZ-vlW_root{flex-direction:column;display:flex}.pZ-vlW_row{position:relative;overflow:hidden}.pZ-vlW_root[data-state=running] .pZ-vlW_row:after{content:\"\";inset-block:0;background:linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--dsw-alias-bg-base) 60%, transparent) 55%, transparent 100%);pointer-events:none;width:300px;animation:2.6s ease-out infinite pZ-vlW_dsh-command-row-sweep;position:absolute;left:0}@keyframes pZ-vlW_dsh-command-row-sweep{0%{left:-300px}90%,to{left:100%}}.pZ-vlW_leading{flex-shrink:0}.pZ-vlW_chevron{color:var(--dsw-alias-label-secondary)}.pZ-vlW_title{font-weight:400}.pZ-vlW_separator{background:var(--dsw-alias-label-caption);border-radius:1px;flex:none;width:2px;height:2px;margin:0 8px}.pZ-vlW_summary{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:14px;line-height:24px;overflow:hidden}.pZ-vlW_summary[data-error],.pZ-vlW_body[data-error]{color:var(--dsw-alias-state-error-primary)}.pZ-vlW_body{border:1px solid var(--dsw-alias-border-l1);background:var(--dsw-alias-markdown-code-block);max-height:260px;color:var(--dsw-alias-label-primary);font:var(--dsw-font-markdown-code-block-small);white-space:pre-wrap;border-radius:12px;margin:4px 0 4px 4px;padding:12px 16px;overflow:auto}@media (prefers-reduced-motion:reduce){.pZ-vlW_root[data-state=running] .pZ-vlW_row:after{animation:none}}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/GenericCommandCard.module.css.mjs
+		const css$1 = ".XJBkIq_root{flex-direction:column;display:flex}.XJBkIq_row{position:relative;overflow:hidden}.XJBkIq_root[data-state=running] .XJBkIq_row:after{content:\"\";inset-block:0;background:linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--dsw-alias-bg-base) 60%, transparent) 55%, transparent 100%);pointer-events:none;width:300px;animation:2.6s ease-out infinite XJBkIq_dsh-command-row-sweep;position:absolute;left:0}@keyframes XJBkIq_dsh-command-row-sweep{0%{left:-300px}90%,to{left:100%}}.XJBkIq_leading{flex-shrink:0}.XJBkIq_chevron{color:var(--dsw-alias-label-secondary)}.XJBkIq_title{font-weight:400}.XJBkIq_separator{background:var(--dsw-alias-label-caption);border-radius:1px;flex:none;width:2px;height:2px;margin:0 8px}.XJBkIq_summary{min-width:0;color:var(--dsw-alias-label-tertiary);text-overflow:ellipsis;white-space:nowrap;flex:auto;font-size:14px;line-height:24px;overflow:hidden}.XJBkIq_summary[data-error],.XJBkIq_body[data-error]{color:var(--dsw-alias-state-error-primary)}.XJBkIq_body{border:1px solid var(--dsw-alias-border-l1);background:var(--dsw-alias-markdown-code-block);max-height:260px;color:var(--dsw-alias-label-primary);font:var(--dsw-font-markdown-code-block-small);white-space:pre-wrap;border-radius:12px;margin:4px 0 4px 4px;padding:12px 16px;overflow:auto}@media (prefers-reduced-motion:reduce){.XJBkIq_root[data-state=running] .XJBkIq_row:after{animation:none}}";
 		const tagId$1 = "@deepseek-ai/dsh-client-ui-conversation/GenericCommandCard.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$1) + "]") === null) {
 			const tag = document.createElement("style");
@@ -9916,25 +9915,25 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var GenericCommandCard_module_css_default = {
-			"body": "pZ-vlW_body",
-			"chevron": "pZ-vlW_chevron",
-			"dsh-command-row-sweep": "pZ-vlW_dsh-command-row-sweep",
-			"leading": "pZ-vlW_leading",
-			"root": "pZ-vlW_root",
-			"row": "pZ-vlW_row",
-			"separator": "pZ-vlW_separator",
-			"summary": "pZ-vlW_summary",
-			"title": "pZ-vlW_title"
+			"body": "XJBkIq_body",
+			"chevron": "XJBkIq_chevron",
+			"dsh-command-row-sweep": "XJBkIq_dsh-command-row-sweep",
+			"leading": "XJBkIq_leading",
+			"root": "XJBkIq_root",
+			"row": "XJBkIq_row",
+			"separator": "XJBkIq_separator",
+			"summary": "XJBkIq_summary",
+			"title": "XJBkIq_title"
 		};
 		//#endregion
-		//#region lib/types/client/chat/GenericCommandCard.js
+		//#region src/client/chat/GenericCommandCard.tsx
 		/** Node state → row state semantic (running while unsettled; outcome kind after). */
 		function stateOf(outcome) {
 			if (outcome === null) return "running";
 			return outcome.kind === "error" ? "error" : "ok";
 		}
 		function leadingFor(state) {
-			return state === "error" ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, { state: "error" }) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconApiOutline14, { size: 14 });
+			return state === "error" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, { state: "error" }) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconApiOutline14, { size: 14 });
 		}
 		function GenericCommandCard({ node, t, runningSummary }) {
 			const [expanded, setExpanded] = (0, react.useState)(false);
@@ -9944,20 +9943,20 @@ window.__ModuleLoader__.load({
 			const state = stateOf(node.outcome);
 			const body = text !== void 0 && text.includes("\n") ? text : null;
 			const open = expanded && body !== null;
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: GenericCommandCard_module_css_default.root,
 				"data-variant": "others",
 				"data-state": state,
 				children: [
-					state === "running" && (0, react_jsx_runtime.jsx)("span", {
+					state === "running" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: accessibility_module_css_default.visuallyHidden,
 						children: t("row.running")
 					}),
-					state === "error" && (0, react_jsx_runtime.jsx)("span", {
+					state === "error" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: accessibility_module_css_default.visuallyHidden,
 						children: t("row.failed")
 					}),
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
 						rowClassName: GenericCommandCard_module_css_default.row,
 						leadingClassName: GenericCommandCard_module_css_default.leading,
 						titleClassName: GenericCommandCard_module_css_default.title,
@@ -9971,15 +9970,15 @@ window.__ModuleLoader__.load({
 						onToggle: () => {
 							setExpanded((value) => !value);
 						},
-						collapsedContent: (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+						collapsedContent: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: GenericCommandCard_module_css_default.separator,
 							"aria-hidden": true
-						}), (0, react_jsx_runtime.jsx)("span", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: GenericCommandCard_module_css_default.summary,
 							"data-error": state === "error" || void 0,
 							children: summary
 						})] }),
-						children: (0, react_jsx_runtime.jsx)("pre", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("pre", {
 							className: GenericCommandCard_module_css_default.body,
 							"data-error": state === "error" || void 0,
 							children: body
@@ -9989,36 +9988,36 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/CompactionCommandCard.js
+		//#region src/client/chat/CompactionCommandCard.tsx
 		/** Render one manual compaction lifecycle without duplicating its checkpoint marker. */
 		function CompactionCommandCard({ node, compaction, t }) {
-			if (compaction !== void 0) return (0, react_jsx_runtime.jsx)(CompactionItem, {
+			if (compaction !== void 0) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompactionItem, {
 				node: compaction,
 				title: "compact",
 				fallbackSummary: node.outcome?.text ?? null,
 				t
 			});
-			if (node.outcome !== null) return (0, react_jsx_runtime.jsx)(GenericCommandCard, {
+			if (node.outcome !== null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(GenericCommandCard, {
 				node,
 				t
 			});
-			return (0, react_jsx_runtime.jsx)(GenericCommandCard, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(GenericCommandCard, {
 				node,
 				t,
 				runningSummary: t("message.compaction.running")
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/CommandNodeView.js
+		//#region src/client/chat/CommandNodeView.tsx
 		/** Ordinary command lifecycle renderer with command-name keyed specialization. */
 		const CommandNodeView = (0, react.memo)(function CommandNodeView({ node, renderSlot, t }) {
 			const command = node.data;
 			const owner = (0, react.useMemo)(() => ({ node: command }), [command]);
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ChatView_module_css_default.callRow,
 				children: renderSlot("conversation.chat.commandview", owner, {
 					entryKey: command.name ?? "",
-					fallback: (0, react_jsx_runtime.jsx)(GenericCommandCard, {
+					fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(GenericCommandCard, {
 						...owner,
 						t
 					})
@@ -10028,9 +10027,9 @@ window.__ModuleLoader__.load({
 		/** One integrated `/compact` command and compaction transaction renderer. */
 		const ManualCompactionNodeView = (0, react.memo)(function ManualCompactionNodeView({ node, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ChatView_module_css_default.callRow,
-				children: (0, react_jsx_runtime.jsx)(CompactionCommandCard, {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompactionCommandCard, {
 					node: data.command,
 					...data.compaction === null ? {} : { compaction: data.compaction },
 					t
@@ -10038,7 +10037,7 @@ window.__ModuleLoader__.load({
 			});
 		});
 		//#endregion
-		//#region lib/types/client/chat/turn-assistant.js
+		//#region src/client/chat/turn-assistant.ts
 		/**
 		* Collect visible prose from one Assistant lifecycle.
 		* @param blocks - Assistant content blocks.
@@ -10048,8 +10047,8 @@ window.__ModuleLoader__.load({
 			return blocks.flatMap((block) => block.kind === "text" ? [block.text] : []).join("");
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-conversation/src/client/chat/TurnTailNodeView.module.css.mjs
-		const css = ".ExybEG_root{flex-direction:column;gap:16px;display:flex}.ExybEG_actions{margin-left:-6px}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-conversation/src/client/chat/TurnTailNodeView.module.css.mjs
+		const css = ".IfTSHG_root{flex-direction:column;gap:16px;display:flex}.IfTSHG_actions{margin-left:-6px}";
 		const tagId = "@deepseek-ai/dsh-client-ui-conversation/TurnTailNodeView.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
 			const tag = document.createElement("style");
@@ -10059,11 +10058,11 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var TurnTailNodeView_module_css_default = {
-			"actions": "ExybEG_actions",
-			"root": "ExybEG_root"
+			"actions": "IfTSHG_actions",
+			"root": "IfTSHG_root"
 		};
 		//#endregion
-		//#region lib/types/client/chat/TurnTailNodeView.js
+		//#region src/client/chat/TurnTailNodeView.tsx
 		/** Turn-local actions and feature tail over the Location index, independent of Assistant placement. */
 		const TurnTailNodeView = (0, react.memo)(function TurnTailNodeView({ node, openFile, forkAt, renderSlot, renderSlotChain, t, useSession }) {
 			const data = node.data;
@@ -10076,18 +10075,18 @@ window.__ModuleLoader__.load({
 				seq: closing?.finalNode.seq ?? data.seq,
 				openFile
 			});
-			if (closing === null) return tail === null ? null : (0, react_jsx_runtime.jsx)("div", {
+			if (closing === null) return tail === null ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: TurnTailNodeView_module_css_default.root,
 				children: tail
 			});
 			const runMs = turn.start === void 0 || turn.end === void 0 ? void 0 : Math.max(0, turn.end.time - turn.start.time);
 			const messageId = closing.finalNode.messageId;
 			const assistantActions = messageId === void 0 ? null : renderSlot("conversation.chat.assistant-actions", { messageId });
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: TurnTailNodeView_module_css_default.root,
 				"data-turn-tail": data.turn,
 				"data-time-hover-root": true,
-				children: [tail, (0, react_jsx_runtime.jsx)(MessageIconActions, {
+				children: [tail, /* @__PURE__ */ (0, react_jsx_runtime.jsx)(MessageIconActions, {
 					text: assistantText(closing.blocks),
 					time: closing.time,
 					runMs,
@@ -10105,7 +10104,7 @@ window.__ModuleLoader__.load({
 			});
 		});
 		//#endregion
-		//#region lib/types/client/chat/register-node-renderers.js
+		//#region src/client/chat/register-node-renderers.ts
 		/**
 		* Register this package's business renderers behind the keyed Chat Node seat.
 		* @param ctx - owning UI Conversation context.
@@ -10187,7 +10186,7 @@ window.__ModuleLoader__.load({
 			}, UnknownNodeView));
 		}
 		//#endregion
-		//#region lib/types/client/apply.js
+		//#region src/client/apply.ts
 		/** Services required by the conversation plugin. */
 		const inject = [
 			"slots",
