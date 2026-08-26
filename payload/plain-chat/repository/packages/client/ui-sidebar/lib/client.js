@@ -211,7 +211,7 @@ window.__ModuleLoader__.load({
 								onClick: () => {
 									startSession();
 								},
-								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconNewChatOutline16, { size: wide ? 14 : 18 }), wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+								children: [!wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconNewChatOutline16, { size: 18 }), wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: SidebarRoot_module_css_default.modeLabel,
 									children: t("mode.agent")
 								})]

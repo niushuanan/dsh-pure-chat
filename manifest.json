@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "kind": "xiaozhuang-dsh-plugin-export",
-  "createdAt": "2026-08-26T21:03:20.516Z",
-  "sourceCommit": "3ab1999ebeef4297bd69afd05a35aae29d5ff71b",
+  "createdAt": "2026-08-26T21:05:53.570Z",
+  "sourceCommit": "c715d9949e62ff72efd9191256d4a9642707965d",
   "plugins": [
     {
       "id": "plain-chat",
@@ -757,8 +757,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/client.js",
-      "size": 5933,
-      "sha256": "ae27c0334b3003beb059f727184f934fa3cac5e6d6c24afd0a3649445c697225"
+      "size": 5930,
+      "sha256": "d9c4dc3b15d5dc004b09d9569bc632e12b44d853d16f31bea73905c8c6574204"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/index.js",
@@ -812,8 +812,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/ChatAction.tsx",
-      "size": 1385,
-      "sha256": "b47a508cffb4660547be7ca8e7114d81f0257c7b63ee5956bf3da54d2c0052b7"
+      "size": 1384,
+      "sha256": "d22e6738f939209fb5eddbb4936ce7740eac0e46ecbc62f1192826c42e73167e"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/index.ts",
@@ -2472,8 +2472,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/client.js",
-      "size": 18631,
-      "sha256": "5a57dba188413ff9b241dd4ba134c74f12fa9cbfe657d3ea35e19384aaf63ae9"
+      "size": 18628,
+      "sha256": "ce3a28e54a7077cef227148ed22bc7c345a0190f7904bf88adbf56d7171b0e7e"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/index.js",
@@ -2527,8 +2527,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/SidebarRoot.tsx",
-      "size": 9412,
-      "sha256": "f09aa8b8cf3527a9282b816d22541c977ebe6228bcddd80693dc93a1d11ad24f"
+      "size": 9411,
+      "sha256": "eb567a65c83386f9ee056d0c7a672508c26478404378d168894af92092e990ea"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/contract/slots.ts",

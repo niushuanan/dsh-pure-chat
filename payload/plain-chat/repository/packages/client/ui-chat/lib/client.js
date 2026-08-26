@@ -40,7 +40,7 @@ window.__ModuleLoader__.load({
 					"aria-label": t("start.label"),
 					"aria-pressed": segment ? active === true : void 0,
 					onClick: startChat,
-					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChatOutline16, { size: wide ? 14 : 18 }), wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+					children: [!wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChatOutline16, { size: 18 }), wide && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: segment ? ChatAction_module_css_default.segmentLabel : ChatAction_module_css_default.label,
 						children: t("start")
 					})]
