@@ -7,7 +7,7 @@ window.__ModuleLoader__.load({
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
 		let react_jsx_runtime = require("react/jsx-runtime");
 		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-chat/src/client/ChatAction.module.css.mjs
-		const css = ".MztKGW_action{box-sizing:border-box;background:var(--dsw-alias-button-primary-fill);height:38px;color:var(--dsw-alias-label-primary-foreground);cursor:pointer;border:1px solid #0000;border-radius:12px;flex:none;justify-content:center;align-items:center;gap:6px;margin:0 2px 8px;padding:8px 16px;font-size:14px;font-weight:500;line-height:22px;display:flex;overflow:hidden}.MztKGW_action:hover{background:var(--dsw-alias-button-primary-hover)}.MztKGW_rail{background:0 0;border-color:#0000;align-self:flex-start;gap:0;width:36px;height:36px;margin:0 0 12px;padding:0}.MztKGW_rail:hover{background:var(--dsw-alias-interactive-bg-hover)}.MztKGW_label{white-space:nowrap;max-width:200px;overflow:hidden}.MztKGW_segment{z-index:1;min-width:0;color:var(--dsw-alias-label-primary);font:inherit;cursor:pointer;background:0 0;border:0;flex:50%;justify-content:center;align-items:center;gap:6px;padding:0;font-size:12px;font-weight:500;line-height:20px;transition:color .22s ease-in-out;display:flex;position:relative;overflow:hidden}.MztKGW_segment:hover{background:color-mix(in srgb, var(--dsw-alias-label-primary) 5%, transparent)}.MztKGW_segment[aria-pressed=true]{color:var(--dsw-alias-label-primary-foreground);font-weight:600}.MztKGW_segment[aria-pressed=true]:hover{background:0 0}.MztKGW_segmentLabel{white-space:nowrap;max-width:200px;overflow:hidden}";
+		const css = ".MztKGW_action{box-sizing:border-box;background:var(--dsw-alias-button-primary-fill);height:38px;color:var(--dsw-alias-label-primary-foreground);cursor:pointer;border:1px solid #0000;border-radius:12px;flex:none;justify-content:center;align-items:center;gap:6px;margin:0 2px 8px;padding:8px 16px;font-size:14px;font-weight:500;line-height:22px;display:flex;overflow:hidden}.MztKGW_action:hover{background:var(--dsw-alias-button-primary-hover)}.MztKGW_rail{background:0 0;border-color:#0000;align-self:flex-start;gap:0;width:36px;height:36px;margin:0 0 12px;padding:0}.MztKGW_rail:hover{background:var(--dsw-alias-interactive-bg-hover)}.MztKGW_label{white-space:nowrap;max-width:200px;overflow:hidden}.MztKGW_segment{z-index:1;min-width:0;color:var(--dsw-alias-label-primary);font:inherit;cursor:pointer;background:0 0;border:0;flex:50%;justify-content:center;align-items:center;gap:6px;padding:0;font-size:12px;font-weight:500;line-height:20px;transition:color .22s ease-in-out;display:flex;position:relative;overflow:hidden}.MztKGW_segment[aria-pressed=true]{color:var(--dsw-alias-label-primary-foreground);font-weight:600}.MztKGW_segment[aria-pressed=true]:hover{background:0 0}.MztKGW_segmentLabel{white-space:nowrap;max-width:200px;overflow:hidden}";
 		const tagId = "@deepseek-ai/dsh-client-ui-chat/ChatAction.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
 			const tag = document.createElement("style");
@@ -50,12 +50,12 @@ window.__ModuleLoader__.load({
 		//#endregion
 		//#region src/client/locales.ts
 		const zh = {
-			start: "开始聊天",
-			"start.label": "开始聊天"
+			start: "聊天模式",
+			"start.label": "聊天模式"
 		};
 		const en = {
-			start: "Start chat",
-			"start.label": "Start chat"
+			start: "Chat mode",
+			"start.label": "Chat mode"
 		};
 		//#endregion
 		//#region src/client/start-chat.ts
