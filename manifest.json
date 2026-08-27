@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "kind": "xiaozhuang-dsh-plugin-export",
-  "createdAt": "2026-08-26T21:26:37.278Z",
-  "sourceCommit": "ad461463011fa14abe561566194351dfb66c9cc6",
+  "createdAt": "2026-08-27T03:49:35.851Z",
+  "sourceCommit": "b15cec4b35dee9f6a439277e24999fa9050b6c9e",
   "plugins": [
     {
       "id": "plain-chat",
@@ -757,8 +757,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/client.js",
-      "size": 5930,
-      "sha256": "01eb325fd688bbc807e0040355531e5072d71d786ae51549e8ede9dde9c30f13"
+      "size": 5906,
+      "sha256": "9ca33c9ba9995d3c6d639d06fb1549a2c0600791e077ef894ebbb544f269b0e7"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/index.js",
@@ -807,8 +807,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/ChatAction.module.css",
-      "size": 1921,
-      "sha256": "470cbbacbc29a81def564d6a57d9f477e37e7bb32f7ba704318a3bf2fe001abc"
+      "size": 1893,
+      "sha256": "0b91c447b0c60c8e2f60ae29ab05935d75581ec993f84c9ce5d97c5ff49a6eeb"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/ChatAction.tsx",
@@ -2472,8 +2472,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/client.js",
-      "size": 19447,
-      "sha256": "9c8b50aa7ac13526dd279e2b420de871896dd5383fdbd8f70543cedb3f61a2f6"
+      "size": 19393,
+      "sha256": "8b01688f7def5cb056025681f86b2aaf0a19bcd907e2a3a874767dbbaac78edf"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/lib/index.js",
@@ -2522,8 +2522,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/SidebarRoot.module.css",
-      "size": 9527,
-      "sha256": "ba442602cdc14b80771a2545b917d86a5bc3e19c274f80153f0bd269faee97a2"
+      "size": 9547,
+      "sha256": "1b724cce170d144e32cfbf2c530c2fd88f0957acfeb2e4ac954117e41563a0e8"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/SidebarRoot.tsx",
@@ -2543,7 +2543,7 @@
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/client/locales.ts",
       "size": 850,
-      "sha256": "54d7dc3a6cc774d981c597531e9ad966efdee70075f6bb2df98df729f9c419be"
+      "sha256": "4b4e6aef90b23830e590175617143499ef2ace22efcae30a24b6c8ea48fddea4"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-sidebar/src/css-modules.d.ts",
