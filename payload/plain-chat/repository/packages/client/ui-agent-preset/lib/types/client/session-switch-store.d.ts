@@ -1,54 +1,51 @@
 /**
- * Session-header preset switching.
+ * Per-session Agent preset switching for the conversation header.
  *
- * A pick made during a running turn is retained per session and committed once
- * the shared session summary reports idle. The Host owns the matching idle
- * transaction, so navigating away cannot cancel a queued switch and a stale
- * client cannot recompose an active turn.
+ * A pick made during a running turn remains pending until the shared Session
+ * list reports idle. The Host owns the actual maintenance boundary; this
+ * controller only keeps the user's choice stable and retries a transient
+ * busy refusal after the turn finishes.
  */
-import type { IApiClient } from '@deepseek-ai/dsh-api-remotes/client';
-import { type SessionId, type SnapshotStore } from '@deepseek-ai/dsh-client-runtime/client';
-/** Header switch state for one session. */
+import type { ClientRemote } from '@deepseek-ai/dsh-api-remotes/client';
+import { type SnapshotStore } from '@deepseek-ai/dsh-client-store';
+import type { SessionId } from '@deepseek-ai/dsh-session/types';
+/** Pending switch state for one Session header. */
 export interface AgentPresetSessionSwitchEntry {
-    /** Preset accepted by the UI but not yet confirmed by the Host. */
+    /** Preset accepted by the UI but not yet visible in the Session projection. */
     readonly pending?: string;
-    /** Whether the Host call is in flight. */
+    /** Whether a Host switch call is currently in flight. */
     readonly busy: boolean;
+    /** Host committed the pick; only the shared Session projection is catching up. */
+    readonly committed?: boolean;
     /** Last non-transient failure, cleared by the next pick. */
     readonly error: string | null;
 }
-/** Reactive state shared by every mounted session header. */
+/** Reactive state shared by every mounted Session header. */
 export interface AgentPresetSessionSwitchState {
     readonly bySession: Readonly<Record<string, AgentPresetSessionSwitchEntry>>;
 }
-/** Session facts needed to decide whether a switch can start. */
+/** Session facts needed to decide when a switch may be attempted. */
 export interface SwitchableSessionSummary {
     readonly id: SessionId;
     readonly running: boolean;
-    readonly agentPreset?: string;
+    readonly projectionValues?: {
+        readonly agentPreset?: string | null;
+    };
 }
 /** Queue and commit per-session preset switches without interrupting turns. */
 export declare class AgentPresetSessionSwitchController {
-    private readonly api;
+    private readonly remote;
     private readonly session;
-    private readonly onApplied;
+    private readonly refresh;
     readonly store: SnapshotStore<AgentPresetSessionSwitchState>;
-    constructor(api: Pick<IApiClient, 'agentPresets'>, session: (sessionId: SessionId) => SwitchableSessionSummary | undefined, onApplied: (sessionId: SessionId, agentPreset: string) => void);
+    constructor(remote: Pick<ClientRemote, 'agentPresets'>, session: (sessionId: SessionId) => SwitchableSessionSummary | undefined, refresh: () => void);
     private entry;
     private set;
     private clear;
-    /**
-     * Accept a header-menu pick and commit it immediately when the session is idle.
-     * A running session retains the pick until a later list update reports idle.
-     * @param sessionId - session whose next turn uses the new preset.
-     * @param agentPreset - selected preset id.
-     * @returns after an immediate Host attempt settles, or immediately when queued.
-     */
+    /** Accept one header-menu pick and apply it at the next idle boundary. */
     select(sessionId: SessionId, agentPreset: string): Promise<void>;
-    /** Retry every queued switch whose session may have become idle. */
+    /** Reconcile every pending choice after Session list state changes. */
     flushAll(): void;
-    /** Fold a committed owner event into this browser's pending state. */
-    confirm(sessionId: SessionId, agentPreset: string): void;
     private flush;
 }
 //# sourceMappingURL=session-switch-store.d.ts.map

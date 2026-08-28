@@ -21,9 +21,14 @@ import type { PositionedBlock } from './incremental.ts';
 /** Copy-button labels forwarded to fence CodeBlocks (this package is cordis-free, so copy arrives via props). */
 export interface MarkdownCodeLabels {
     /** Copy-button idle label. */
-    copyLabel?: string | undefined;
+    copyLabel: string;
     /** Copy-button label during the post-copy confirmation window. */
-    copiedLabel?: string | undefined;
+    copiedLabel: string;
+}
+/** Localized chrome for a Markdown document. */
+export interface MarkdownLabels {
+    code: MarkdownCodeLabels;
+    footnotes: string;
 }
 /** Link/image reference targets collected from a document (first definition per identifier wins, as in CommonMark). */
 export interface ReferenceTargets {
@@ -67,10 +72,10 @@ export interface MarkdownFileMentions {
  * numbering accumulated in document order while references render.
  */
 export interface MarkdownRenderContext {
-    /** Streaming arm: fences render plain and TeX stays literal. */
+    /** Streaming arm: fences highlight incrementally as they grow; TeX (including ```math fences) stays literal until the settled pass. */
     readonly streaming: boolean;
     /** Localized fence copy-button labels. */
-    readonly codeLabels: MarkdownCodeLabels | undefined;
+    readonly labels: MarkdownLabels;
     /** Inside a blockquote's children: tables there always fill the quote's width. */
     readonly inBlockquote?: boolean;
     /** Inline-code file mentions; absent wherever no opener vocabulary exists. */

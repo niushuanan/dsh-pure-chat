@@ -13,17 +13,10 @@ export type QueueDockProps = PropsRuntime<'conversation.input.dock'> & QueueDock
  * collapsible count header; an empty queue renders nothing.
  */
 export declare function QueueDock({ useSession, updateQueue, notify, t }: QueueDockProps): import("react").JSX.Element | null;
-/**
- * The dock entry as a plain registrant plugin. The conversation service is
- * the action contract; the slot declaration has an independent lifecycle boundary.
- */
+/** Registers queue actions backed by the session-scoped conversation service. */
 export declare const queueDockEntry: {
     name: string;
     inject: string[];
-    /**
-     * Register the queue strip as the terminal input-dock entry (order 20).
-     * @param ctx - registrant context (disposal rides ctx.effect inside slots.register).
-     */
     apply(ctx: Context): void;
 };
 //# sourceMappingURL=QueueDock.d.ts.map

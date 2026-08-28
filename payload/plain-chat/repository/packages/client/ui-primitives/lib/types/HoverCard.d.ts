@@ -8,8 +8,8 @@ import type { ReactNode } from 'react';
  * @param props.disabled - suppress opening; turning true closes an open card.
  * @param props.copyText - optional primary value copied by activation and
  * included in the card's accessible name.
- * @param props.copyLabel - accessible activation-label prefix (default "复制").
- * @param props.copiedLabel - visible success label (default "复制成功").
+ * @param props.copyLabel - localized accessible activation-label prefix.
+ * @param props.copiedLabel - localized visible success label.
  * @returns anchor wrapper with the conditional portaled card.
  */
 export declare function HoverCard({ anchor, content, openDelayMs, disabled, copyText, copyLabel, copiedLabel, }: {
@@ -18,7 +18,7 @@ export declare function HoverCard({ anchor, content, openDelayMs, disabled, copy
     openDelayMs?: number;
     disabled?: boolean;
     copyText?: string | undefined;
-    copyLabel?: string | undefined;
-    copiedLabel?: string | undefined;
+    copyLabel: string;
+    copiedLabel: string;
 }): import("react").JSX.Element;
 //# sourceMappingURL=HoverCard.d.ts.map

@@ -22,9 +22,11 @@
  * and a hole has exactly one declaring entry — they carry the same owner
  * contract and the same occupant.
  */
-import type { HostDescriptionSource } from '@deepseek-ai/dsh-client-connection/client';
+import type { ConnectionGenerationState } from '@deepseek-ai/dsh-client-connection/client';
 import type { HostObservable, PropsHooks, PropsLocale, PropsRenderSlots, PropsRuntime, PropsStore } from '@deepseek-ai/dsh-client-ui-slots';
-import type { SessionId, SessionSearchResultItem, WorkspaceId, WorkspaceView } from '@deepseek-ai/dsh-client-runtime/client';
+import type { SessionSearchResultItem } from '@deepseek-ai/dsh-api-session-controller/client';
+import type { WorkspaceId, WorkspaceView } from '@deepseek-ai/dsh-api-workspace-controller/client';
+import type { SessionId } from '@deepseek-ai/dsh-session/types';
 import type { createWorkspaceViewStore } from '../stores.ts';
 /**
  * Owner share of the directory-flow holes: the complete conversation between
@@ -43,10 +45,9 @@ export interface DirectoryFlowOwnerProps {
     /** The interaction itself failed (chooser missing, listing denied); the owner shows its error surface. */
     onError: (message: string) => void;
 }
-/** Owner share for optional actions appended to one real session's row menu. */
+/** Owner values for extension rows appended to a Session's native overflow menu. */
 export interface SessionMenuActionOwnerProps {
     sessionId: SessionId;
-    /** Close the owning menu after an action commits successfully. */
     closeMenu: () => void;
 }
 declare module '@deepseek-ai/dsh-client-ui-slots' {
@@ -63,7 +64,7 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
             scope: 'root';
             owner: DirectoryFlowOwnerProps;
         };
-        /** Hot-pluggable actions appended after Rename / Fork / Archive. */
+        /** Optional actions appended to every non-blank Session row menu. */
         'sidebar.workspaces.sessionMenuAction': {
             kind: 'list';
             scope: 'root';
@@ -96,7 +97,7 @@ export type DirectoryPickingHooks = PropsHooks<DirectoryPickingInjected['hooks']
 export type WorkspaceBrowserInjected = {
     hooks: DirectoryPickingInjected['hooks'] & {
         /** Current generation's Host description, bound by the slot renderer. */
-        hostDescription: HostDescriptionSource;
+        connectionGeneration: ConnectionGenerationState;
     };
     /**
      * Start a New Session in a Workspace: reuse-or-create its blank session and
@@ -104,6 +105,11 @@ export type WorkspaceBrowserInjected = {
      * Workspace, then the recent Workspace, or clear into the New Session view.
      */
     startSession: (workspaceId?: WorkspaceId) => void;
+    /**
+     * Start a plain Chat conversation: reuse the existing blank chat Session,
+     * or create one with the internal `chat` composition and open it.
+     */
+    startChat: () => void;
     /** Open a real Session. */
     open: (sessionId: SessionId) => void;
     /**

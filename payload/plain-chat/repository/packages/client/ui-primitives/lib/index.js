@@ -13,19 +13,20 @@ import css$7 from "./Modal.module.css";
 import css$8 from "./OnboardingSurface.module.css";
 import css$9 from "./RiskConfirmation.module.css";
 import css$10 from "./ConnectionBanner.module.css";
-import css$11 from "./Tooltip.module.css";
-import css$12 from "./Toast.module.css";
-import css$13 from "./JsonTree.module.css";
+import css$11 from "./user-text.module.css";
+import css$12 from "./Tooltip.module.css";
+import css$13 from "./Toast.module.css";
+import css$14 from "./JsonTree.module.css";
 import Anser from "anser";
-import css$14 from "./TerminalBlock.module.css";
+import css$15 from "./TerminalBlock.module.css";
 import { createCssVariablesTheme, createHighlighterCoreSync } from "shiki/core";
 import { createJavaScriptRegexEngine, defaultJavaScriptRegexConstructor } from "shiki/engine/javascript";
 import langTs from "@shikijs/langs/typescript";
 import langBash from "@shikijs/langs/shellscript";
 import langJson from "@shikijs/langs/json";
-import css$15 from "./ReadBlock.module.css";
-import css$16 from "./DiffBlock.module.css";
-import css$17 from "./SearchBlock.module.css";
+import css$16 from "./ReadBlock.module.css";
+import css$17 from "./DiffBlock.module.css";
+import css$18 from "./SearchBlock.module.css";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { gfmFromMarkdown } from "mdast-util-gfm";
 import { mathFromMarkdown } from "mdast-util-math";
@@ -37,13 +38,13 @@ import { classifyCharacter } from "micromark-util-classify-character";
 import { codes, constants, types } from "micromark-util-symbol";
 import { factorySpace } from "micromark-factory-space";
 import { normalizeUri } from "micromark-util-sanitize-uri";
-import css$18 from "./markdown/CodeBlock.module.css";
+import css$19 from "./markdown/CodeBlock.module.css";
 import katex from "katex";
-import css$19 from "./markdown/MarkdownText.module.css";
+import css$20 from "./markdown/MarkdownText.module.css";
 import "katex/dist/katex.min.css";
-import css$20 from "./WebBlock.module.css";
-import css$21 from "./markdown/JsonBlock.module.css";
-import css$22 from "./markdown/MessageText.module.css";
+import css$21 from "./WebBlock.module.css";
+import css$22 from "./markdown/JsonBlock.module.css";
+import css$23 from "./markdown/MessageText.module.css";
 //#region lib/types/StateDot.js
 /** Outer 3x3 matrix cells (2px pixels on a 10px grid), clockwise from top-left. */
 const MATRIX_CELLS = [
@@ -105,57 +106,6 @@ const IconNewChatOutline16 = ({ size = 16, className }) => jsx("svg", {
 		d: "M8.00003 0.3237C3.76075 0.3237 0.32373 3.76072 0.32373 8C0.32373 9.17603 0.589121 10.2922 1.0632 11.2901L1.35291 11.8989L2.5705 11.3205L2.28079 10.7117C1.89079 9.89074 1.67301 8.97167 1.67301 8C1.67301 4.50546 4.50549 1.67298 8.00003 1.67298C11.4946 1.67298 14.3271 4.50546 14.3271 8C14.3271 11.4945 11.4946 14.327 8.00003 14.327C7.28473 14.327 6.76077 14.277 6.29621 14.1487C5.83857 14.0224 5.40441 13.8109 4.88514 13.4488C4.12569 12.919 3.03778 12.7316 2.141 13.2978L2.12682 13.307L2.11264 13.3171L1.34886 13.854L1.79659 15.188L2.86122 14.4384C3.19068 14.2305 3.68325 14.2542 4.11326 14.5539C4.72789 14.9826 5.30042 15.2724 5.93762 15.4484C6.56803 15.6224 7.22776 15.6763 8.00003 15.6763C12.2393 15.6763 15.6763 12.2393 15.6763 8C15.6763 3.76072 12.2393 0.3237 8.00003 0.3237ZM7.32033 4.82535V7.32536H4.82538V8.67464H7.32033V11.1747H8.6696V8.67464H11.1747V7.32536H8.6696V4.82535H7.32033Z",
 		fill: "currentColor"
 	})
-});
-/** Harness plain-chat action: one quiet message bubble without a work/add badge. */
-const IconChatOutline16 = ({ size = 16, className }) => jsxs("svg", {
-	width: size,
-	height: size,
-	className,
-	viewBox: "0 0 16 16",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	children: [
-		jsx("path", {
-			fillRule: "evenodd",
-			clipRule: "evenodd",
-			d: "M3.25 1.5h9.5A2.75 2.75 0 0 1 15.5 4.25v5A2.75 2.75 0 0 1 12.75 12H8.42l-2.77 2.17a.7.7 0 0 1-1.13-.55V12H3.25A2.75 2.75 0 0 1 .5 9.25v-5A2.75 2.75 0 0 1 3.25 1.5Zm0 1.3A1.45 1.45 0 0 0 1.8 4.25v5a1.45 1.45 0 0 0 1.45 1.45h2.57v1.48l2.15-1.48h4.78a1.45 1.45 0 0 0 1.45-1.45v-5a1.45 1.45 0 0 0-1.45-1.45h-9.5Z",
-			fill: "currentColor"
-		}),
-		jsx("circle", {
-			cx: "5",
-			cy: "6.75",
-			r: ".75",
-			fill: "currentColor"
-		}),
-		jsx("circle", {
-			cx: "8",
-			cy: "6.75",
-			r: ".75",
-			fill: "currentColor"
-		}),
-		jsx("circle", {
-			cx: "11",
-			cy: "6.75",
-			r: ".75",
-			fill: "currentColor"
-		})
-	]
-});
-/** Harness open-in-new-window action: two panes plus a north-east launch arrow. */
-const IconWindowNewOutline16 = ({ size = 16, className }) => jsxs("svg", {
-	width: size,
-	height: size,
-	className,
-	viewBox: "0 0 16 16",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	children: [jsx("path", {
-		d: "M2.25 4.75A1.75 1.75 0 0 1 4 3h3.25v1.3H4a.45.45 0 0 0-.45.45V12c0 .248.202.45.45.45h7.25A.45.45 0 0 0 11.7 12V8.75H13V12A1.75 1.75 0 0 1 11.25 13.75H4A1.75 1.75 0 0 1 2.25 12V4.75Z",
-		fill: "currentColor"
-	}), jsx("path", {
-		d: "M8.15 2.25h5.6v5.6h-1.3V4.47L7.71 9.21l-.92-.92 4.74-4.74H8.15v-1.3Z",
-		fill: "currentColor"
-	})]
 });
 /** ic_ds_search_outline_16 */
 const IconSearchOutline16 = ({ size = 16, className }) => jsxs("svg", {
@@ -239,22 +189,6 @@ const IconSettingsOutline16 = ({ size = 16, className }) => jsxs("svg", {
 			fill: "currentColor"
 		})
 	}) })]
-});
-/** Continuous-adaptation mark: two renewing arcs around a stable product core. */
-const IconAdaptiveUpdateOutline16 = ({ size = 16, className }) => jsxs("svg", {
-	width: size,
-	height: size,
-	className,
-	viewBox: "0 0 16 16",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	children: [jsx("path", {
-		d: "M8 1.25a6.75 6.75 0 0 1 5.64 3.04l.42-.94 1.19.53-1.15 2.57a.65.65 0 0 1-.86.33l-2.57-1.15.53-1.19.99.44A5.45 5.45 0 0 0 8 2.55a5.43 5.43 0 0 0-4.11 1.87l-.98-.86A6.73 6.73 0 0 1 8 1.25Zm4.11 10.33.98.86A6.73 6.73 0 0 1 8 14.75a6.75 6.75 0 0 1-5.64-3.04l-.42.94-1.19-.53 1.15-2.57a.65.65 0 0 1 .86-.33l2.57 1.15-.53 1.19-.99-.44A5.45 5.45 0 0 0 8 13.45a5.43 5.43 0 0 0 4.11-1.87Z",
-		fill: "currentColor"
-	}), jsx("path", {
-		d: "m8 5 3 3-3 3-3-3 3-3Zm0 1.7L6.7 8 8 9.3 9.3 8 8 6.7Z",
-		fill: "currentColor"
-	})]
 });
 /** ic_ds_panel_left_outline_16 */
 const IconPanelLeftOutline16 = ({ size = 16, className }) => jsx("svg", {
@@ -685,6 +619,33 @@ const IconBrowseOutline16 = ({ size = 16, className }) => jsxs("svg", {
 		})
 	]
 });
+/** ic_ds_context_injection_outline_16 (figma extract): browse document frame with an open top and an arrow dropping in. */
+const IconContextInjectionOutline16 = ({ size = 16, className }) => jsxs("svg", {
+	width: size,
+	height: size,
+	className,
+	viewBox: "0 0 16 16",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	children: [
+		jsx("path", {
+			d: "M11.9512 1.13281C12.401 1.20666 12.8093 1.34164 13.1738 1.60645C13.4282 1.79137 13.6521 2.01609 13.8369 2.27051C14.1574 2.71187 14.2892 3.21614 14.3506 3.78223C14.4105 4.33532 14.4102 5.02658 14.4102 5.87305V10.0273C14.4102 10.8738 14.4105 11.5651 14.3506 12.1182C14.2892 12.6843 14.1574 13.1885 13.8369 13.6299C13.652 13.8843 13.4282 14.109 13.1738 14.2939C12.7324 14.6146 12.2273 14.7462 11.6611 14.8076C11.1081 14.8675 10.4166 14.8672 9.57031 14.8672H6.43164C5.58533 14.8672 4.89387 14.8675 4.34082 14.8076C3.77474 14.7463 3.27046 14.6144 2.8291 14.2939C2.57453 14.109 2.35003 13.8844 2.16504 13.6299C1.84444 13.1885 1.71272 12.6844 1.65137 12.1182C1.59147 11.5651 1.5918 10.8738 1.5918 10.0273V5.87305C1.5918 5.02655 1.59146 4.33533 1.65137 3.78223C1.71272 3.21606 1.84443 2.71191 2.16504 2.27051C2.35003 2.01596 2.57453 1.79141 2.8291 1.60645C3.19332 1.34202 3.60062 1.20669 4.0498 1.13281V2.56445C3.87191 2.61154 3.74906 2.66836 3.65137 2.73926C3.51583 2.83777 3.3964 2.95726 3.29785 3.09277C3.1794 3.25581 3.09143 3.4856 3.04297 3.93262C2.9931 4.39287 2.99219 4.99529 2.99219 5.87305V10.0273C2.99219 10.905 2.99312 11.5075 3.04297 11.9678C3.09142 12.4147 3.17943 12.6446 3.29785 12.8076C3.3964 12.9431 3.51583 13.0626 3.65137 13.1611C3.81441 13.2795 4.04437 13.3676 4.49121 13.416C4.95142 13.4658 5.55411 13.4668 6.43164 13.4668H9.57031C10.4479 13.4668 11.0505 13.4659 11.5107 13.416C11.9576 13.3675 12.1876 13.2796 12.3506 13.1611C12.4861 13.0626 12.6056 12.9431 12.7041 12.8076C12.8224 12.6446 12.9106 12.4146 12.959 11.9678C13.0088 11.5075 13.0098 10.905 13.0098 10.0273V5.87305C13.0098 4.99532 13.0088 4.39286 12.959 3.93262C12.9105 3.48579 12.8225 3.2558 12.7041 3.09277C12.6056 2.95727 12.4861 2.83778 12.3506 2.73926C12.2527 2.66816 12.1296 2.61064 11.9512 2.56348V1.13281Z",
+			fill: "currentColor"
+		}),
+		jsx("path", {
+			d: "M9.32227 11.4141H4.95508V10.2148H9.32227V11.4141Z",
+			fill: "currentColor"
+		}),
+		jsx("path", {
+			d: "M11.0439 8.90039H4.95508V7.70117H11.0439V8.90039Z",
+			fill: "currentColor"
+		}),
+		jsx("path", {
+			d: "M8.59961 3.75781L9.70996 2.64746L10.5586 3.49609L8.49512 5.55957C8.22173 5.83266 7.77816 5.83285 7.50488 5.55957L5.44141 3.49512L6.28906 2.64746L7.40039 3.75781V1.09668H8.59961V3.75781Z",
+			fill: "currentColor"
+		})
+	]
+});
 /** ic_ds_link_outline_14 */
 const IconLinkOutline14 = ({ size = 14, className }) => jsxs("svg", {
 	width: size,
@@ -821,80 +782,6 @@ const IconUserOutline16 = ({ size = 16, className }) => jsxs("svg", {
 		d: "M8.00002 10.3316C11.7343 10.3316 14.1864 11.8997 15.0387 14.4445L14.4292 14.6483L13.8197 14.8531C13.1955 12.9893 11.3673 11.6182 8.00002 11.6182C4.63277 11.6182 2.80455 12.9893 2.18031 14.8531L1.5708 14.6483L0.961304 14.4445C1.81368 11.8997 4.26579 10.3316 8.00002 10.3316Z",
 		fill: "currentColor"
 	})]
-});
-/** ic_ds_teamwork_outline_16 — two-person glyph shared by Teamwork surfaces. */
-const IconTeamworkOutline16 = ({ size = 16, className }) => jsxs("svg", {
-	width: size,
-	height: size,
-	className,
-	viewBox: "0 0 16 16",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	children: [
-		jsx("path", {
-			d: "M11.33 14v-1.33a2.67 2.67 0 0 0-2.66-2.67H3.33a2.67 2.67 0 0 0-2.66 2.67V14",
-			stroke: "currentColor",
-			strokeWidth: "1.31831",
-			strokeLinecap: "round",
-			strokeLinejoin: "round"
-		}),
-		jsx("circle", {
-			cx: "6",
-			cy: "4.67",
-			r: "2.67",
-			stroke: "currentColor",
-			strokeWidth: "1.31831"
-		}),
-		jsx("path", {
-			d: "M15.33 14v-1.33a2.67 2.67 0 0 0-2-2.58",
-			stroke: "currentColor",
-			strokeWidth: "1.31831",
-			strokeLinecap: "round",
-			strokeLinejoin: "round"
-		}),
-		jsx("path", {
-			d: "M10.67 2.09a2.67 2.67 0 0 1 0 5.16",
-			stroke: "currentColor",
-			strokeWidth: "1.31831",
-			strokeLinecap: "round",
-			strokeLinejoin: "round"
-		})
-	]
-});
-/**
-* Three ascending usage columns, sourced from Lucide's
-* chart-no-axes-column-increasing glyph and kept on its native 24px grid.
-*/
-const IconUsageTrendOutline16 = ({ size = 16, className }) => jsxs("svg", {
-	width: size,
-	height: size,
-	className,
-	viewBox: "0 0 24 24",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	children: [
-		jsx("path", {
-			d: "M5 21v-6",
-			stroke: "currentColor",
-			strokeWidth: "2",
-			strokeLinecap: "round",
-			strokeLinejoin: "round"
-		}),
-		jsx("path", {
-			d: "M12 21V9",
-			stroke: "currentColor",
-			strokeWidth: "2",
-			strokeLinecap: "round",
-			strokeLinejoin: "round"
-		}),
-		jsx("path", {
-			d: "M19 21V3",
-			stroke: "currentColor",
-			strokeWidth: "2",
-			strokeLinecap: "round",
-			strokeLinejoin: "round"
-		})
-	]
 });
 /** ic_ds_send_outline_16 */
 const IconSendOutline16 = ({ size = 16, className }) => jsx("svg", {
@@ -1381,6 +1268,159 @@ const IconGoalOutline16 = ({ size = 16, className }) => jsxs("svg", {
 		})
 	]
 });
+/** Harness plain-chat action: one quiet message bubble. */
+const IconChatOutline16 = ({ size = 16, className }) => jsxs("svg", {
+	width: size,
+	height: size,
+	className,
+	viewBox: "0 0 16 16",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	children: [
+		jsx("path", {
+			fillRule: "evenodd",
+			clipRule: "evenodd",
+			d: "M3.25 1.5h9.5A2.75 2.75 0 0 1 15.5 4.25v5A2.75 2.75 0 0 1 12.75 12H8.42l-2.77 2.17a.7.7 0 0 1-1.13-.55V12H3.25A2.75 2.75 0 0 1 .5 9.25v-5A2.75 2.75 0 0 1 3.25 1.5Zm0 1.3A1.45 1.45 0 0 0 1.8 4.25v5a1.45 1.45 0 0 0 1.45 1.45h2.57v1.48l2.15-1.48h4.78a1.45 1.45 0 0 0 1.45-1.45v-5a1.45 1.45 0 0 0-1.45-1.45h-9.5Z",
+			fill: "currentColor"
+		}),
+		jsx("circle", {
+			cx: "5",
+			cy: "6.75",
+			r: ".75",
+			fill: "currentColor"
+		}),
+		jsx("circle", {
+			cx: "8",
+			cy: "6.75",
+			r: ".75",
+			fill: "currentColor"
+		}),
+		jsx("circle", {
+			cx: "11",
+			cy: "6.75",
+			r: ".75",
+			fill: "currentColor"
+		})
+	]
+});
+/** Open-in-new-window action. */
+const IconWindowNewOutline16 = ({ size = 16, className }) => jsxs("svg", {
+	width: size,
+	height: size,
+	className,
+	viewBox: "0 0 16 16",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	children: [jsx("path", {
+		d: "M2.25 4.75A1.75 1.75 0 0 1 4 3h3.25v1.3H4a.45.45 0 0 0-.45.45V12c0 .248.202.45.45.45h7.25A.45.45 0 0 0 11.7 12V8.75H13V12A1.75 1.75 0 0 1 11.25 13.75H4A1.75 1.75 0 0 1 2.25 12V4.75Z",
+		fill: "currentColor"
+	}), jsx("path", {
+		d: "M8.15 2.25h5.6v5.6h-1.3V4.47L7.71 9.21l-.92-.92 4.74-4.74H8.15v-1.3Z",
+		fill: "currentColor"
+	})]
+});
+/** Continuous-adaptation mark. */
+const IconAdaptiveUpdateOutline16 = ({ size = 16, className }) => jsxs("svg", {
+	width: size,
+	height: size,
+	className,
+	viewBox: "0 0 16 16",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	children: [jsx("path", {
+		d: "M8 1.25a6.75 6.75 0 0 1 5.64 3.04l.42-.94 1.19.53-1.15 2.57a.65.65 0 0 1-.86.33l-2.57-1.15.53-1.19.99.44A5.45 5.45 0 0 0 8 2.55a5.43 5.43 0 0 0-4.11 1.87l-.98-.86A6.73 6.73 0 0 1 8 1.25Zm4.11 10.33.98.86A6.73 6.73 0 0 1 8 14.75a6.75 6.75 0 0 1-5.64-3.04l-.42.94-1.19-.53 1.15-2.57a.65.65 0 0 1 .86-.33l2.57 1.15-.53 1.19-.99-.44A5.45 5.45 0 0 0 8 13.45a5.43 5.43 0 0 0 4.11-1.87Z",
+		fill: "currentColor"
+	}), jsx("path", {
+		d: "m8 5 3 3-3 3-3-3 3-3Zm0 1.7L6.7 8 8 9.3 9.3 8 8 6.7Z",
+		fill: "currentColor"
+	})]
+});
+/** Two-person teamwork glyph. */
+const IconTeamworkOutline16 = ({ size = 16, className }) => jsxs("svg", {
+	width: size,
+	height: size,
+	className,
+	viewBox: "0 0 16 16",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	children: [
+		jsx("path", {
+			d: "M11.33 14v-1.33a2.67 2.67 0 0 0-2.66-2.67H3.33a2.67 2.67 0 0 0-2.66 2.67V14",
+			stroke: "currentColor",
+			strokeWidth: "1.31831",
+			strokeLinecap: "round",
+			strokeLinejoin: "round"
+		}),
+		jsx("circle", {
+			cx: "6",
+			cy: "4.67",
+			r: "2.67",
+			stroke: "currentColor",
+			strokeWidth: "1.31831"
+		}),
+		jsx("path", {
+			d: "M15.33 14v-1.33a2.67 2.67 0 0 0-2-2.58M10.67 2.09a2.67 2.67 0 0 1 0 5.16",
+			stroke: "currentColor",
+			strokeWidth: "1.31831",
+			strokeLinecap: "round",
+			strokeLinejoin: "round"
+		})
+	]
+});
+/** Three ascending usage columns. */
+const IconUsageTrendOutline16 = ({ size = 16, className }) => jsx("svg", {
+	width: size,
+	height: size,
+	className,
+	viewBox: "0 0 24 24",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	children: jsx("path", {
+		d: "M5 21v-6M12 21V9M19 21V3",
+		stroke: "currentColor",
+		strokeWidth: "2",
+		strokeLinecap: "round",
+		strokeLinejoin: "round"
+	})
+});
+/** Quote hooks distinct from copy and clipboard actions. */
+const IconQuoteOutline16 = ({ size = 16, className }) => jsx("svg", {
+	width: size,
+	height: size,
+	className,
+	viewBox: "0 0 16 16",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	children: jsx("path", {
+		d: "M6.7 4.1C4.65 4.8 3.5 6.25 3.5 8.5V10.8H6.45V7.9H4.15M12.5 4.1C10.45 4.8 9.3 6.25 9.3 8.5V10.8H12.25V7.9H9.95",
+		stroke: "currentColor",
+		strokeWidth: "1.3",
+		strokeLinecap: "round",
+		strokeLinejoin: "round"
+	})
+});
+/** Compact two-hemisphere memory glyph. */
+const IconMemoryOutline16 = ({ size = 16, className }) => jsxs("svg", {
+	width: size,
+	height: size,
+	className,
+	viewBox: "0 0 16 16",
+	fill: "none",
+	xmlns: "http://www.w3.org/2000/svg",
+	children: [jsx("path", {
+		d: "M7.7 3.45A2.2 2.2 0 0 0 3.65 4.6A2.45 2.45 0 0 0 3 8.95a2.4 2.4 0 0 0 2.2 3.55c1.2 0 2.2-.9 2.5-2.05v-7ZM8.3 3.45a2.2 2.2 0 0 1 4.05 1.15A2.45 2.45 0 0 1 13 8.95a2.4 2.4 0 0 1-2.2 3.55c-1.2 0-2.2-.9-2.5-2.05v-7Z",
+		stroke: "currentColor",
+		strokeWidth: "1.3",
+		strokeLinecap: "round",
+		strokeLinejoin: "round"
+	}), jsx("path", {
+		d: "M5.05 6.35c1.35 0 2.45 1.1 2.45 2.45M10.95 6.35c-1.35 0-2.45 1.1-2.45 2.45M5.35 9.7c.95-.1 1.75.4 2.1 1.15M10.65 9.7c-.95-.1-1.75.4-2.1 1.15",
+		stroke: "currentColor",
+		strokeWidth: "1.3",
+		strokeLinecap: "round",
+		strokeLinejoin: "round"
+	})]
+});
 /** sparkle_16 (Others tool-row leading glyph; hand-authored three-star
 *  approximation — the figma 43:31850 glyph is an SF Symbols "sparkles" text glyph,
 *  not extractable as vector data) */
@@ -1405,44 +1445,6 @@ const IconSparkle16 = ({ size = 16, className }) => jsxs("svg", {
 			fill: "currentColor"
 		})
 	]
-});
-/** Quote: two quiet quotation hooks, distinct from copy and clipboard actions. */
-const IconQuoteOutline16 = ({ size = 16, className }) => jsx("svg", {
-	width: size,
-	height: size,
-	className,
-	viewBox: "0 0 16 16",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	children: jsx("path", {
-		d: "M6.7 4.1C4.65 4.8 3.5 6.25 3.5 8.5V10.8H6.45V7.9H4.15M12.5 4.1C10.45 4.8 9.3 6.25 9.3 8.5V10.8H12.25V7.9H9.95",
-		stroke: "currentColor",
-		strokeWidth: "1.3",
-		strokeLinecap: "round",
-		strokeLinejoin: "round"
-	})
-});
-/** Memory: a compact two-hemisphere brain outline shared by every memory entry. */
-const IconMemoryOutline16 = ({ size = 16, className }) => jsxs("svg", {
-	width: size,
-	height: size,
-	className,
-	viewBox: "0 0 16 16",
-	fill: "none",
-	xmlns: "http://www.w3.org/2000/svg",
-	children: [jsx("path", {
-		d: "M7.7 3.45A2.2 2.2 0 0 0 3.65 4.6A2.45 2.45 0 0 0 3 8.95a2.4 2.4 0 0 0 2.2 3.55c1.2 0 2.2-.9 2.5-2.05v-7ZM8.3 3.45a2.2 2.2 0 0 1 4.05 1.15A2.45 2.45 0 0 1 13 8.95a2.4 2.4 0 0 1-2.2 3.55c-1.2 0-2.2-.9-2.5-2.05v-7Z",
-		stroke: "currentColor",
-		strokeWidth: "1.3",
-		strokeLinecap: "round",
-		strokeLinejoin: "round"
-	}), jsx("path", {
-		d: "M5.05 6.35c1.35 0 2.45 1.1 2.45 2.45M10.95 6.35c-1.35 0-2.45 1.1-2.45 2.45M5.35 9.7c.95-.1 1.75.4 2.1 1.15M10.65 9.7c-.95-.1-1.75.4-2.1 1.15",
-		stroke: "currentColor",
-		strokeWidth: "1.3",
-		strokeLinecap: "round",
-		strokeLinejoin: "round"
-	})]
 });
 /** inspect_outline_12 (shared tool-row trajectory affordance glyph) */
 const IconInspectOutline12 = ({ size = 12, className }) => jsx("svg", {
@@ -1723,12 +1725,11 @@ const MEASURE_STYLE = {
 * the trigger (render-prop anchors, effect-positioned proxies — measuring the
 * wrapper there races the host's layout effects). Called on open and on every
 * scroll/resize; return null to skip placement for that frame.
-* @param props.afterItems - plugin-owned rows appended inside the scrolling item group.
 * @param props.footer - rows pinned below the scrolling items area, separated
 * by a hairline; they stay visible while the items above scroll.
 * @returns anchor wrapper with the conditional list.
 */
-function Menu({ open, anchor, items, afterItems, selectedId, selectedIds, onSelect, onClose, align = "start", side = "bottom", portal = false, closeOnPointerLeave = false, dense = false, compact = false, getAnchorRect, footer, className }) {
+function Menu({ open, anchor, items, selectedId, selectedIds, onSelect, onClose, align = "start", side = "bottom", portal = false, closeOnPointerLeave = false, dense = false, compact = false, getAnchorRect, footer, afterItems, className }) {
 	const rootRef = useRef(null);
 	const listRef = useRef(null);
 	const [openSubmenuId, setOpenSubmenuId] = useState(null);
@@ -2089,11 +2090,11 @@ async function writeClipboard(text) {
 * @param props.disabled - suppress opening; turning true closes an open card.
 * @param props.copyText - optional primary value copied by activation and
 * included in the card's accessible name.
-* @param props.copyLabel - accessible activation-label prefix (default "复制").
-* @param props.copiedLabel - visible success label (default "复制成功").
+* @param props.copyLabel - localized accessible activation-label prefix.
+* @param props.copiedLabel - localized visible success label.
 * @returns anchor wrapper with the conditional portaled card.
 */
-function HoverCard({ anchor, content, openDelayMs = 500, disabled = false, copyText, copyLabel = "复制", copiedLabel = "复制成功" }) {
+function HoverCard({ anchor, content, openDelayMs = 500, disabled = false, copyText, copyLabel, copiedLabel }) {
 	const rootRef = useRef(null);
 	const cardRef = useRef(null);
 	const timerRef = useRef(null);
@@ -2259,23 +2260,20 @@ function HoverCard({ anchor, content, openDelayMs = 500, disabled = false, copyT
 //#endregion
 //#region lib/types/Modal.js
 /**
-* Render a centered modal over a blurred page mask.
+* Render a centered, body-portaled modal over a blurred page mask.
 * @param props.open - whether the dialog is showing.
 * @param props.onClose - Escape or mask click.
 * @param props.title - dialog heading (aria-label in every mode).
-* @param props.closeLabel - accessible close-button label.
+* @param props.closeLabel - localized accessible close-button label.
 * @param props.description - optional supporting sentence under the title.
 * @param props.children - body (inputs, etc.).
 * @param props.footer - action row (Cancel / Create).
 * @param props.contentClassName - optional class for a scrollable content region.
 * @param props.headless - render children directly in the card (no default
-* header/close/body chrome) for dialogs whose figma frame owns its own
-* header structure; mask, card, Escape, and aria-label remain.
-* @param props.closeLabel - close-button aria label; the owner passes
-* localized copy (this package is cordis-free, so copy arrives via props).
+* header/close/body chrome); mask, card, Escape, and aria-label remain.
 * @returns null when closed; otherwise the overlay tree.
 */
-function Modal({ open, onClose, title, closeLabel = "Close", description, children, footer, className, contentClassName, headless = false }) {
+function Modal({ open, onClose, title, closeLabel, description, children, footer, className, contentClassName, headless = false }) {
 	useEffect(() => {
 		if (!open) return;
 		const onKeyDown = (e) => {
@@ -2334,8 +2332,8 @@ function Modal({ open, onClose, title, closeLabel = "Close", description, childr
 //#endregion
 //#region lib/types/OnboardingSurface.js
 /**
-* Render the onboarding takeover chrome (mask + opaque stage) around one
-* step's content and keep the application root inert while mounted.
+* Render a body-portaled onboarding stage and keep the application root inert
+* while mounted.
 * @param props.children - the step's page content, centered on the stage.
 * @returns the body-portaled overlay tree.
 */
@@ -2370,11 +2368,12 @@ function OnboardingSurface({ children }) {
 * Render one in-page confirmation whose primary action is unavailable until
 * the caller-controlled acknowledgement is checked.
 */
-function RiskConfirmation({ open, title, description, acknowledgeLabel, cancelLabel, confirmLabel, acknowledged, disabled = false, onAcknowledgedChange, onCancel, onConfirm }) {
+function RiskConfirmation({ open, title, description, acknowledgeLabel, cancelLabel, closeLabel, confirmLabel, acknowledged, disabled = false, onAcknowledgedChange, onCancel, onConfirm }) {
 	return jsxs(Modal, {
 		open,
 		onClose: onCancel,
 		title,
+		closeLabel,
 		className: css$9.confirmation ?? "",
 		contentClassName: css$9.confirmationContent ?? "",
 		footer: jsxs(Fragment, { children: [jsx(Button, {
@@ -2418,7 +2417,7 @@ function RiskConfirmation({ open, title, description, acknowledgeLabel, cancelLa
 * package is cordis-free, so copy arrives via props).
 * @returns the banner, or null when connected.
 */
-function ConnectionBanner({ reconnecting, label = "连接已断开，正在重连…" }) {
+function ConnectionBanner({ reconnecting, label }) {
 	if (!reconnecting) return null;
 	return jsx("div", {
 		className: css$10.banner,
@@ -2570,36 +2569,118 @@ function BrandWordmark({ size = 24, className, includeMark = true }) {
 	});
 }
 //#endregion
-//#region lib/types/ComputerUseIcon.js
+//#region lib/types/ReferenceIcon.js
 /**
-* ImageGen-authored computer silhouette, embedded as an alpha mask so every
-* product surface keeps the same generated shape while inheriting currentColor.
+* Render the icon that identifies one inline reference domain.
+* @param props - Reference kind, optional size, and optional CSS class.
+* @returns The corresponding current-color SVG glyph.
 */
-const COMPUTER_USE_ICON = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAQKADAAQAAAABAAAAQAAAAABGUUKwAAAGuUlEQVR4Ae1ZTWteRRSemXvfNDWNVqKbohi0iG5cmLo24KYttthqQGha6kb9BSKCKxf9DakLK7QiBKq0YCsual2oKEFwVcQWtVihFoXGtOl7P8bnOXPn5gbT9M5NXlPoDO175545cz6ec2bm3IlSsUUEIgIRgYhARCAiEBGICEQEIgIRgYjAvYeA7uiy3rl/ek9i9WShyvuM0qqEIIP/VmnDZ2mt1dpa0v2gJgU0koSGhzHOhLK06MtI9VPRKRHztEYHDbOlT35S0RZKbb88e/L4aQ5Xk1s/ggGYmpoamu/3ZtJe73BikiVFsNA39uC/fxWrZFQGHNmPw4Gab6WOl9Lk8jSiARSULUtVFOUHI+nNN2dnZ/srybkdLb3dwO3o1/vpgaHe0GHGNs+ymzDgHxinJfwIN40TYxFNiyg1m3Yj4AG9ZgQH+gTCg1KxualeRI1A3QE7JdnRxJjhNE1eW8iGv8KkY25iu99gAIwye2hsUdhrVpd7VDJ0sXdrsU7eJEnF5KKfi6WLeB+BLUWRaz9G0xbwfzh3PKQXeVaPF0LnrAXl5wtgnIgOZZEur6XaDqRPaZOMYXntBe2Y0Fv+BAOAFb6FaYeY/XHm5IlvW+oZJNvVXfumf0d2jenSjoYqqiPXdiJSX5DHdmYmJl7vtZ03KD7agHAYiYnRfsG0VhcMgEiGGll+E631DJZR7An2XWzqAABW2tKCHKxjIdIlBUImON4OAPDUZwPic07Ihv4iCxESmPQ/ZYAHmmWIumuWgEvKRunROibBGeCVdIa8tWktGass7BZ/V7221OTYmAGsA+5UwQUJXQPzBLIQRwCrKFWiIgxtnTKgygK3FYRqXGd+vw0RA7P8Y6KVpmAA3FcME+4u2QRhSZfIe3SCAdAapwDXAYvw0W1dl57Xv07P7mYEA+A3QZ6F8/NXNn4ZYA0gIPxgXvYN1RbZYAAoWBZAd9Db2taOD5sgslLOQWyD7eY0uIIB8CH3z4asDe0y/lyeoS14Ro0yc+4uKYR4MYAW6rvwBwMgpQN0ddbYycxVJmEPcK4zJ8PzMhgAHgC1Hn8Ir2LfwIe4B4gSwhCeBcEAUJfHYG7uaCa6N/Bn7ujRzLvtnyHmBN8IUbisN63GcRNzKLHmQlNhbgremcjGnJYJLmmszsHQVGR0Yfu21Kny9ymZKrSxiU20MGJCrjI1pIcaPlHKUsux8YueUj+Ni+VxMnY5CJt2LUlfpUdFbsPRW3AZ+WFZFvRWZpBuLAoluepGpWTAjX8pfrBnSqZyrypVYlOdiBxHTRXvl0UMWCGCHIBIvjnBhzHw+ybvqPvpsEmre3USOyyBYADgBTXBqBK1d6rSlDdSNFAe7NbNAVW/NjpkdtcqnEWBzdkc4aHWmLBi18uvS2Fk24qMqxCDAYAsUYLUvmyL7D0YUeIjpFYMwwWgpk6sCCQDjGOisFbBE05qzRCjX5QFAWQ1Z1RRzUTAKasA/1Lsq7lMOvCXWGAQhnWj3sX7o9XMoEcwAHA4hzJ+gi5+9snx94O0DYh510vTb9EmoOnha60pGAB4/g2U7ULUn9i97+BpZMJPiD+CwCTwwZfPcxCwThEpscZXqcwCaU3+iiTZQTobcqSKNHTKe7PSlbTHNoIsehIJ+DhngO1rPkNaMACwaSbLs1ew9p9JEvXiMr+hmd4yGty5pF9Z46Hhn7F8Ez6+kJebGJKZf1kkntxjLKwjj5fn51GWk8MxR+1n/R/7RTHjedo+Pdxt+YVv795XtxVp721YO4kwDfNWkmsa5tZ+0iEKh0OSDvxjKXo49/RjGMCW4FQ6rNwL3MGitr+CJxdA4CecJx7oOX4h8ZX4ymWoXsTWcb6f9498cerjK56r7ZOiO7fJyclUjY9LFt1aWNCbRkZqM1cSuumv/JEk0XPw6X442OCFL2igzMP5HTceML/9Z/4voIwvpz4MnZcuPZivpSBbEwDLzbnz2wv7Do0NK/UzIrp1OQBwG3EGANdturj9zOzsn3eWtj4cAwdg98sHd+hCP8UjC4fhQyj4jsDdzUxiSYEqDxwA9iao74B0rYelk6nywtmTJ75fH1dXljJQAHbuP/Bcosx5/PV3s894VI6yfuEwGn+4AbLvkDA81kE2KAnyIl9EjfD8559+9B05BtGCT4EQI4zVW5M03cx9zDdWj2g1qUoAPyyQ+Jc0SYex22/174N4DhSAG39vPzcydvENo5NnfbkqFyrw2mPiok/XWAlKjcj9XSDCmfLD1csj5wbheJQZEYgIRAQiAhGBiEBEICIQEYgIRAQiAvcyAv8Ct4V63wh83acAAAAASUVORK5CYII=";
-/** Shared Computer Use glyph for settings navigation and browser controls. */
-function ComputerUseIcon({ size = 16, style, ...props }) {
-	const maskStyle = {
-		display: "inline-block",
-		width: size,
-		height: size,
-		flex: "none",
-		backgroundColor: "currentColor",
-		WebkitMaskImage: `url(${COMPUTER_USE_ICON})`,
-		maskImage: `url(${COMPUTER_USE_ICON})`,
-		WebkitMaskPosition: "center",
-		maskPosition: "center",
-		WebkitMaskRepeat: "no-repeat",
-		maskRepeat: "no-repeat",
-		WebkitMaskSize: "160%",
-		maskSize: "160%",
-		...style
-	};
-	return jsx("span", {
-		...props,
-		"data-computer-use-icon": "true",
-		"aria-hidden": "true",
-		style: maskStyle
+function ReferenceIcon({ kind, size = 16, className }) {
+	switch (kind) {
+		case "session": return jsx("svg", {
+			width: size,
+			height: size,
+			className,
+			viewBox: "0 0 16 16",
+			fill: "none",
+			"aria-hidden": true,
+			children: jsx("path", {
+				d: "M8 0.597656C3.91296 0.597656 0.599716 3.91103 0.599609 7.99805C0.599609 9.13171 0.854567 10.2079 1.31152 11.1699L1.59277 11.7607L2.77441 11.1992L2.49414 10.6084L2.36035 10.3076C2.06865 9.59612 1.90723 8.81645 1.90723 7.99805C1.90733 4.63362 4.63554 1.90625 8 1.90625C11.3644 1.90635 14.0917 4.63368 14.0918 7.99805C14.0918 11.3625 11.3644 14.0907 8 14.0908C7.311 14.0908 6.80642 14.0414 6.35938 13.918C5.919 13.7963 5.50105 13.5929 5.00098 13.2441C4.26805 12.7329 3.21756 12.5526 2.35156 13.0996L2.33789 13.1084L2.32422 13.1182L1.74805 13.5234L2.18164 14.8184L3.05957 14.2002C3.37505 14.0068 3.84248 14.0319 4.25195 14.3174C4.84447 14.7307 5.39718 15.009 6.01172 15.1787C6.61963 15.3465 7.25579 15.3984 8 15.3984C12.087 15.3983 15.4004 12.0851 15.4004 7.99805C15.4003 3.9111 12.087 0.59776 8 0.597656ZM4.56836 8.50977V9.80371H8.12402V8.50977H4.56836ZM4.56836 7.30078H11.4619V6.00684H4.56836V7.30078Z",
+				fill: "currentColor"
+			})
+		});
+		case "file": return jsx(IconBrowseOutline16, {
+			size,
+			className
+		});
+		case "folder": return jsx(IconFolderClose16, {
+			size,
+			className
+		});
+	}
+}
+//#endregion
+//#region lib/types/user-text.js
+/** The wire form a session chip serializes to; label is the display text. */
+const SESSION_WIRE_RE = /@\[([^\]\n]+)\]\(dsh-session:[^)\s]+\)/gu;
+/**
+* Split one sent text into inline plain runs and reference chips.
+* @param text - the logged model text of the message or queue row.
+* @param sessionLabels - exact session mention labels associated by an adjacent recall.
+* @returns inline nodes covering the whole text.
+*/
+function projectUserText(text, sessionLabels) {
+	const ranges = [];
+	SESSION_WIRE_RE.lastIndex = 0;
+	let wire;
+	while ((wire = SESSION_WIRE_RE.exec(text)) !== null) ranges.push({
+		start: wire.index,
+		end: wire.index + wire[0].length,
+		label: wire[0],
+		kind: "session",
+		display: wire[1]
 	});
+	for (const rawLabel of [...new Set(sessionLabels)].sort((a, b) => b.length - a.length)) {
+		const label = `@${rawLabel}`;
+		let start = text.indexOf(label);
+		while (start >= 0) {
+			ranges.push({
+				start,
+				end: start + label.length,
+				label,
+				kind: "session"
+			});
+			start = text.indexOf(label, start + label.length);
+		}
+	}
+	const re = /(^|\s)(\/[\w-]+|@"[^"\n]+"|@[^\s]+)/gu;
+	let m;
+	while ((m = re.exec(text)) !== null) {
+		const tokenStart = m.index + m[1].length;
+		const rawLabel = m[2];
+		const label = rawLabel.startsWith("@\"") ? rawLabel : rawLabel.replace(/[.,;:!?，。；：！？]+$/gu, "");
+		if (label.length <= 1) continue;
+		ranges.push({
+			start: tokenStart,
+			end: tokenStart + label.length,
+			label,
+			kind: "plain"
+		});
+	}
+	const rankOf = (range) => range.kind === "session" ? 0 : 1;
+	ranges.sort((a, b) => a.start - b.start || rankOf(a) - rankOf(b) || b.end - a.end);
+	const parts = [];
+	let cursor = 0;
+	const pushPlain = (from, to) => {
+		parts.push(jsx("span", {
+			className: css$11.plainRun,
+			children: text.slice(from, to)
+		}, `t${from}`));
+	};
+	for (const range of ranges) {
+		if (range.start < cursor) continue;
+		const { start: tokenStart, end, label, kind } = range;
+		if (tokenStart > cursor) pushPlain(cursor, tokenStart);
+		const referenceKind = kind === "session" ? "session" : label.startsWith("@") ? label.endsWith("/") ? "folder" : "file" : void 0;
+		const displayLabel = range.display ?? (referenceKind === void 0 ? label : referenceKind === "session" ? label.slice(1) : label.slice(1).replace(/^"|"$/gu, "").split(/[\\/]/u).filter(Boolean).at(-1) ?? label.slice(1));
+		parts.push(jsxs("span", {
+			className: css$11.refChip,
+			"data-ref-chip": referenceKind ?? "skill",
+			title: label,
+			children: [referenceKind !== void 0 && jsx(ReferenceIcon, {
+				kind: referenceKind,
+				size: 16,
+				className: css$11.refIcon
+			}), displayLabel]
+		}, tokenStart));
+		cursor = end;
+	}
+	if (parts.length === 0) return jsx("span", {
+		className: css$11.plainRun,
+		children: text
+	});
+	if (cursor < text.length) pushPlain(cursor, text.length);
+	return jsx(Fragment, { children: parts });
 }
 //#endregion
 //#region lib/types/Tooltip.js
@@ -2733,7 +2814,7 @@ function Tooltip({ label, side = "right", delayMs = 0, disabled = false, maxWidt
 		}
 	}), pos !== null && jsx("span", {
 		ref: bubble,
-		className: css$11.bubble,
+		className: css$12.bubble,
 		"data-side": placement,
 		style: {
 			left: pos.x,
@@ -2746,6 +2827,10 @@ function Tooltip({ label, side = "right", delayMs = 0, disabled = false, maxWidt
 }
 //#endregion
 //#region lib/types/Toast.js
+/** Full-opacity hold before the fade starts, when the owner names none. */
+const HOLD_MS = 3e3;
+/** Fade duration. Must agree with the stylesheet's toast-fade duration. */
+const FADE_MS = 1e3;
 /**
 * Transient top-center banner: slides in, holds at full opacity, fades out,
 * then reports done so the owner can unmount it. Re-showing the same text
@@ -2754,21 +2839,28 @@ function Tooltip({ label, side = "right", delayMs = 0, disabled = false, maxWidt
 * transformed or filtered ancestor cannot trap the fixed banner in that
 * ancestor's box.
 *
+* The hold is the owner's to set, because how long a banner has to stay
+* depends on how much there is to read: a one-line limit lands in the default
+* window, while a failure that names what broke does not. One value drives
+* both the unmount timer and the stylesheet's fade delay — the stylesheet
+* reads it as a custom property — so the two can no longer disagree and leave
+* the banner unmounting mid-fade.
 * @param props.text - resolved banner copy; the owner passes localized text.
 * @param props.icon - optional leading glyph (e.g. a warning icon).
+* @param props.holdMs - full-opacity hold before the fade; defaults to 3000.
 * @param props.anchor - optional element whose horizontal center the banner
 * follows (e.g. the composer card, so the banner centers over the chat column
 * rather than the whole window); omitted, it centers on the viewport.
 * @param props.onDone - called once the fade completes; unmount the toast here.
 * @returns the floating banner.
 */
-function Toast({ text, icon, anchor, onDone }) {
+function Toast({ text, icon, anchor, holdMs = HOLD_MS, onDone }) {
 	useEffect(() => {
-		const timer = setTimeout(onDone, 4e3);
+		const timer = setTimeout(onDone, holdMs + FADE_MS);
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [onDone]);
+	}, [holdMs, onDone]);
 	const [left, setLeft] = useState(null);
 	useLayoutEffect(() => {
 		if (anchor == null) return;
@@ -2783,36 +2875,73 @@ function Toast({ text, icon, anchor, onDone }) {
 		};
 	}, [anchor]);
 	return createPortal(jsxs("div", {
-		className: css$12.toast,
+		className: css$13.toast,
 		role: "alert",
-		style: left === null ? void 0 : { left },
+		style: {
+			...left === null ? {} : { left },
+			"--dsh-toast-hold": `${String(holdMs)}ms`
+		},
 		children: [icon !== void 0 && jsx("span", {
-			className: css$12.icon,
+			className: css$13.icon,
 			"aria-hidden": true,
 			children: icon
 		}), jsx("span", {
-			className: css$12.text,
+			className: css$13.text,
 			children: text
 		})]
 	}), document.body);
+}
+//#endregion
+//#region lib/types/relative-time.js
+/**
+* Compact relative-time bucketing shared by every surface that dates a
+* session. Bucketing is here so two surfaces naming the same session agree;
+* the words stay in each plugin's own dictionary, per locale-owned copy.
+*
+* @module @deepseek-ai/dsh-client-ui-primitives/relative-time
+*/
+/**
+* Compact relative time, as a structured bucket the renderer localizes
+* ("now"/"5min"/"3h"/"2d"/"4mo"/"1y" in en).
+* @param at - epoch ms of the dated moment.
+* @param now - current epoch ms (injected for pure rendering).
+* @returns the row's trailing time bucket and magnitude.
+*/
+function relativeTime(at, now) {
+	const MIN = 6e4;
+	const HOUR = 36e5;
+	const DAY = 864e5;
+	const diff = Math.max(0, now - at);
+	if (diff < MIN) return {
+		unit: "now",
+		n: 0
+	};
+	if (diff < HOUR) return {
+		unit: "minutes",
+		n: Math.floor(diff / MIN)
+	};
+	if (diff < DAY) return {
+		unit: "hours",
+		n: Math.floor(diff / HOUR)
+	};
+	if (diff < 30 * DAY) return {
+		unit: "days",
+		n: Math.floor(diff / DAY)
+	};
+	if (diff < 365 * DAY) return {
+		unit: "months",
+		n: Math.floor(diff / (30 * DAY))
+	};
+	return {
+		unit: "years",
+		n: Math.floor(diff / (365 * DAY))
+	};
 }
 //#endregion
 //#region lib/types/JsonTree.js
 const OBJECT_PREVIEW_LIMIT = 4;
 const ARRAY_PREVIEW_LIMIT = 5;
 const PREVIEW_DEPTH_LIMIT = 2;
-const DEFAULT_LABELS$1 = {
-	copyValue: "Copy value",
-	copyJson: "Copy JSON",
-	copyPath: "Copy property path",
-	copyPrettyJson: "Copy pretty JSON",
-	copyCompactJson: "Copy compact JSON",
-	copied: "Copied",
-	copyFailed: "Copy failed",
-	collapseNode: "Collapse JSON node",
-	expandNode: "Expand JSON node",
-	copyButtonTitle: (action) => `${action}; right-click for copy options`
-};
 function valueCopyMenuItems(labels) {
 	return [
 		{
@@ -2857,35 +2986,35 @@ function bracketOf(value) {
 }
 function previewPrimitive(value) {
 	if (value === null) return jsx("span", {
-		className: css$13.keywordValue,
+		className: css$14.keywordValue,
 		children: "null"
 	});
 	if (typeof value === "string") return jsx("span", {
-		className: css$13.stringValue,
+		className: css$14.stringValue,
 		children: JSON.stringify(value)
 	});
 	if (typeof value === "number") return jsx("span", {
-		className: css$13.numberValue,
+		className: css$14.numberValue,
 		children: String(value)
 	});
 	if (typeof value === "boolean") return jsx("span", {
-		className: css$13.keywordValue,
+		className: css$14.keywordValue,
 		children: String(value)
 	});
 	if (typeof value === "bigint") return jsx("span", {
-		className: css$13.otherValue,
+		className: css$14.otherValue,
 		children: value.toString()
 	});
 	if (typeof value === "undefined") return jsx("span", {
-		className: css$13.otherValue,
+		className: css$14.otherValue,
 		children: "undefined"
 	});
 	if (typeof value === "symbol") return jsx("span", {
-		className: css$13.otherValue,
+		className: css$14.otherValue,
 		children: value.description ?? "Symbol"
 	});
 	if (typeof value === "function") return jsx("span", {
-		className: css$13.otherValue,
+		className: css$14.otherValue,
 		children: value.name || "Function"
 	});
 	return null;
@@ -2899,71 +3028,71 @@ function previewValue(value, depth) {
 	const [open, close] = bracketOf(value);
 	return jsxs(Fragment, { children: [
 		jsx("span", {
-			className: css$13.punctuation,
+			className: css$14.punctuation,
 			children: open
 		}),
 		depth >= PREVIEW_DEPTH_LIMIT ? jsx("span", {
-			className: css$13.previewEllipsis,
+			className: css$14.previewEllipsis,
 			children: "…"
 		}) : visible.map(([key, item], index) => jsxs("span", { children: [
 			index > 0 && jsx("span", {
-				className: css$13.punctuation,
+				className: css$14.punctuation,
 				children: ", "
 			}),
 			!array && jsxs(Fragment, { children: [jsx("span", {
-				className: css$13.previewProperty,
+				className: css$14.previewProperty,
 				children: key
 			}), jsx("span", {
-				className: css$13.punctuation,
+				className: css$14.punctuation,
 				children: ": "
 			})] }),
 			previewValue(item, depth + 1)
 		] }, key)),
 		depth < PREVIEW_DEPTH_LIMIT && entries.length > limit && jsx("span", {
-			className: css$13.previewEllipsis,
+			className: css$14.previewEllipsis,
 			children: ", …"
 		}),
 		jsx("span", {
-			className: css$13.punctuation,
+			className: css$14.punctuation,
 			children: close
 		})
 	] });
 }
 function primitiveValue(value) {
 	if (value === null) return jsx("span", {
-		className: css$13.keywordValue,
+		className: css$14.keywordValue,
 		children: "null"
 	});
 	if (typeof value === "string") return jsx("span", {
-		className: css$13.stringValue,
+		className: css$14.stringValue,
 		children: JSON.stringify(value)
 	});
 	if (typeof value === "boolean") return jsx("span", {
-		className: css$13.keywordValue,
+		className: css$14.keywordValue,
 		children: String(value)
 	});
 	if (typeof value === "number") return jsx("span", {
-		className: css$13.numberValue,
+		className: css$14.numberValue,
 		children: String(value)
 	});
 	if (typeof value === "bigint") return jsx("span", {
-		className: css$13.numberValue,
+		className: css$14.numberValue,
 		children: `${value.toString()}n`
 	});
 	if (value instanceof Date) return jsx("span", {
-		className: css$13.otherValue,
+		className: css$14.otherValue,
 		children: value.toISOString()
 	});
 	if (typeof value === "function") return jsxs("span", {
-		className: css$13.otherValue,
+		className: css$14.otherValue,
 		children: ["function() ", "{ }"]
 	});
 	if (typeof value === "undefined") return jsx("span", {
-		className: css$13.otherValue,
+		className: css$14.otherValue,
 		children: "undefined"
 	});
 	return jsx("span", {
-		className: css$13.otherValue,
+		className: css$14.otherValue,
 		children: value.toString()
 	});
 }
@@ -2991,7 +3120,7 @@ function moveFocus(button, direction) {
 function NodeField({ field, expandable, onToggle }) {
 	if (field === void 0) return null;
 	return jsxs("span", {
-		className: clsx(css$13.label, expandable && css$13.clickableLabel),
+		className: clsx(css$14.label, expandable && css$14.clickableLabel),
 		onClick: expandable ? onToggle : void 0,
 		children: [fieldText(field), ":"]
 	});
@@ -3020,7 +3149,7 @@ function JsonTreeNode({ field, initialExpanded, labels, lastElement, onClaimTabS
 		}
 	};
 	const row = (children, ariaExpanded) => jsx("div", {
-		className: css$13.row,
+		className: css$14.row,
 		role: "treeitem",
 		"aria-expanded": ariaExpanded,
 		onMouseOver: (event) => {
@@ -3040,7 +3169,7 @@ function JsonTreeNode({ field, initialExpanded, labels, lastElement, onClaimTabS
 		}),
 		primitiveValue(value),
 		!lastElement && jsx("span", {
-			className: css$13.punctuation,
+			className: css$14.punctuation,
 			children: ","
 		})
 	] }));
@@ -3052,22 +3181,22 @@ function JsonTreeNode({ field, initialExpanded, labels, lastElement, onClaimTabS
 			onToggle: toggle
 		}),
 		jsx("span", {
-			className: css$13.punctuation,
+			className: css$14.punctuation,
 			children: open
 		}),
 		jsx("span", {
-			className: css$13.punctuation,
+			className: css$14.punctuation,
 			children: close
 		}),
 		!lastElement && jsx("span", {
-			className: css$13.punctuation,
+			className: css$14.punctuation,
 			children: ","
 		})
 	] }));
 	return row(jsxs(Fragment, { children: [
 		jsx("span", {
 			ref: expanderRef,
-			className: clsx(css$13.expander, expanded ? css$13.collapseIcon : css$13.expandIcon),
+			className: clsx(css$14.expander, expanded ? css$14.collapseIcon : css$14.expandIcon),
 			"data-json-expander": true,
 			role: "button",
 			"aria-label": expanded ? labels.collapseNode : labels.expandNode,
@@ -3086,17 +3215,17 @@ function JsonTreeNode({ field, initialExpanded, labels, lastElement, onClaimTabS
 			onToggle: toggle
 		}),
 		jsx("span", {
-			className: css$13.preview,
+			className: css$14.preview,
 			children: previewValue(value, 0)
 		}),
 		!lastElement && jsx("span", {
-			className: css$13.punctuation,
+			className: css$14.punctuation,
 			children: ","
 		}),
 		expanded && jsx("ul", {
 			id: contentsId,
 			role: "group",
-			className: css$13.children,
+			className: css$14.children,
 			children: entries.map(([key, item], index) => jsx(JsonTreeNode, {
 				field: key,
 				value: item,
@@ -3133,11 +3262,7 @@ function copyText$2(target, mode) {
 * @param props - Parsed data, accessible label, and display options.
 * @returns A read-only JSON tree with an optionally fixed-open top level.
 */
-function JsonTree({ data, label = "JSON", className, copyable = true, expandTopLevel = true, labels }) {
-	const copyLabels = useMemo(() => labels === void 0 ? DEFAULT_LABELS$1 : {
-		...DEFAULT_LABELS$1,
-		...labels
-	}, [labels]);
+function JsonTree({ data, label, className, copyable = true, expandTopLevel = true, labels }) {
 	const rootEntries = entriesOf(data);
 	const firstExpandableIndex = rootEntries.findIndex(([, value]) => isExpandableValue(value) && entriesOf(value).length > 0);
 	const firstExpandableEntry = rootEntries[firstExpandableIndex];
@@ -3258,20 +3383,20 @@ function JsonTree({ data, label = "JSON", className, copyable = true, expandTopL
 	const [rootOpen, rootClose] = bracketOf(data);
 	const copyTargetIsObject = typeof copyTarget?.value === "object" && copyTarget.value !== null;
 	const defaultCopyMode = copyTargetIsObject ? "prettyJson" : "value";
-	const copyTitle = copyState === "copied" ? copyLabels.copied : copyState === "failed" ? copyLabels.copyFailed : copyTargetIsObject ? copyLabels.copyPrettyJson : copyLabels.copyValue;
+	const copyTitle = copyState === "copied" ? labels.copied : copyState === "failed" ? labels.copyFailed : copyTargetIsObject ? labels.copyPrettyJson : labels.copyValue;
 	return jsxs("div", {
 		ref: rootRef,
-		className: clsx(css$13.root, className),
+		className: clsx(css$14.root, className),
 		onMouseOver: handleRootMouseOver,
 		onMouseLeave: () => {
 			if (!copyMenuOpenRef.current) clearCopyTarget();
 		},
 		onScroll: handleScroll,
 		children: [expandTopLevel ? jsxs("div", {
-			className: css$13.expandedTopLevel,
+			className: css$14.expandedTopLevel,
 			children: [
 				jsx("div", {
-					className: clsx(css$13.row, css$13.topLevelBracket),
+					className: clsx(css$14.row, css$14.topLevelBracket),
 					"data-json-root-row": true,
 					onMouseOver: (event) => {
 						event.stopPropagation();
@@ -3281,19 +3406,19 @@ function JsonTree({ data, label = "JSON", className, copyable = true, expandTopL
 						});
 					},
 					children: jsx("span", {
-						className: css$13.punctuation,
+						className: css$14.punctuation,
 						children: rootOpen
 					})
 				}),
 				jsx("div", {
 					"aria-label": label,
-					className: clsx(css$13.container, css$13.expandedTopLevelContainer),
+					className: clsx(css$14.container, css$14.expandedTopLevelContainer),
 					role: "tree",
 					children: rootEntries.map(([key, value], index) => jsx(JsonTreeNode, {
 						field: key,
 						value,
 						path: [Array.isArray(data) ? index : key],
-						labels: copyLabels,
+						labels,
 						lastElement: index === rootEntries.length - 1,
 						initialExpanded: false,
 						tabStopId,
@@ -3302,21 +3427,21 @@ function JsonTree({ data, label = "JSON", className, copyable = true, expandTopL
 					}, key))
 				}),
 				jsx("div", {
-					className: clsx(css$13.row, css$13.topLevelBracket),
+					className: clsx(css$14.row, css$14.topLevelBracket),
 					children: jsx("span", {
-						className: css$13.punctuation,
+						className: css$14.punctuation,
 						children: rootClose
 					})
 				})
 			]
 		}) : jsx("div", {
 			"aria-label": label,
-			className: css$13.container,
+			className: css$14.container,
 			role: "tree",
 			children: jsx(JsonTreeNode, {
 				value: data,
 				path: [],
-				labels: copyLabels,
+				labels,
 				lastElement: true,
 				initialExpanded: true,
 				tabStopId,
@@ -3324,7 +3449,7 @@ function JsonTree({ data, label = "JSON", className, copyable = true, expandTopL
 				onRowHover: handleRowHover
 			})
 		}), copyTarget !== void 0 && jsx("span", {
-			className: css$13.copyAnchor,
+			className: css$14.copyAnchor,
 			style: {
 				left: copyTarget.left,
 				top: copyTarget.top
@@ -3338,11 +3463,11 @@ function JsonTree({ data, label = "JSON", className, copyable = true, expandTopL
 				anchor: jsx("button", {
 					ref: copyButtonRef,
 					type: "button",
-					className: css$13.copyButton,
+					className: css$14.copyButton,
 					"data-json-copy-button": true,
 					"data-state": copyState,
 					"aria-label": copyTitle,
-					title: copyLabels.copyButtonTitle(copyTitle),
+					title: labels.copyButtonTitle(copyTitle),
 					onClick: () => void copy(defaultCopyMode),
 					onContextMenu: (event) => {
 						event.preventDefault();
@@ -3352,7 +3477,7 @@ function JsonTree({ data, label = "JSON", className, copyable = true, expandTopL
 					},
 					children: copyState === "copied" ? jsx(IconCheckOutline16, { size: 12 }) : jsx(IconCopyOutline16, { size: 12 })
 				}),
-				items: copyTargetIsObject ? objectCopyMenuItems(copyLabels) : valueCopyMenuItems(copyLabels),
+				items: copyTargetIsObject ? objectCopyMenuItems(labels) : valueCopyMenuItems(labels),
 				onSelect: (id) => {
 					copy(id);
 					copyMenuOpenRef.current = false;
@@ -3805,26 +3930,8 @@ function useCopyFeedback(text) {
 }
 //#endregion
 //#region lib/types/TerminalBlock.js
-/**
-* Output lines shown before the height cap collapses the middle. Matches the
-* TUI transcript's default tool-output budget so both front ends cut a long
-* command's output at the same place.
-*/
+/** Output lines shown before the height cap collapses the middle. */
 const DEFAULT_TERMINAL_MAX_LINES = 16;
-const DEFAULT_LABELS = {
-	signal: (signal) => `信号 ${signal}`,
-	exitCode: (exitCode) => `退出码 ${exitCode}`,
-	running: "运行中",
-	failed: "失败",
-	done: "已完成",
-	copy: "复制",
-	copied: "复制成功",
-	noOutput: "无输出",
-	collapseAria: "收起输出",
-	collapse: "收起",
-	expandAria: (hidden) => `展开其余 ${hidden} 行输出`,
-	expand: (hidden) => `… 其余 ${hidden} 行`
-};
 /**
 * Prompt label for a working directory: `~` for the home directory itself,
 * otherwise the path's last segment (both separators accepted, trailing
@@ -3901,10 +4008,7 @@ function renderLine(line) {
 * @returns the terminal block element.
 */
 function TerminalBlock({ command, cwd, home, output, exitCode, signal, running = false, maxLines = 16, className, labels }) {
-	const copy = useMemo(() => labels === void 0 ? DEFAULT_LABELS : {
-		...DEFAULT_LABELS,
-		...labels
-	}, [labels]);
+	const copy = labels;
 	const text = output ?? "";
 	const lines = useMemo(() => {
 		const parsed = parseAnsiLines(text);
@@ -3924,70 +4028,87 @@ function TerminalBlock({ command, cwd, home, output, exitCode, signal, running =
 	const empty = lines.every((line) => line.every((span) => span.text.trim() === ""));
 	const { hidden, capped, headLines, tailLines } = headTailCap(lines.length, maxLines, expanded);
 	return jsxs("div", {
-		className: clsx(css$14.block, className),
+		className: clsx(css$15.block, className),
 		"data-terminal": "",
 		"data-running": running ? "" : void 0,
 		children: [jsxs("div", {
-			className: css$14.header,
+			className: css$15.header,
 			children: [
 				jsxs("div", {
-					className: css$14.prompt,
+					className: css$15.prompt,
 					children: [jsx("span", {
-						className: css$14.runStateLabel,
+						className: css$15.runStateLabel,
 						children: state.label
 					}), commandLines.map((line, index) => jsxs("div", {
-						className: css$14.promptLine,
+						className: css$15.promptLine,
 						children: [
 							index === 0 && jsx(StateDot, {
 								state: state.state,
-								className: css$14.runState
+								className: css$15.runState
 							}),
 							jsx("span", {
-								className: css$14.cwd,
+								className: css$15.cwd,
 								children: index > 0 || cwd === void 0 ? "$" : promptLabel(cwd, home)
 							}),
 							jsx("span", {
-								className: css$14.command,
+								className: css$15.command,
 								children: line
 							})
 						]
 					}, index))]
 				}),
 				status !== void 0 && jsx(Pill, {
-					className: css$14.status,
+					className: css$15.status,
 					children: status
 				}),
 				!running && !empty && jsx("button", {
 					type: "button",
-					className: css$14.copyButton,
+					className: css$15.copyButton,
 					onClick: onCopy,
 					children: copied ? copy.copied : copy.copy
 				})
 			]
 		}), !running && (empty ? jsx("div", {
-			className: css$14.empty,
+			className: css$15.empty,
 			children: copy.noOutput
 		}) : jsxs("div", {
-			className: css$14.output,
+			className: css$15.output,
 			children: [
 				(capped ? lines.slice(0, headLines) : lines).map((line, index) => jsx("div", {
-					className: css$14.line,
+					className: css$15.line,
 					children: renderLine(line)
 				}, index)),
 				hidden > 0 && jsx("button", {
 					type: "button",
-					className: css$14.expand,
+					className: css$15.expand,
 					"aria-expanded": expanded,
 					"aria-label": expanded ? copy.collapseAria : copy.expandAria(hidden),
 					onClick: onToggle,
 					children: expanded ? copy.collapse : copy.expand(hidden)
 				}),
 				capped && lines.slice(lines.length - tailLines).map((line, index) => jsx("div", {
-					className: css$14.line,
+					className: css$15.line,
 					children: renderLine(line)
 				}, index))
 			]
 		}))]
+	});
+}
+//#endregion
+//#region lib/types/FoldToggle.js
+/**
+* Render the shared head-tail fold control with caller-owned localized copy.
+* @param props - Fold state, localized labels, and toggle callback.
+* @returns The accessible expand or collapse button.
+*/
+function FoldToggle({ className, expanded, hidden, labels, onToggle }) {
+	return jsx("button", {
+		type: "button",
+		className,
+		"aria-expanded": expanded,
+		"aria-label": expanded ? labels.collapseAria : labels.expandAria(hidden),
+		onClick: onToggle,
+		children: expanded ? labels.collapse : labels.expand(hidden)
 	});
 }
 //#endregion
@@ -4241,6 +4362,130 @@ function highlightToHtml(code, lang) {
 		theme: "css-variables"
 	});
 }
+/** vscode-textmate FontStyle bits shiki folds into `text-decoration` values. */
+const DECORATION_BITS = [[4, "underline"], [8, "line-through"]];
+/**
+* The inline style shiki's HTML arm assigns one token (`getTokenStyleObject`
+* mirrored onto React style keys): the css-variables color plus the
+* vscode-textmate font-style bits the theme lets through — italic (1), bold
+* (2), and the {@link DECORATION_BITS} decorations (the theme injects bold,
+* italic, and underline rules for markup scopes, so markdown fences carry
+* them). The theme has no per-scope backgrounds, so `background-color` never
+* occurs; the arm-parity tests fail loud if a shiki upgrade changes that.
+*/
+function spanStyle(token) {
+	const style = { color: token.color };
+	/* v8 ignore next -- fontStyle is optional in ThemedToken's type; tokenizeWithTheme always stamps it. */
+	const bits = token.fontStyle ?? 0;
+	if ((bits & 1) !== 0) style.fontStyle = "italic";
+	if ((bits & 2) !== 0) style.fontWeight = "bold";
+	const decorations = DECORATION_BITS.filter(([bit]) => (bits & bit) !== 0);
+	if (decorations.length > 0) style.textDecoration = decorations.map(([, value]) => value).join(" ");
+	return style;
+}
+/**
+* Narrow one tokenized line to the runs a `<span style>` renders, folding a
+* whitespace-only run into the token that follows it — shiki's default
+* `mergeWhitespaces` HTML behavior — with each run styled through
+* {@link spanStyle}, so the streaming spans and the settled `codeToHtml`
+* swap render one identical span tree. shiki exempts underlined/struck
+* whitespace from the fold; under the css-variables theme that case cannot
+* occur — its only underline rule styles inline-link scopes, whose spaced
+* text tokenizes as one run, and it injects no strikethrough rule — so the
+* unconditional fold here stays equivalent (the markdown arm-parity test
+* pins it). A line-trailing whitespace-only run has no follower and keeps
+* its own span, as in shiki.
+*/
+function lineSpans(line) {
+	const spans = [];
+	let pendingWhitespace = "";
+	for (const [index, token] of line.entries()) {
+		if (/^\s+$/.test(token.content) && index + 1 < line.length) {
+			pendingWhitespace += token.content;
+			continue;
+		}
+		spans.push({
+			text: pendingWhitespace + token.content,
+			style: spanStyle(token)
+		});
+		pendingWhitespace = "";
+	}
+	return spans;
+}
+/**
+* Incremental highlighter for one growing streaming fence. TextMate
+* tokenization is line-based and forward-only — a line's tokens depend only on
+* its own text and the grammar state entering it — so appended text never
+* changes a completed line's tokens. The session caches the spans of every
+* completed line together with the grammar state after them; each
+* {@link update} tokenizes newly completed text from that state, plus the
+* still-growing last line. Per-call cost therefore excludes the completed
+* prefix, and the result equals a from-scratch tokenization of the same code.
+* Non-append input and a change of resolved grammar reset the cache and
+* re-tokenize fully, so any input stays correct.
+*/
+var StreamingHighlightSession = class {
+	/** Grammar id the cache was built with; a different resolution resets it. */
+	resolved;
+	/** Newline-terminated source prefix covered by {@link spans}. */
+	prefix = "";
+	/** Cached spans, one entry per completed line of {@link prefix}. */
+	spans = [];
+	/** Grammar state after {@link prefix}; undefined = the grammar's initial state. */
+	state;
+	lastCode;
+	lastLang;
+	lastResult;
+	reset(resolved) {
+		this.resolved = resolved;
+		this.prefix = "";
+		this.spans = [];
+		this.state = void 0;
+	}
+	/** Tokenize `text` with `resolved`, resuming from the cached grammar state when one exists. */
+	tokenize(resolved, text) {
+		return highlighter().codeToTokensBase(text, {
+			lang: resolved,
+			theme: "css-variables",
+			...this.state === void 0 ? {} : { grammarState: this.state }
+		});
+	}
+	/**
+	* Tokenize the fence's current text into per-line highlighted runs;
+	* `undefined` means the caller renders its plain fallback. Idempotent per
+	* (`code`, `lang`) input — repeated calls return the identical result array —
+	* and a retained line keeps its span-array identity across growing calls, so
+	* a React caller can reuse cached line elements. A lazy grammar not yet
+	* loaded returns `undefined` and loads in the background exactly as
+	* {@link highlightToHtml} does; the next call after it registers highlights.
+	* @param code - the fence text accumulated so far (display-trimmed, no synthetic trailing newline).
+	* @param lang - the language hint (a markdown fence info string).
+	* @returns one entry per line of `code` (each an array of runs), or `undefined` for unknown or not-yet-loaded languages.
+	*/
+	update(code, lang) {
+		if (code === this.lastCode && lang === this.lastLang && this.lastResult !== void 0) return this.lastResult;
+		this.lastCode = code;
+		this.lastLang = lang;
+		const resolved = lang === void 0 ? void 0 : LANG_ALIASES.get(lang.toLowerCase());
+		if (resolved === void 0 || !ensureGrammar(resolved)) {
+			this.reset(void 0);
+			this.lastResult = void 0;
+			return;
+		}
+		if (resolved !== this.resolved || !code.startsWith(this.prefix)) this.reset(resolved);
+		const rest = code.slice(this.prefix.length);
+		const lastNewline = rest.lastIndexOf("\n");
+		if (lastNewline >= 0) {
+			const grownEnd = rest[lastNewline - 1] === "\r" ? lastNewline - 1 : lastNewline;
+			const tokens = this.tokenize(resolved, rest.slice(0, grownEnd));
+			for (const line of tokens) this.spans.push(lineSpans(line));
+			this.state = highlighter().getLastGrammarState(tokens);
+			this.prefix = code.slice(0, this.prefix.length + lastNewline + 1);
+		}
+		this.lastResult = [...this.spans, ...this.tokenize(resolved, rest.slice(lastNewline + 1)).map(lineSpans)];
+		return this.lastResult;
+	}
+};
 /**
 * Tokenize `code` into per-line highlighted runs when `lang` maps to a
 * registered grammar; `undefined` means the caller renders its plain fallback.
@@ -4249,8 +4494,9 @@ function highlightToHtml(code, lang) {
 * so this returns shiki's own 2D line/token structure narrowed to what a run
 * renders. Each run's color is a `--shiki-*` custom property, keeping token
 * colors on the theme package's sheets exactly as the HTML path does; the
-* css-variables theme carries no font-style bits, matching that path's
-* color-only output. The trailing newline shiki appends as a final empty line
+* markup font-style bits the theme lets through (bold/italic/underline in
+* markdown scopes) are dropped — the line-numbered file view renders
+* color-only runs. The trailing newline shiki appends as a final empty line
 * is dropped so the run count matches the caller's own line array.
 * @param code - the source text.
 * @param lang - the language hint (a file-extension-derived language id).
@@ -4278,13 +4524,6 @@ function highlightLines(code, lang) {
 * same place in the same flow.
 */
 const DEFAULT_READ_MAX_LINES = 16;
-/**
-* Render one line's highlighted runs. The css-variables theme colors every run,
-* so each run is a styled span; a line with no highlighting at all takes the
-* bare-text path in the caller instead (an unknown or absent language).
-* @param spans - the line's styled runs.
-* @returns the line's children.
-*/
 function renderSpans(spans) {
 	return spans.map((span, index) => jsx("span", {
 		style: span.style,
@@ -4297,7 +4536,7 @@ function renderSpans(spans) {
 * @param props - see {@link ReadBlockProps}.
 * @returns the read block element.
 */
-function ReadBlock({ label, lines, totalLines, lang, maxLines = 16, className }) {
+function ReadBlock({ label, labels, lines, totalLines, lang, maxLines = 16, className }) {
 	const raw = useMemo(() => lines.map((line) => line.text).join("\n"), [lines]);
 	const highlighted = useMemo(() => highlightLines(raw, lang), [
 		raw,
@@ -4324,61 +4563,55 @@ function ReadBlock({ label, lines, totalLines, lang, maxLines = 16, className })
 	const headLines = Math.ceil(maxLines / 2);
 	const tailLines = maxLines - headLines;
 	const windowed = lines.length < totalLines;
-	/**
-	* Render a slice of the line array as gutter-numbered rows.
-	* @param slice - the lines to draw, each with its aligned run array.
-	* @returns the row elements.
-	*/
 	const rows = (slice) => slice.map(([line, spans]) => jsxs("div", {
-		className: css$15.line,
+		className: css$16.line,
 		children: [jsx("span", {
-			className: css$15.gutter,
+			className: css$16.gutter,
 			"aria-hidden": true,
 			children: line.number
 		}), jsx("span", {
-			className: css$15.content,
+			className: css$16.content,
 			children: spans === void 0 ? line.text : renderSpans(spans)
 		})]
 	}, line.number));
 	const paired = lines.map((line, index) => [line, highlighted?.[index]]);
 	return jsxs("div", {
-		className: clsx(css$15.block, className),
+		className: clsx(css$16.block, className),
 		"data-read": "",
 		children: [jsxs("div", {
-			className: css$15.banner,
+			className: css$16.banner,
 			children: [jsx("div", {
-				className: css$15.label,
+				className: css$16.label,
 				children: label ?? ""
 			}), jsxs("div", {
-				className: css$15.action,
+				className: css$16.action,
 				children: [
 					windowed && jsx("span", {
-						className: css$15.count,
-						children: `显示 ${lines.length} / ${totalLines} 行`
+						className: css$16.count,
+						children: labels.window(lines.length, totalLines)
 					}),
 					jsx("span", {
-						className: css$15.lang,
+						className: css$16.lang,
 						children: lang ?? ""
 					}),
 					lines.length > 0 && jsx("button", {
 						type: "button",
-						className: css$15.copyButton,
+						className: css$16.copyButton,
 						onClick: onCopy,
-						children: copied ? "复制成功" : "复制"
+						children: copied ? labels.copied : labels.copy
 					})
 				]
 			})]
 		}), jsxs("div", {
-			className: css$15.body,
+			className: css$16.body,
 			children: [
 				rows(capped ? paired.slice(0, headLines) : paired),
-				hidden > 0 && jsx("button", {
-					type: "button",
-					className: css$15.expand,
-					"aria-expanded": expanded,
-					"aria-label": expanded ? "收起内容" : `展开其余 ${hidden} 行`,
-					onClick: onToggle,
-					children: expanded ? "收起" : `… 其余 ${hidden} 行`
+				hidden > 0 && jsx(FoldToggle, {
+					className: css$16.expand,
+					expanded,
+					hidden,
+					labels,
+					onToggle
 				}),
 				capped && rows(paired.slice(paired.length - tailLines))
 			]
@@ -4387,11 +4620,7 @@ function ReadBlock({ label, lines, totalLines, lang, maxLines = 16, className })
 }
 //#endregion
 //#region lib/types/DiffBlock.js
-/**
-* Output lines shown before the height cap collapses the middle. Matches
-* {@link DEFAULT_TERMINAL_MAX_LINES} so a diff card and a terminal card cut a
-* long body at the same place.
-*/
+/** Output lines shown before the height cap collapses the middle. */
 const DEFAULT_DIFF_MAX_LINES = 16;
 /** Local exhaustiveness helper — this package does not depend on `dsh-llm`. */
 /* v8 ignore next 3 -- closed-union backstop; only reached if a row kind is forged */
@@ -4400,10 +4629,10 @@ function assertNever(value) {
 }
 /** The dim class per row kind (path/gap chrome vs the diff's own +/- colors). */
 const ROW_CLASS = {
-	path: css$16.path,
-	del: css$16.del,
-	add: css$16.add,
-	gap: css$16.gap
+	path: css$17.path,
+	del: css$17.del,
+	add: css$17.add,
+	gap: css$17.gap
 };
 /**
 * Flatten the hunks into the body's rows plus the footer counts. A path header
@@ -4491,7 +4720,7 @@ function copyText$1(rows) {
 * @param props - see {@link DiffBlockProps}.
 * @returns the diff block element.
 */
-function DiffBlock({ diffs, maxLines = 16, className }) {
+function DiffBlock({ diffs, labels, maxLines = 16, className }) {
 	const { rows, added, removed, files } = useMemo(() => buildRows(diffs), [diffs]);
 	const [expanded, setExpanded] = useState(false);
 	const [copied, setCopied] = useState(false);
@@ -4516,47 +4745,44 @@ function DiffBlock({ diffs, maxLines = 16, className }) {
 	const head = capped ? rows.slice(0, headLines) : rows;
 	const tail = capped ? rows.slice(rows.length - tailLines) : [];
 	return jsxs("div", {
-		className: clsx(css$16.block, className),
+		className: clsx(css$17.block, className),
 		"data-diff": "",
 		children: [
 			jsx("button", {
 				type: "button",
-				className: css$16.copyButton,
+				className: css$17.copyButton,
 				onClick: onCopy,
-				children: copied ? "复制成功" : "复制"
+				children: copied ? labels.copied : labels.copy
 			}),
 			jsxs("div", {
-				className: css$16.body,
+				className: css$17.body,
 				children: [
 					head.map((row, index) => jsx("div", {
-						className: clsx(css$16.line, ROW_CLASS[row.kind]),
+						className: clsx(css$17.line, ROW_CLASS[row.kind]),
 						children: row.text
 					}, index)),
-					hidden > 0 && jsx("button", {
-						type: "button",
-						className: css$16.expand,
-						"aria-expanded": expanded,
-						"aria-label": expanded ? "收起差异" : `展开其余 ${hidden} 行差异`,
-						onClick: onToggle,
-						children: expanded ? "收起" : `… 其余 ${hidden} 行`
+					hidden > 0 && jsx(FoldToggle, {
+						className: css$17.expand,
+						expanded,
+						hidden,
+						labels,
+						onToggle
 					}),
 					tail.map((row, index) => jsx("div", {
-						className: clsx(css$16.line, ROW_CLASS[row.kind]),
+						className: clsx(css$17.line, ROW_CLASS[row.kind]),
 						children: row.text
 					}, index))
 				]
 			}),
 			jsxs("div", {
-				className: css$16.footer,
+				className: css$17.footer,
 				children: [
 					"└ +",
 					added,
 					" -",
 					removed,
 					" · ",
-					files,
-					" file",
-					files === 1 ? "" : "s"
+					labels.files(files)
 				]
 			})
 		]
@@ -4604,8 +4830,7 @@ function shownCount(props) {
 * @returns the summary text.
 */
 function summaryText(props, shown, truncated, total) {
-	const count = truncated ? `显示 ${shown} / 共 ${total}` : `${shown}`;
-	return props.kind === "paths" ? `${count} 个路径` : `${count} 处匹配 · ${props.files.length} 个文件`;
+	return props.kind === "paths" ? props.labels.pathsSummary(shown, total, truncated) : props.labels.matchesSummary(shown, total, props.files.length, truncated);
 }
 /**
 * Flatten a card's shape into its render rows, dropping a collapsed file
@@ -4686,60 +4911,60 @@ function SearchBlock(props) {
 	const tail = tailHeader === void 0 ? naturalTail : naturalTail.slice(1);
 	const renderRow = (row) => {
 		if (row.type === "path") return jsx("div", {
-			className: css$17.line,
+			className: css$18.line,
 			children: row.path
 		});
 		if (row.type === "match") return jsxs("div", {
-			className: css$17.line,
+			className: css$18.line,
 			children: [jsxs("span", {
-				className: css$17.lineNumber,
+				className: css$18.lineNumber,
 				children: [row.lineNumber, ": "]
 			}), row.line]
 		});
 		return jsxs("button", {
 			type: "button",
-			className: css$17.fileHeader,
+			className: css$18.fileHeader,
 			"aria-expanded": !row.collapsed,
 			onClick: () => {
 				toggleFile(row.index);
 			},
 			children: [jsx("span", {
-				className: css$17.filePath,
+				className: css$18.filePath,
 				children: row.path
 			}), jsx("span", {
-				className: css$17.fileCount,
+				className: css$18.fileCount,
 				children: row.count
 			})]
 		});
 	};
 	return jsxs("div", {
-		className: clsx(css$17.block, className),
+		className: clsx(css$18.block, className),
 		"data-search": props.kind,
 		children: [jsxs("div", {
-			className: css$17.header,
+			className: css$18.header,
 			children: [jsx("span", {
-				className: css$17.summary,
+				className: css$18.summary,
 				children: summaryText(props, shown, truncated, total)
 			}), !empty && jsx("button", {
 				type: "button",
-				className: css$17.copyButton,
+				className: css$18.copyButton,
 				onClick: onCopy,
-				children: copied ? "复制成功" : "复制"
+				children: copied ? props.labels.copied : props.labels.copy
 			})]
 		}), empty ? jsx("div", {
-			className: css$17.empty,
-			children: "无结果"
+			className: css$18.empty,
+			children: props.labels.noResults
 		}) : jsxs("div", {
-			className: css$17.body,
+			className: css$18.body,
 			children: [
 				head.map((row) => jsx("div", { children: renderRow(row) }, rowKey(row))),
 				hidden > 0 && jsx("button", {
 					type: "button",
-					className: css$17.expand,
+					className: css$18.expand,
 					"aria-expanded": expanded,
-					"aria-label": expanded ? "收起结果" : `展开其余 ${hidden} 行结果`,
+					"aria-label": expanded ? props.labels.collapseAria : props.labels.expandAria(hidden),
 					onClick: onToggle,
-					children: expanded ? "收起" : `… 其余 ${hidden} 行`
+					children: expanded ? props.labels.collapse : props.labels.expand(hidden)
 				}),
 				tailHeader !== void 0 && jsx("div", { children: renderRow(tailHeader) }, `tailHeader:${rowKey(tailHeader)}`),
 				tail.map((row) => jsx("div", { children: renderRow(row) }, rowKey(row)))
@@ -5220,12 +5445,64 @@ function parseGfmWithMath(text) {
 }
 //#endregion
 //#region lib/types/markdown/CodeBlock.js
-function CodeBlock({ code, lang, className, copyLabel = "复制", copiedLabel = "复制成功" }) {
+/**
+* The `pre` attributes shiki's HTML arm emits for the css-variables theme,
+* mirrored so the streaming arm's tree is interchangeable with the settled
+* swap (`tests/streaming-code-block.client.spec.tsx` pins the two arms'
+* parity).
+*/
+const SHIKI_PRE_PROPS = {
+	className: "shiki css-variables",
+	style: {
+		backgroundColor: "var(--shiki-background)",
+		color: "var(--shiki-foreground)"
+	},
+	tabIndex: 0
+};
+function CodeBlock({ code, lang, streaming, className, copyLabel, copiedLabel }) {
 	const trimmed = code.endsWith("\n") ? code.slice(0, -1) : code;
-	const html = useMemo(() => highlightToHtml(trimmed, lang), [
+	const loaded = useSyncExternalStore(subscribeGrammarLoaded, grammarLoadCount, grammarLoadCount);
+	const html = useMemo(() => streaming === true ? void 0 : highlightToHtml(trimmed, lang), [
+		streaming,
 		trimmed,
 		lang,
-		useSyncExternalStore(subscribeGrammarLoaded, grammarLoadCount, grammarLoadCount)
+		loaded
+	]);
+	const sessionRef = useRef(null);
+	const lineCacheRef = useRef(null);
+	const streamedBody = useMemo(() => {
+		if (streaming !== true) {
+			sessionRef.current = null;
+			lineCacheRef.current = null;
+			return;
+		}
+		sessionRef.current ??= new StreamingHighlightSession();
+		const lines = sessionRef.current.update(trimmed, lang);
+		if (lines === void 0) {
+			lineCacheRef.current = null;
+			return;
+		}
+		const previous = lineCacheRef.current;
+		const elements = lines.map((line, index) => previous !== null && previous.lines[index] === line ? previous.elements[index] : jsxs(Fragment$1, { children: [index > 0 && "\n", jsx("span", {
+			className: "line",
+			children: line.map((span, spanIndex) => jsx("span", {
+				style: span.style,
+				children: span.text
+			}, spanIndex))
+		})] }, index));
+		lineCacheRef.current = {
+			lines,
+			elements
+		};
+		return jsx("pre", {
+			...SHIKI_PRE_PROPS,
+			children: jsx("code", { children: elements })
+		});
+	}, [
+		streaming,
+		trimmed,
+		lang,
+		loaded
 	]);
 	const rootRef = useRef(null);
 	const [copied, setCopied] = useState(false);
@@ -5239,25 +5516,25 @@ function CodeBlock({ code, lang, className, copyLabel = "复制", copiedLabel = 
 			}, 1e3);
 		});
 	}, [copied, trimmed]);
-	const body = html === void 0 ? jsx("pre", {
-		className: css$18.plain,
+	const body = streamedBody !== void 0 ? streamedBody : html === void 0 ? jsx("pre", {
+		className: css$19.plain,
 		children: jsx("code", { children: trimmed })
 	}) : jsx("div", { dangerouslySetInnerHTML: { __html: html } });
 	return jsxs("div", {
 		ref: rootRef,
-		className: clsx(css$18.block, "md-code-block", className),
+		className: clsx(css$19.block, "md-code-block", className),
 		children: [jsx("div", {
-			className: css$18.bannerWrap,
+			className: css$19.bannerWrap,
 			children: jsxs("div", {
-				className: css$18.banner,
+				className: css$19.banner,
 				children: [jsx("div", {
-					className: css$18.infostring,
+					className: css$19.infostring,
 					children: lang ?? ""
 				}), jsx("div", {
-					className: css$18.action,
+					className: css$19.action,
 					children: jsx("button", {
 						type: "button",
-						className: css$18.copyButton,
+						className: css$19.copyButton,
 						onClick: onCopy,
 						children: copied ? copiedLabel : copyLabel
 					})
@@ -5477,7 +5754,7 @@ function renderNode(node, key, context) {
 			const mention = context.inLink === true ? void 0 : context.fileMentions?.resolve(value);
 			if (mention !== void 0) return jsx("code", { children: jsx("button", {
 				type: "button",
-				className: css$19.fileMention,
+				className: css$20.fileMention,
 				title: mention.title,
 				"aria-label": mention.label,
 				onClick: mention.open,
@@ -5512,9 +5789,10 @@ function renderCode(node, key, context) {
 	if (!context.streaming && lang === "math") return jsx(Fragment$1, { children: renderTexToReact(`${node.value}\n`, true) }, key);
 	return jsx(CodeBlock, {
 		code: `${node.value}\n`,
-		lang: context.streaming ? void 0 : lang,
-		copyLabel: context.codeLabels?.copyLabel,
-		copiedLabel: context.codeLabels?.copiedLabel
+		lang,
+		streaming: context.streaming,
+		copyLabel: context.labels.code.copyLabel,
+		copiedLabel: context.labels.code.copiedLabel
 	}, key);
 }
 /** A list is loose when it or any of its items is spread; every item then keeps its paragraphs. */
@@ -5571,7 +5849,7 @@ function renderTable(node, key, context) {
 	const [headRow, ...bodyRows] = node.children;
 	const wide = (align === null ? headRow?.children.length ?? 0 : align.length) >= 4 && context.inBlockquote !== true;
 	return jsx("div", {
-		className: clsx(css$19.tableScroll, wide ? "md-table-wide" : css$19.tableFill),
+		className: clsx(css$20.tableScroll, wide ? "md-table-wide" : css$20.tableFill),
 		tabIndex: wide ? 0 : void 0,
 		children: jsxs("table", { children: [headRow !== void 0 && jsx("thead", { children: renderTableRow(headRow, "th", align, 0, context) }), bodyRows.length > 0 && jsx("tbody", { children: bodyRows.map((row, index) => renderTableRow(row, "td", align, index + 1, context)) })] })
 	}, key);
@@ -5622,11 +5900,11 @@ function inlineCodeHttpUrl(value) {
 function renderImage(url, alt, key) {
 	const imageSrc = remoteImageUrl(sanitizeUrl(normalizeUri(url)));
 	if (imageSrc === void 0) return jsx("span", {
-		className: css$19.imageAlt,
+		className: css$20.imageAlt,
 		children: alt
 	}, key);
 	return jsx("img", {
-		className: css$19.image,
+		className: css$20.image,
 		src: imageSrc,
 		alt,
 		loading: "lazy",
@@ -5699,7 +5977,7 @@ function renderFootnoteSection(context) {
 		children: [jsx("h2", {
 			id: "footnote-label",
 			className: "sr-only",
-			children: "Footnotes"
+			children: context.labels.footnotes
 		}), jsx("ol", { children: items })]
 	}, "footnotes");
 }
@@ -5717,14 +5995,21 @@ function renderFootnoteSection(context) {
 * other side of the freeze boundary renders literally until the settled
 * full parse self-heals it.
 */
+const FALLBACK_LABELS = {
+	code: {
+		copyLabel: "Copy",
+		copiedLabel: "Copied"
+	},
+	footnotes: "Footnotes"
+};
 /** One settled full render: parse with math, resolve references, append the footnote section. */
-function renderSettled(text, codeLabels, fileMentions) {
+function renderSettled(text, labels, fileMentions) {
 	const root = parseGfmWithMath(text);
 	const targets = createReferenceTargets();
 	collectReferenceTargets(root.children, targets);
 	const context = {
 		streaming: false,
-		codeLabels,
+		labels,
 		fileMentions,
 		targets,
 		footnoteOrder: [],
@@ -5748,7 +6033,7 @@ function renderSettled(text, codeLabels, fileMentions) {
 * final, so the tail continues from a copy of it each frame).
 */
 var StreamingRenderer = class {
-	codeLabels;
+	labels;
 	parser = new IncrementalMarkdownParser(parseGfm);
 	generation = -1;
 	frozenCount = 0;
@@ -5758,9 +6043,9 @@ var StreamingRenderer = class {
 	frozenFootnoteCounts = /* @__PURE__ */ new Map();
 	lastText = null;
 	lastRendered = [];
-	/** @param codeLabels - Fence copy labels baked into cached elements; the owner replaces the renderer when they change. */
-	constructor(codeLabels) {
-		this.codeLabels = codeLabels;
+	/** @param labels - Localized Markdown chrome baked into cached elements; the owner replaces the renderer when it changes. */
+	constructor(labels) {
+		this.labels = labels;
 	}
 	/**
 	* Render the current accumulated text. Idempotent per text value, so React
@@ -5789,7 +6074,7 @@ var StreamingRenderer = class {
 		if (newlyFrozen.length > 0) {
 			const frozenContext = {
 				streaming: true,
-				codeLabels: this.codeLabels,
+				labels: this.labels,
 				fileMentions: void 0,
 				targets: frameTargets,
 				footnoteOrder: this.frozenFootnoteOrder,
@@ -5805,7 +6090,7 @@ var StreamingRenderer = class {
 		}
 		const tailContext = {
 			streaming: true,
-			codeLabels: this.codeLabels,
+			labels: this.labels,
 			fileMentions: void 0,
 			targets: frameTargets,
 			footnoteOrder: [...this.frozenFootnoteOrder],
@@ -5826,9 +6111,10 @@ var StreamingRenderer = class {
 /**
 * Render untrusted assistant-authored Markdown as semantic React elements.
 * @param props - Markdown source text preserved by the session projection;
-* `streaming` renders fences and TeX plain (highlighting and KaTeX land on
-* the finalize swap) and parses incrementally across chunks; `codeLabels`
-* forwards localized copy-button labels to fence CodeBlocks — pass a
+* `streaming` parses incrementally across chunks and highlights fences as
+* they grow (each fence re-tokenizes only appended text; TeX stays literal
+* until the finalize swap so incomplete formulae never flash errors);
+* `labels` forwards localized fence and footnote chrome — pass a
 * reference-stable object (memoized per locale revision), because a new
 * identity discards the streaming render cache mid-message. `fileMentions`
 * links inline-code tokens its resolver recognizes as real files; this is
@@ -5839,27 +6125,31 @@ var StreamingRenderer = class {
 * relative links, and unsafe protocols are disabled, while absolute HTTP(S)
 * images render directly.
 */
-const MarkdownText = memo(function MarkdownText({ text, streaming = false, codeLabels, fileMentions }) {
+const MarkdownText = memo(function MarkdownText({ text, streaming = false, labels, codeLabels, fileMentions }) {
+	const resolvedLabels = labels ?? (codeLabels === void 0 ? FALLBACK_LABELS : {
+		...FALLBACK_LABELS,
+		code: codeLabels
+	});
 	const streamRef = useRef(null);
-	const streamLabelsRef = useRef(codeLabels);
+	const streamLabelsRef = useRef(resolvedLabels);
 	const children = useMemo(() => {
 		if (!streaming) {
 			streamRef.current = null;
-			return renderSettled(text, codeLabels, fileMentions);
+			return renderSettled(text, resolvedLabels, fileMentions);
 		}
-		if (streamRef.current === null || streamLabelsRef.current !== codeLabels) {
-			streamRef.current = new StreamingRenderer(codeLabels);
-			streamLabelsRef.current = codeLabels;
+		if (streamRef.current === null || streamLabelsRef.current !== resolvedLabels) {
+			streamRef.current = new StreamingRenderer(resolvedLabels);
+			streamLabelsRef.current = resolvedLabels;
 		}
 		return streamRef.current.render(text);
 	}, [
 		text,
 		streaming,
-		codeLabels,
+		resolvedLabels,
 		fileMentions
 	]);
 	return jsx("div", {
-		className: css$19.markdown,
+		className: css$20.markdown,
 		children
 	});
 });
@@ -5934,20 +6224,20 @@ function SafeLink({ url, label, className }) {
 */
 function SourceItem({ source, ordinal }) {
 	return jsxs("li", {
-		className: css$20.source,
+		className: css$21.source,
 		value: ordinal,
 		children: [
 			jsx(SafeLink, {
 				url: source.url,
 				label: linkLabel(source.url, source.title),
-				className: css$20.sourceLink
+				className: css$21.sourceLink
 			}),
 			source.snippet !== void 0 && source.snippet !== "" && jsx("div", {
-				className: css$20.snippet,
+				className: css$21.snippet,
 				children: source.snippet
 			}),
 			source.publishedAt !== void 0 && source.publishedAt !== "" && jsx("div", {
-				className: css$20.published,
+				className: css$21.published,
 				children: source.publishedAt
 			})
 		]
@@ -5959,29 +6249,32 @@ function SourceItem({ source, ordinal }) {
 * @param props - see {@link WebSearchBlockProps}.
 * @returns the search card element.
 */
-function WebSearchBlock({ answer, sources, truncated, className }) {
+function WebSearchBlock({ answer, sources, truncated, labels, className }) {
 	const empty = (answer === void 0 || answer === "") && sources.length === 0;
 	return jsxs("div", {
-		className: clsx(css$20.block, className),
+		className: clsx(css$21.block, className),
 		"data-web": "search",
 		children: [
 			answer !== void 0 && answer !== "" && jsx("div", {
-				className: css$20.answer,
-				children: jsx(MarkdownText, { text: answer })
+				className: css$21.answer,
+				children: jsx(MarkdownText, {
+					text: answer,
+					labels: labels.markdown
+				})
 			}),
 			empty ? jsx("div", {
-				className: css$20.empty,
-				children: "未找到结果"
+				className: css$21.empty,
+				children: labels.noResults
 			}) : jsx("ol", {
-				className: css$20.sources,
+				className: css$21.sources,
 				children: sources.map((source, index) => jsx(SourceItem, {
 					source,
 					ordinal: index + 1
 				}, index))
 			}),
 			truncated && jsx("div", {
-				className: css$20.truncated,
-				children: "来源列表已截断"
+				className: css$21.truncated,
+				children: labels.sourcesTruncated
 			})
 		]
 	});
@@ -5991,22 +6284,26 @@ function WebSearchBlock({ answer, sources, truncated, className }) {
 * @param props - see {@link WebFetchBlockProps}.
 * @returns the fetch card element.
 */
-function WebFetchBlock({ url, statusCode, truncated, className }) {
+function WebFetchBlock({ url, statusCode, truncated, labels, className }) {
 	return jsxs("div", {
-		className: clsx(css$20.block, css$20.fetch, className),
+		className: clsx(css$21.block, css$21.fetch, className),
 		"data-web": "fetch",
 		children: [jsx(SafeLink, {
 			url,
 			label: url,
-			className: css$20.fetchUrl
+			className: css$21.fetchUrl
 		}), jsxs("div", {
-			className: css$20.fetchMeta,
+			className: css$21.fetchMeta,
 			children: [jsxs("span", {
-				className: css$20.status,
-				children: ["HTTP ", statusCode]
+				className: css$21.status,
+				children: [
+					labels.http,
+					" ",
+					statusCode
+				]
 			}), truncated && jsx("span", {
-				className: css$20.truncated,
-				children: "内容已截断"
+				className: css$21.truncated,
+				children: labels.contentTruncated
 			})]
 		})]
 	});
@@ -6022,11 +6319,7 @@ function WebBlock(props) {
 //#endregion
 //#region lib/types/markdown/JsonBlock.js
 const MAX_CHARS = 2e4;
-/** Default truncation footer; the owner passes a localized formatter. */
-function defaultTruncatedLabel(total) {
-	return `… 已截断，共 ${total} 字符`;
-}
-function JsonBlock({ label, payload, defaultOpen = false, truncatedLabel = defaultTruncatedLabel }) {
+function JsonBlock({ label, payload, defaultOpen = false, truncatedLabel }) {
 	const [open, setOpen] = useState(defaultOpen);
 	const body = useMemo(() => {
 		if (!open) return "";
@@ -6043,10 +6336,10 @@ function JsonBlock({ label, payload, defaultOpen = false, truncatedLabel = defau
 		truncatedLabel
 	]);
 	return jsxs("div", {
-		className: css$21.root,
+		className: css$22.root,
 		children: [jsxs("button", {
 			type: "button",
-			className: css$21.toggle,
+			className: css$22.toggle,
 			onClick: () => {
 				setOpen((v) => !v);
 			},
@@ -6056,7 +6349,7 @@ function JsonBlock({ label, payload, defaultOpen = false, truncatedLabel = defau
 				label
 			]
 		}), open && jsx("pre", {
-			className: css$21.body,
+			className: css$22.body,
 			children: body
 		})]
 	});
@@ -6065,7 +6358,7 @@ function JsonBlock({ label, payload, defaultOpen = false, truncatedLabel = defau
 //#region lib/types/markdown/MessageText.js
 function MessageText({ text }) {
 	return jsx("div", {
-		className: css$22.text,
+		className: css$23.text,
 		children: text
 	});
 }
@@ -6141,6 +6434,6 @@ function extractMarkdownPlainText(markdown, options = {}) {
 	}
 }
 //#endregion
-export { BrandWordmark, Button, CodeBlock, ComputerUseIcon, ConnectionBanner, DEFAULT_DIFF_MAX_LINES, DEFAULT_READ_MAX_LINES, DEFAULT_SEARCH_MAX_LINES, DEFAULT_TERMINAL_MAX_LINES, DiffBlock, DisclosureRow, FishLogo, HoverCard, IconAdaptiveUpdateOutline16, IconAgentPresetOutline16, IconApiOutline14, IconArchiveOutline20, IconBranchOutline16, IconBrowseOutline16, IconChatOutline16, IconCheckOutline14, IconCheckOutline16, IconChecklistOutline14, IconChevronDownOutline14, IconChevronLeftOutline14, IconChevronRightOutline14, IconChevronUpOutline14, IconCloseFill14, IconCloseOutline16, IconCodeOutline16, IconCopyOutline16, IconCordisPluginOutline14, IconDarkOutline16, IconDataOutline16, IconDislikeFill16, IconDislikeOutline16, IconDownloadOutline16, IconEditOutline16, IconEllipsisOutline16, IconEnhanceOutline16, IconFolderClose16, IconFolderOpen16, IconFolderOpenOutline16, IconFollowsystemOutline16, IconFullscreenOutline16, IconGlobeOutline14, IconGoalOutline16, IconInspectOutline12, IconLightOutline16, IconLikeFill16, IconLikeOutline16, IconLinkOutline14, IconLinkOutline16, IconListPenOutline16, IconLoadingOutline16, IconMemoryOutline16, IconNewChatOutline16, IconPanelLeftOutline16, IconPaperclipOutline16, IconPauseOutline16, IconPersonalizationOutline16, IconPlayOutline16, IconPlusOutline16, IconProjectAddOutline16, IconQuestionOutline14, IconQueueOutline14, IconQuoteOutline16, IconRefreshOutline14, IconRefreshOutline16, IconRightUpOutline14, IconRightUpOutline16, IconSearchOutline16, IconSendOutline14, IconSendOutline16, IconSettingsOutline14, IconSettingsOutline16, IconShareOutline16, IconSkillOutline16, IconSparkle16, IconStopFill16, IconTeamworkOutline16, IconThinkOutline14, IconThinkOutline16, IconTrashOutline16, IconTreeCorner8x10, IconTriangleRightFill14, IconUsageTrendOutline16, IconUserOutline16, IconWarningOutline16, IconWindowNewOutline16, Input, JsonBlock, JsonTree, MarkdownText, Menu, MenuAction, MessageText, Modal, OnboardingSurface, Pill, ReadBlock, RiskConfirmation, SearchBlock, StateDot, TerminalBlock, Toast, Tooltip, WebBlock, extractMarkdownPlainText, useAnchoredMaxHeight, useAnchoredPosition, useDismissOnOutsidePointer, writeClipboard };
+export { BrandWordmark, Button, CodeBlock, ConnectionBanner, DEFAULT_DIFF_MAX_LINES, DEFAULT_READ_MAX_LINES, DEFAULT_SEARCH_MAX_LINES, DEFAULT_TERMINAL_MAX_LINES, DiffBlock, DisclosureRow, FishLogo, HoverCard, IconAdaptiveUpdateOutline16, IconAgentPresetOutline16, IconApiOutline14, IconArchiveOutline20, IconBranchOutline16, IconBrowseOutline16, IconChatOutline16, IconCheckOutline14, IconCheckOutline16, IconChecklistOutline14, IconChevronDownOutline14, IconChevronLeftOutline14, IconChevronRightOutline14, IconChevronUpOutline14, IconCloseFill14, IconCloseOutline16, IconCodeOutline16, IconContextInjectionOutline16, IconCopyOutline16, IconCordisPluginOutline14, IconDarkOutline16, IconDataOutline16, IconDislikeFill16, IconDislikeOutline16, IconDownloadOutline16, IconEditOutline16, IconEllipsisOutline16, IconEnhanceOutline16, IconFolderClose16, IconFolderOpen16, IconFolderOpenOutline16, IconFollowsystemOutline16, IconFullscreenOutline16, IconGlobeOutline14, IconGoalOutline16, IconInspectOutline12, IconLightOutline16, IconLikeFill16, IconLikeOutline16, IconLinkOutline14, IconLinkOutline16, IconListPenOutline16, IconLoadingOutline16, IconMemoryOutline16, IconNewChatOutline16, IconPanelLeftOutline16, IconPaperclipOutline16, IconPauseOutline16, IconPersonalizationOutline16, IconPlayOutline16, IconPlusOutline16, IconProjectAddOutline16, IconQuestionOutline14, IconQueueOutline14, IconQuoteOutline16, IconRefreshOutline14, IconRefreshOutline16, IconRightUpOutline14, IconRightUpOutline16, IconSearchOutline16, IconSendOutline14, IconSendOutline16, IconSettingsOutline14, IconSettingsOutline16, IconShareOutline16, IconSkillOutline16, IconSparkle16, IconStopFill16, IconTeamworkOutline16, IconThinkOutline14, IconThinkOutline16, IconTrashOutline16, IconTreeCorner8x10, IconTriangleRightFill14, IconUsageTrendOutline16, IconUserOutline16, IconWarningOutline16, IconWindowNewOutline16, Input, JsonBlock, JsonTree, MarkdownText, Menu, MenuAction, MessageText, Modal, OnboardingSurface, Pill, ReadBlock, ReferenceIcon, RiskConfirmation, SearchBlock, StateDot, TerminalBlock, Toast, Tooltip, WebBlock, extractMarkdownPlainText, projectUserText, relativeTime, useAnchoredMaxHeight, useAnchoredPosition, useDismissOnOutsidePointer, writeClipboard };
 
 //# sourceMappingURL=index.js.map

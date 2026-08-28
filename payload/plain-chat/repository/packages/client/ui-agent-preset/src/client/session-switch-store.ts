@@ -1,38 +1,39 @@
 /**
- * Session-header preset switching.
+ * Per-session Agent preset switching for the conversation header.
  *
- * A pick made during a running turn is retained per session and committed once
- * the shared session summary reports idle. The Host owns the matching idle
- * transaction, so navigating away cannot cancel a queued switch and a stale
- * client cannot recompose an active turn.
+ * A pick made during a running turn remains pending until the shared Session
+ * list reports idle. The Host owns the actual maintenance boundary; this
+ * controller only keeps the user's choice stable and retries a transient
+ * busy refusal after the turn finishes.
  */
 
-import type { IApiClient } from '@deepseek-ai/dsh-api-remotes/client'
-import {
-  createSnapshotStore, type SessionId, type SnapshotStore,
-} from '@deepseek-ai/dsh-client-runtime/client'
+import type { ClientRemote } from '@deepseek-ai/dsh-api-remotes/client'
+import { createSnapshotStore, type SnapshotStore } from '@deepseek-ai/dsh-client-store'
+import type { SessionId } from '@deepseek-ai/dsh-session/types'
 import { messageOf } from './settings-store.ts'
 
-/** Header switch state for one session. */
+/** Pending switch state for one Session header. */
 export interface AgentPresetSessionSwitchEntry {
-  /** Preset accepted by the UI but not yet confirmed by the Host. */
+  /** Preset accepted by the UI but not yet visible in the Session projection. */
   readonly pending?: string
-  /** Whether the Host call is in flight. */
+  /** Whether a Host switch call is currently in flight. */
   readonly busy: boolean
+  /** Host committed the pick; only the shared Session projection is catching up. */
+  readonly committed?: boolean
   /** Last non-transient failure, cleared by the next pick. */
   readonly error: string | null
 }
 
-/** Reactive state shared by every mounted session header. */
+/** Reactive state shared by every mounted Session header. */
 export interface AgentPresetSessionSwitchState {
   readonly bySession: Readonly<Record<string, AgentPresetSessionSwitchEntry>>
 }
 
-/** Session facts needed to decide whether a switch can start. */
+/** Session facts needed to decide when a switch may be attempted. */
 export interface SwitchableSessionSummary {
   readonly id: SessionId
   readonly running: boolean
-  readonly agentPreset?: string
+  readonly projectionValues?: { readonly agentPreset?: string | null }
 }
 
 const INITIAL: AgentPresetSessionSwitchState = { bySession: {} }
@@ -42,9 +43,9 @@ export class AgentPresetSessionSwitchController {
   readonly store: SnapshotStore<AgentPresetSessionSwitchState> = createSnapshotStore(INITIAL)
 
   constructor(
-    private readonly api: Pick<IApiClient, 'agentPresets'>,
+    private readonly remote: Pick<ClientRemote, 'agentPresets'>,
     private readonly session: (sessionId: SessionId) => SwitchableSessionSummary | undefined,
-    private readonly onApplied: (sessionId: SessionId, agentPreset: string) => void,
+    private readonly refresh: () => void,
   ) {}
 
   private entry(sessionId: SessionId): AgentPresetSessionSwitchEntry | undefined {
@@ -59,24 +60,17 @@ export class AgentPresetSessionSwitchController {
   private clear(sessionId: SessionId): void {
     const state = this.store.getSnapshot()
     if (state.bySession[sessionId] === undefined) return
-    const bySession = Object.fromEntries(
-      Object.entries(state.bySession).filter(([id]) => id !== sessionId),
-    )
-    this.store.set({ bySession })
+    this.store.set({
+      bySession: Object.fromEntries(Object.entries(state.bySession).filter(([id]) => id !== sessionId)),
+    })
   }
 
-  /**
-   * Accept a header-menu pick and commit it immediately when the session is idle.
-   * A running session retains the pick until a later list update reports idle.
-   * @param sessionId - session whose next turn uses the new preset.
-   * @param agentPreset - selected preset id.
-   * @returns after an immediate Host attempt settles, or immediately when queued.
-   */
+  /** Accept one header-menu pick and apply it at the next idle boundary. */
   async select(sessionId: SessionId, agentPreset: string): Promise<void> {
-    const current = this.session(sessionId)
     const entry = this.entry(sessionId)
     if (entry?.busy === true) return
-    if (current?.agentPreset === agentPreset) {
+    const current = entry?.pending ?? presetOf(this.session(sessionId))
+    if (current === agentPreset) {
       this.clear(sessionId)
       return
     }
@@ -84,28 +78,23 @@ export class AgentPresetSessionSwitchController {
     await this.flush(sessionId)
   }
 
-  /** Retry every queued switch whose session may have become idle. */
+  /** Reconcile every pending choice after Session list state changes. */
   flushAll(): void {
     for (const sessionId of Object.keys(this.store.getSnapshot().bySession)) {
       void this.flush(sessionId as SessionId)
     }
   }
 
-  /** Fold a committed owner event into this browser's pending state. */
-  confirm(sessionId: SessionId, agentPreset: string): void {
-    if (this.entry(sessionId)?.pending === agentPreset) this.clear(sessionId)
-  }
-
   private async flush(sessionId: SessionId): Promise<void> {
     const queued = this.entry(sessionId)
-    const agentPreset = queued?.pending
-    if (agentPreset === undefined || queued?.busy === true) return
+    if (queued?.pending === undefined || queued.busy) return
+    const agentPreset = queued.pending
     const session = this.session(sessionId)
     if (session === undefined) {
       this.clear(sessionId)
       return
     }
-    if (session.agentPreset === agentPreset) {
+    if (presetOf(session) === agentPreset) {
       this.clear(sessionId)
       return
     }
@@ -113,21 +102,32 @@ export class AgentPresetSessionSwitchController {
 
     this.set(sessionId, { pending: agentPreset, busy: true, error: null })
     try {
-      const response = await this.api.agentPresets.select({ sessionId, agentPreset })
-      if (!response.result.ok) {
-        // The session may have started after the browser read `running:false`.
-        // Keep the pick and let the next idle summary retry it.
-        if (response.result.error.code === 'agent-preset-locked') {
+      const result = await this.remote.agentPresets.select(sessionId, agentPreset)
+      const current = this.entry(sessionId)
+      if (current?.pending !== agentPreset) return
+      if (!result.ok) {
+        if (result.error.code === 'agent-preset-locked') {
           this.set(sessionId, { pending: agentPreset, busy: false, error: null })
           return
         }
-        this.set(sessionId, { busy: false, error: response.result.error.message })
+        this.set(sessionId, { busy: false, error: result.error.message })
         return
       }
-      this.clear(sessionId)
-      this.onApplied(sessionId, response.result.value.agentPreset)
+      // Keep the committed choice visible until the generic Session
+      // projection catches up. It is already settled from the user's point of
+      // view, so do not leave the header saying "Switching" while that generic
+      // list refresh runs.
+      this.set(sessionId, {
+        pending: result.value, busy: false, committed: true, error: null,
+      })
+      this.refresh()
     } catch (error) {
       this.set(sessionId, { busy: false, error: messageOf(error) })
     }
   }
+}
+
+function presetOf(session: SwitchableSessionSummary | undefined): string | undefined {
+  const value = session?.projectionValues?.agentPreset
+  return typeof value === 'string' ? value : undefined
 }

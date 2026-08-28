@@ -3,7 +3,8 @@
  * preference and resolves keyboard gestures into queue/steer delivery modes;
  * Host and Agent keep the actual delivery-window authority.
  */
-import { type SettingsScope, type SnapshotStore } from '@deepseek-ai/dsh-client-runtime/client';
+import { type SnapshotStore } from '@deepseek-ai/dsh-client-store';
+import type { SettingsScope } from '@deepseek-ai/dsh-client-ui-settings/client';
 import type { BusyEnterBehavior, ComposerSubmitGesture, InputSubmitMode } from '../contract/composer-submission.ts';
 import type { ConversationSettings } from '../../submission-settings.ts';
 export { DEFAULT_BUSY_ENTER_BEHAVIOR } from '../../submission-settings.ts';

@@ -7,10 +7,6 @@ import type { IconProps } from './props.ts';
 export type { IconProps } from './props.ts';
 /** ic_ds_new_chat_outline_16 */
 export declare const IconNewChatOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
-/** Harness plain-chat action: one quiet message bubble without a work/add badge. */
-export declare const IconChatOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
-/** Harness open-in-new-window action: two panes plus a north-east launch arrow. */
-export declare const IconWindowNewOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_search_outline_16 */
 export declare const IconSearchOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_globe_outline_14 — meridian globe (harness-only figma extract). */
@@ -19,8 +15,6 @@ export declare const IconGlobeOutline14: ({ size, className }: IconProps) => imp
 export declare const IconSettingsOutline14: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_settings_outline_16 */
 export declare const IconSettingsOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
-/** Continuous-adaptation mark: two renewing arcs around a stable product core. */
-export declare const IconAdaptiveUpdateOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_panel_left_outline_16 */
 export declare const IconPanelLeftOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_ellipsis_outline_16 */
@@ -73,6 +67,8 @@ export declare const IconThinkOutline16: ({ size, className }: IconProps) => imp
 export declare const IconAgentPresetOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_browse_outline_16 */
 export declare const IconBrowseOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
+/** ic_ds_context_injection_outline_16 (figma extract): browse document frame with an open top and an arrow dropping in. */
+export declare const IconContextInjectionOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_link_outline_14 */
 export declare const IconLinkOutline14: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_link_outline_16 */
@@ -89,13 +85,6 @@ export declare const IconTrashOutline16: ({ size, className }: IconProps) => imp
 export declare const IconWarningOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_user_outline_16 */
 export declare const IconUserOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
-/** ic_ds_teamwork_outline_16 — two-person glyph shared by Teamwork surfaces. */
-export declare const IconTeamworkOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
-/**
- * Three ascending usage columns, sourced from Lucide's
- * chart-no-axes-column-increasing glyph and kept on its native 24px grid.
- */
-export declare const IconUsageTrendOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_send_outline_16 */
 export declare const IconSendOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_stop_fill_16 */
@@ -152,14 +141,24 @@ export declare const IconChecklistOutline14: ({ size, className }: IconProps) =>
 export declare const IconListPenOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** ic_ds_goal_outline_16 (goal strip leading glyph: dartboard with a landed arrow) */
 export declare const IconGoalOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
+/** Harness plain-chat action: one quiet message bubble. */
+export declare const IconChatOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
+/** Open-in-new-window action. */
+export declare const IconWindowNewOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
+/** Continuous-adaptation mark. */
+export declare const IconAdaptiveUpdateOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
+/** Two-person teamwork glyph. */
+export declare const IconTeamworkOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
+/** Three ascending usage columns. */
+export declare const IconUsageTrendOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
+/** Quote hooks distinct from copy and clipboard actions. */
+export declare const IconQuoteOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
+/** Compact two-hemisphere memory glyph. */
+export declare const IconMemoryOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** sparkle_16 (Others tool-row leading glyph; hand-authored three-star
  *  approximation — the figma 43:31850 glyph is an SF Symbols "sparkles" text glyph,
  *  not extractable as vector data) */
 export declare const IconSparkle16: ({ size, className }: IconProps) => import("react").JSX.Element;
-/** Quote: two quiet quotation hooks, distinct from copy and clipboard actions. */
-export declare const IconQuoteOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
-/** Memory: a compact two-hemisphere brain outline shared by every memory entry. */
-export declare const IconMemoryOutline16: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** inspect_outline_12 (shared tool-row trajectory affordance glyph) */
 export declare const IconInspectOutline12: ({ size, className }: IconProps) => import("react").JSX.Element;
 /** skill_outline_16 (skill tool-row glyph; document instructions + sparkle) */

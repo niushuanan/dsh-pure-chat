@@ -9,22 +9,12 @@
  */
 import { Service } from '@deepseek-ai/cordis';
 import type { Context } from '@deepseek-ai/cordis';
-import type { SessionFace, SessionId } from '@deepseek-ai/dsh-client-runtime/client';
-import type { SubmitImageAttachment, SubmitOutcome } from '@deepseek-ai/dsh-client-ui-input-trigger/client';
-import type { ImageAttachmentRef } from '@deepseek-ai/dsh-attachment';
+import type { SessionFace } from '@deepseek-ai/dsh-api-session-controller/client';
 import type { ComposerAttachment } from './contract/slots.ts';
 import type { QueueAction, QueueItemId } from './contract/queue.ts';
-import type { ComposerBlocks } from './input/blocks.ts';
-import type { DraftAttachmentId, SessionInputResolver } from './input/contract.ts';
+import type { ComposerBlocks } from './contract/composer-blocks.ts';
+import type { DraftAttachmentId, SessionInputResolver, SubmitImageAttachment, SubmitOutcome } from './contract/input.ts';
 import type { InputSubmitMode } from './contract/composer-submission.ts';
-/** Input shared by every UI surface that forks a conversation. */
-export interface ConversationForkInput {
-    sessionId: SessionId;
-    atSeq?: number;
-    increaseTitle?: boolean;
-}
-/** Optional native presentation owner for a newly forked conversation. */
-export type ForkPresenter = (sourceId: SessionId, childId: SessionId) => boolean;
 /**
  * The outward conversation face (`ctx.conversation`): the scope-addressed
  * verbs and the input registry other plugins may reach — and exactly what a
@@ -61,10 +51,6 @@ export interface IConversation {
      * @returns completion of the page pull.
      */
     loadOlder(): Promise<void>;
-    /** Fork a conversation, then hand its placement to the active native presenter. */
-    forkSession(input: ConversationForkInput): Promise<SessionId>;
-    /** Register the one active product surface that presents forked conversations. */
-    registerForkPresenter(presenter: ForkPresenter): () => void;
 }
 /** Unsupported browser-declared image type, localized by the UI boundary. */
 export declare class UnsupportedImageMediaTypeError extends Error {
@@ -80,11 +66,6 @@ export declare class ConversationController extends Service implements IConversa
     /** The per-session composer-block registry. */
     readonly blocks: ComposerBlocks;
     private readonly draftAttachments;
-    private readonly imageUrls;
-    private readonly imageGenerations;
-    private readonly createdImageUrls;
-    private forkPresenter;
-    private disposed;
     /**
      * @param ctx - owning root context (the plugin apply context; the service
      * registers itself and follows that fiber's lifetime).
@@ -104,7 +85,12 @@ export declare class ConversationController extends Service implements IConversa
      */
     send(text: string): Promise<void>;
     /**
-     * Submit ordered draft images with text through one host admission.
+     * Submit ordered draft images with text through one host admission. A local
+     * submission echo enters the session snapshot synchronously; serialization
+     * and the prompt round-trip start after the browser can paint it. On the
+     * echo's observed retirement the draft images hand their preview URLs to
+     * the durable image cache and leave the registry; on failure they stay
+     * registered so the composer can restore them.
      * @param session - target session.
      * @param text - serialized prompt text.
      * @param imageIds - ordered draft-local attachment ids.
@@ -143,33 +129,26 @@ export declare class ConversationController extends Service implements IConversa
      * @param attachments - descriptors to release.
      */
     releaseDraftImages(attachments: readonly ComposerAttachment[]): void;
-    /**
-     * Resolve and cache one session-authorized historical image URL.
-     * @param sessionId - owning session authorization scope.
-     * @param attachment - durable image reference.
-     * @returns browser URL valid until its rendered session is released.
-     */
-    resolveImage(sessionId: SessionId, attachment: ImageAttachmentRef): Promise<string>;
-    /**
-     * Release every historical image URL owned by one rendered session.
-     * @param sessionId - rendered session scope.
-     */
-    releaseSessionImages(sessionId: SessionId): void;
     /** Apply one operation to a pending queue occurrence. */
     updateQueue(itemId: QueueItemId, action: QueueAction): Promise<void>;
     /** Cancel the scoped session's in-flight turn while preserving Queue (failures land in promptError and reject, as in send). */
     cancel(): Promise<void>;
     /** Pull one older history page for the scoped Session. */
     loadOlder(): Promise<void>;
-    /** Fork once and let an installed native plugin decide where the child appears. */
-    forkSession(input: ConversationForkInput): Promise<SessionId>;
-    /** Install the active fork presenter for this root; disposal restores normal navigation. */
-    registerForkPresenter(presenter: ForkPresenter): () => void;
     /** Resolve the caller scope's session face or throw on root contexts. */
     private scopedSession;
     /** Read the caller's session scope tag via the sessions service; root contexts fail loud. */
     private scopeId;
     private requireSessions;
+    /**
+     * Settle one submission's draft images when its echo retires. Observed:
+     * each image leaves the registry, handing its preview URL to the durable
+     * image cache (seeded under the admitted reference so the transcript node
+     * renders immediately while the cache reads canonical bytes) or revoking it
+     * when the cache already holds that reference. Failed: nothing changes;
+     * the ids stay registered for the composer's rail restore.
+     */
+    private settleSubmittedImages;
     /** Convert browser files to canonical base64 prompt parts. */
     private serializeImages;
     /** Canonical base64 wire form of one browser image file. */

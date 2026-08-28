@@ -7,20 +7,20 @@ window.__ModuleLoader__.load({
 		let react_jsx_runtime = require("react/jsx-runtime");
 		let react = require("react");
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
-		let _deepseek_ai_dsh_client_runtime_client = require("@deepseek-ai/dsh-client-runtime/client");
+		let _deepseek_ai_dsh_client_store = require("@deepseek-ai/dsh-client-store");
 		//#region lib/types/client/locales.js
 		/** Locale bundles for the agent-preset settings row, hero chip, header label, and management section. */
 		/** English copy. */
 		const en = {
 			title: "Agent preset",
-			description: "Sets the default for new sessions. Existing sessions can switch from the header for their next turn.",
+			description: "Sets the default for new sessions. Existing sessions can switch mode from their header between turns.",
 			loading: "Loading presets…",
 			error: "Could not load agent presets.",
 			userTrust: "Custom",
 			seatHint: "Agent preset for the session you are about to start",
-			headerHint: "Switches apply to the next turn and never interrupt active work",
-			switchPending: "Next turn",
-			switching: "Switching",
+			headerHint: "Switch the Agent mode for this session",
+			switching: "Switching…",
+			switchPending: "After this turn",
 			nav: "Agent presets",
 			sectionIntro: "A preset is the plugin composition one session's agent runs — its tools, prompt, and capabilities. Duplicate an existing one and make it yours, or let the agent draft one for you in Creator mode.",
 			builtIn: "Built-in",
@@ -28,8 +28,8 @@ window.__ModuleLoader__.load({
 			view: "View",
 			presetStandardName: "Standard mode",
 			presetStandardDescription: "Full coding agent with file editing, shell, file and web search, skills, planning, goals, subagents, and workflows.",
-			presetCodeName: "PTC mode",
-			presetCodeDescription: "All Standard mode capabilities, with tools exposed through the Code Mode SDK so the model can combine multi-step operations in one TypeScript program.",
+			presetPtcName: "PTC mode",
+			presetPtcDescription: "All Standard mode capabilities, with tools exposed through the PTC mode SDK so the model can combine multi-step operations in one TypeScript program.",
 			presetMinimalName: "Minimal mode",
 			presetMinimalDescription: "Two-tool coding agent with persistent bash and str_replace_editor.",
 			presetCordisName: "Creator mode",
@@ -47,6 +47,7 @@ window.__ModuleLoader__.load({
 			noDescription: "No description.",
 			brokenBadge: "Failed to load",
 			brokenNoCopy: "A preset that failed to load cannot be duplicated",
+			switchRefused: "Could not switch to {name}: {reason}",
 			copyOf: "Copied from",
 			composition: "Composition (agent.cordis.yml)",
 			cancel: "Cancel",
@@ -71,14 +72,14 @@ window.__ModuleLoader__.load({
 		/** Simplified Chinese copy. */
 		const zh = {
 			title: "Agent 预设",
-			description: "设置新会话的默认模式；已有会话可在标题栏切换，并从下一轮生效。",
+			description: "设置新会话的默认模式；已有会话可在轮次之间从标题栏切换。",
 			loading: "正在加载预设…",
 			error: "无法加载 Agent 预设。",
 			userTrust: "自定义",
 			seatHint: "即将开始的这个会话所用的 Agent 预设",
-			headerHint: "切换从下一轮生效，不会中断正在运行的任务",
-			switchPending: "下轮生效",
-			switching: "切换中",
+			headerHint: "切换本会话的 Agent 模式",
+			switching: "正在切换…",
+			switchPending: "本轮后切换",
 			nav: "Agent 预设",
 			sectionIntro: "预设即一个会话的 Agent 所运行的插件组装 —— 它的工具、提示词与能力。复制一份既有预设改成自己的，或用「创造模式」让 Agent 帮你创建。",
 			builtIn: "内置",
@@ -86,8 +87,8 @@ window.__ModuleLoader__.load({
 			view: "查看",
 			presetStandardName: "标准模式",
 			presetStandardDescription: "功能完整的编码 Agent，支持文件编辑、Shell、文件与网页检索、Skills、计划、目标、子代理和工作流。",
-			presetCodeName: "PTC 模式",
-			presetCodeDescription: "具备标准模式的全部能力，并通过 Code Mode SDK 呈现工具，让模型用一个 TypeScript 程序组合多步操作。",
+			presetPtcName: "PTC 模式",
+			presetPtcDescription: "具备标准模式的全部能力，并通过 PTC 模式 SDK 呈现工具，让模型用一个 TypeScript 程序组合多步操作。",
 			presetMinimalName: "极简模式",
 			presetMinimalDescription: "仅提供持久 bash 与 str_replace_editor 的双工具编码 Agent。",
 			presetCordisName: "创造模式",
@@ -105,6 +106,7 @@ window.__ModuleLoader__.load({
 			noDescription: "暂无描述。",
 			brokenBadge: "加载失败",
 			brokenNoCopy: "预设加载失败，不能复制",
+			switchRefused: "无法切换到「{name}」：{reason}",
 			copyOf: "复制自",
 			composition: "组装（agent.cordis.yml）",
 			cancel: "取消",
@@ -131,9 +133,9 @@ window.__ModuleLoader__.load({
 				name: "presetStandardName",
 				description: "presetStandardDescription"
 			},
-			code: {
-				name: "presetCodeName",
-				description: "presetCodeDescription"
+			ptc: {
+				name: "presetPtcName",
+				description: "presetPtcDescription"
 			},
 			minimal: {
 				name: "presetMinimalName",
@@ -162,8 +164,8 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-agent-preset/src/client/AgentPresetLabel.module.css.mjs
-		const css$3 = ".d3zY0q_root{display:inline-flex;position:relative}.d3zY0q_button{max-width:220px;min-height:28px;color:var(--dsh-session-header-action-color,var(--dsw-alias-label-secondary));font-size:var(--dsh-session-header-action-font-size,12px);font-weight:var(--dsh-session-header-action-font-weight,400);line-height:var(--dsh-session-header-action-line-height,18px);white-space:nowrap;cursor:pointer;background:0 0;border:0;border-radius:6px;align-items:center;gap:4px;padding:3px 2px;display:inline-flex}.d3zY0q_button:hover:not(:disabled),.d3zY0q_button:focus-visible:not(:disabled){color:var(--dsh-session-header-action-hover-color,var(--dsw-alias-label-primary))}.d3zY0q_button:disabled{cursor:default;opacity:.68}.d3zY0q_name{text-overflow:ellipsis;min-width:0;overflow:hidden}.d3zY0q_icon{opacity:.7;flex:none}.d3zY0q_status{background:var(--dsw-alias-fill-tsp-secondary);color:var(--dsw-alias-label-tertiary);border-radius:999px;flex:none;padding:0 5px;font-size:9px;line-height:16px}.d3zY0q_chevron,.d3zY0q_chevronOpen{flex:none;transition:transform .12s}.d3zY0q_chevronOpen{transform:rotate(180deg)}.d3zY0q_visuallyHidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-agent-preset/src/client/AgentPresetLabel.module.css.mjs
+		const css$3 = ".rXonzW_root{display:inline-flex;position:relative}.rXonzW_button{max-width:220px;min-height:28px;color:var(--dsh-session-header-action-color,var(--dsw-alias-label-secondary));font-size:var(--dsh-session-header-action-font-size,12px);font-weight:var(--dsh-session-header-action-font-weight,400);line-height:var(--dsh-session-header-action-line-height,18px);white-space:nowrap;cursor:pointer;background:0 0;border:0;border-radius:6px;align-items:center;gap:4px;padding:3px 2px;display:inline-flex}.rXonzW_button:hover:not(:disabled),.rXonzW_button:focus-visible:not(:disabled){color:var(--dsh-session-header-action-hover-color,var(--dsw-alias-label-primary))}.rXonzW_button:disabled{cursor:default;opacity:.68}.rXonzW_name{text-overflow:ellipsis;min-width:0;overflow:hidden}.rXonzW_icon{opacity:.7;flex:none}.rXonzW_status{background:var(--dsw-alias-fill-tsp-secondary);color:var(--dsw-alias-label-tertiary);border-radius:999px;flex:none;padding:0 5px;font-size:9px;line-height:16px}.rXonzW_chevron,.rXonzW_chevronOpen{flex:none;transition:transform .12s}.rXonzW_chevronOpen{transform:rotate(180deg)}.rXonzW_visuallyHidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}";
 		const tagId$3 = "@deepseek-ai/dsh-client-ui-agent-preset/AgentPresetLabel.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$3) + "]") === null) {
 			const tag = document.createElement("style");
@@ -173,24 +175,23 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var AgentPresetLabel_module_css_default = {
-			"button": "d3zY0q_button",
-			"chevron": "d3zY0q_chevron",
-			"chevronOpen": "d3zY0q_chevronOpen",
-			"icon": "d3zY0q_icon",
-			"name": "d3zY0q_name",
-			"root": "d3zY0q_root",
-			"status": "d3zY0q_status",
-			"visuallyHidden": "d3zY0q_visuallyHidden"
+			"button": "rXonzW_button",
+			"chevron": "rXonzW_chevron",
+			"chevronOpen": "rXonzW_chevronOpen",
+			"icon": "rXonzW_icon",
+			"name": "rXonzW_name",
+			"root": "rXonzW_root",
+			"status": "rXonzW_status",
+			"visuallyHidden": "rXonzW_visuallyHidden"
 		};
 		//#endregion
 		//#region lib/types/client/AgentPresetLabel.js
 		/**
-		* The session header's agent-preset switcher.
+		* The session header's Agent preset switcher.
 		*
-		* The Host commits a pick only from an idle maintenance phase. A pick made
-		* while the current turn runs stays queued in the plugin store, so the active
-		* turn finishes under its original composition and the next turn uses the new
-		* one.
+		* The Host commits a pick only at an idle maintenance boundary. A pick made
+		* while the current turn runs stays queued, so that turn finishes under its
+		* original composition and the next turn uses the selected one.
 		*/
 		/**
 		* Render this session's agent-preset name beside its title.
@@ -202,7 +203,8 @@ window.__ModuleLoader__.load({
 			const options = useAgentPresets((state) => state.options);
 			const switchState = useAgentPresetSwitch((state) => state.bySession[sessionId]);
 			const [open, setOpen] = (0, react.useState)(false);
-			const preset = switchState?.pending ?? summary?.agentPreset;
+			const projected = summary?.projectionValues?.agentPreset;
+			const preset = switchState?.pending ?? (typeof projected === "string" ? projected : void 0);
 			(0, react.useEffect)(() => {
 				if (preset !== void 0 && preset !== "chat") load();
 			}, [preset, load]);
@@ -210,7 +212,7 @@ window.__ModuleLoader__.load({
 			if (preset === void 0) return null;
 			const option = options.find((entry) => entry.id === preset);
 			const text = option === void 0 ? void 0 : presetDisplayText(option, t);
-			const status = switchState?.pending === void 0 ? void 0 : switchState.busy ? t("switching") : summary?.running === true ? t("switchPending") : t("switching");
+			const status = switchState?.pending === void 0 || switchState.committed === true ? void 0 : switchState.busy ? t("switching") : summary?.running === true ? t("switchPending") : t("switching");
 			return (0, react_jsx_runtime.jsxs)("span", {
 				className: AgentPresetLabel_module_css_default.root,
 				children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
@@ -316,8 +318,8 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-agent-preset/src/client/AgentPresetRow.module.css.mjs
-		const css$2 = ".eodCEq_row{border-bottom:1px solid var(--dsw-alias-border-l2);align-items:center;gap:8px;padding:16px 0;display:flex}.eodCEq_rowText{flex-direction:column;flex:1;gap:4px;min-width:0;padding-right:48px;display:flex}.eodCEq_title{color:var(--dsw-alias-label-primary);font-size:14px;font-weight:400;line-height:22px}.eodCEq_desc{color:var(--dsw-alias-label-tertiary);font-size:12px;font-weight:400;line-height:18px}.eodCEq_selector{background:var(--dsw-alias-bg-module-platform);height:36px;font:inherit;color:var(--dsw-alias-label-primary);cursor:pointer;border:none;border-radius:18px;align-items:center;gap:12px;padding:0 14px;font-size:14px;line-height:22px;display:inline-flex}.eodCEq_selector:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.eodCEq_selector:disabled{cursor:default}.eodCEq_chevron{flex:none}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-agent-preset/src/client/AgentPresetRow.module.css.mjs
+		const css$2 = ".ZCu4lW_row{border-bottom:1px solid var(--dsw-alias-border-l2);align-items:center;gap:8px;padding:16px 0;display:flex}.ZCu4lW_rowText{flex-direction:column;flex:1;gap:4px;min-width:0;padding-right:48px;display:flex}.ZCu4lW_title{color:var(--dsw-alias-label-primary);font-size:14px;font-weight:400;line-height:22px}.ZCu4lW_desc{color:var(--dsw-alias-label-tertiary);font-size:12px;font-weight:400;line-height:18px}.ZCu4lW_selector{background:var(--dsw-alias-bg-module-platform);height:36px;font:inherit;color:var(--dsw-alias-label-primary);cursor:pointer;border:none;border-radius:18px;align-items:center;gap:12px;padding:0 14px;font-size:14px;line-height:22px;display:inline-flex}.ZCu4lW_selector:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.ZCu4lW_selector:disabled{cursor:default}.ZCu4lW_chevron{flex:none}";
 		const tagId$2 = "@deepseek-ai/dsh-client-ui-agent-preset/AgentPresetRow.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$2) + "]") === null) {
 			const tag = document.createElement("style");
@@ -327,12 +329,12 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var AgentPresetRow_module_css_default = {
-			"chevron": "eodCEq_chevron",
-			"desc": "eodCEq_desc",
-			"row": "eodCEq_row",
-			"rowText": "eodCEq_rowText",
-			"selector": "eodCEq_selector",
-			"title": "eodCEq_title"
+			"chevron": "ZCu4lW_chevron",
+			"desc": "ZCu4lW_desc",
+			"row": "ZCu4lW_row",
+			"rowText": "ZCu4lW_rowText",
+			"selector": "ZCu4lW_selector",
+			"title": "ZCu4lW_title"
 		};
 		//#endregion
 		//#region lib/types/client/AgentPresetRow.js
@@ -391,8 +393,8 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-agent-preset/src/client/AgentPresetSeat.module.css.mjs
-		const css$1 = ".QjhtNq_seat{max-width:min(100%,240px);min-height:28px;color:var(--dsw-alias-label-primary);white-space:nowrap;text-overflow:ellipsis;cursor:pointer;background:0 0;border:none;border-radius:16px;align-items:center;gap:4px;padding:0 8px;font-size:13px;font-weight:500;line-height:20px;display:inline-flex;overflow:hidden}.QjhtNq_seat:not(:disabled):hover,.QjhtNq_seat[aria-expanded=true]{background:var(--dsw-alias-interactive-bg-hover)}.QjhtNq_seat:disabled{cursor:default;color:var(--dsw-alias-label-quaternary)}.QjhtNq_seatIcon{color:var(--dsw-alias-label-primary);flex:none}.QjhtNq_introIcon{animation:.15s cubic-bezier(.16,1,.3,1) both QjhtNq_seat-icon-in}@keyframes QjhtNq_seat-icon-in{0%{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}.QjhtNq_introText{white-space:pre;display:inline-block}.QjhtNq_introChar{white-space:pre;opacity:0;animation:.4s ease-out forwards QjhtNq_seat-char-in;display:inline-block}@keyframes QjhtNq_seat-char-in{0%{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.QjhtNq_introIcon,.QjhtNq_introChar{opacity:1;animation:none}}.QjhtNq_chevron{color:var(--dsw-alias-label-caption);flex:none}.QjhtNq_item{flex-direction:column;gap:2px;max-width:280px;display:flex}.QjhtNq_itemName{color:var(--dsw-alias-label-primary);font-size:13px;line-height:20px}.QjhtNq_itemDesc{color:var(--dsw-alias-label-caption);white-space:normal;font-size:12px;line-height:16px}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-agent-preset/src/client/AgentPresetSeat.module.css.mjs
+		const css$1 = ".ev8XoW_seat{max-width:min(100%,240px);min-height:28px;color:var(--dsw-alias-label-primary);white-space:nowrap;text-overflow:ellipsis;cursor:pointer;background:0 0;border:none;border-radius:16px;align-items:center;gap:4px;padding:0 8px;font-size:13px;font-weight:500;line-height:20px;display:inline-flex;overflow:hidden}.ev8XoW_seat:not(:disabled):hover,.ev8XoW_seat[aria-expanded=true]{background:var(--dsw-alias-interactive-bg-hover)}.ev8XoW_seat:disabled{cursor:default;color:var(--dsw-alias-label-quaternary)}.ev8XoW_seatIcon{color:var(--dsw-alias-label-primary);flex:none}.ev8XoW_introIcon{animation:.15s cubic-bezier(.16,1,.3,1) both ev8XoW_seat-icon-in}@keyframes ev8XoW_seat-icon-in{0%{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}.ev8XoW_introText{white-space:pre;display:inline-block}.ev8XoW_introChar{white-space:pre;opacity:0;animation:.4s ease-out forwards ev8XoW_seat-char-in;display:inline-block}@keyframes ev8XoW_seat-char-in{0%{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.ev8XoW_introIcon,.ev8XoW_introChar{opacity:1;animation:none}}.ev8XoW_chevron{color:var(--dsw-alias-label-caption);flex:none}.ev8XoW_item{flex-direction:column;gap:2px;max-width:280px;display:flex}.ev8XoW_itemName{color:var(--dsw-alias-label-primary);font-size:13px;line-height:20px}.ev8XoW_itemDesc{color:var(--dsw-alias-label-caption);white-space:normal;font-size:12px;line-height:16px}";
 		const tagId$1 = "@deepseek-ai/dsh-client-ui-agent-preset/AgentPresetSeat.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId$1) + "]") === null) {
 			const tag = document.createElement("style");
@@ -402,17 +404,17 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var AgentPresetSeat_module_css_default = {
-			"chevron": "QjhtNq_chevron",
-			"introChar": "QjhtNq_introChar",
-			"introIcon": "QjhtNq_introIcon",
-			"introText": "QjhtNq_introText",
-			"item": "QjhtNq_item",
-			"itemDesc": "QjhtNq_itemDesc",
-			"itemName": "QjhtNq_itemName",
-			"seat": "QjhtNq_seat",
-			"seat-char-in": "QjhtNq_seat-char-in",
-			"seat-icon-in": "QjhtNq_seat-icon-in",
-			"seatIcon": "QjhtNq_seatIcon"
+			"chevron": "ev8XoW_chevron",
+			"introChar": "ev8XoW_introChar",
+			"introIcon": "ev8XoW_introIcon",
+			"introText": "ev8XoW_introText",
+			"item": "ev8XoW_item",
+			"itemDesc": "ev8XoW_itemDesc",
+			"itemName": "ev8XoW_itemName",
+			"seat": "ev8XoW_seat",
+			"seat-char-in": "ev8XoW_seat-char-in",
+			"seat-icon-in": "ev8XoW_seat-icon-in",
+			"seatIcon": "ev8XoW_seatIcon"
 		};
 		//#endregion
 		//#region lib/types/client/AgentPresetSeat.js
@@ -434,6 +436,17 @@ window.__ModuleLoader__.load({
 		const INTRO_TEXT_REVEAL_MS = 200;
 		const INTRO_CHAR_FADE_MS = 400;
 		/**
+		* How long a refused switch holds before fading.
+		*
+		* Longer than the primitive's default because this banner is the only place
+		* the refusal appears. The chip's label has already snapped back to the
+		* preset the session still runs, and a preset the host refuses to MOUNT is
+		* one discovery reported healthy — its row on the settings page carries no
+		* reason to go back and read, because there was nothing to see until the
+		* rows actually ran.
+		*/
+		const REFUSAL_HOLD_MS = 8e3;
+		/**
 		* Per-character start offset for the introduce reveal.
 		* @param count - character count of the shown preset name.
 		* @returns milliseconds between successive character starts.
@@ -450,6 +463,8 @@ window.__ModuleLoader__.load({
 		function AgentPresetSeat({ load, select, introduced, useAgentPresetSeat, t }) {
 			const state = useAgentPresetSeat((snapshot) => snapshot);
 			const [open, setOpen] = (0, react.useState)(false);
+			const toastSeq = (0, react.useRef)(0);
+			const [toast, setToast] = (0, react.useState)(null);
 			(0, react.useEffect)(() => {
 				load();
 			}, [load]);
@@ -489,7 +504,7 @@ window.__ModuleLoader__.load({
 					children: character
 				}, index))
 			}) : label;
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
+			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
 				open,
 				onClose: () => {
 					setOpen(false);
@@ -513,7 +528,20 @@ window.__ModuleLoader__.load({
 				selectedId: state.current,
 				onSelect: (id) => {
 					setOpen(false);
-					select(id);
+					const picked = state.options.find((option) => option.id === id);
+					/* v8 ignore next */
+					const name = picked === void 0 ? id : presetDisplayText(picked, t).name;
+					select(id).then((refusal) => {
+						if (refusal === void 0) return;
+						toastSeq.current += 1;
+						setToast({
+							seq: toastSeq.current,
+							text: t("switchRefused", {
+								name,
+								reason: refusal
+							})
+						});
+					});
 				},
 				align: "start",
 				portal: true,
@@ -533,14 +561,22 @@ window.__ModuleLoader__.load({
 						(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, { className: AgentPresetSeat_module_css_default.chevron })
 					]
 				})
-			});
+			}), toast !== null && (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Toast, {
+				text: toast.text,
+				icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconWarningOutline16, {}),
+				holdMs: REFUSAL_HOLD_MS,
+				anchor: document.querySelector("[data-composer-card]"),
+				onDone: () => {
+					setToast(null);
+				}
+			}, toast.seq)] });
 		}
 		//#endregion
 		//#region lib/types/client/settings-store.js
 		/**
 		* Agent-preset default-settings controller.
 		*
-		* Options and the current default both come from one `agentPreset.list` call:
+		* Options and the current default both come from one `agentPresets.list` call:
 		* the roster already reports which id a session with no explicit choice gets,
 		* so the row needs no schema introspection. Writes target the settings
 		* namespace's `default` field, which is what the host resolves at creation.
@@ -572,15 +608,16 @@ window.__ModuleLoader__.load({
 		async function writeDefaultPreset(api, id) {
 			let response;
 			try {
-				response = await api.settings.update({
-					ns: AGENT_PRESET_SETTINGS_NS,
-					patch: { default: id }
-				});
+				response = await api.settings.update(AGENT_PRESET_SETTINGS_NS, { default: id }, void 0);
 			} catch (error) {
 				return messageOf(error);
 			}
-			return response.result.ok ? void 0 : response.result.error.message;
+			return response.ok ? void 0 : response.error.message;
 		}
+		const EMPTY_ROSTER = {
+			presets: [],
+			authorable: false
+		};
 		/**
 		* Read the roster, folding both refusal shapes into one message.
 		*
@@ -588,18 +625,23 @@ window.__ModuleLoader__.load({
 		* `ok: false` envelope — and every surface treats them identically. Folding
 		* them here keeps each store's `load` about what it does with a roster rather
 		* than about how the call can fail.
-		* @param api - the agent-preset wire face.
+		* @param remote - the agent-preset Remote namespace.
 		* @returns the roster, or the message to show in its place.
 		*/
-		async function readRoster(api) {
+		async function readRoster(remote) {
 			try {
-				const response = await api.agentPresets.list({});
-				return response.result.ok ? {
+				const result = await remote.agentPresets.list();
+				if (result.ok) return {
 					ok: true,
-					value: response.result.value
-				} : {
+					value: result.value
+				};
+				if (result.error.code === "invocation-unavailable") return {
+					ok: true,
+					value: EMPTY_ROSTER
+				};
+				return {
 					ok: false,
-					error: response.result.error.message
+					error: result.error.message
 				};
 			} catch (error) {
 				return {
@@ -615,11 +657,11 @@ window.__ModuleLoader__.load({
 		* A surface that gets `undefined` returns without touching its snapshot
 		* further — either another read owns it, or this one already wrote the
 		* failure. What differs between surfaces starts after this.
-		* @param api - the agent-preset wire face.
+		* @param remote - the agent-preset Remote namespace.
 		* @param store - the surface's own snapshot store.
 		* @returns the roster, or undefined when the caller should return.
 		*/
-		async function beginRosterRead(api, store) {
+		async function beginRosterRead(remote, store) {
 			const before = store.getSnapshot();
 			if (before.status === "loading") return void 0;
 			store.set({
@@ -627,7 +669,7 @@ window.__ModuleLoader__.load({
 				status: "loading",
 				error: null
 			});
-			const roster = await readRoster(api);
+			const roster = await readRoster(remote);
 			if (roster.ok) return roster.value;
 			store.set({
 				...store.getSnapshot(),
@@ -668,15 +710,18 @@ window.__ModuleLoader__.load({
 		/** Reads the roster and persists the chosen default. */
 		var AgentPresetSettingsController = class {
 			api;
+			remote;
 			describeFace;
 			/** Row snapshot the renderer subscribes to. */
-			store = (0, _deepseek_ai_dsh_client_runtime_client.createSnapshotStore)(INITIAL$3);
+			store = (0, _deepseek_ai_dsh_client_store.createSnapshotStore)(INITIAL$3);
 			/**
-			* @param api - the agent-preset and settings wire faces (roster and default write).
+			* @param api - the settings wire face (the default write).
+			* @param remote - the agent-preset Remote namespace (the roster read).
 			* @param describeFace - the shared mirror's describe face (writability source).
 			*/
-			constructor(api, describeFace) {
+			constructor(api, remote, describeFace) {
 				this.api = api;
+				this.remote = remote;
 				this.describeFace = describeFace;
 			}
 			set(patch) {
@@ -692,7 +737,7 @@ window.__ModuleLoader__.load({
 			* @returns once the snapshot reflects the host.
 			*/
 			async load() {
-				const roster = await beginRosterRead(this.api, this.store);
+				const roster = await beginRosterRead(this.remote, this.store);
 				if (roster === void 0) return;
 				const presets = roster.presets.filter((preset) => !INTERNAL_AGENT_PRESET_IDS.has(preset.id));
 				const [first] = presets;
@@ -786,12 +831,12 @@ window.__ModuleLoader__.load({
 		}
 		/** Reads the roster and drives the copy dialog, viewer, and location reveals. */
 		var AgentPresetSectionController = class {
-			api;
+			remote;
 			rosterChanged;
 			/** Page snapshot the renderer subscribes to. */
-			store = (0, _deepseek_ai_dsh_client_runtime_client.createSnapshotStore)(INITIAL$2);
-			constructor(api, rosterChanged = () => {}) {
-				this.api = api;
+			store = (0, _deepseek_ai_dsh_client_store.createSnapshotStore)(INITIAL$2);
+			constructor(remote, rosterChanged = () => {}) {
+				this.remote = remote;
 				this.rosterChanged = rosterChanged;
 			}
 			set(patch) {
@@ -815,10 +860,13 @@ window.__ModuleLoader__.load({
 			* @returns once the snapshot reflects the host.
 			*/
 			async load() {
-				const roster = await beginRosterRead(this.api, this.store);
+				const opener = this.remote.settings.canOpenAgentPresetDirectory();
+				const roster = await beginRosterRead(this.remote, this.store);
+				const described = await opener.catch(() => void 0);
 				if (roster === void 0) return;
-				const { authorable, hasDocument } = roster;
+				const { authorable } = roster;
 				const presets = roster.presets.filter((preset) => !INTERNAL_AGENT_PRESET_IDS.has(preset.id));
+				const hasDocument = described?.ok === true && described.value;
 				if (presets.length === 0) {
 					this.set({
 						status: "unavailable",
@@ -849,12 +897,12 @@ window.__ModuleLoader__.load({
 			async view(id) {
 				this.set({ error: null });
 				try {
-					const response = await this.api.agentPresets.read({ agentPreset: id });
-					if (!response.result.ok) {
-						this.set({ error: response.result.error.message });
+					const result = await this.remote.agentPresets.read(id);
+					if (!result.ok) {
+						this.set({ error: result.error.message });
 						return;
 					}
-					const { name, content } = response.result.value;
+					const { name, content } = result.value;
 					this.set({ view: {
 						id,
 						title: name ?? id,
@@ -926,15 +974,11 @@ window.__ModuleLoader__.load({
 				});
 				try {
 					const name = draft.name.trim();
-					const response = await this.api.agentPresets.copy({
-						from: draft.from,
-						agentPreset: draft.id,
-						...name === "" ? {} : { name }
-					});
-					if (!response.result.ok) {
+					const result = await this.remote.agentPresets.copy(draft.from, draft.id, name === "" ? void 0 : name);
+					if (!result.ok) {
 						this.patchCopy({
 							saving: false,
-							error: response.result.error.message
+							error: result.error.message
 						});
 						return;
 					}
@@ -957,13 +1001,13 @@ window.__ModuleLoader__.load({
 			*/
 			async openLocation(id) {
 				try {
-					const response = await this.api.agentPresets.openDocument({ agentPreset: id });
-					if (!response.result.ok) {
-						this.set({ error: response.result.error.message });
+					const result = await this.remote.settings.openAgentPresetDirectory(id);
+					if (!result.ok) {
+						this.set({ error: result.error.message });
 						return;
 					}
-					if (response.result.value.opened) return;
-					const { path } = response.result.value;
+					if (result.value.opened) return;
+					const { path } = result.value;
 					this.set({ revealedPaths: {
 						...this.store.getSnapshot().revealedPaths,
 						[id]: path
@@ -995,12 +1039,12 @@ window.__ModuleLoader__.load({
 					error: null
 				});
 				try {
-					const response = await this.api.agentPresets.remove({ agentPreset: pendingDelete });
-					if (!response.result.ok) {
+					const result = await this.remote.agentPresets.deletePreset(pendingDelete);
+					if (!result.ok) {
 						this.set({
 							deleting: false,
 							pendingDelete: null,
-							error: response.result.error.message
+							error: result.error.message
 						});
 						return;
 					}
@@ -1025,7 +1069,7 @@ window.__ModuleLoader__.load({
 			* @returns once the write settled and the roster was re-read.
 			*/
 			async makeDefault(id) {
-				const failure = await writeDefaultPreset(this.api, id);
+				const failure = await writeDefaultPreset(this.remote, id);
 				if (failure !== void 0) {
 					this.set({ error: failure });
 					return;
@@ -1034,8 +1078,8 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region \0dsh-css:dsh-source/packages/client/ui-agent-preset/src/client/AgentPresetSection.module.css.mjs
-		const css = ".VTzC-a_section{max-width:720px;color:var(--dsw-alias-label-primary);flex-direction:column;gap:12px;display:flex}.VTzC-a_title{margin:0;font-size:18px;font-weight:600}.VTzC-a_intro{color:var(--dsw-alias-label-tertiary);margin:0;font-size:13px}.VTzC-a_group{flex-direction:column;gap:10px;display:flex}.VTzC-a_group+.VTzC-a_group{margin-top:20px}.VTzC-a_groupHead{letter-spacing:.06em;text-transform:uppercase;color:var(--dsw-alias-label-tertiary);margin:0;font-size:12px;font-weight:600}.VTzC-a_cards{grid-template-columns:repeat(auto-fill,minmax(268px,1fr));grid-auto-rows:1fr;gap:12px;margin:0;padding:0;list-style:none;display:grid}.VTzC-a_card{border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-3);border-radius:12px;flex-direction:column;transition:border-color .16s,background .16s;display:flex}.VTzC-a_card:hover:not(.VTzC-a_cardActive){border-color:var(--dsw-alias-label-dimmed)}.VTzC-a_cardActive{background:var(--dsw-alias-bg-layer-2);border-color:var(--dsw-alias-label-primary)}.VTzC-a_cardBroken,.VTzC-a_cardBroken:hover{border-color:var(--dsw-alias-state-error-primary)}.VTzC-a_brokenBadge{white-space:nowrap;background:var(--dsw-alias-state-error-primary);color:var(--dsw-alias-bg-layer-3);border-radius:999px;padding:1px 8px;font-size:11px;font-weight:500;line-height:17px}.VTzC-a_cardBrokenReason{color:var(--dsw-alias-state-error-primary);overflow-wrap:anywhere;font-size:12px;line-height:1.5}.VTzC-a_cardMain{appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;background:0 0;border:0;border-radius:12px 12px 0 0;flex-direction:column;flex:1;gap:8px;padding:14px 16px 12px;display:flex}.VTzC-a_cardMain:disabled{cursor:default}.VTzC-a_cardMain:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:-2px}.VTzC-a_cardHead{align-items:center;gap:8px;display:flex}.VTzC-a_cardName{font-size:15px;font-weight:600;line-height:1.4}.VTzC-a_badge,.VTzC-a_inUse{white-space:nowrap;border-radius:999px;padding:1px 8px;font-size:11px;font-weight:500;line-height:17px}.VTzC-a_badge{border:1px solid var(--dsw-alias-border-l2);color:var(--dsw-alias-label-tertiary)}.VTzC-a_inUse{background:var(--dsw-alias-label-primary);color:var(--dsw-alias-bg-layer-3);margin-left:auto}.VTzC-a_cardDesc{color:var(--dsw-alias-label-secondary);-webkit-line-clamp:4;overflow-wrap:anywhere;-webkit-box-orient:vertical;min-height:42px;font-size:13px;line-height:1.55;display:-webkit-box;overflow:hidden}.VTzC-a_cardId{font-family:var(--dsw-font-mono,ui-monospace, SFMono-Regular, Menlo, monospace);color:var(--dsw-alias-label-dimmed);margin-top:auto;font-size:11px}.VTzC-a_cardFoot{border-top:1px solid var(--dsw-alias-border-l2);justify-content:flex-end;gap:2px;padding:6px 10px;display:flex}.VTzC-a_iconButton{appearance:none;color:var(--dsw-alias-label-tertiary);cursor:pointer;background:0 0;border:0;border-radius:7px;align-items:center;padding:6px;display:inline-flex;position:relative}.VTzC-a_iconButton:disabled{opacity:.4;cursor:default}.VTzC-a_iconButton:hover:not(:disabled){background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary)}.VTzC-a_iconButton:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:-1px}.VTzC-a_iconButton:after{content:attr(data-tip);background:var(--dsw-alias-label-primary);color:var(--dsw-alias-bg-layer-3);white-space:nowrap;opacity:0;pointer-events:none;border-radius:6px;padding:3px 8px;font-size:11px;line-height:17px;transition:opacity .12s;position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%)}.VTzC-a_iconButton:hover:after,.VTzC-a_iconButton:focus-visible:after{opacity:1}.VTzC-a_iconDanger:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover-danger);color:var(--dsw-alias-state-error-primary)}.VTzC-a_revealedPath{color:var(--dsw-alias-label-tertiary);align-items:baseline;gap:6px;margin:0;padding:6px 16px 10px;font-size:11px;display:flex}.VTzC-a_revealedPath code{font-family:var(--dsw-font-mono,ui-monospace, SFMono-Regular, Menlo, monospace);color:var(--dsw-alias-label-secondary);user-select:all;overflow-wrap:anywhere}.VTzC-a_revealedPathLabel{white-space:nowrap}.VTzC-a_secondaryButton{color:var(--dsw-alias-label-secondary);font:inherit;cursor:pointer;background:0 0;border:none;border-radius:7px;padding:5px 8px;font-size:12.5px}.VTzC-a_secondaryButton:hover:not(:disabled){background:var(--dsw-alias-bg-layer-1)}.VTzC-a_secondaryButton:disabled{opacity:.5;cursor:default}.VTzC-a_field{flex-direction:column;gap:6px;display:flex}.VTzC-a_fieldLabel{color:var(--dsw-alias-label-secondary);font-size:12px;font-weight:500}.VTzC-a_input{box-sizing:border-box;border:1px solid var(--dsw-alias-border-l2);font:inherit;background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary);border-radius:10px;padding:9px 12px;font-size:13px}.VTzC-a_input:focus{border-color:var(--dsw-alias-brand-primary);outline:none}.VTzC-a_input::placeholder{color:var(--dsw-alias-label-dimmed)}.VTzC-a_dialog{width:min(560px,100%)}.VTzC-a_dialogFields{flex-direction:column;gap:12px;display:flex}.VTzC-a_viewerCode{border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-2);max-height:min(52vh,480px);color:var(--dsw-alias-label-secondary);font-family:var(--dsw-font-mono,ui-monospace, SFMono-Regular, Menlo, monospace);white-space:pre;tab-size:2;--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:10px;margin:0;padding:12px;font-size:12.5px;line-height:1.5;overflow:auto}.VTzC-a_error{color:var(--dsw-alias-state-error-primary);margin:0;font-size:12px}.VTzC-a_deleteDialog{width:min(480px,100%)}.VTzC-a_deleteConfirm:not(:disabled){border-color:var(--dsw-alias-state-error-primary);color:var(--dsw-alias-state-error-primary)}.VTzC-a_deleteConfirm:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover-danger)}.VTzC-a_creatorButton{box-sizing:border-box;border:1px dashed var(--dsw-alias-border-l3);height:44px;font:inherit;color:var(--dsw-alias-label-primary);cursor:pointer;background:0 0;border-radius:12px;justify-content:center;align-self:stretch;align-items:center;gap:6px;font-size:14px;line-height:22px;display:flex}.VTzC-a_creatorButton:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.VTzC-a_creatorButton:disabled{opacity:.4;cursor:default}";
+		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-agent-preset/src/client/AgentPresetSection.module.css.mjs
+		const css = ".GDgHYq_section{max-width:720px;color:var(--dsw-alias-label-primary);flex-direction:column;gap:12px;display:flex}.GDgHYq_title{margin:0;font-size:18px;font-weight:600}.GDgHYq_intro{color:var(--dsw-alias-label-tertiary);margin:0;font-size:13px}.GDgHYq_group{flex-direction:column;gap:10px;display:flex}.GDgHYq_group+.GDgHYq_group{margin-top:20px}.GDgHYq_groupHead{letter-spacing:.06em;text-transform:uppercase;color:var(--dsw-alias-label-tertiary);margin:0;font-size:12px;font-weight:600}.GDgHYq_cards{grid-template-columns:repeat(auto-fill,minmax(268px,1fr));grid-auto-rows:1fr;gap:12px;margin:0;padding:0;list-style:none;display:grid}.GDgHYq_card{border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-3);border-radius:12px;flex-direction:column;transition:border-color .16s,background .16s;display:flex}.GDgHYq_card:hover:not(.GDgHYq_cardActive){border-color:var(--dsw-alias-label-dimmed)}.GDgHYq_cardActive{background:var(--dsw-alias-bg-layer-2);border-color:var(--dsw-alias-label-primary)}.GDgHYq_cardBroken,.GDgHYq_cardBroken:hover{border-color:var(--dsw-alias-state-error-primary)}.GDgHYq_brokenBadge{white-space:nowrap;background:var(--dsw-alias-state-error-primary);color:var(--dsw-alias-bg-layer-3);border-radius:999px;padding:1px 8px;font-size:11px;font-weight:500;line-height:17px}.GDgHYq_brokenTip{z-index:1;background:var(--dsw-alias-label-primary);width:max-content;max-width:100%;color:var(--dsw-alias-bg-layer-3);text-align:left;white-space:pre-line;overflow-wrap:anywhere;opacity:0;pointer-events:none;border-radius:6px;padding:6px 8px;font-size:11px;font-weight:400;line-height:1.5;transition:opacity .12s;position:absolute;top:calc(100% + 6px);left:0}.GDgHYq_brokenBadge:hover .GDgHYq_brokenTip,.GDgHYq_cardMain:focus-visible .GDgHYq_brokenTip{opacity:1}.GDgHYq_cardMain[aria-disabled=true]{cursor:default}.GDgHYq_cardBrokenReason{clip:rect(0 0 0 0);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}.GDgHYq_cardMain{appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;background:0 0;border:0;border-radius:12px 12px 0 0;flex-direction:column;flex:1;gap:8px;padding:14px 16px 12px;display:flex}.GDgHYq_cardMain:disabled{cursor:default}.GDgHYq_cardMain:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:-2px}.GDgHYq_cardHead{align-items:center;gap:8px;display:flex;position:relative}.GDgHYq_cardName{font-size:15px;font-weight:600;line-height:1.4}.GDgHYq_badge,.GDgHYq_inUse{white-space:nowrap;border-radius:999px;padding:1px 8px;font-size:11px;font-weight:500;line-height:17px}.GDgHYq_badge{border:1px solid var(--dsw-alias-border-l2);color:var(--dsw-alias-label-tertiary)}.GDgHYq_inUse{background:var(--dsw-alias-label-primary);color:var(--dsw-alias-bg-layer-3);margin-left:auto}.GDgHYq_cardDesc{color:var(--dsw-alias-label-secondary);-webkit-line-clamp:4;overflow-wrap:anywhere;-webkit-box-orient:vertical;min-height:42px;font-size:13px;line-height:1.55;display:-webkit-box;overflow:hidden}.GDgHYq_cardId{font-family:var(--dsw-font-mono,ui-monospace, SFMono-Regular, Menlo, monospace);color:var(--dsw-alias-label-dimmed);margin-top:auto;font-size:11px}.GDgHYq_cardFoot{border-top:1px solid var(--dsw-alias-border-l2);justify-content:flex-end;gap:2px;padding:6px 10px;display:flex}.GDgHYq_iconButton{appearance:none;color:var(--dsw-alias-label-tertiary);cursor:pointer;background:0 0;border:0;border-radius:7px;align-items:center;padding:6px;display:inline-flex;position:relative}.GDgHYq_iconButton:disabled{opacity:.4;cursor:default}.GDgHYq_iconButton:hover:not(:disabled){background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary)}.GDgHYq_iconButton:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:-1px}.GDgHYq_iconButton:after{content:attr(data-tip);background:var(--dsw-alias-label-primary);color:var(--dsw-alias-bg-layer-3);white-space:nowrap;opacity:0;pointer-events:none;border-radius:6px;padding:3px 8px;font-size:11px;line-height:17px;transition:opacity .12s;position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%)}.GDgHYq_iconButton:hover:after,.GDgHYq_iconButton:focus-visible:after{opacity:1}.GDgHYq_iconDanger:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover-danger);color:var(--dsw-alias-state-error-primary)}.GDgHYq_revealedPath{color:var(--dsw-alias-label-tertiary);align-items:baseline;gap:6px;margin:0;padding:6px 16px 10px;font-size:11px;display:flex}.GDgHYq_revealedPath code{font-family:var(--dsw-font-mono,ui-monospace, SFMono-Regular, Menlo, monospace);color:var(--dsw-alias-label-secondary);user-select:all;overflow-wrap:anywhere}.GDgHYq_revealedPathLabel{white-space:nowrap}.GDgHYq_secondaryButton{color:var(--dsw-alias-label-secondary);font:inherit;cursor:pointer;background:0 0;border:none;border-radius:7px;padding:5px 8px;font-size:12.5px}.GDgHYq_secondaryButton:hover:not(:disabled){background:var(--dsw-alias-bg-layer-1)}.GDgHYq_secondaryButton:disabled{opacity:.5;cursor:default}.GDgHYq_field{flex-direction:column;gap:6px;display:flex}.GDgHYq_fieldLabel{color:var(--dsw-alias-label-secondary);font-size:12px;font-weight:500}.GDgHYq_input{box-sizing:border-box;border:1px solid var(--dsw-alias-border-l2);font:inherit;background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary);border-radius:10px;padding:9px 12px;font-size:13px}.GDgHYq_input:focus{border-color:var(--dsw-alias-brand-primary);outline:none}.GDgHYq_input::placeholder{color:var(--dsw-alias-label-dimmed)}.GDgHYq_dialog{width:min(560px,100%)}.GDgHYq_dialogFields{flex-direction:column;gap:12px;display:flex}.GDgHYq_viewerCode{border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-2);max-height:min(52vh,480px);color:var(--dsw-alias-label-secondary);font-family:var(--dsw-font-mono,ui-monospace, SFMono-Regular, Menlo, monospace);white-space:pre;tab-size:2;--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);border-radius:10px;margin:0;padding:12px;font-size:12.5px;line-height:1.5;overflow:auto}.GDgHYq_error{color:var(--dsw-alias-state-error-primary);margin:0;font-size:12px}.GDgHYq_deleteDialog{width:min(480px,100%)}.GDgHYq_deleteConfirm:not(:disabled){border-color:var(--dsw-alias-state-error-primary);color:var(--dsw-alias-state-error-primary)}.GDgHYq_deleteConfirm:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover-danger)}.GDgHYq_creatorButton{box-sizing:border-box;border:1px dashed var(--dsw-alias-border-l3);height:44px;font:inherit;color:var(--dsw-alias-label-primary);cursor:pointer;background:0 0;border-radius:12px;justify-content:center;align-self:stretch;align-items:center;gap:6px;font-size:14px;line-height:22px;display:flex}.GDgHYq_creatorButton:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.GDgHYq_creatorButton:disabled{opacity:.4;cursor:default}";
 		const tagId = "@deepseek-ai/dsh-client-ui-agent-preset/AgentPresetSection.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
 			const tag = document.createElement("style");
@@ -1045,40 +1089,41 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var AgentPresetSection_module_css_default = {
-			"badge": "VTzC-a_badge",
-			"brokenBadge": "VTzC-a_brokenBadge",
-			"card": "VTzC-a_card",
-			"cardActive": "VTzC-a_cardActive",
-			"cardBroken": "VTzC-a_cardBroken",
-			"cardBrokenReason": "VTzC-a_cardBrokenReason",
-			"cardDesc": "VTzC-a_cardDesc",
-			"cardFoot": "VTzC-a_cardFoot",
-			"cardHead": "VTzC-a_cardHead",
-			"cardId": "VTzC-a_cardId",
-			"cardMain": "VTzC-a_cardMain",
-			"cardName": "VTzC-a_cardName",
-			"cards": "VTzC-a_cards",
-			"creatorButton": "VTzC-a_creatorButton",
-			"deleteConfirm": "VTzC-a_deleteConfirm",
-			"deleteDialog": "VTzC-a_deleteDialog",
-			"dialog": "VTzC-a_dialog",
-			"dialogFields": "VTzC-a_dialogFields",
-			"error": "VTzC-a_error",
-			"field": "VTzC-a_field",
-			"fieldLabel": "VTzC-a_fieldLabel",
-			"group": "VTzC-a_group",
-			"groupHead": "VTzC-a_groupHead",
-			"iconButton": "VTzC-a_iconButton",
-			"iconDanger": "VTzC-a_iconDanger",
-			"inUse": "VTzC-a_inUse",
-			"input": "VTzC-a_input",
-			"intro": "VTzC-a_intro",
-			"revealedPath": "VTzC-a_revealedPath",
-			"revealedPathLabel": "VTzC-a_revealedPathLabel",
-			"secondaryButton": "VTzC-a_secondaryButton",
-			"section": "VTzC-a_section",
-			"title": "VTzC-a_title",
-			"viewerCode": "VTzC-a_viewerCode"
+			"badge": "GDgHYq_badge",
+			"brokenBadge": "GDgHYq_brokenBadge",
+			"brokenTip": "GDgHYq_brokenTip",
+			"card": "GDgHYq_card",
+			"cardActive": "GDgHYq_cardActive",
+			"cardBroken": "GDgHYq_cardBroken",
+			"cardBrokenReason": "GDgHYq_cardBrokenReason",
+			"cardDesc": "GDgHYq_cardDesc",
+			"cardFoot": "GDgHYq_cardFoot",
+			"cardHead": "GDgHYq_cardHead",
+			"cardId": "GDgHYq_cardId",
+			"cardMain": "GDgHYq_cardMain",
+			"cardName": "GDgHYq_cardName",
+			"cards": "GDgHYq_cards",
+			"creatorButton": "GDgHYq_creatorButton",
+			"deleteConfirm": "GDgHYq_deleteConfirm",
+			"deleteDialog": "GDgHYq_deleteDialog",
+			"dialog": "GDgHYq_dialog",
+			"dialogFields": "GDgHYq_dialogFields",
+			"error": "GDgHYq_error",
+			"field": "GDgHYq_field",
+			"fieldLabel": "GDgHYq_fieldLabel",
+			"group": "GDgHYq_group",
+			"groupHead": "GDgHYq_groupHead",
+			"iconButton": "GDgHYq_iconButton",
+			"iconDanger": "GDgHYq_iconDanger",
+			"inUse": "GDgHYq_inUse",
+			"input": "GDgHYq_input",
+			"intro": "GDgHYq_intro",
+			"revealedPath": "GDgHYq_revealedPath",
+			"revealedPathLabel": "GDgHYq_revealedPathLabel",
+			"secondaryButton": "GDgHYq_secondaryButton",
+			"section": "GDgHYq_section",
+			"title": "GDgHYq_title",
+			"viewerCode": "GDgHYq_viewerCode"
 		};
 		//#endregion
 		//#region lib/types/client/AgentPresetSection.js
@@ -1288,10 +1333,12 @@ window.__ModuleLoader__.load({
 												type: "button",
 												className: AgentPresetSection_module_css_default.cardMain,
 												"aria-pressed": row.isDefault,
-												disabled: row.isDefault || row.broken !== void 0,
+												disabled: row.isDefault,
+												"aria-disabled": row.broken !== void 0,
 												"aria-label": `${row.broken !== void 0 ? t("brokenBadge") : row.isDefault ? t("inUse") : t("setDefault")}: ${text.name}`,
-												title: row.broken ?? (row.isDefault ? t("inUse") : t("setDefault")),
+												title: row.broken !== void 0 ? t("brokenBadge") : row.isDefault ? t("inUse") : t("setDefault"),
 												onClick: () => {
+													if (row.broken !== void 0) return;
 													props.makeDefault(row.id);
 												},
 												children: [
@@ -1302,9 +1349,13 @@ window.__ModuleLoader__.load({
 																className: AgentPresetSection_module_css_default.cardName,
 																children: text.name
 															}),
-															row.broken !== void 0 ? (0, react_jsx_runtime.jsx)("span", {
+															row.broken !== void 0 ? (0, react_jsx_runtime.jsxs)("span", {
 																className: AgentPresetSection_module_css_default.brokenBadge,
-																children: t("brokenBadge")
+																children: [t("brokenBadge"), (0, react_jsx_runtime.jsx)("span", {
+																	className: AgentPresetSection_module_css_default.brokenTip,
+																	"aria-hidden": "true",
+																	children: row.broken
+																})]
 															}) : null,
 															(0, react_jsx_runtime.jsx)("span", {
 																className: AgentPresetSection_module_css_default.badge,
@@ -1471,11 +1522,10 @@ window.__ModuleLoader__.load({
 		};
 		/** Stages the next session's preset and applies it when one appears. */
 		var AgentPresetSeatController = class {
-			api;
+			remote;
 			currentSession;
-			onApplied;
 			/** Chip snapshot the renderer subscribes to. */
-			store = (0, _deepseek_ai_dsh_client_runtime_client.createSnapshotStore)(INITIAL$1);
+			store = (0, _deepseek_ai_dsh_client_store.createSnapshotStore)(INITIAL$1);
 			/**
 			* The deployment default, so a consumed stage can fall back to it without
 			* re-reading the roster.
@@ -1483,10 +1533,9 @@ window.__ModuleLoader__.load({
 			fallback = "";
 			/** Set while a pick is waiting for a session; cleared once applied. */
 			staged;
-			constructor(api, currentSession, onApplied) {
-				this.api = api;
+			constructor(remote, currentSession) {
+				this.remote = remote;
 				this.currentSession = currentSession;
-				this.onApplied = onApplied;
 			}
 			set(patch) {
 				this.store.set({
@@ -1499,33 +1548,37 @@ window.__ModuleLoader__.load({
 			* @returns once the snapshot reflects the host.
 			*/
 			async load() {
-				try {
-					const response = await this.api.agentPresets.list({});
-					if (!response.result.ok) {
-						this.set({ error: response.result.error.message });
-						return;
-					}
-					const { presets } = response.result.value;
-					this.fallback = presets.find((preset) => preset.isDefault)?.id ?? presets[0]?.id ?? "";
-					this.set({
-						options: presetOptions(presets),
-						current: this.staged ?? this.currentSession()?.agentPreset ?? this.fallback,
-						error: null
-					});
-				} catch (error) {
-					this.set({ error: messageOf(error) });
+				const roster = await readRoster(this.remote);
+				if (!roster.ok) {
+					this.set({ error: roster.error });
+					return;
 				}
+				const { presets } = roster.value;
+				this.fallback = presets.find((preset) => preset.isDefault)?.id ?? presets[0]?.id ?? "";
+				const session = this.currentSession();
+				this.set({
+					options: presetOptions(presets),
+					current: this.staged ?? (session === void 0 ? this.fallback : presetOf$1(session) ?? ""),
+					error: null
+				});
 			}
 			/**
 			* Stage one preset for the next session, applying it immediately when a
 			* blank session is already current.
+			*
+			* The refusal is returned as well as stored, because the two readers need
+			* different things from it: the chip's own label carries the standing state,
+			* while the caller that made this pick is the one that has to say why the
+			* label came back — and only it knows the pick was a person's, not the
+			* applier catching up with a session that just became current.
 			* @param id - the preset to stage.
-			* @returns once the stage settled, and the apply too when one happened.
+			* @returns the refusal text, or undefined once the pick settled.
 			*/
 			async select(id) {
-				if (this.store.getSnapshot().busy) return;
+				if (this.store.getSnapshot().busy) return void 0;
 				this.stage(id);
 				await this.apply();
+				return this.store.getSnapshot().error ?? void 0;
 			}
 			/**
 			* Stage a pick WITHOUT the immediate apply, for a flow that starts the
@@ -1561,8 +1614,13 @@ window.__ModuleLoader__.load({
 			async apply() {
 				const staged = this.staged;
 				const session = this.currentSession();
-				if (staged === void 0 || session === void 0) return;
-				if (!session.blank || session.agentPreset === staged) {
+				if (staged === void 0) {
+					const current = session === void 0 ? this.fallback : presetOf$1(session) ?? "";
+					if (current !== this.store.getSnapshot().current) this.set({ current });
+					return;
+				}
+				if (session === void 0) return;
+				if (!session.blank || presetOf$1(session) === staged) {
 					this.staged = void 0;
 					return;
 				}
@@ -1571,55 +1629,56 @@ window.__ModuleLoader__.load({
 					error: null
 				});
 				try {
-					const response = await this.api.agentPresets.select({
-						sessionId: session.id,
-						agentPreset: staged
-					});
+					const result = await this.remote.agentPresets.select(session.id, staged);
 					this.staged = void 0;
-					if (!response.result.ok) {
+					if (!result.ok) {
+						const { error } = result;
 						this.set({
 							busy: false,
-							error: response.result.error.message,
-							current: this.fallback
+							error: "reason" in error.details && typeof error.details.reason === "string" ? error.details.reason : error.message,
+							current: presetOf$1(session) ?? ""
 						});
 						return;
 					}
 					this.set({
 						busy: false,
-						current: response.result.value.agentPreset
+						current: result.value
 					});
-					this.onApplied?.(session.id, response.result.value.agentPreset);
 				} catch (error) {
 					this.staged = void 0;
 					this.set({
 						busy: false,
 						error: messageOf(error),
-						current: this.fallback
+						current: presetOf$1(session) ?? ""
 					});
 				}
 			}
 		};
+		function presetOf$1(session) {
+			const value = session?.projectionValues?.agentPreset;
+			return typeof value === "string" ? value : void 0;
+		}
 		//#endregion
 		//#region lib/types/client/session-switch-store.js
 		/**
-		* Session-header preset switching.
+		* Per-session Agent preset switching for the conversation header.
 		*
-		* A pick made during a running turn is retained per session and committed once
-		* the shared session summary reports idle. The Host owns the matching idle
-		* transaction, so navigating away cannot cancel a queued switch and a stale
-		* client cannot recompose an active turn.
+		* A pick made during a running turn remains pending until the shared Session
+		* list reports idle. The Host owns the actual maintenance boundary; this
+		* controller only keeps the user's choice stable and retries a transient
+		* busy refusal after the turn finishes.
 		*/
 		const INITIAL = { bySession: {} };
 		/** Queue and commit per-session preset switches without interrupting turns. */
 		var AgentPresetSessionSwitchController = class {
-			api;
+			remote;
 			session;
-			onApplied;
-			store = (0, _deepseek_ai_dsh_client_runtime_client.createSnapshotStore)(INITIAL);
-			constructor(api, session, onApplied) {
-				this.api = api;
+			refresh;
+			store = (0, _deepseek_ai_dsh_client_store.createSnapshotStore)(INITIAL);
+			constructor(remote, session, refresh) {
+				this.remote = remote;
 				this.session = session;
-				this.onApplied = onApplied;
+				this.refresh = refresh;
 			}
 			entry(sessionId) {
 				return this.store.getSnapshot().bySession[sessionId];
@@ -1634,20 +1693,13 @@ window.__ModuleLoader__.load({
 			clear(sessionId) {
 				const state = this.store.getSnapshot();
 				if (state.bySession[sessionId] === void 0) return;
-				const bySession = Object.fromEntries(Object.entries(state.bySession).filter(([id]) => id !== sessionId));
-				this.store.set({ bySession });
+				this.store.set({ bySession: Object.fromEntries(Object.entries(state.bySession).filter(([id]) => id !== sessionId)) });
 			}
-			/**
-			* Accept a header-menu pick and commit it immediately when the session is idle.
-			* A running session retains the pick until a later list update reports idle.
-			* @param sessionId - session whose next turn uses the new preset.
-			* @param agentPreset - selected preset id.
-			* @returns after an immediate Host attempt settles, or immediately when queued.
-			*/
+			/** Accept one header-menu pick and apply it at the next idle boundary. */
 			async select(sessionId, agentPreset) {
-				const current = this.session(sessionId);
-				if (this.entry(sessionId)?.busy === true) return;
-				if (current?.agentPreset === agentPreset) {
+				const entry = this.entry(sessionId);
+				if (entry?.busy === true) return;
+				if ((entry?.pending ?? presetOf(this.session(sessionId))) === agentPreset) {
 					this.clear(sessionId);
 					return;
 				}
@@ -1658,24 +1710,20 @@ window.__ModuleLoader__.load({
 				});
 				await this.flush(sessionId);
 			}
-			/** Retry every queued switch whose session may have become idle. */
+			/** Reconcile every pending choice after Session list state changes. */
 			flushAll() {
 				for (const sessionId of Object.keys(this.store.getSnapshot().bySession)) this.flush(sessionId);
 			}
-			/** Fold a committed owner event into this browser's pending state. */
-			confirm(sessionId, agentPreset) {
-				if (this.entry(sessionId)?.pending === agentPreset) this.clear(sessionId);
-			}
 			async flush(sessionId) {
 				const queued = this.entry(sessionId);
-				const agentPreset = queued?.pending;
-				if (agentPreset === void 0 || queued?.busy === true) return;
+				if (queued?.pending === void 0 || queued.busy) return;
+				const agentPreset = queued.pending;
 				const session = this.session(sessionId);
 				if (session === void 0) {
 					this.clear(sessionId);
 					return;
 				}
-				if (session.agentPreset === agentPreset) {
+				if (presetOf(session) === agentPreset) {
 					this.clear(sessionId);
 					return;
 				}
@@ -1686,12 +1734,10 @@ window.__ModuleLoader__.load({
 					error: null
 				});
 				try {
-					const response = await this.api.agentPresets.select({
-						sessionId,
-						agentPreset
-					});
-					if (!response.result.ok) {
-						if (response.result.error.code === "agent-preset-locked") {
+					const result = await this.remote.agentPresets.select(sessionId, agentPreset);
+					if (this.entry(sessionId)?.pending !== agentPreset) return;
+					if (!result.ok) {
+						if (result.error.code === "agent-preset-locked") {
 							this.set(sessionId, {
 								pending: agentPreset,
 								busy: false,
@@ -1701,12 +1747,17 @@ window.__ModuleLoader__.load({
 						}
 						this.set(sessionId, {
 							busy: false,
-							error: response.result.error.message
+							error: result.error.message
 						});
 						return;
 					}
-					this.clear(sessionId);
-					this.onApplied(sessionId, response.result.value.agentPreset);
+					this.set(sessionId, {
+						pending: result.value,
+						busy: false,
+						committed: true,
+						error: null
+					});
+					this.refresh();
 				} catch (error) {
 					this.set(sessionId, {
 						busy: false,
@@ -1715,25 +1766,30 @@ window.__ModuleLoader__.load({
 				}
 			}
 		};
+		function presetOf(session) {
+			const value = session?.projectionValues?.agentPreset;
+			return typeof value === "string" ? value : void 0;
+		}
 		//#endregion
 		//#region lib/types/client/index.js
 		/**
 		* Agent-preset surface plugin, browser half — four surfaces over one roster:
 		* a General-settings row for the default preset, a chip on the new-session
-		* screen for the session about to start, a safe next-turn switcher in the
-		* session header, and a settings section that manages the roster (copy, delete,
+		* screen for the session about to start, a live selector in the session
+		* header, and a settings section that manages the roster (copy, delete,
 		* default, and the way into a preset's own files).
 		*
-		* Header picks are queued per session while a turn runs. The Host commits the
-		* recompose operation as idle maintenance, so a turn never changes tools or
-		* prompt sections after it starts.
+		* A running turn keeps the composition it began with. Header picks wait for
+		* the next idle boundary, where the Host swaps the composition before any new
+		* input wakes the Agent.
 		*/
 		/** Required services (cordis fiber inject). */
 		const inject = [
 			"slots",
 			"locale",
-			"connection",
 			"remote",
+			"remote.agentPresets",
+			"remote.settings",
 			"settingsScope"
 		];
 		/**
@@ -1741,10 +1797,9 @@ window.__ModuleLoader__.load({
 		* @param ctx - the browser plugin context.
 		*/
 		function apply(ctx) {
-			const { api } = ctx.get("connection");
-			const controller = new AgentPresetSettingsController(api, ctx.settingsScope.describe());
+			const controller = new AgentPresetSettingsController({ settings: ctx.remote.settings }, ctx.remote, ctx.settingsScope.describe());
 			const rosterReaders = /* @__PURE__ */ new Set();
-			const section = new AgentPresetSectionController(api, () => {
+			const section = new AgentPresetSectionController(ctx.remote, () => {
 				controller.load();
 				for (const read of rosterReaders) read();
 			});
@@ -1777,29 +1832,16 @@ window.__ModuleLoader__.load({
 				"slots",
 				"conversation",
 				"sessions",
-				"workspaces"
+				"uiWorkspace"
 			], (scope) => {
-				const api = scope.get("connection").api;
-				const seat = new AgentPresetSeatController(api, () => {
+				const seat = new AgentPresetSeatController(scope.remote, () => {
 					const state = scope.sessions.list.getSnapshot();
-					const summary = state.current === void 0 ? void 0 : state.byId[state.current];
-					return summary === void 0 ? void 0 : {
-						id: summary.id,
-						blank: summary.blank,
-						...summary.agentPreset === void 0 ? {} : { agentPreset: summary.agentPreset }
-					};
-				}, (sessionId, agentPreset) => {
-					scope.sessions.noteAgentPreset(sessionId, agentPreset);
+					return state.current === void 0 ? void 0 : state.byId[state.current];
 				});
-				const switcher = new AgentPresetSessionSwitchController(api, (sessionId) => {
-					const summary = scope.sessions.list.getSnapshot().byId[sessionId];
-					return summary === void 0 ? void 0 : {
-						id: summary.id,
-						running: summary.running,
-						...summary.agentPreset === void 0 ? {} : { agentPreset: summary.agentPreset }
-					};
-				}, (sessionId, agentPreset) => {
-					scope.sessions.noteAgentPreset(sessionId, agentPreset);
+				const switcher = new AgentPresetSessionSwitchController(scope.remote, (sessionId) => {
+					return scope.sessions.list.getSnapshot().byId[sessionId];
+				}, () => {
+					scope.sessions.refresh();
 				});
 				const seatInjected = () => ({
 					hooks: { agentPresetSeat: seat.store },
@@ -1815,7 +1857,7 @@ window.__ModuleLoader__.load({
 						agentPresetSwitch: switcher.store
 					},
 					load: () => controller.load(),
-					switchPreset: (sessionId, id) => switcher.select(sessionId, id)
+					switchPreset: (sessionId, agentPreset) => switcher.select(sessionId, agentPreset)
 				});
 				scope.effect(() => {
 					const stop = scope.sessions.list.subscribe(() => {
@@ -1826,9 +1868,8 @@ window.__ModuleLoader__.load({
 						if (ns !== "agent-presets") return;
 						seat.load();
 					});
-					const presetSelected = scope.remote.$on("agent-preset/selected", (sessionId, agentPreset) => {
-						scope.sessions.noteAgentPreset(sessionId, agentPreset);
-						switcher.confirm(sessionId, agentPreset);
+					const presetSelected = scope.remote.$on("agent-preset/selected", () => {
+						scope.sessions.refresh();
 					});
 					const readRoster = () => {
 						seat.load();
@@ -1836,7 +1877,7 @@ window.__ModuleLoader__.load({
 					rosterReaders.add(readRoster);
 					creatorDraft = () => {
 						seat.stage("cordis", true);
-						scope.workspaces.startSession();
+						scope.uiWorkspace.startSession();
 					};
 					const chip = scope.slots.register({
 						name: "conversation.hero.agentPreset",

@@ -57,6 +57,47 @@ export interface HighlightSpan {
     style: CSSProperties;
 }
 /**
+ * Incremental highlighter for one growing streaming fence. TextMate
+ * tokenization is line-based and forward-only — a line's tokens depend only on
+ * its own text and the grammar state entering it — so appended text never
+ * changes a completed line's tokens. The session caches the spans of every
+ * completed line together with the grammar state after them; each
+ * {@link update} tokenizes newly completed text from that state, plus the
+ * still-growing last line. Per-call cost therefore excludes the completed
+ * prefix, and the result equals a from-scratch tokenization of the same code.
+ * Non-append input and a change of resolved grammar reset the cache and
+ * re-tokenize fully, so any input stays correct.
+ */
+export declare class StreamingHighlightSession {
+    /** Grammar id the cache was built with; a different resolution resets it. */
+    private resolved;
+    /** Newline-terminated source prefix covered by {@link spans}. */
+    private prefix;
+    /** Cached spans, one entry per completed line of {@link prefix}. */
+    private spans;
+    /** Grammar state after {@link prefix}; undefined = the grammar's initial state. */
+    private state;
+    private lastCode;
+    private lastLang;
+    private lastResult;
+    private reset;
+    /** Tokenize `text` with `resolved`, resuming from the cached grammar state when one exists. */
+    private tokenize;
+    /**
+     * Tokenize the fence's current text into per-line highlighted runs;
+     * `undefined` means the caller renders its plain fallback. Idempotent per
+     * (`code`, `lang`) input — repeated calls return the identical result array —
+     * and a retained line keeps its span-array identity across growing calls, so
+     * a React caller can reuse cached line elements. A lazy grammar not yet
+     * loaded returns `undefined` and loads in the background exactly as
+     * {@link highlightToHtml} does; the next call after it registers highlights.
+     * @param code - the fence text accumulated so far (display-trimmed, no synthetic trailing newline).
+     * @param lang - the language hint (a markdown fence info string).
+     * @returns one entry per line of `code` (each an array of runs), or `undefined` for unknown or not-yet-loaded languages.
+     */
+    update(code: string, lang: string | undefined): readonly HighlightSpan[][] | undefined;
+}
+/**
  * Tokenize `code` into per-line highlighted runs when `lang` maps to a
  * registered grammar; `undefined` means the caller renders its plain fallback.
  * A line-numbered view needs the token runs split per line (one gutter number
@@ -64,8 +105,9 @@ export interface HighlightSpan {
  * so this returns shiki's own 2D line/token structure narrowed to what a run
  * renders. Each run's color is a `--shiki-*` custom property, keeping token
  * colors on the theme package's sheets exactly as the HTML path does; the
- * css-variables theme carries no font-style bits, matching that path's
- * color-only output. The trailing newline shiki appends as a final empty line
+ * markup font-style bits the theme lets through (bold/italic/underline in
+ * markdown scopes) are dropped — the line-numbered file view renders
+ * color-only runs. The trailing newline shiki appends as a final empty line
  * is dropped so the run count matches the caller's own line array.
  * @param code - the source text.
  * @param lang - the language hint (a file-extension-derived language id).

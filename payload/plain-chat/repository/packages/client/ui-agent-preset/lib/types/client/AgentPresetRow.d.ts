@@ -3,7 +3,7 @@
  * A running session keeps the composition it began with, so this row never
  * disturbs work in progress.
  */
-import type { SnapshotStore } from '@deepseek-ai/dsh-client-runtime/client';
+import type { SnapshotStore } from '@deepseek-ai/dsh-client-store';
 import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots';
 import type { AgentPresetSettingsState } from './settings-store.ts';
 import { type AgentPresetSettingsKey } from './locales.ts';

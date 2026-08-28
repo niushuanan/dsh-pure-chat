@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { SessionMenuActionOwnerProps, WorkspaceBrowserProps } from '../contract/slots.ts';
+import type { WorkspaceBrowserProps } from '../contract/slots.ts';
 import type { GroupNode, SearchResultNode, SessionNode } from '../tree.ts';
 /** The standard locale seat, prop-passed from the browser root. */
 type RowTranslate = WorkspaceBrowserProps['t'];
@@ -17,7 +17,7 @@ export interface RowDragProps {
     /** Report the hovered half while a compatible drag passes over this row. */
     hover: (half: 'before' | 'after') => void;
     drop: (half: 'before' | 'after') => void;
-    end: (dropEffect: DataTransfer['dropEffect']) => void;
+    end: () => void;
 }
 /** Drag lifecycle owned by a workspace row; its enclosing group owns hit testing. */
 interface WorkspaceRowDragProps {
@@ -94,8 +94,11 @@ export declare function SessionNodeItem({ node, currentId, now, onOpen, onRename
     onFork: (id: SessionNode['id']) => void;
     /** Archive this session (row menu action; commits without a dialog). */
     onArchive: (id: SessionNode['id']) => void;
-    /** Optional rows contributed by native plugins into this session's menu. */
-    renderMenuActions?: (owner: SessionMenuActionOwnerProps) => ReactNode;
+    /** Plugin-contributed rows appended to the native Session menu. */
+    renderMenuActions?: (owner: {
+        sessionId: SessionNode['id'];
+        closeMenu: () => void;
+    }) => ReactNode;
     /** Present only on draggable rows (workspace-group sessions outside search). */
     drag?: RowDragProps | undefined;
     /** The row is rendered without a parent Workspace header. */

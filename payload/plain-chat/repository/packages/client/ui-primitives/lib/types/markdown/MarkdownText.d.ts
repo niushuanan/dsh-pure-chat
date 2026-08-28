@@ -10,15 +10,16 @@
  * other side of the freeze boundary renders literally until the settled
  * full parse self-heals it.
  */
-import type { MarkdownCodeLabels, MarkdownFileMentions } from './render.tsx';
+import type { MarkdownFileMentions, MarkdownLabels } from './render.tsx';
 import 'katex/dist/katex.min.css';
-export type { MarkdownCodeLabels, MarkdownFileMentions } from './render.tsx';
+export type { MarkdownCodeLabels, MarkdownFileMentions, MarkdownLabels } from './render.tsx';
 /**
  * Render untrusted assistant-authored Markdown as semantic React elements.
  * @param props - Markdown source text preserved by the session projection;
- * `streaming` renders fences and TeX plain (highlighting and KaTeX land on
- * the finalize swap) and parses incrementally across chunks; `codeLabels`
- * forwards localized copy-button labels to fence CodeBlocks — pass a
+ * `streaming` parses incrementally across chunks and highlights fences as
+ * they grow (each fence re-tokenizes only appended text; TeX stays literal
+ * until the finalize swap so incomplete formulae never flash errors);
+ * `labels` forwards localized fence and footnote chrome — pass a
  * reference-stable object (memoized per locale revision), because a new
  * identity discards the streaming render cache mid-message. `fileMentions`
  * links inline-code tokens its resolver recognizes as real files; this is
@@ -29,10 +30,12 @@ export type { MarkdownCodeLabels, MarkdownFileMentions } from './render.tsx';
  * relative links, and unsafe protocols are disabled, while absolute HTTP(S)
  * images render directly.
  */
-export declare const MarkdownText: import("react").MemoExoticComponent<({ text, streaming, codeLabels, fileMentions }: {
+export declare const MarkdownText: import("react").MemoExoticComponent<({ text, streaming, labels, codeLabels, fileMentions }: {
     text: string;
     streaming?: boolean;
-    codeLabels?: MarkdownCodeLabels | undefined;
+    labels?: MarkdownLabels;
+    /** Compatibility input used by pre-0.1.2 extensions. */
+    codeLabels?: MarkdownLabels["code"];
     fileMentions?: MarkdownFileMentions | undefined;
 }) => import("react").JSX.Element>;
 //# sourceMappingURL=MarkdownText.d.ts.map

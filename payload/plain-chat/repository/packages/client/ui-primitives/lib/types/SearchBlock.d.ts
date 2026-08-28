@@ -20,6 +20,8 @@ export interface SearchFileGroup {
 }
 /** Fields both search shapes carry (the render site positions; this component draws). */
 interface SearchBlockCommon {
+    /** Localized chrome supplied by the owning render site. */
+    labels: SearchBlockLabels;
     /**
      * Whether the tool capped the inline result: the shape carries only the
      * retained results, not every result the search found. The banner summary
@@ -33,6 +35,18 @@ interface SearchBlockCommon {
     maxLines?: number | undefined;
     /** Extra class merged onto the wrapper. */
     className?: string | undefined;
+}
+/** Localized chrome for {@link SearchBlock}. */
+export interface SearchBlockLabels {
+    pathsSummary: (shown: number, total: number, truncated: boolean) => string;
+    matchesSummary: (shown: number, total: number, files: number, truncated: boolean) => string;
+    copy: string;
+    copied: string;
+    noResults: string;
+    collapseAria: string;
+    expandAria: (hidden: number) => string;
+    collapse: string;
+    expand: (hidden: number) => string;
 }
 /** Props for the grouped-matches (`grep`) shape. */
 export interface SearchMatchesBlockProps extends SearchBlockCommon {

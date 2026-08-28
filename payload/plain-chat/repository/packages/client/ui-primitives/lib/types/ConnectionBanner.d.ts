@@ -7,6 +7,6 @@
  */
 export declare function ConnectionBanner({ reconnecting, label }: {
     reconnecting: boolean;
-    label?: string | undefined;
+    label: string;
 }): import("react").JSX.Element | null;
 //# sourceMappingURL=ConnectionBanner.d.ts.map

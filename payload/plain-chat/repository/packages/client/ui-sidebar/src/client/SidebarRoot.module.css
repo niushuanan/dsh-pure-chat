@@ -33,7 +33,7 @@
    class whenever the pointer is not inside (SidebarRoot.tsx owns the linger),
    and rebinding ui-theme's indirection pair to `transparent` takes the thumb
    out of every scroll region nested under it — the workspace browser's
-   session list today. `transparent` rather than `display: none` on the bar:
+   session list. `transparent` rather than `display: none` on the bar:
    the reservation (`scrollbar-gutter: stable` on the list) stays in force, so
    revealing the thumb never reflows a row. Rebinding contract and the two
    rendering paths it reaches: ui-theme's README. */
@@ -204,9 +204,60 @@
   color: var(--dsw-alias-label-primary);
 }
 
-/* One segmented mode switch: a light capsule whose pressed segment is a dark
-   pill sliding between the two seats — the ink thumb owns the transform, the
-   segment copy just cross-fades color. */
+/* New Session: 38px bar, 12px radius (figma 133:7634 geometry, squared-off
+   corners); collapsed it renders as the rail's plain icon control. */
+.newSession {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  padding: 8px 16px;
+  margin: 0 2px 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 12px;
+  background: var(--dsw-alias-button-elevated-fill);
+  color: var(--dsw-alias-label-primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.newSession:hover {
+  background: var(--dsw-alias-button-floating-hover);
+}
+
+.collapsed .newSession {
+  align-self: flex-start;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0 0 12px;
+  gap: 0;
+  border-color: transparent;
+  background: transparent;
+}
+
+.collapsed .newSession:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.newSessionLabel {
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.collapsed .newSessionLabel {
+  max-width: 0;
+}
+
+/* One two-seat work-mode switch. The thumb slides between Agentic Coding and
+   Chat while the collapsed rail keeps the same two actions as icon buttons. */
 .modeSwitch {
   position: relative;
   flex: none;
@@ -216,19 +267,14 @@
   margin: 0 2px 8px;
   box-sizing: border-box;
   border: 1px solid color-mix(in srgb, var(--dsw-alias-label-primary) 8%, transparent);
-  /* Full stadium: no inner padding, seats touch both ends, corners are round. */
   border-radius: 999px;
   background: var(--dsw-alias-bg-layer-1);
   overflow: hidden;
 }
 
-/* The dark pill: it translates between the two seats on mode change, so the
-   switch reads as a slide instead of a jump. */
 .modeThumb {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0 auto 0 0;
   width: 50%;
   border-radius: inherit;
   background: var(--dsw-alias-button-primary-fill);
@@ -236,13 +282,8 @@
   transition: transform 220ms ease-in-out;
 }
 
-.modeThumb[data-position='left'] {
-  transform: translateX(0);
-}
-
-.modeThumb[data-position='right'] {
-  transform: translateX(100%);
-}
+.modeThumb[data-position='left'] { transform: translateX(0); }
+.modeThumb[data-position='right'] { transform: translateX(100%); }
 
 .modeSegment {
   position: relative;
@@ -251,7 +292,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
   min-width: 0;
   padding: 0;
   border: 0;
@@ -260,7 +300,6 @@
   font: inherit;
   font-size: 12px;
   font-weight: 500;
-  line-height: 20px;
   cursor: pointer;
   overflow: hidden;
   transition: color 220ms ease-in-out;
@@ -271,57 +310,31 @@
   font-weight: 600;
 }
 
-.modeSegment[aria-pressed='true']:hover {
-  background: transparent;
-}
+.modeSegment[aria-pressed='true']:hover { background: transparent; }
+.modeLabel { max-width: 200px; overflow: hidden; white-space: nowrap; }
 
-.modeLabel {
-  max-width: 200px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-/* The rail has no segments: both entries collapse into the standard icon
-   controls every other rail button uses — transparent, ink on hover-pill. */
 .collapsed .modeSwitch {
   flex-direction: column;
   width: 36px;
   height: auto;
-  padding: 0;
   margin: 0 0 12px;
-  /* One rhythm for the whole rail: logo, both mode entries, and the region
-     icons below all keep the same 12px step. */
   gap: 12px;
   border: 0;
   background: transparent;
 }
 
-.collapsed .modeThumb {
-  display: none;
-}
-
+.collapsed .modeThumb { display: none; }
 .collapsed .modeSegment {
   flex: none;
   width: 36px;
   height: 36px;
-  padding: 0;
   border-radius: 12px;
   color: var(--dsw-alias-label-primary);
   transition: none;
 }
-
-.collapsed .modeSegment:hover {
-  background: var(--dsw-alias-interactive-bg-hover);
-}
-
-.collapsed .modeSegment[aria-pressed='true'] {
-  background: transparent;
-  color: var(--dsw-alias-label-primary);
-}
-
-.collapsed .modeLabel {
-  max-width: 0;
-}
+.collapsed .modeSegment:hover { background: var(--dsw-alias-interactive-bg-hover); }
+.collapsed .modeSegment[aria-pressed='true'] { background: transparent; color: var(--dsw-alias-label-primary); }
+.collapsed .modeLabel { max-width: 0; }
 
 /* Region seat: always mounted so the foot never moves. Its trailing margin
    cancels the wide shell inset so the nested scrollbar can sit at the sidebar

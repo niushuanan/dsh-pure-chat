@@ -4,7 +4,7 @@
 
 [![DSH Plugin](https://img.shields.io/badge/DSH-Plugin-111111)](https://github.com/niushuanan/xiaozhuang-dsh) [![Release](https://img.shields.io/badge/release-xiaozhuang--v0.4.2-2563eb)](https://github.com/niushuanan/dsh-pure-chat/releases/tag/xiaozhuang-v0.4.2) [![MIT](https://img.shields.io/badge/license-MIT-16a34a)](LICENSE)
 
-从侧栏即刻开始不绑定工作区、模式或执行权限的纯聊天，同时保留图片与文本文件上传。
+从侧栏即刻开始不绑定工作区或本地执行权限的纯聊天，同时保留图片、文本文件上传和公开网页搜索／读取。
 
 <p align="center"><img src="docs/06-pure-chat.webp" alt="侧栏中的开始工作与开始聊天" width="800"></p>
 
@@ -24,4 +24,4 @@
 
 ## 来源与许可
 
-本仓库是 [Xiaozhuang DSH](https://github.com/niushuanan/xiaozhuang-dsh) 的单向发布副本，不是独立开发源。当前内容同步自主仓库 commit [`49b1c5207b`](https://github.com/niushuanan/xiaozhuang-dsh/commit/49b1c5207b1556515752c6bf9e7902c1a5964ad9)，版本为 [`xiaozhuang-v0.4.2`](https://github.com/niushuanan/dsh-pure-chat/releases/tag/xiaozhuang-v0.4.2)。代码采用 [MIT License](LICENSE)。
+本仓库是 [Xiaozhuang DSH](https://github.com/niushuanan/xiaozhuang-dsh) 的单向发布副本，不是独立开发源。当前内容同步自主仓库 commit [`a257dd1bd3`](https://github.com/niushuanan/xiaozhuang-dsh/commit/a257dd1bd3ffe46877b1b812c1fc67c05b423b45)，版本为 [`xiaozhuang-v0.4.2`](https://github.com/niushuanan/dsh-pure-chat/releases/tag/xiaozhuang-v0.4.2)。代码采用 [MIT License](LICENSE)。

@@ -1,14 +1,8 @@
-/**
- * Output lines shown before the height cap collapses the middle. Matches the
- * TUI transcript's default tool-output budget so both front ends cut a long
- * command's output at the same place.
- */
+/** Output lines shown before the height cap collapses the middle. */
 export declare const DEFAULT_TERMINAL_MAX_LINES = 16;
 /**
  * Display copy for the terminal surface; the owner passes localized labels
- * (this package is cordis-free, so copy arrives via props). Every field
- * defaults to the current built-in value, so existing consumers render
- * unchanged.
+ * (this package is cordis-free, so copy arrives via props).
  */
 export interface TerminalBlockLabels {
     /** Status pill text for a signal-terminated command. */
@@ -55,8 +49,8 @@ export interface TerminalBlockProps {
     maxLines?: number | undefined;
     /** Extra class merged onto the wrapper (callers position; this component draws). */
     className?: string | undefined;
-    /** Localized display copy; omitted fields keep the built-in defaults. */
-    labels?: Partial<TerminalBlockLabels> | undefined;
+    /** Localized display copy supplied by the owning render site. */
+    labels: TerminalBlockLabels;
 }
 /**
  * Render a shell command as a terminal surface.

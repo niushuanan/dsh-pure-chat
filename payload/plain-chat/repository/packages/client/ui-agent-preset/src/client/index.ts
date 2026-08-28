@@ -1,16 +1,17 @@
 /**
  * Agent-preset surface plugin, browser half — four surfaces over one roster:
  * a General-settings row for the default preset, a chip on the new-session
- * screen for the session about to start, a safe next-turn switcher in the
- * session header, and a settings section that manages the roster (copy, delete,
+ * screen for the session about to start, a live selector in the session
+ * header, and a settings section that manages the roster (copy, delete,
  * default, and the way into a preset's own files).
  *
- * Header picks are queued per session while a turn runs. The Host commits the
- * recompose operation as idle maintenance, so a turn never changes tools or
- * prompt sections after it starts.
+ * A running turn keeps the composition it began with. Header picks wait for
+ * the next idle boundary, where the Host swaps the composition before any new
+ * input wakes the Agent.
  */
 
-import type { ConnectionHandle } from '@deepseek-ai/dsh-api-remotes/client'
+// Type-only: pulls the Session Controller service merge (ctx.sessions).
+import type {} from '@deepseek-ai/dsh-api-session-controller/client'
 // Type-only: pulls the locale plugin's Context merge (ctx.locale).
 import type {} from '@deepseek-ai/dsh-client-locale/client'
 // Type-only: pulls the ctx.remote merge and the forwarded-event key face
@@ -18,7 +19,10 @@ import type {} from '@deepseek-ai/dsh-client-locale/client'
 import type {} from '@deepseek-ai/dsh-api-remotes/client'
 // Type-only: pulls the settings shell's SlotMap merge (the 'settings.section' entry).
 import type {} from '@deepseek-ai/dsh-client-ui-settings/client'
-import type { ClientContext } from '@deepseek-ai/dsh-client-runtime/client'
+import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
+// Type-only: pulls the Workspace UI navigation service merge (ctx.uiWorkspace).
+import type {} from '@deepseek-ai/dsh-client-ui-workspace/client'
+import type { Context as ClientContext } from '@deepseek-ai/cordis'
 import { AgentPresetLabel } from './AgentPresetLabel.tsx'
 import type { AgentPresetLabelInjected } from './AgentPresetLabel.tsx'
 import { AgentPresetRow } from './AgentPresetRow.tsx'
@@ -28,9 +32,8 @@ import type { AgentPresetSeatInjected } from './AgentPresetSeat.tsx'
 import { AgentPresetSection } from './AgentPresetSection.tsx'
 import type { AgentPresetSectionInjected } from './AgentPresetSection.tsx'
 import { AgentPresetSeatController } from './seat-store.ts'
-import type { SeatSessionSummary } from './seat-store.ts'
-import { AgentPresetSessionSwitchController } from './session-switch-store.ts'
 import { AgentPresetSectionController } from './section-store.ts'
+import { AgentPresetSessionSwitchController } from './session-switch-store.ts'
 import { en, zh } from './locales.ts'
 import { AGENT_PRESET_SETTINGS_NS, AgentPresetSettingsController } from './settings-store.ts'
 
@@ -38,7 +41,10 @@ export type { AgentPresetLabelInjected, AgentPresetLabelProps } from './AgentPre
 export type { AgentPresetRowInjected, AgentPresetRowProps } from './AgentPresetRow.tsx'
 export type { AgentPresetSeatInjected, AgentPresetSeatProps } from './AgentPresetSeat.tsx'
 export type { AgentPresetSectionInjected, AgentPresetSectionProps } from './AgentPresetSection.tsx'
-export type { AgentPresetSeatState, SeatSessionSummary } from './seat-store.ts'
+export type { AgentPresetSeatState } from './seat-store.ts'
+export type {
+  AgentPresetSessionSwitchEntry, AgentPresetSessionSwitchState,
+} from './session-switch-store.ts'
 export {
   draftBlocker, type AgentPresetSectionState, type CopyDraft, type PresetRow, type PresetView,
 } from './section-store.ts'
@@ -46,19 +52,21 @@ export type { AgentPresetOption, AgentPresetSettingsState } from './settings-sto
 export { AGENT_PRESET_SETTINGS_NS, writeDefaultPreset } from './settings-store.ts'
 
 /** Required services (cordis fiber inject). */
-export const inject = ['slots', 'locale', 'connection', 'remote', 'settingsScope']
+export const inject = [
+  'slots', 'locale', 'remote', 'remote.agentPresets', 'remote.settings', 'settingsScope',
+]
 
 /**
  * Mount the General-settings row.
  * @param ctx - the browser plugin context.
  */
 export function apply(ctx: ClientContext): void {
-  const { api } = ctx.get('connection') as ConnectionHandle
-  const controller = new AgentPresetSettingsController(api, ctx.settingsScope.describe())
+  const settingsWire = { settings: ctx.remote.settings }
+  const controller = new AgentPresetSettingsController(settingsWire, ctx.remote, ctx.settingsScope.describe())
   // One roster, four surfaces. The chip is registered in a later scope, so it
   // subscribes here rather than being reached from this one.
   const rosterReaders = new Set<() => void>()
-  const section = new AgentPresetSectionController(api, () => {
+  const section = new AgentPresetSectionController(ctx.remote, () => {
     void controller.load()
     for (const read of rosterReaders) read()
   })
@@ -97,39 +105,16 @@ export function apply(ctx: ClientContext): void {
   // render and simply hides the button while no flow exists.
   let creatorDraft: (() => void) | undefined
 
-  // The new-session chip and the header label: one controller, because the
-  // staged choice belongs to the flow rather than to any one session.
-  ctx.inject(['slots', 'conversation', 'sessions', 'workspaces'], (scope: ClientContext) => {
-    const api = (scope.get('connection') as ConnectionHandle).api
-    const seat = new AgentPresetSeatController(api, (): SeatSessionSummary | undefined => {
+  // The new-session chip owns its one-use staged choice; the header owns
+  // per-session live choices, because those may wait across a running turn.
+  ctx.inject(['slots', 'conversation', 'sessions', 'uiWorkspace'], (scope: ClientContext) => {
+    const seat = new AgentPresetSeatController(scope.remote, () => {
       const state = scope.sessions.list.getSnapshot()
-      const summary = state.current === undefined ? undefined : state.byId[state.current]
-      return summary === undefined
-        ? undefined
-        : {
-          id: summary.id,
-          blank: summary.blank,
-          ...summary.agentPreset === undefined ? {} : { agentPreset: summary.agentPreset },
-        }
-    }, (sessionId, agentPreset) => {
-      scope.sessions.noteAgentPreset(sessionId as never, agentPreset)
+      return state.current === undefined ? undefined : state.byId[state.current]
     })
-    const switcher = new AgentPresetSessionSwitchController(
-      api,
-      (sessionId) => {
-        const summary = scope.sessions.list.getSnapshot().byId[sessionId]
-        return summary === undefined
-          ? undefined
-          : {
-            id: summary.id,
-            running: summary.running,
-            ...summary.agentPreset === undefined ? {} : { agentPreset: summary.agentPreset },
-          }
-      },
-      (sessionId, agentPreset) => {
-        scope.sessions.noteAgentPreset(sessionId, agentPreset)
-      },
-    )
+    const switcher = new AgentPresetSessionSwitchController(scope.remote, (sessionId) => {
+      return scope.sessions.list.getSnapshot().byId[sessionId]
+    }, () => { void scope.sessions.refresh() })
 
     const seatInjected = (): AgentPresetSeatInjected => ({
       hooks: { agentPresetSeat: seat.store },
@@ -139,12 +124,9 @@ export function apply(ctx: ClientContext): void {
     })
 
     const labelInjected = (): AgentPresetLabelInjected => ({
-      hooks: {
-        agentPresets: controller.store,
-        agentPresetSwitch: switcher.store,
-      },
+      hooks: { agentPresets: controller.store, agentPresetSwitch: switcher.store },
       load: () => controller.load(),
-      switchPreset: (sessionId, id) => switcher.select(sessionId, id),
+      switchPreset: (sessionId, agentPreset) => switcher.select(sessionId, agentPreset),
     })
 
     scope.effect(() => {
@@ -164,11 +146,11 @@ export function apply(ctx: ClientContext): void {
         if (ns !== AGENT_PRESET_SETTINGS_NS) return
         void seat.load()
       })
-      // Every tab folds the committed preset into the shared session row; the
-      // initiating tab may already have applied the RPC echo, which is idempotent.
-      const presetSelected = scope.remote.$on('agent-preset/selected', (sessionId, agentPreset) => {
-        scope.sessions.noteAgentPreset(sessionId, agentPreset)
-        switcher.confirm(sessionId, agentPreset)
+      // A switch can be committed from another tab. Refresh the generic
+      // projection so every header converges on the Host's durable selection;
+      // the initiating tab also requests this after its RPC succeeds.
+      const presetSelected = scope.remote.$on('agent-preset/selected', () => {
+        void scope.sessions.refresh()
       })
       // Authoring writes a FILE, not a setting, so nothing on the wire
       // announces it — without this the screen that starts the next session
@@ -184,7 +166,7 @@ export function apply(ctx: ClientContext): void {
         // The introduce cue makes the chip announce the pick the user never
         // made on this screen — the stage happened back in settings.
         seat.stage('cordis', true)
-        scope.workspaces.startSession()
+        scope.uiWorkspace.startSession()
       }
       const chip = scope.slots.register({
         name: 'conversation.hero.agentPreset',
@@ -194,7 +176,7 @@ export function apply(ctx: ClientContext): void {
       const label = scope.slots.register({
         name: 'conversation.session.header.actions',
         id: 'agent-preset',
-        // Static session context occupies the header's leading negative-order band.
+        // Session composition controls occupy the header's leading negative-order band.
         order: -10,
         locale: 'settings.agentPreset',
         inject: labelInjected,

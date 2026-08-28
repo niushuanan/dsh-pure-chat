@@ -1,13 +1,8 @@
-/**
- * Output lines shown before the height cap collapses the middle. Matches
- * {@link DEFAULT_TERMINAL_MAX_LINES} so a diff card and a terminal card cut a
- * long body at the same place.
- */
+/** Output lines shown before the height cap collapses the middle. */
 export declare const DEFAULT_DIFF_MAX_LINES = 16;
 /**
- * One file's change, in the shape {@link DiffBlock} draws. Structurally the
- * render-intent contract's `FileDiff`, redeclared here so this primitive stays
- * free of the tool contract (the terminal card's decoupling, applied to diffs).
+ * One file change in the form {@link DiffBlock} renders. It is declared here
+ * so this primitive stays independent of the tool contract.
  */
 export interface DiffHunk {
     /** The changed file's path, drawn verbatim as the hunk's header (the tool's model-facing path). */
@@ -20,15 +15,27 @@ export interface DiffHunk {
 export interface DiffBlockProps {
     /** One entry per applied hunk, in file order; empty renders nothing. */
     diffs: DiffHunk[];
+    /** Localized chrome supplied by the owning render site. */
+    labels: DiffBlockLabels;
     /** Height cap in body lines before the middle collapses (default {@link DEFAULT_DIFF_MAX_LINES}). */
     maxLines?: number | undefined;
     /** Extra class merged onto the wrapper (callers position; this component draws). */
     className?: string | undefined;
+}
+/** Localized chrome for {@link DiffBlock}. */
+export interface DiffBlockLabels {
+    copy: string;
+    copied: string;
+    collapseAria: string;
+    expandAria: (hidden: number) => string;
+    collapse: string;
+    expand: (hidden: number) => string;
+    files: (count: number) => string;
 }
 /**
  * Render a file mutation as an inline diff surface.
  * @param props - see {@link DiffBlockProps}.
  * @returns the diff block element.
  */
-export declare function DiffBlock({ diffs, maxLines, className }: DiffBlockProps): import("react").JSX.Element | null;
+export declare function DiffBlock({ diffs, labels, maxLines, className }: DiffBlockProps): import("react").JSX.Element | null;
 //# sourceMappingURL=DiffBlock.d.ts.map

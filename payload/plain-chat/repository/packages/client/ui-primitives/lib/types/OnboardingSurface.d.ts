@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 /**
- * Render the onboarding takeover chrome (mask + opaque stage) around one
- * step's content and keep the application root inert while mounted.
+ * Render a body-portaled onboarding stage and keep the application root inert
+ * while mounted.
  * @param props.children - the step's page content, centered on the stage.
  * @returns the body-portaled overlay tree.
  */

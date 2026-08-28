@@ -16,6 +16,8 @@ export interface ReadBlockProps {
     label?: string | undefined;
     /** The returned window's lines, in file order, each keeping its file line number. */
     lines: readonly ReadBlockLine[];
+    /** Localized chrome supplied by the owning render site. */
+    labels: ReadBlockLabels;
     /** Exact total line count in the file, for the "showing N of M" note when the read is a window. */
     totalLines: number;
     /** Grammar hint (a file-extension-derived language id); unknown or absent = plain monospace. */
@@ -25,11 +27,21 @@ export interface ReadBlockProps {
     /** Extra class merged onto the wrapper (callers position; this component draws). */
     className?: string | undefined;
 }
+/** Localized chrome for {@link ReadBlock}. */
+export interface ReadBlockLabels {
+    window: (shown: number, total: number) => string;
+    copy: string;
+    copied: string;
+    collapseAria: string;
+    expandAria: (hidden: number) => string;
+    collapse: string;
+    expand: (hidden: number) => string;
+}
 /**
  * Render a read tool result as a line-numbered, optionally syntax-highlighted
  * file view.
  * @param props - see {@link ReadBlockProps}.
  * @returns the read block element.
  */
-export declare function ReadBlock({ label, lines, totalLines, lang, maxLines, className, }: ReadBlockProps): import("react").JSX.Element;
+export declare function ReadBlock({ label, labels, lines, totalLines, lang, maxLines, className, }: ReadBlockProps): import("react").JSX.Element;
 //# sourceMappingURL=ReadBlock.d.ts.map

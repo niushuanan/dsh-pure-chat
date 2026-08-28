@@ -8,7 +8,7 @@
  * actions in `sidebar.footer.action`.
  */
 import type { PropsLocale, PropsRenderSlots, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots';
-import type { WorkspaceId } from '@deepseek-ai/dsh-client-runtime/client';
+import type { WorkspaceId } from '@deepseek-ai/dsh-api-workspace-controller/client';
 declare module '@deepseek-ai/dsh-client-ui-slots' {
     interface SlotMap {
         /**
@@ -30,7 +30,7 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
             scope: 'root';
             owner: SidebarBrandNameOwnerProps;
         };
-        /** Native primary actions shown directly below Start work. */
+        /** Native work-mode actions rendered inside the segmented switch. */
         'sidebar.primary.action': {
             kind: 'list';
             scope: 'root';
@@ -88,13 +88,13 @@ export interface SidebarSectionOwnerProps {
     /** Rail icons request expansion; the browser rides the wide flip for focus. */
     expandSidebar: () => void;
 }
-/** Column posture supplied to a primary sidebar action. */
+/** Column posture supplied to a work-mode action. */
 export interface SidebarPrimaryActionOwnerProps {
     /** Whether the action renders its label or only its rail icon. */
     wide: boolean;
-    /** Rendered inside the shell's mode switch as its right segment. */
+    /** True when rendered as the right segment of the work-mode switch. */
     segment?: boolean;
-    /** The segment's pressed state; the shell computes it from the session. */
+    /** Whether the action represents the current Session mode. */
     active?: boolean;
 }
 /**

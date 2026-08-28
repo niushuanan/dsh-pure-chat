@@ -51,6 +51,7 @@ export declare const zh: {
     'actions.workspace.aria': string;
     'actions.session.aria': string;
     'actions.newSession.aria': string;
+    'actions.newChat.aria': string;
     'status.running': string;
     'status.subagentsRunning.one': string;
     'status.subagentsRunning.other': string;
@@ -120,6 +121,7 @@ export declare const en: {
     'actions.workspace.aria': string;
     'actions.session.aria': string;
     'actions.newSession.aria': string;
+    'actions.newChat.aria': string;
     'status.running': string;
     'status.subagentsRunning.one': string;
     'status.subagentsRunning.other': string;

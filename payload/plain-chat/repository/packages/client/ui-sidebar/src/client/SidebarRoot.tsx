@@ -2,11 +2,11 @@
  * Sidebar shell: column geometry only. Collapse is a slide plus crossfade:
  * content freezes at its expanded width (inline style) and fades out in place
  * while the sliding column (AppFrame grid tracks) clips it — nothing reflows
- * mid-slide. At settle the wide-only content unmounts and the upper controls
- * enter the 56px rail from the same horizontal offset (one icon each,
+ * mid-slide. At settle the wide-only content unmounts and the four upper
+ * controls enter the 56px rail from the same horizontal offset (one icon each,
  * same top-down order) on one fade that ends with the slide. The bottom-pinned
  * settings control only fades. The workspace/session browsing region between
- * the primary actions and the foot is the `sidebar.workspaces` registrant's,
+ * the New Session button and the foot is the `sidebar.workspaces` registrant's,
  * and the foot holds `sidebar.settings` plus `sidebar.footer.action`; the shell
  * hands them the wide flag (plus an expand request callback for the browser).
  *
@@ -48,11 +48,11 @@ export function SidebarRoot({
   t,
   renderSlot,
 }: SidebarRootComponentProps) {
-  // The mode switch highlights the current session's flavor; a missing or
-  // plain-Agent session means the Agent segment is the active mode.
-  const chatActive = useSessions(state => (state.current === undefined
-    ? false
-    : state.byId[state.current]?.agentPreset === 'chat'))
+  const chatActive = useSessions((state) => {
+    if (state.current === undefined) return false
+    const values = state.byId[state.current]?.projectionValues as Record<string, unknown> | undefined
+    return values?.agentPreset === 'chat'
+  })
   // Wide content stays mounted while the collapse animates (fading via
   // .collapsed .wide), unmounts at settle, and remounts right away on expand.
   const [settled, setSettled] = useState(collapsed)
@@ -132,7 +132,7 @@ export function SidebarRoot({
       onPointerLeave={() => { armLinger() }}
     >
       <div className={css.logoRow}>
-        {/* Expanded, the brand doubles as a Start work shortcut; the
+        {/* Expanded, the brand doubles as a New Session shortcut; the
             collapsed rail's logo is the expand toggle below instead. */}
         {wide && (
           <button
@@ -173,15 +173,8 @@ export function SidebarRoot({
         </Tooltip>
       </div>
 
-      {/* One segmented mode switch replaces the two stacked capsules: the
-          Agent & Coding segment starts an ordinary session, the Chat segment
-          is contributed through sidebar.primary.action. */}
       <div className={css.modeSwitch} role="group" aria-label={t('mode.switch')}>
-        <span
-          className={css.modeThumb}
-          aria-hidden="true"
-          data-position={chatActive ? 'right' : 'left'}
-        />
+        <span className={css.modeThumb} aria-hidden="true" data-position={chatActive ? 'right' : 'left'} />
         <Tooltip label={t('session.new.label')} delayMs={500} disabled={wide}>
           <button
             type="button"

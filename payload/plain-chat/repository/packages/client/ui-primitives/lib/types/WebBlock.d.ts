@@ -1,3 +1,4 @@
+import { type MarkdownLabels } from './markdown/MarkdownText.tsx';
 /**
  * One citeable source drawn in a search card: the projection of the contract's
  * `WebSource`, with the optional fields kept optional so a provider that
@@ -16,6 +17,8 @@ export interface WebSourceView {
 /** A `web_search` card: an optional answer over a capped citation list. */
 export interface WebSearchBlockProps {
     kind: 'search';
+    /** Localized chrome supplied by the owning render site. */
+    labels: WebBlockLabels;
     /** The provider-generated answer, rendered as markdown above the sources. */
     answer?: string | undefined;
     /** The cited sources, in provider order. */
@@ -28,6 +31,8 @@ export interface WebSearchBlockProps {
 /** A `web_fetch` card: the retrieval summary for one fetched URL. */
 export interface WebFetchBlockProps {
     kind: 'fetch';
+    /** Localized chrome supplied by the owning render site. */
+    labels: WebBlockLabels;
     /** The final URL after allowed redirects; becomes a safe external link when http(s). */
     url: string;
     /** HTTP status code of the fetched response. */
@@ -39,6 +44,14 @@ export interface WebFetchBlockProps {
 }
 /** A completed web retrieval card, discriminated by `kind`. */
 export type WebBlockProps = WebSearchBlockProps | WebFetchBlockProps;
+/** Localized chrome for {@link WebBlock}. */
+export interface WebBlockLabels {
+    noResults: string;
+    sourcesTruncated: string;
+    http: string;
+    contentTruncated: string;
+    markdown: MarkdownLabels;
+}
 /**
  * Render a completed web retrieval as a structured card.
  * @param props - see {@link WebBlockProps}; `kind` selects the search or fetch body.

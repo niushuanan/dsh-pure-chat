@@ -2,7 +2,7 @@ import type { PermissionSelect as PermissionSelectValue } from '@deepseek-ai/dsh
 import type { ComposerBarProps } from '../contract/slots.ts';
 export interface PermissionSelectProps {
     value: PermissionSelectValue | undefined;
-    /** Optional Teamwork capability. It is orthogonal to the permission preset. */
+    /** Optional Teamwork capability, orthogonal to the permission preset. */
     teamwork: {
         active: boolean;
     } | undefined;

@@ -1,8 +1,6 @@
 /**
  * Display copy for the tree's copy affordance; the owner passes localized
- * labels (this package is cordis-free, so copy arrives via props). Every
- * field defaults to the current built-in value, so existing consumers render
- * unchanged.
+ * labels (this package is cordis-free, so copy arrives via props).
  */
 export interface JsonTreeLabels {
     /** Menu item: copy the raw primitive value. */
@@ -31,15 +29,15 @@ export interface JsonTreeProps {
     /** Parsed JSON object or array. */
     data: object | unknown[];
     /** Accessible label for the tree. */
-    label?: string;
+    label: string;
     /** Optional positioning class owned by the caller. */
     className?: string | undefined;
     /** Whether JSON rows expose copy actions. */
     copyable?: boolean;
     /** Whether the top-level object or array is always expanded. */
     expandTopLevel?: boolean;
-    /** Localized display copy; omitted fields keep the built-in defaults. */
-    labels?: Partial<JsonTreeLabels> | undefined;
+    /** Localized display copy supplied by the owning render site. */
+    labels: JsonTreeLabels;
 }
 /**
  * Render parsed JSON as a compact, keyboard-accessible inspector tree.

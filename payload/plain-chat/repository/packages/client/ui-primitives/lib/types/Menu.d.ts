@@ -61,17 +61,17 @@ export declare function MenuAction({ label, icon, disabled, title, onSelect }: M
  * the trigger (render-prop anchors, effect-positioned proxies — measuring the
  * wrapper there races the host's layout effects). Called on open and on every
  * scroll/resize; return null to skip placement for that frame.
- * @param props.afterItems - plugin-owned rows appended inside the scrolling item group.
  * @param props.footer - rows pinned below the scrolling items area, separated
  * by a hairline; they stay visible while the items above scroll.
  * @returns anchor wrapper with the conditional list.
  */
-export declare function Menu({ open, anchor, items, afterItems, selectedId, selectedIds, onSelect, onClose, align, side, portal, closeOnPointerLeave, dense, compact, getAnchorRect, footer, className }: {
+export declare function Menu({ open, anchor, items, selectedId, selectedIds, onSelect, onClose, align, side, portal, closeOnPointerLeave, dense, compact, getAnchorRect, footer, afterItems, className }: {
     open: boolean;
     anchor: ReactNode;
     items: readonly MenuEntry[];
-    afterItems?: ReactNode;
     footer?: readonly MenuEntry[];
+    /** Plugin-contributed native rows appended to the scrolling item region. */
+    afterItems?: ReactNode;
     selectedId?: string | undefined;
     selectedIds?: readonly string[] | undefined;
     onSelect: (id: string) => void;
