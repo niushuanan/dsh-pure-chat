@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "kind": "xiaozhuang-dsh-plugin-export",
-  "createdAt": "2026-08-28T17:29:56.868Z",
-  "sourceCommit": "a257dd1bd3ffe46877b1b812c1fc67c05b423b45",
+  "createdAt": "2026-08-28T19:15:00.000Z",
+  "sourceCommit": "567cf81462ac2b29128cc5351e72c320956b7bcc",
   "plugins": [
     {
       "id": "plain-chat",
@@ -284,8 +284,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/client.js",
-      "size": 332795,
-      "sha256": "fa5476efa89dbde3c5d23afcab35737d7e67f25f866d62cb069b3a086cf22d1e"
+      "size": 336986,
+      "sha256": "1bab5e65331c20075bcd7a11a10992969711e126faa8e524357d2ef742e1abb5"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/index.js",
@@ -389,8 +389,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/types/client/chat/TurnNavigator.d.ts",
-      "size": 1088,
-      "sha256": "6b3c036859056b9fb3ff8e4210a4ee82c0b609dfe82a6547e270a59191aeefbc"
+      "size": 1213,
+      "sha256": "2d025883a44374fd30e6c6173d587ecbe85ede2843eab911c8098da53f540966"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/lib/types/client/chat/TurnProcessNodeView.d.ts",
@@ -684,8 +684,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/chat/ChatView.tsx",
-      "size": 30546,
-      "sha256": "3b2b2018b8e2dc8f14919b68125bab9ac0eee520933facda6d79a7926aff42db"
+      "size": 30617,
+      "sha256": "5be2a09c23f2b223330b51fbc9fab3ebe2a15d8cff6a7c20d68d72c728867e0a"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/chat/CommandNodeView.tsx",
@@ -784,8 +784,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/chat/TurnNavigator.tsx",
-      "size": 5179,
-      "sha256": "aa61df3dc45002f229e7a17204c9397199dc2e31797a88b8ca180067762d56e3"
+      "size": 5936,
+      "sha256": "aeccf562db7ac095c39ba620c3a846a742c03e2f5a41488246d342c655854dc9"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-chat/src/client/chat/TurnProcessNodeView.module.css",

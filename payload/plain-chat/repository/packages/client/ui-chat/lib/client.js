@@ -4,9 +4,9 @@ window.__ModuleLoader__.load({
 		var module = { exports: {} };
 		var exports = module.exports;
 		Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-		let react_jsx_runtime = require("react/jsx-runtime");
 		let react = require("react");
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
+		let react_jsx_runtime = require("react/jsx-runtime");
 		let _deepseek_ai_dsh_client_store = require("@deepseek-ai/dsh-client-store");
 		//#region ../../util/workspace-path/src/index.ts
 		/**
@@ -29,7 +29,7 @@ window.__ModuleLoader__.load({
 			return `${cwd.replace(/[/\\]+$/, "")}/${path.replace(/^[/\\]+/, "")}`;
 		}
 		//#endregion
-		//#region lib/types/client/contract/snapshot.js
+		//#region src/client/contract/snapshot.ts
 		const EMPTY_LIST$1 = [];
 		/** Empty Chat target used before a view builder is registered. */
 		const EMPTY_CHAT_SNAPSHOT = {
@@ -56,7 +56,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/chat/ApprovalCommand.js
+		//#region src/client/chat/ApprovalCommand.tsx
 		/**
 		* Extract a shell command from a correlated Tool call when its arguments carry one.
 		* @param call - Tool call arguments, when a correlated call exists.
@@ -85,8 +85,7 @@ window.__ModuleLoader__.load({
 			}) ?? null;
 		}
 		//#endregion
-		//#region lib/types/client/markdown-labels.js
-		/** Localized copy adapters for Cordis-free Markdown primitives. */
+		//#region src/client/markdown-labels.ts
 		/**
 		* Build the complete Markdown chrome copy for one locale revision.
 		* @param t - Chat locale seat.
@@ -142,7 +141,7 @@ window.__ModuleLoader__.load({
 			"userStack": "aEcBrG_userStack"
 		};
 		//#endregion
-		//#region lib/types/client/chat/CompactionItem.js
+		//#region src/client/chat/CompactionItem.tsx
 		/**
 		* Renders the model-history compaction marker.
 		* @param props - the marker node off the snapshot cache.
@@ -157,9 +156,9 @@ window.__ModuleLoader__.load({
 				items: node.shadowedItemCount,
 				tokens: node.shadowedTokenCount
 			}) : fallbackSummary ?? (expandable ? t("message.compaction.expand") : t("message.compaction.unavailable"));
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: MessageItem_module_css_default.compactionRow,
-				children: [(0, react_jsx_runtime.jsxs)("button", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 					type: "button",
 					className: MessageItem_module_css_default.compactionButton,
 					disabled: !expandable,
@@ -168,35 +167,35 @@ window.__ModuleLoader__.load({
 						setExpanded((value) => !value);
 					},
 					children: [
-						(0, react_jsx_runtime.jsxs)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 							className: MessageItem_module_css_default.compactionLeading,
 							"aria-hidden": true,
-							children: [(0, react_jsx_runtime.jsx)("span", {
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: MessageItem_module_css_default.compactionContextIcon,
 								"data-compaction-icon": "context",
-								children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconApiOutline14, {})
-							}), (0, react_jsx_runtime.jsx)("span", {
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconApiOutline14, {})
+							}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: MessageItem_module_css_default.compactionDisclosureIcon,
 								"data-compaction-disclosure": open ? "expanded" : "collapsed",
-								children: open ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronRightOutline14, {})
+								children: open ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronRightOutline14, {})
 							})]
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.compactionTitle,
 							children: title ?? t("message.compaction")
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.compactionSep,
 							"aria-hidden": true
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.compactionSummary,
 							children: summary
 						})
 					]
-				}), open && node.summary !== null && (0, react_jsx_runtime.jsx)("div", {
+				}), open && node.summary !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: MessageItem_module_css_default.compactionBody,
-					children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MarkdownText, {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MarkdownText, {
 						text: node.summary,
 						labels
 					})
@@ -240,7 +239,7 @@ window.__ModuleLoader__.load({
 			"text": "VxPBRW_text"
 		};
 		//#endregion
-		//#region lib/types/client/chat/ContextBody.js
+		//#region src/client/chat/ContextBody.tsx
 		/** Model-facing text stays bounded at the disclosure, not at the producer. */
 		const MAX_CHARS = 2e4;
 		/** Rows a list body materializes before summarizing the remainder. */
@@ -302,15 +301,15 @@ window.__ModuleLoader__.load({
 			const hidden = formRendered ? ["kind", "form"] : ["kind"];
 			const rows = Object.entries(record).filter(([key]) => !hidden.includes(key));
 			if (rows.length === 0) return null;
-			return (0, react_jsx_runtime.jsx)("dl", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dl", {
 				className: ContextBody_module_css_default.fields,
 				"data-context-fields": true,
-				children: rows.map(([key, value]) => (0, react_jsx_runtime.jsxs)("div", {
+				children: rows.map(([key, value]) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ContextBody_module_css_default.field,
-					children: [(0, react_jsx_runtime.jsx)("dt", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", {
 						className: ContextBody_module_css_default.fieldKey,
 						children: key
-					}), (0, react_jsx_runtime.jsx)("dd", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", {
 						className: ContextBody_module_css_default.fieldValue,
 						children: fieldValue(value, t)
 					})]
@@ -325,7 +324,7 @@ window.__ModuleLoader__.load({
 		* @returns One generic JSON block per unknown entry.
 		*/
 		function UnknownBlocks({ blocks, t }) {
-			return (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: blocks.map((block, index) => (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: blocks.map((block, index) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 				label: t("message.unknownBlock"),
 				payload: block,
 				truncatedLabel: (total) => t("json.truncated", { total })
@@ -339,11 +338,11 @@ window.__ModuleLoader__.load({
 		* @returns The content blocks as the model received them.
 		*/
 		function ModelFacingContent({ content, t }) {
-			return (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: contentRuns(content).map((run, index) => "text" in run ? run.text !== "" && (0, react_jsx_runtime.jsx)("pre", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: contentRuns(content).map((run, index) => "text" in run ? run.text !== "" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("pre", {
 				className: ContextBody_module_css_default.text,
 				"data-context-text": true,
 				children: boundedText(run.text, t)
-			}, index) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+			}, index) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 				label: t("message.unknownBlock"),
 				payload: run.block,
 				truncatedLabel: (total) => t("json.truncated", { total })
@@ -357,10 +356,10 @@ window.__ModuleLoader__.load({
 		* @returns The opaque context body.
 		*/
 		function OpaqueBody({ content, source, t }) {
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
-			}), (0, react_jsx_runtime.jsx)(SourceFields, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(SourceFields, {
 				source,
 				formRendered: false,
 				t
@@ -423,27 +422,27 @@ window.__ModuleLoader__.load({
 		*/
 		function InstructionsBody({ content, source, t }) {
 			const changes = instructionChanges(source);
-			if (changes === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (changes === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
 			});
 			const baseline = asRecord$1(source)?.["baseline"] === true;
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("ul", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 				className: ContextBody_module_css_default.files,
 				"data-context-files": true,
-				children: changes.map((change) => (0, react_jsx_runtime.jsxs)("li", {
+				children: changes.map((change) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 					className: ContextBody_module_css_default.file,
 					title: change.digest,
-					children: [(0, react_jsx_runtime.jsx)("span", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextBody_module_css_default.filePath,
 						children: change.path
-					}), (0, react_jsx_runtime.jsx)("span", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextBody_module_css_default.fileAction,
 						children: t(instructionAction(change.action, baseline))
 					})]
 				}, change.path))
-			}), (0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
 			})] });
@@ -484,7 +483,7 @@ window.__ModuleLoader__.load({
 		*/
 		function CatalogBody({ content, source, t }) {
 			const entries = catalogEntries(source);
-			if (entries === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (entries === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
@@ -492,32 +491,32 @@ window.__ModuleLoader__.load({
 			const update = asRecord$1(source)?.["update"] === true;
 			const shown = entries.slice(0, MAX_ENTRIES);
 			const rest = unknownBlocks(content);
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
-				update && (0, react_jsx_runtime.jsx)("p", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+				update && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
 					className: ContextBody_module_css_default.catalogNotice,
 					"data-context-catalog-update": true,
 					children: t("message.context.catalog.replaced")
 				}),
-				(0, react_jsx_runtime.jsx)("ul", {
+				/* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 					className: ContextBody_module_css_default.entries,
 					"data-context-entries": true,
-					children: shown.map((entry, index) => (0, react_jsx_runtime.jsxs)("li", {
+					children: shown.map((entry, index) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 						className: ContextBody_module_css_default.entry,
-						children: [(0, react_jsx_runtime.jsx)("code", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("code", {
 							className: ContextBody_module_css_default.entryName,
 							children: entry.name
-						}), (0, react_jsx_runtime.jsx)("span", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: ContextBody_module_css_default.entryDescription,
 							children: entry.description
 						})]
 					}, index))
 				}),
-				shown.length < entries.length && (0, react_jsx_runtime.jsx)("p", {
+				shown.length < entries.length && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
 					className: ContextBody_module_css_default.catalogNotice,
 					"data-context-entries-truncated": true,
 					children: t("message.context.catalog.more", { count: entries.length - shown.length })
 				}),
-				(0, react_jsx_runtime.jsx)(UnknownBlocks, {
+				/* @__PURE__ */ (0, react_jsx_runtime.jsx)(UnknownBlocks, {
 					blocks: rest,
 					t
 				})
@@ -561,24 +560,24 @@ window.__ModuleLoader__.load({
 		function SnapshotBody({ content, source, t }) {
 			const sections = snapshotSections(source);
 			/* v8 ignore next -- contextBody reads the sections before choosing this body. */
-			if (sections === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (sections === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
 			});
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("p", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
 				className: ContextBody_module_css_default.catalogNotice,
 				"data-context-snapshot-supersedes": true,
 				children: t("message.context.snapshot.supersedes")
-			}), (0, react_jsx_runtime.jsx)("dl", {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dl", {
 				className: ContextBody_module_css_default.sections,
 				"data-context-sections": true,
-				children: sections.map((section, index) => (0, react_jsx_runtime.jsxs)("div", {
+				children: sections.map((section, index) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ContextBody_module_css_default.section,
-					children: [(0, react_jsx_runtime.jsx)("dt", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", {
 						className: ContextBody_module_css_default.sectionName,
 						children: section.name
-					}), (0, react_jsx_runtime.jsx)("dd", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", {
 						className: ContextBody_module_css_default.sectionText,
 						children: boundedText(section.text, t)
 					})]
@@ -594,7 +593,7 @@ window.__ModuleLoader__.load({
 		* @returns The notice context body.
 		*/
 		function NoticeBody({ content, t }) {
-			return (0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
 			});
@@ -610,16 +609,16 @@ window.__ModuleLoader__.load({
 		function RelayBody({ content, source, t }) {
 			const sender = relaySender(source);
 			/* v8 ignore next -- contextBody resolves the sender before choosing this body. */
-			if (sender === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (sender === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
 			});
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("p", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
 				className: ContextBody_module_css_default.relaySender,
 				"data-context-relay-sender": true,
 				children: t("message.context.relay.from", { session: sender })
-			}), (0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
 			})] });
@@ -664,35 +663,35 @@ window.__ModuleLoader__.load({
 		*/
 		function RecallBody({ content, source, t }) {
 			const sessions = recalledSessions(source);
-			if (sessions === null) return (0, react_jsx_runtime.jsx)(OpaqueBody, {
+			if (sessions === null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 				content,
 				source,
 				t
 			});
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("ul", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 				className: ContextBody_module_css_default.recalls,
 				"data-context-recalls": true,
-				children: sessions.map((session, index) => (0, react_jsx_runtime.jsxs)("li", {
+				children: sessions.map((session, index) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 					className: ContextBody_module_css_default.recall,
 					children: [
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: ContextBody_module_css_default.recallLabel,
 							children: session.label
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: ContextBody_module_css_default.recallCounts,
 							children: t("message.context.recall.counts", {
 								retained: session.retained,
 								omitted: session.omitted
 							})
 						}),
-						session.truncated && (0, react_jsx_runtime.jsx)("span", {
+						session.truncated && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: ContextBody_module_css_default.recallCounts,
 							children: t("message.context.recall.truncated")
 						})
 					]
 				}, index))
-			}), (0, react_jsx_runtime.jsx)(ModelFacingContent, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelFacingContent, {
 				content,
 				t
 			})] });
@@ -718,41 +717,41 @@ window.__ModuleLoader__.load({
 			const opaque = {
 				rendered: null,
 				summary: null,
-				body: (0, react_jsx_runtime.jsx)(OpaqueBody, { ...props })
+				body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, { ...props })
 			};
 			switch (form) {
 				case "instructions": return instructionChanges(props.source) === null ? opaque : {
 					rendered: "instructions",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(InstructionsBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(InstructionsBody, { ...props })
 				};
 				case "catalog": return catalogEntries(props.source) === null ? opaque : {
 					rendered: "catalog",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(CatalogBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CatalogBody, { ...props })
 				};
 				case "snapshot": return snapshotSections(props.source) === null ? opaque : {
 					rendered: "snapshot",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(SnapshotBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(SnapshotBody, { ...props })
 				};
 				case "notice": {
 					const summary = noticeSummary(props.source);
 					return summary === null ? opaque : {
 						rendered: "notice",
 						summary,
-						body: (0, react_jsx_runtime.jsx)(NoticeBody, { ...props })
+						body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(NoticeBody, { ...props })
 					};
 				}
 				case "relay": return relaySender(props.source) === null ? opaque : {
 					rendered: "relay",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(RelayBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(RelayBody, { ...props })
 				};
 				case "recall": return recalledSessions(props.source) === null ? opaque : {
 					rendered: "recall",
 					summary: null,
-					body: (0, react_jsx_runtime.jsx)(RecallBody, { ...props })
+					body: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(RecallBody, { ...props })
 				};
 				case null: return opaque;
 				/* v8 ignore next 4 -- closed-union backstop; the compiler rejects a new
@@ -780,7 +779,7 @@ window.__ModuleLoader__.load({
 			"summary": "laz-Ya_summary"
 		};
 		//#endregion
-		//#region lib/types/client/chat/ContextInjectionRow.js
+		//#region src/client/chat/ContextInjectionRow.tsx
 		/**
 		* Render logged context with the Tool calls disclosure chrome from Figma.
 		*
@@ -799,28 +798,28 @@ window.__ModuleLoader__.load({
 				source,
 				t
 			});
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
 				className: ContextInjectionRow_module_css_default.root,
-				icon: provenance.role === "recall" ? (0, react_jsx_runtime.jsx)("span", {
+				icon: provenance.role === "recall" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					"data-context-recall-icon": true,
-					children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.ReferenceIcon, { kind: "session" })
-				}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconContextInjectionOutline16, { size: 14 }),
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.ReferenceIcon, { kind: "session" })
+				}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconContextInjectionOutline16, { size: 14 }),
 				chevronClassName: ContextInjectionRow_module_css_default.chevron,
 				title: t(provenance.role === "recall" ? "message.contextRecall" : "message.contextInjection"),
-				collapsedContent: provenance.label === null ? void 0 : (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
-					(0, react_jsx_runtime.jsx)("span", {
+				collapsedContent: provenance.label === null ? void 0 : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextInjectionRow_module_css_default.sep,
 						"aria-hidden": true
 					}),
-					(0, react_jsx_runtime.jsx)("span", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextInjectionRow_module_css_default.source,
 						"data-context-source": true,
 						children: provenance.label
 					}),
-					summary !== null && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+					summary !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextInjectionRow_module_css_default.sep,
 						"aria-hidden": true
-					}), (0, react_jsx_runtime.jsx)("span", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ContextInjectionRow_module_css_default.summary,
 						"data-context-summary": true,
 						children: summary
@@ -833,7 +832,7 @@ window.__ModuleLoader__.load({
 				onToggle: () => {
 					setOpen((value) => !value);
 				},
-				children: (0, react_jsx_runtime.jsx)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: ContextInjectionRow_module_css_default.body,
 					"data-context-injection-body": true,
 					"data-context-form": rendered ?? void 0,
@@ -842,7 +841,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/message-chrome.js
+		//#region src/client/chat/message-chrome.ts
 		function pad2(n) {
 			return String(n).padStart(2, "0");
 		}
@@ -923,7 +922,7 @@ window.__ModuleLoader__.load({
 			return `${d.getFullYear() === n.getFullYear() ? t("clock.md", params) : t("clock.ymd", params)} ${clock}`;
 		}
 		//#endregion
-		//#region lib/types/client/chat/use-calendar-day.js
+		//#region src/client/chat/use-calendar-day.ts
 		/**
 		* Local calendar-day epoch that advances at each local midnight.
 		* @returns Midnight ms for the current local day; updates after the boundary.
@@ -964,7 +963,7 @@ window.__ModuleLoader__.load({
 			"visuallyHidden": "awpErG_visuallyHidden"
 		};
 		//#endregion
-		//#region lib/types/client/chat/MessageIconActions.js
+		//#region src/client/chat/MessageIconActions.tsx
 		/**
 		* Copy / branch (/ clock) IconActions row shared by user and assistant chrome.
 		* @param props - Copy text, event time, clock side, branch callback, className.
@@ -997,13 +996,13 @@ window.__ModuleLoader__.load({
 					}, 1e3);
 				});
 			}, [copied, text]);
-			const clockEl = time === void 0 ? null : (0, react_jsx_runtime.jsxs)("span", {
+			const clockEl = time === void 0 ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 				className: clock === "start" ? MessageIconActions_module_css_default.timeStart : MessageIconActions_module_css_default.timeEnd,
 				children: [
 					formatMessageClock(time, t, day),
-					runMs !== void 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+					runMs !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
 						" ",
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageIconActions_module_css_default.runTimeDot,
 							"aria-hidden": true,
 							children: "·"
@@ -1011,9 +1010,9 @@ window.__ModuleLoader__.load({
 						" ",
 						t("message.ranFor", { duration: formatRunDuration(runMs, t) })
 					] }),
-					ttftMs !== void 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+					ttftMs !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
 						" ",
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageIconActions_module_css_default.runTimeDot,
 							"aria-hidden": true,
 							children: "·"
@@ -1021,9 +1020,9 @@ window.__ModuleLoader__.load({
 						" ",
 						t("message.ttft", { seconds: formatLatencySeconds(ttftMs) })
 					] }),
-					tokensPerSecond !== void 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+					tokensPerSecond !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
 						" ",
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageIconActions_module_css_default.runTimeDot,
 							"aria-hidden": true,
 							children: "·"
@@ -1033,26 +1032,26 @@ window.__ModuleLoader__.load({
 					] })
 				]
 			});
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: className === void 0 ? MessageIconActions_module_css_default.actions : `${MessageIconActions_module_css_default.actions} ${className}`,
 				children: [
 					clock === "start" ? clockEl : null,
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 						label: copied ? t("copied") : t("copy"),
 						side: "bottom",
-						children: (0, react_jsx_runtime.jsx)("button", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 							type: "button",
 							className: MessageIconActions_module_css_default.action,
 							"aria-label": copied ? t("copied") : t("copy"),
 							onClick: onCopy,
-							children: copied ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, {}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCopyOutline16, {})
+							children: copied ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, {}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCopyOutline16, {})
 						})
 					}),
 					extraActions,
-					onBranch !== void 0 && (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+					onBranch !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 						label: branchUnavailable ? t("message.branchUnavailable") : t("message.branch"),
 						side: "bottom",
-						children: (0, react_jsx_runtime.jsx)("button", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 							type: "button",
 							className: MessageIconActions_module_css_default.action,
 							"aria-label": t("message.branch"),
@@ -1060,10 +1059,10 @@ window.__ModuleLoader__.load({
 							"aria-describedby": branchUnavailable ? reasonId : void 0,
 							"data-unavailable": branchUnavailable || void 0,
 							onClick: branchUnavailable ? void 0 : onBranch,
-							children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBranchOutline16, {})
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBranchOutline16, {})
 						})
 					}),
-					onBranch !== void 0 && branchUnavailable && (0, react_jsx_runtime.jsx)("span", {
+					onBranch !== void 0 && branchUnavailable && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						id: reasonId,
 						className: MessageIconActions_module_css_default.visuallyHidden,
 						children: t("message.branchUnavailable")
@@ -1073,7 +1072,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/MessageItem.js
+		//#region src/client/chat/MessageItem.tsx
 		function contentParts(content) {
 			const texts = [];
 			const images = [];
@@ -1125,12 +1124,12 @@ window.__ModuleLoader__.load({
 			}, [active, deadline]);
 			const label = active ? t("message.retry.active") : node.retryState === "cancelled" ? t("message.retry.cancelled") : node.retryState === "started" ? t("message.retry.started") : t("message.retry.scheduled");
 			const seconds = active ? remainingSeconds : scheduledSeconds;
-			return (0, react_jsx_runtime.jsxs)("details", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("details", {
 				className: MessageItem_module_css_default.retryRow,
 				"data-active": active || void 0,
-				children: [(0, react_jsx_runtime.jsx)("summary", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("summary", {
 					className: MessageItem_module_css_default.retrySummary,
-					children: (0, react_jsx_runtime.jsx)("span", {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: MessageItem_module_css_default.retryText,
 						role: "status",
 						children: t("message.retry.status", {
@@ -1140,12 +1139,12 @@ window.__ModuleLoader__.load({
 							seconds
 						})
 					})
-				}), (0, react_jsx_runtime.jsxs)("div", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: MessageItem_module_css_default.retryDetails,
-					children: [(0, react_jsx_runtime.jsxs)("div", { children: [(0, react_jsx_runtime.jsx)("span", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: MessageItem_module_css_default.retryDetailLabel,
 						children: t("message.retry.delay")
-					}), t("duration.milliseconds", { milliseconds: Math.round(node.delayMs) })] }), (0, react_jsx_runtime.jsxs)("div", { children: [(0, react_jsx_runtime.jsx)("span", {
+					}), t("duration.milliseconds", { milliseconds: Math.round(node.delayMs) })] }), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: MessageItem_module_css_default.retryDetailLabel,
 						children: t("message.retry.failure")
 					}), failureMessage(node.failure.message, node.failure.code, t)] })]
@@ -1154,25 +1153,25 @@ window.__ModuleLoader__.load({
 		}
 		/** Persistent, turn-positioned feedback for a terminal failure. */
 		function TurnErrorItem({ node, t }) {
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: MessageItem_module_css_default.turnErrorRow,
 				role: "status",
 				children: [
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, {
 						state: "error",
 						className: MessageItem_module_css_default.turnErrorDot
 					}),
-					(0, react_jsx_runtime.jsxs)("div", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						className: MessageItem_module_css_default.turnErrorCopy,
-						children: [(0, react_jsx_runtime.jsx)("span", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.turnErrorTitle,
 							children: t("message.turnError")
-						}), (0, react_jsx_runtime.jsx)("span", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: MessageItem_module_css_default.turnErrorMessage,
 							children: failureMessage(node.message, node.code, t)
 						})]
 					}),
-					node.code !== void 0 && (0, react_jsx_runtime.jsx)("code", {
+					node.code !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("code", {
 						className: MessageItem_module_css_default.turnErrorCode,
 						children: node.code
 					})
@@ -1181,18 +1180,18 @@ window.__ModuleLoader__.load({
 		}
 		/** Persistent, turn-positioned notice for a turn ended at the output-token cap. */
 		function TurnMaxTokensItem({ t }) {
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: MessageItem_module_css_default.turnErrorRow,
 				role: "status",
-				children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, {
 					state: "warning",
 					className: MessageItem_module_css_default.turnErrorDot
-				}), (0, react_jsx_runtime.jsxs)("div", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: MessageItem_module_css_default.turnErrorCopy,
-					children: [(0, react_jsx_runtime.jsx)("span", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: MessageItem_module_css_default.maxTokensTitle,
 						children: t("message.maxTokens")
-					}), (0, react_jsx_runtime.jsx)("span", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: MessageItem_module_css_default.turnErrorMessage,
 						children: t("message.maxTokens.hint")
 					})]
@@ -1205,27 +1204,27 @@ window.__ModuleLoader__.load({
 			const images = previewImages ?? contentImages;
 			const truncated = (total) => t("json.truncated", { total });
 			const showBubble = text !== "" || rest.length > 0;
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: MessageItem_module_css_default.userRow,
 				"data-pending-steering": pending || void 0,
 				"data-submission-echo": echo || void 0,
 				"data-time-hover-root": true,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: MessageItem_module_css_default.userStack,
 					children: [
 						renderMessageImages({
 							images,
 							align: "end"
 						}),
-						showBubble && (0, react_jsx_runtime.jsxs)("div", {
+						showBubble && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							className: MessageItem_module_css_default.bubble,
-							children: [(0, _deepseek_ai_dsh_client_ui_primitives.projectUserText)(text, referenceLabels), rest.map((block, i) => (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+							children: [(0, _deepseek_ai_dsh_client_ui_primitives.projectUserText)(text, referenceLabels), rest.map((block, i) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 								label: t("message.extraBlock"),
 								payload: block,
 								truncatedLabel: truncated
 							}, i))]
 						}),
-						referenceLabels.length > 0 && (0, react_jsx_runtime.jsx)("div", {
+						referenceLabels.length > 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: MessageItem_module_css_default.referenceSummary,
 							children: t("message.referenceSummary", { labels: referenceLabels.join(t("message.referenceSeparator")) })
 						})
@@ -1240,12 +1239,12 @@ window.__ModuleLoader__.load({
 		* @returns the pending steering bubble.
 		*/
 		function PendingSteeringBubble({ content, renderMessageImages, t }) {
-			return (0, react_jsx_runtime.jsx)(UserStyleBubble, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(UserStyleBubble, {
 				content,
 				renderMessageImages,
 				pending: true,
 				t,
-				actions: (text) => (0, react_jsx_runtime.jsx)(MessageIconActions, {
+				actions: (text) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(MessageIconActions, {
 					text,
 					clock: "start",
 					className: MessageItem_module_css_default.actions,
@@ -1262,7 +1261,7 @@ window.__ModuleLoader__.load({
 		* @returns the echoed user bubble.
 		*/
 		function PendingSubmissionBubble({ submission, renderMessageImages, t }) {
-			return (0, react_jsx_runtime.jsx)(UserStyleBubble, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(UserStyleBubble, {
 				content: (0, react.useMemo)(() => submission.text === "" ? [] : [{
 					type: "text",
 					text: submission.text
@@ -1276,7 +1275,7 @@ window.__ModuleLoader__.load({
 				renderMessageImages,
 				echo: true,
 				t,
-				actions: (text) => (0, react_jsx_runtime.jsx)(MessageIconActions, {
+				actions: (text) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(MessageIconActions, {
 					text,
 					time: submission.time,
 					clock: "start",
@@ -1288,12 +1287,12 @@ window.__ModuleLoader__.load({
 		/** User and admitted-steering keyed Chat renderer. */
 		const UserMessageNodeView = (0, react.memo)(function UserMessageNodeView({ node, renderMessageImages, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)(UserStyleBubble, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(UserStyleBubble, {
 				content: data.content,
 				renderMessageImages,
 				...data.referenceLabels === void 0 ? {} : { referenceLabels: data.referenceLabels },
 				t,
-				actions: (text) => (0, react_jsx_runtime.jsx)(MessageIconActions, {
+				actions: (text) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(MessageIconActions, {
 					text,
 					time: data.time,
 					clock: "start",
@@ -1305,7 +1304,7 @@ window.__ModuleLoader__.load({
 		/** Injected-context keyed Chat renderer. */
 		const ContextMessageNodeView = (0, react.memo)(function ContextMessageNodeView({ node, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)(ContextInjectionRow, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ContextInjectionRow, {
 				content: data.content,
 				source: data.source,
 				provenance: data.provenance,
@@ -1315,7 +1314,7 @@ window.__ModuleLoader__.load({
 		});
 		/** Automatic compaction keyed Chat renderer. */
 		const CompactionNodeView = (0, react.memo)(function CompactionNodeView({ node, t }) {
-			return (0, react_jsx_runtime.jsx)(CompactionItem, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompactionItem, {
 				node: node.data,
 				t
 			});
@@ -1323,7 +1322,7 @@ window.__ModuleLoader__.load({
 		/** Correlated retry-chain keyed Chat renderer. */
 		const RetryNodeView = (0, react.memo)(function RetryNodeView({ node, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)(ModelRetryItem, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ModelRetryItem, {
 				node: data.current,
 				active: data.current.retryState === "scheduled",
 				t
@@ -1331,21 +1330,21 @@ window.__ModuleLoader__.load({
 		});
 		/** Terminal turn-error keyed Chat renderer. */
 		const TurnErrorNodeView = (0, react.memo)(function TurnErrorNodeView({ node, t }) {
-			return (0, react_jsx_runtime.jsx)(TurnErrorItem, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(TurnErrorItem, {
 				node: node.data,
 				t
 			});
 		});
 		/** Max-tokens turn-end notice keyed Chat renderer. */
 		const TurnMaxTokensNodeView = (0, react.memo)(function TurnMaxTokensNodeView({ t }) {
-			return (0, react_jsx_runtime.jsx)(TurnMaxTokensItem, { t });
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(TurnMaxTokensItem, { t });
 		});
 		/** Explicit unknown-surface keyed Chat renderer. */
 		const UnknownNodeView = (0, react.memo)(function UnknownNodeView({ node, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: MessageItem_module_css_default.contextRow,
-				children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 					label: t("message.unknownSurface", { type: data.type }),
 					payload: data.data,
 					truncatedLabel: (total) => t("json.truncated", { total })
@@ -1417,7 +1416,7 @@ window.__ModuleLoader__.load({
 			return name === "subagent" || name.startsWith("subagent_");
 		}
 		//#endregion
-		//#region lib/types/client/stores.js
+		//#region src/client/stores.ts
 		/** Per-Session Chat selection store shared by the transcript and details panel. */
 		/**
 		* Resolve any stored generation for one Turn.
@@ -1459,7 +1458,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/searchable-hidden.js
+		//#region src/client/chat/searchable-hidden.ts
 		/**
 		* Apply searchable hidden state without unmounting a stable subtree.
 		* @param hidden - whether the subtree is currently hidden.
@@ -1516,7 +1515,7 @@ window.__ModuleLoader__.load({
 			"turnStatusClock": "SyCKCG_turnStatusClock"
 		};
 		//#endregion
-		//#region lib/types/client/chat/ChatNodeSeat.js
+		//#region src/client/chat/ChatNodeSeat.tsx
 		const EMPTY_PROCESS_KEYS = [];
 		function turnProcessOpeningHumanAnchor(keys, nodes, spec) {
 			let anchor;
@@ -1627,7 +1626,7 @@ window.__ModuleLoader__.load({
 				...owner,
 				node: routedNode
 			};
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				ref: wrapperRef,
 				className: ChatView_module_css_default.flowItem,
 				"data-chat-anchor-key": routedNode.key,
@@ -1640,7 +1639,7 @@ window.__ModuleLoader__.load({
 				children: renderSlot("conversation.chat.node", routedOwner, {
 					entryKey: routedNode.kind,
 					hookContext: nodeKey,
-					fallback: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+					fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 						label: t("message.unknownSurface", { type: routedNode.kind }),
 						payload: routedNode.data,
 						truncatedLabel: (total) => t("json.truncated", { total })
@@ -1675,7 +1674,7 @@ window.__ModuleLoader__.load({
 			"slot": "oxfbkG_slot"
 		};
 		//#endregion
-		//#region lib/types/client/chat/TurnNavigator.js
+		//#region src/client/chat/TurnNavigator.tsx
 		/** Resting gap between neighbouring marks before the rail compresses to fit. */
 		const TURN_SPACING_PX = 10;
 		/** Rail padding above the first mark and below the last one, per end. */
@@ -1699,41 +1698,46 @@ window.__ModuleLoader__.load({
 			const ratio = Math.max(0, Math.min(1, (clientY - rect.top - RAIL_INSET_PX) / usableHeight));
 			return items[Math.round(ratio * (items.length - 1))];
 		}
-		function TurnNavigatorRail({ items, activeTurn, onNavigate, t }) {
+		function TurnNavigatorRail({ items, activeTurn, settling, onNavigate, t }) {
+			const [publishedItems, setPublishedItems] = (0, react.useState)(items);
+			(0, react.useLayoutEffect)(() => {
+				if (!settling) setPublishedItems((current) => current === items ? current : items);
+			}, [items, settling]);
 			const [previewTurn, setPreviewTurn] = (0, react.useState)(null);
 			const previewId = (0, react.useId)();
-			if (items.length < 2) return null;
-			const previewIndex = items.findIndex((item) => item.turn === previewTurn);
-			const preview = previewIndex < 0 ? void 0 : items[previewIndex];
-			const previewPosition = previewIndex < 0 ? void 0 : itemPosition(previewIndex, items.length);
+			if (publishedItems.length < 2) return null;
+			const previewIndex = publishedItems.findIndex((item) => item.turn === previewTurn);
+			const preview = previewIndex < 0 ? void 0 : publishedItems[previewIndex];
+			const previewPosition = previewIndex < 0 ? void 0 : itemPosition(previewIndex, publishedItems.length);
 			const previewAtPointer = (event) => {
-				setPreviewTurn(itemAtPointer(items, event.currentTarget, event.clientY)?.turn ?? null);
+				setPreviewTurn(itemAtPointer(publishedItems, event.currentTarget, event.clientY)?.turn ?? null);
 			};
 			const navigateAtPointer = (event) => {
-				const item = itemAtPointer(items, event.currentTarget, event.clientY);
+				const item = itemAtPointer(publishedItems, event.currentTarget, event.clientY);
 				if (item !== void 0) onNavigate(item);
 			};
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: TurnNavigator_module_css_default.slot,
-				children: (0, react_jsx_runtime.jsxs)("nav", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("nav", {
 					className: TurnNavigator_module_css_default.rail,
-					style: railSize(items.length),
+					style: railSize(publishedItems.length),
 					"aria-label": t("chat.turnNavigation.label"),
+					"aria-busy": settling || void 0,
 					onClick: navigateAtPointer,
 					onPointerMove: previewAtPointer,
 					onPointerLeave: () => {
 						setPreviewTurn(null);
 					},
-					children: [(0, react_jsx_runtime.jsx)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: TurnNavigator_module_css_default.marks,
-						children: items.map((item, index) => {
+						children: publishedItems.map((item, index) => {
 							const active = item.turn === activeTurn;
 							const showingPreview = item.turn === previewTurn;
 							const markClass = active ? `${TurnNavigator_module_css_default.mark} ${TurnNavigator_module_css_default.markActive}` : showingPreview ? `${TurnNavigator_module_css_default.mark} ${TurnNavigator_module_css_default.markPreview}` : TurnNavigator_module_css_default.mark;
-							return (0, react_jsx_runtime.jsx)("div", {
+							return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: TurnNavigator_module_css_default.markPosition,
-								style: itemPosition(index, items.length),
-								children: (0, react_jsx_runtime.jsx)("button", {
+								style: itemPosition(index, publishedItems.length),
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 									type: "button",
 									className: markClass,
 									"aria-label": t("chat.turnNavigation.jump", { turn: item.turn }),
@@ -1752,21 +1756,21 @@ window.__ModuleLoader__.load({
 								})
 							}, item.turn);
 						})
-					}), preview !== void 0 && previewPosition !== void 0 && (0, react_jsx_runtime.jsxs)("div", {
+					}), preview !== void 0 && previewPosition !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						id: previewId,
 						role: "tooltip",
 						className: TurnNavigator_module_css_default.preview,
 						style: previewPosition,
 						children: [
-							(0, react_jsx_runtime.jsx)("div", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: TurnNavigator_module_css_default.previewTurn,
 								children: t("chat.turnNavigation.turn", { turn: preview.turn })
 							}),
-							preview.prompt !== "" && (0, react_jsx_runtime.jsx)("div", {
+							preview.prompt !== "" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: TurnNavigator_module_css_default.previewPrompt,
 								children: preview.prompt
 							}),
-							preview.response !== "" && (0, react_jsx_runtime.jsx)("div", {
+							preview.response !== "" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: TurnNavigator_module_css_default.previewResponse,
 								children: preview.response
 							})
@@ -1786,7 +1790,7 @@ window.__ModuleLoader__.load({
 		*/
 		const TurnNavigator = (0, react.memo)(TurnNavigatorRail);
 		//#endregion
-		//#region lib/types/client/chat/ChatView.js
+		//#region src/client/chat/ChatView.tsx
 		/** Active column host when present; otherwise the view-local scroller. */
 		function scrollerOf(from) {
 			return from.closest("[data-conversation-scroll]") ?? from;
@@ -1908,11 +1912,11 @@ window.__ModuleLoader__.load({
 				};
 			}, [anchor]);
 			const showClock = elapsedMs >= 15e3;
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: ChatView_module_css_default.turnStatus,
 				role: "status",
 				"aria-live": "polite",
-				children: [t("chat.deepDiving"), showClock && (0, react_jsx_runtime.jsx)("span", {
+				children: [t("chat.deepDiving"), showClock && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					className: ChatView_module_css_default.turnStatusClock,
 					"aria-hidden": true,
 					children: formatRunDuration(elapsedMs, t)
@@ -2233,44 +2237,45 @@ window.__ModuleLoader__.load({
 				if (isAtBottom) chatScroll.save(null);
 				else if (position !== null) chatScroll.save(position);
 			}, [loadingOlder, chatScroll]);
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: ChatView_module_css_default.root,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					ref: listRef,
 					className: ChatView_module_css_default.scroll,
 					children: [
-						(0, react_jsx_runtime.jsx)(TurnNavigator, {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)(TurnNavigator, {
 							items: turnNavigationItems,
 							activeTurn,
+							settling: hasMore || loadingOlder,
 							onNavigate: navigateToTurn,
 							t
-						}),
-						(0, react_jsx_runtime.jsxs)("div", {
+						}, sessionId),
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							ref: columnRef,
 							className: ChatView_module_css_default.column,
 							"data-chat-flow": "",
 							children: [
-								openState === "loading" && (0, react_jsx_runtime.jsx)("div", {
+								openState === "loading" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 									className: ChatView_module_css_default.hint,
 									children: t("chat.loadingHistory")
 								}),
-								openState === "error" && openError !== null && (0, react_jsx_runtime.jsx)("div", {
+								openState === "error" && openError !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 									className: ChatView_module_css_default.openError,
 									children: t("chat.loadError", {
 										message: openError.message,
 										code: openError.code
 									})
 								}),
-								hasMore && (0, react_jsx_runtime.jsx)("div", {
+								hasMore && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 									className: ChatView_module_css_default.older,
-									children: (0, react_jsx_runtime.jsx)("button", {
+									children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 										type: "button",
 										disabled: loadingOlder,
 										onClick: loadOlderAnchored,
 										children: loadingOlder ? t("loading") : t("chat.loadOlder")
 									})
 								}),
-								order.map((nodeKey) => (0, react_jsx_runtime.jsx)(ChatNodeSeat, {
+								order.map((nodeKey) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ChatNodeSeat, {
 									nodeKey,
 									historyIncomplete: hasMore,
 									compactTranscript,
@@ -2287,25 +2292,25 @@ window.__ModuleLoader__.load({
 									renderSlot,
 									t
 								}, nodeKey)),
-								running && (0, react_jsx_runtime.jsx)(TurnStatus, {
+								running && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(TurnStatus, {
 									startTime: runningTurnStart,
 									t
 								}),
-								pendingSteering.map((item) => (0, react_jsx_runtime.jsx)(PendingSteeringBubble, {
+								pendingSteering.map((item) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(PendingSteeringBubble, {
 									content: item.content,
 									renderMessageImages,
 									t
 								}, item.id)),
-								visibleSubmissions.map((submission) => (0, react_jsx_runtime.jsx)(PendingSubmissionBubble, {
+								visibleSubmissions.map((submission) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(PendingSubmissionBubble, {
 									submission,
 									renderMessageImages,
 									t
 								}, submission.requestId))
 							]
 						}),
-						!atBottom && (0, react_jsx_runtime.jsx)("div", {
+						!atBottom && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: ChatView_module_css_default.toBottomSlot,
-							children: (0, react_jsx_runtime.jsx)("button", {
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 								type: "button",
 								className: ChatView_module_css_default.toBottom,
 								"aria-label": t("chat.toBottom"),
@@ -2314,11 +2319,11 @@ window.__ModuleLoader__.load({
 									/* v8 ignore next -- ref-null guard: the button only renders alongside the mounted list. */
 									if (local !== null) toBottom(scrollerOf(local));
 								},
-								children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
 							})
 						})
 					]
-				}), fileOpenError !== null && (0, react_jsx_runtime.jsx)(FileOpenErrorDialog, {
+				}), fileOpenError !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(FileOpenErrorDialog, {
 					path: fileOpenError.path,
 					message: fileOpenError.message,
 					busy: fileOpenBusy,
@@ -2332,18 +2337,18 @@ window.__ModuleLoader__.load({
 		}
 		/** In-page Host open-path refusal: the wire reason plus a retry of the same path. */
 		function FileOpenErrorDialog({ path, message, busy, onClose, onRetry, t }) {
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Modal, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Modal, {
 				open: true,
 				onClose,
 				closeLabel: t("close"),
 				title: t(isFolderOpenPath(path) ? "fileOpen.folderTitle" : "fileOpen.title"),
 				description: message,
-				footer: (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+				footer: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
 					variant: "outline",
 					className: ChatView_module_css_default.modalAction,
 					onClick: onClose,
 					children: t("cancel")
-				}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Button, {
 					variant: "primary",
 					className: ChatView_module_css_default.modalAction,
 					disabled: busy,
@@ -2353,7 +2358,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/locale.js
+		//#region src/client/locale.ts
 		/** Chat-owned locale namespace and dictionaries. */
 		/** Namespace for Chat target, node, statistics, and details copy. */
 		const NS = "chat";
@@ -2576,7 +2581,7 @@ window.__ModuleLoader__.load({
 			"clock.ymd": "{y}-{m}-{d}"
 		};
 		//#endregion
-		//#region lib/types/client/chat/use-throttled-visual-update.js
+		//#region src/client/chat/use-throttled-visual-update.ts
 		/** Frame-throttled scheduling for non-essential visual alignment. */
 		const DEFAULT_INTERVAL_FRAMES = 3;
 		/**
@@ -2644,7 +2649,7 @@ window.__ModuleLoader__.load({
 			"title": "_4G665G_title"
 		};
 		//#endregion
-		//#region lib/types/client/chat/ReasoningRow.js
+		//#region src/client/chat/ReasoningRow.tsx
 		/** Assistant reasoning disclosure, independent of Tool-call presentation. */
 		function firstLine(text) {
 			const newline = text.indexOf("\n");
@@ -2678,19 +2683,19 @@ window.__ModuleLoader__.load({
 				scheduleSummaryScroll,
 				summary
 			]);
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: ReasoningRow_module_css_default.root,
 				"data-variant": "think",
 				"data-state": running ? "running" : "ok",
-				children: [running && (0, react_jsx_runtime.jsx)("span", {
+				children: [running && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					className: accessibility_module_css_default.visuallyHidden,
 					children: t("row.running")
-				}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
 					rowClassName: ReasoningRow_module_css_default.row,
 					leadingClassName: ReasoningRow_module_css_default.leading,
 					titleClassName: ReasoningRow_module_css_default.title,
 					chevronClassName: ReasoningRow_module_css_default.chevron,
-					icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconThinkOutline14, { size: 14 }),
+					icon: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconThinkOutline14, { size: 14 }),
 					title: t("message.think"),
 					open: expanded,
 					expandable: true,
@@ -2698,16 +2703,16 @@ window.__ModuleLoader__.load({
 					onToggle: () => {
 						setExpanded((value) => !value);
 					},
-					collapsedContent: (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+					collapsedContent: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: ReasoningRow_module_css_default.separator,
 						"aria-hidden": true
-					}), (0, react_jsx_runtime.jsx)("span", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						ref: summaryRef,
 						className: ReasoningRow_module_css_default.summary,
 						"data-follow-end": running || void 0,
 						children: summary
 					})] }),
-					children: (0, react_jsx_runtime.jsx)("div", {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: ReasoningRow_module_css_default.thinkBody,
 						children: text
 					})
@@ -2732,7 +2737,7 @@ window.__ModuleLoader__.load({
 			"stopped": "j1dK7a_stopped"
 		};
 		//#endregion
-		//#region lib/types/client/chat/AssistantMarkdown.js
+		//#region src/client/chat/AssistantMarkdown.tsx
 		/** Reasoning block as the Think variant summary row (figma 39:28304). */
 		const AssistantMarkdown = (0, react.memo)(function AssistantMarkdown({ blocks, streaming, interrupted, renderMessageImages, reasoningHidden = false, revealProcess, mentions, t }) {
 			const labels = (0, react.useMemo)(() => markdownLabels(t), [t]);
@@ -2744,7 +2749,7 @@ window.__ModuleLoader__.load({
 				if (block === void 0) continue;
 				switch (block.kind) {
 					case "text":
-						rendered.push((0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MarkdownText, {
+						rendered.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.MarkdownText, {
 							text: block.text,
 							streaming,
 							labels,
@@ -2752,10 +2757,10 @@ window.__ModuleLoader__.load({
 						}, i));
 						break;
 					case "reasoning":
-						rendered.push((0, react_jsx_runtime.jsx)(ProcessReasoning, {
+						rendered.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(ProcessReasoning, {
 							hidden: reasoningHidden,
 							reveal: revealProcess,
-							children: (0, react_jsx_runtime.jsx)(ReasoningRow, {
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ReasoningRow, {
 								text: block.text,
 								running: streaming && i === last,
 								t
@@ -2771,26 +2776,26 @@ window.__ModuleLoader__.load({
 							group.push(next);
 							i += 1;
 						}
-						rendered.push((0, react_jsx_runtime.jsx)(react.Fragment, { children: renderMessageImages({
+						rendered.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(react.Fragment, { children: renderMessageImages({
 							images: group.map(({ attachment }) => ({ attachment })),
 							align: "start"
 						}) }, start));
 						break;
 					}
 					case "tool-call": break;
-					default: rendered.push((0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
+					default: rendered.push(/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.JsonBlock, {
 						label: t("message.unknownBlock"),
 						payload: block.block,
 						truncatedLabel: (total) => t("json.truncated", { total })
 					}, i));
 				}
 			}
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: AssistantMarkdown_module_css_default.root,
 				"data-streaming": streaming || void 0,
-				children: (0, react_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: AssistantMarkdown_module_css_default.body,
-					children: [rendered, interrupted && (0, react_jsx_runtime.jsx)("span", {
+					children: [rendered, interrupted && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: AssistantMarkdown_module_css_default.stopped,
 						children: t("message.stopped")
 					})]
@@ -2798,7 +2803,7 @@ window.__ModuleLoader__.load({
 			});
 		});
 		function ProcessReasoning({ hidden, reveal, children }) {
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				ref: useSearchableHidden(hidden, reveal ?? NOOP),
 				"data-turn-process-inline": hidden || void 0,
 				children
@@ -2806,7 +2811,7 @@ window.__ModuleLoader__.load({
 		}
 		const NOOP = () => {};
 		//#endregion
-		//#region lib/types/client/chat/AssistantNodeView.js
+		//#region src/client/chat/AssistantNodeView.tsx
 		/** Streaming, settled, and interrupted Assistant states share one keyed renderer instance. */
 		const AssistantNodeView = (0, react.memo)(function AssistantNodeView({ node, useTurnData, turnProcess, openFile, renderMessageImages, fileMentions, t }) {
 			const data = node.data;
@@ -2831,7 +2836,7 @@ window.__ModuleLoader__.load({
 			const revealProcess = (0, react.useCallback)(() => {
 				turnProcess?.setOpen(true);
 			}, [turnProcess]);
-			return (0, react_jsx_runtime.jsx)(AssistantMarkdown, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(AssistantMarkdown, {
 				blocks: data.blocks,
 				streaming: data.status === "running",
 				interrupted: data.status === "interrupted",
@@ -2865,14 +2870,14 @@ window.__ModuleLoader__.load({
 			"title": "QroMFa_title"
 		};
 		//#endregion
-		//#region lib/types/client/chat/GenericCommandCard.js
+		//#region src/client/chat/GenericCommandCard.tsx
 		/** Node state → row state semantic (running while unsettled; outcome kind after). */
 		function stateOf(outcome) {
 			if (outcome === null) return "running";
 			return outcome.kind === "error" ? "error" : "ok";
 		}
 		function leadingFor(state) {
-			return state === "error" ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, { state: "error" }) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconApiOutline14, { size: 14 });
+			return state === "error" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.StateDot, { state: "error" }) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconApiOutline14, { size: 14 });
 		}
 		function GenericCommandCard({ node, t, runningSummary }) {
 			const [expanded, setExpanded] = (0, react.useState)(false);
@@ -2882,20 +2887,20 @@ window.__ModuleLoader__.load({
 			const state = stateOf(node.outcome);
 			const body = text !== void 0 && text.includes("\n") ? text : null;
 			const open = expanded && body !== null;
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: GenericCommandCard_module_css_default.root,
 				"data-variant": "others",
 				"data-state": state,
 				children: [
-					state === "running" && (0, react_jsx_runtime.jsx)("span", {
+					state === "running" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: accessibility_module_css_default.visuallyHidden,
 						children: t("row.running")
 					}),
-					state === "error" && (0, react_jsx_runtime.jsx)("span", {
+					state === "error" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: accessibility_module_css_default.visuallyHidden,
 						children: t("row.failed")
 					}),
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
 						rowClassName: GenericCommandCard_module_css_default.row,
 						leadingClassName: GenericCommandCard_module_css_default.leading,
 						titleClassName: GenericCommandCard_module_css_default.title,
@@ -2909,15 +2914,15 @@ window.__ModuleLoader__.load({
 						onToggle: () => {
 							setExpanded((value) => !value);
 						},
-						collapsedContent: (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+						collapsedContent: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: GenericCommandCard_module_css_default.separator,
 							"aria-hidden": true
-						}), (0, react_jsx_runtime.jsx)("span", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: GenericCommandCard_module_css_default.summary,
 							"data-error": state === "error" || void 0,
 							children: summary
 						})] }),
-						children: (0, react_jsx_runtime.jsx)("pre", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("pre", {
 							className: GenericCommandCard_module_css_default.body,
 							"data-error": state === "error" || void 0,
 							children: body
@@ -2927,36 +2932,36 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/CompactionCommandCard.js
+		//#region src/client/chat/CompactionCommandCard.tsx
 		/** Render one manual compaction lifecycle without duplicating its checkpoint marker. */
 		function CompactionCommandCard({ node, compaction, t }) {
-			if (compaction !== void 0) return (0, react_jsx_runtime.jsx)(CompactionItem, {
+			if (compaction !== void 0) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompactionItem, {
 				node: compaction,
 				title: t("message.compaction.commandTitle"),
 				fallbackSummary: node.outcome?.text ?? null,
 				t
 			});
-			if (node.outcome !== null) return (0, react_jsx_runtime.jsx)(GenericCommandCard, {
+			if (node.outcome !== null) return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(GenericCommandCard, {
 				node,
 				t
 			});
-			return (0, react_jsx_runtime.jsx)(GenericCommandCard, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(GenericCommandCard, {
 				node,
 				t,
 				runningSummary: t("message.compaction.running")
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/CommandNodeView.js
+		//#region src/client/chat/CommandNodeView.tsx
 		/** Ordinary command lifecycle renderer with command-name keyed specialization. */
 		const CommandNodeView = (0, react.memo)(function CommandNodeView({ node, renderSlot, t }) {
 			const command = node.data;
 			const owner = (0, react.useMemo)(() => ({ node: command }), [command]);
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ChatView_module_css_default.callRow,
 				children: renderSlot("conversation.chat.commandview", owner, {
 					entryKey: command.name ?? "",
-					fallback: (0, react_jsx_runtime.jsx)(GenericCommandCard, {
+					fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(GenericCommandCard, {
 						...owner,
 						t
 					})
@@ -2966,9 +2971,9 @@ window.__ModuleLoader__.load({
 		/** One integrated `/compact` command and compaction transaction renderer. */
 		const ManualCompactionNodeView = (0, react.memo)(function ManualCompactionNodeView({ node, t }) {
 			const data = node.data;
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ChatView_module_css_default.callRow,
-				children: (0, react_jsx_runtime.jsx)(CompactionCommandCard, {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompactionCommandCard, {
 					node: data.command,
 					...data.compaction === null ? {} : { compaction: data.compaction },
 					t
@@ -2976,7 +2981,7 @@ window.__ModuleLoader__.load({
 			});
 		});
 		//#endregion
-		//#region lib/types/client/chat/SystemPromptRow.js
+		//#region src/client/chat/SystemPromptRow.tsx
 		/**
 		* Render one complete system prompt as a collapsed disclosure whose expanded
 		* body is the same opaque context chrome: 141px code-block scrollport and
@@ -2986,9 +2991,9 @@ window.__ModuleLoader__.load({
 		*/
 		function SystemPromptRow({ text, t }) {
 			const [open, setOpen] = (0, react.useState)(false);
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
 				className: ContextInjectionRow_module_css_default.root,
-				icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBrowseOutline16, { size: 14 }),
+				icon: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconBrowseOutline16, { size: 14 }),
 				chevronClassName: ContextInjectionRow_module_css_default.chevron,
 				title: t("message.systemPrompt"),
 				open,
@@ -2997,10 +3002,10 @@ window.__ModuleLoader__.load({
 				onToggle: () => {
 					setOpen((value) => !value);
 				},
-				children: (0, react_jsx_runtime.jsx)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: ContextInjectionRow_module_css_default.body,
 					"data-system-prompt-body": true,
-					children: (0, react_jsx_runtime.jsx)(OpaqueBody, {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(OpaqueBody, {
 						content: [{
 							type: "text",
 							text
@@ -3013,7 +3018,7 @@ window.__ModuleLoader__.load({
 		}
 		/** System-prompt keyed Chat renderer. */
 		const SystemPromptNodeView = (0, react.memo)(function SystemPromptNodeView({ node, t }) {
-			return (0, react_jsx_runtime.jsx)(SystemPromptRow, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(SystemPromptRow, {
 				text: node.data.text,
 				t
 			});
@@ -3035,7 +3040,7 @@ window.__ModuleLoader__.load({
 			"root": "zen7dW_root"
 		};
 		//#endregion
-		//#region lib/types/client/chat/TurnProcessNodeView.js
+		//#region src/client/chat/TurnProcessNodeView.tsx
 		/** Turn-level process disclosure controller. */
 		const TurnProcessNodeView = (0, react.memo)(function TurnProcessNodeView({ node, turnProcess, t }) {
 			if (turnProcess === void 0) throw new Error("turn-process node requires Turn process owner state");
@@ -3046,7 +3051,7 @@ window.__ModuleLoader__.load({
 			if (node.data.messageCount > 0) labels.push(t(node.data.messageCount === 1 ? "message.turnProcess.messages.one" : "message.turnProcess.messages.other", { count: node.data.messageCount }));
 			if (node.data.subagentCount > 0) labels.push(t(node.data.subagentCount === 1 ? "message.turnProcess.subagents.one" : "message.turnProcess.subagents.other", { count: node.data.subagentCount }));
 			const label = labels.length === 0 ? t("message.turnProcess.thoughtForAWhile") : labels.join(t("message.turnProcess.separator"));
-			return (0, react_jsx_runtime.jsxs)("button", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 				type: "button",
 				className: TurnProcessNodeView_module_css_default.root,
 				"data-open": open || void 0,
@@ -3059,14 +3064,14 @@ window.__ModuleLoader__.load({
 					event.currentTarget.focus();
 					turnProcess.setOpen(!open);
 				},
-				children: [(0, react_jsx_runtime.jsx)("span", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					className: TurnProcessNodeView_module_css_default.label,
 					children: label
-				}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, { className: TurnProcessNodeView_module_css_default.chevron })]
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, { className: TurnProcessNodeView_module_css_default.chevron })]
 			});
 		});
 		//#endregion
-		//#region lib/types/client/chat/token-format.js
+		//#region src/client/chat/token-format.ts
 		/**
 		* Compact token count: 517 / 12.2K / 517K / 1.2M.
 		* @param value - non-negative token count.
@@ -3169,7 +3174,7 @@ window.__ModuleLoader__.load({
 			"totalValue": "_6i5AEG_totalValue"
 		};
 		//#endregion
-		//#region lib/types/client/chat/TurnUsageDisclosure.js
+		//#region src/client/chat/TurnUsageDisclosure.tsx
 		function formatCompactCount(value, t) {
 			return t("message.turnUsage.count", { count: formatTokens(value, t) });
 		}
@@ -3186,8 +3191,8 @@ window.__ModuleLoader__.load({
 				percent: cacheHit
 			});
 			const routes = usage.routes?.map((route) => `${route.provider}/${route.model}`).join(", ") ?? "";
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
-				icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconDataOutline16, {}),
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.DisclosureRow, {
+				icon: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconDataOutline16, {}),
 				title: t("message.turnUsage.title"),
 				open,
 				expandable: true,
@@ -3196,37 +3201,37 @@ window.__ModuleLoader__.load({
 				},
 				expandOnRowClick: true,
 				keepContentWhenOpen: true,
-				collapsedContent: (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+				collapsedContent: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					className: TurnUsageDisclosure_module_css_default.separator,
 					"aria-hidden": true
-				}), (0, react_jsx_runtime.jsx)("span", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					className: TurnUsageDisclosure_module_css_default.summary,
 					children: summary
 				})] }),
 				className: TurnUsageDisclosure_module_css_default.root,
 				chevronClassName: TurnUsageDisclosure_module_css_default.chevron,
-				children: (0, react_jsx_runtime.jsxs)("dl", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("dl", {
 					className: TurnUsageDisclosure_module_css_default.details,
 					"data-turn-usage-details": true,
 					children: [
-						routes !== "" && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.model") }), (0, react_jsx_runtime.jsx)("dd", {
+						routes !== "" && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.model") }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", {
 							className: TurnUsageDisclosure_module_css_default.route,
 							children: routes
 						})] }),
-						(0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.input") }),
-						(0, react_jsx_runtime.jsx)("dd", { children: formatExactCount(usage.uncachedInputTokens, t) }),
-						usage.cacheReadTokens !== void 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.cacheRead") }), (0, react_jsx_runtime.jsx)("dd", { children: formatExactCount(usage.cacheReadTokens, t) })] }),
-						usage.cacheWriteTokens !== void 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.cacheWrite") }), (0, react_jsx_runtime.jsx)("dd", { children: formatExactCount(usage.cacheWriteTokens, t) })] }),
-						(0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.output") }),
-						(0, react_jsx_runtime.jsxs)("dd", { children: [formatExactCount(usage.outputTokens, t), usage.reasoningTokens !== void 0 && (0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.input") }),
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", { children: formatExactCount(usage.uncachedInputTokens, t) }),
+						usage.cacheReadTokens !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.cacheRead") }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", { children: formatExactCount(usage.cacheReadTokens, t) })] }),
+						usage.cacheWriteTokens !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.cacheWrite") }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", { children: formatExactCount(usage.cacheWriteTokens, t) })] }),
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", { children: t("message.turnUsage.output") }),
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("dd", { children: [formatExactCount(usage.outputTokens, t), usage.reasoningTokens !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: TurnUsageDisclosure_module_css_default.reasoning,
 							children: t("message.turnUsage.reasoning", { tokens: formatExactCount(usage.reasoningTokens, t) })
 						})] }),
-						(0, react_jsx_runtime.jsx)("dt", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dt", {
 							className: TurnUsageDisclosure_module_css_default.totalLabel,
 							children: t("message.turnUsage.total")
 						}),
-						(0, react_jsx_runtime.jsx)("dd", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", {
 							className: TurnUsageDisclosure_module_css_default.totalValue,
 							children: formatExactCount(usage.totalTokens, t)
 						})
@@ -3235,7 +3240,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/chat/turn-assistant.js
+		//#region src/client/chat/turn-assistant.ts
 		/**
 		* Collect visible prose from one Assistant lifecycle.
 		* @param blocks - Assistant content blocks.
@@ -3261,7 +3266,7 @@ window.__ModuleLoader__.load({
 			"root": "WtpkEq_root"
 		};
 		//#endregion
-		//#region lib/types/client/chat/TurnTailNodeView.js
+		//#region src/client/chat/TurnTailNodeView.tsx
 		/** Turn-local actions and feature tail over the Location index, independent of Assistant placement. */
 		const TurnTailNodeView = (0, react.memo)(function TurnTailNodeView({ node, openFile, forkAt, renderSlot, renderSlotChain, t, useChat }) {
 			const data = node.data;
@@ -3274,23 +3279,23 @@ window.__ModuleLoader__.load({
 				seq: closing?.finalNode.seq ?? data.seq,
 				openFile
 			});
-			if (closing === null) return tail === null ? null : (0, react_jsx_runtime.jsx)("div", {
+			if (closing === null) return tail === null ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: TurnTailNodeView_module_css_default.root,
 				children: tail
 			});
 			const runMs = turn.start === void 0 || turn.end === void 0 ? void 0 : Math.max(0, turn.end.time - turn.start.time);
 			const messageId = closing.finalNode.messageId;
 			const assistantActions = messageId === void 0 ? null : renderSlot("conversation.chat.assistant-actions", { messageId });
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: TurnTailNodeView_module_css_default.root,
 				"data-turn-tail": data.turn,
 				"data-time-hover-root": true,
-				children: [tail, (0, react_jsx_runtime.jsxs)("div", {
+				children: [tail, /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: TurnTailNodeView_module_css_default.footer,
-					children: [data.tokenUsage === void 0 ? null : (0, react_jsx_runtime.jsx)(TurnUsageDisclosure, {
+					children: [data.tokenUsage === void 0 ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(TurnUsageDisclosure, {
 						usage: data.tokenUsage,
 						t
-					}), (0, react_jsx_runtime.jsx)(MessageIconActions, {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(MessageIconActions, {
 						text: assistantText(closing.blocks),
 						time: closing.time,
 						runMs,
@@ -3309,7 +3314,7 @@ window.__ModuleLoader__.load({
 			});
 		});
 		//#endregion
-		//#region lib/types/client/chat/register-node-renderers.js
+		//#region src/client/chat/register-node-renderers.ts
 		/**
 		* Register this package's business renderers behind the keyed Chat Node seat.
 		* @param ctx - owning UI Conversation context.
@@ -3401,7 +3406,7 @@ window.__ModuleLoader__.load({
 			}, UnknownNodeView));
 		}
 		//#endregion
-		//#region lib/types/client/contract/turn-metrics.js
+		//#region src/client/contract/turn-metrics.ts
 		function usageOutputTokens(usage) {
 			if (typeof usage !== "object" || usage === null) return null;
 			const value = usage.outputTokens;
@@ -3481,7 +3486,7 @@ window.__ModuleLoader__.load({
 			"sep": "srIWLG_sep"
 		};
 		//#endregion
-		//#region lib/types/client/chat/StatsLine.js
+		//#region src/client/chat/StatsLine.tsx
 		/**
 		* Fold assistant and tool-result nodes into window-scoped display totals —
 		* the FALLBACK for assemblies without the `sessionStats` projection.
@@ -3612,19 +3617,19 @@ window.__ModuleLoader__.load({
 				};
 			}, [line]);
 			if (groups.length === 0) return null;
-			return (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 				label: line,
 				side: "top",
 				delayMs: 500,
 				disabled: !truncated,
-				children: (0, react_jsx_runtime.jsx)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					ref: rootRef,
 					className: StatsLine_module_css_default.root,
-					children: groups.map((group, i) => (0, react_jsx_runtime.jsxs)(react.Fragment, { children: [i > 0 && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)("span", {
+					children: groups.map((group, i) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react.Fragment, { children: [i > 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: StatsLine_module_css_default.sep,
 						"aria-hidden": true,
 						children: "|"
-					}), " "] }), (0, react_jsx_runtime.jsx)("span", { children: group })] }, group))
+					}), " "] }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", { children: group })] }, group))
 				})
 			});
 		});
@@ -3670,7 +3675,7 @@ window.__ModuleLoader__.load({
 			return isSurfaceEvent(event) && event.surfaceOp !== "append";
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/common.js
+		//#region src/client/conversation-nodes/common.ts
 		/**
 		* Relative positions in one durable event's seq neighborhood: interrupted
 		* Assistant, its follow-up Nodes, then follow-ups to an ordinary final. The
@@ -3714,8 +3719,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/event-projection.js
-		/** Chat-owned conversion from durable Session events to Chat view data. */
+		//#region src/client/conversation-nodes/event-projection.ts
 		function asRecord(value) {
 			return typeof value === "object" && value !== null && !Array.isArray(value) ? value : null;
 		}
@@ -3899,7 +3903,7 @@ window.__ModuleLoader__.load({
 			}
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/assistant.js
+		//#region src/client/conversation-nodes/assistant.ts
 		function isChunkRunEvent$1(event) {
 			return event.type === "chunkrow/text-chunks" || event.type === "chunkrow/reasoning-chunks" || event.type === "chunkrow/tool-call-chunks";
 		}
@@ -4266,7 +4270,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(assistantDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/contract/chat-nodes.js
+		//#region src/client/contract/chat-nodes.ts
 		/**
 		* Test whether a Tool root has settled.
 		* @param block - Tool root lifecycle value.
@@ -4284,7 +4288,7 @@ window.__ModuleLoader__.load({
 			return !isSettledTool(block);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/turn-navigation.js
+		//#region src/client/conversation-nodes/turn-navigation.ts
 		/**
 		* Preview budget per field. The rail clamps two short lines, so anything past
 		* this is invisible; copying whole transcripts into navigation state would
@@ -4339,7 +4343,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/chat-snapshot-builder.js
+		//#region src/client/conversation-nodes/chat-snapshot-builder.ts
 		const EMPTY_KEYS = [];
 		const EMPTY_TURNS = [];
 		const EMPTY_ITEMS = [];
@@ -4913,7 +4917,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.views.register(chatViewDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/command.js
+		//#region src/client/conversation-nodes/command.ts
 		const COMPACT_PLUGIN = "compact";
 		function commandFromRun(match) {
 			if (match.event.type !== "command/run") throw new Error("command start requires command/run");
@@ -5084,7 +5088,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(commandDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/compaction.js
+		//#region src/client/conversation-nodes/compaction.ts
 		function fallbackState$3(context) {
 			const summary = context.matches.find((match) => match.event.type === "compaction/summary");
 			const checkpoint = context.matches.find((match) => compactSource(match.event) !== void 0);
@@ -5131,7 +5135,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(compactionDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/fallback.js
+		//#region src/client/conversation-nodes/fallback.ts
 		/** Unclaimed append-surface fallback Definition. */
 		const unknownFallbackDefinition = {
 			kind: "unknown-surface",
@@ -5161,7 +5165,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.registerFallback(unknownFallbackDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/inbox.js
+		//#region src/client/conversation-nodes/inbox.ts
 		function applySplice(previous, splice) {
 			const pending = [...previous?.state.pending ?? []];
 			const claimed = new Set(previous?.state.claimed ?? []);
@@ -5202,7 +5206,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(nextStepInboxDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/message.js
+		//#region src/client/conversation-nodes/message.ts
 		function isCompactionCheckpoint(event) {
 			if (event.type !== "user/message" || !isReplacementSurfaceEvent(event)) return false;
 			const source = event.data.source;
@@ -5257,7 +5261,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(messageDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/request-prompt.js
+		//#region src/client/conversation-nodes/request-prompt.ts
 		/** Place a request's system field at the start of its visible message series. */
 		function requestPromptAnchor(match, previous, isInitial) {
 			if (match.location.kind !== "step") return match.event.seq;
@@ -5321,7 +5325,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(requestPromptDefinition((previous, event) => ctx.uiConversation.inspectRequestPrompt(previous, event)));
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/retry.js
+		//#region src/client/conversation-nodes/retry.ts
 		function scheduledNode(match) {
 			if (match.event.type !== "llm/retry") return void 0;
 			return {
@@ -5410,7 +5414,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(retryDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/tool.js
+		//#region src/client/conversation-nodes/tool.ts
 		const MAX_DEPTH = 256;
 		const projectedBlocks = /* @__PURE__ */ new WeakMap();
 		function jsonArguments(value) {
@@ -5657,7 +5661,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(toolDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/turn-error.js
+		//#region src/client/conversation-nodes/turn-error.ts
 		function lastStep$1(context) {
 			const location = context.start?.location ?? context.matches[0]?.location;
 			if (location?.kind !== "turn" && location?.kind !== "step") return 0;
@@ -5738,7 +5742,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(turnErrorDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/turn-max-tokens.js
+		//#region src/client/conversation-nodes/turn-max-tokens.ts
 		function lastStep(context) {
 			const location = context.start?.location ?? context.matches[0]?.location;
 			if (location?.kind !== "turn" && location?.kind !== "step") return 0;
@@ -5802,7 +5806,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(turnMaxTokensDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/contract/assistant-content.js
+		//#region src/client/contract/assistant-content.ts
 		/**
 		* Test whether Assistant blocks contain a user-facing reply rather than only
 		* reasoning or Tool-call protocol material.
@@ -5817,7 +5821,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/turn-process.js
+		//#region src/client/conversation-nodes/turn-process.ts
 		function isChunkRunEvent(event) {
 			return event.type === "chunkrow/text-chunks" || event.type === "chunkrow/reasoning-chunks" || event.type === "chunkrow/tool-call-chunks";
 		}
@@ -6226,7 +6230,7 @@ window.__ModuleLoader__.load({
 			return invalid || !sawEnd || state.kind !== "idle" ? void 0 : aggregateAttempts(attempts);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/turn-tail.js
+		//#region src/client/conversation-nodes/turn-tail.ts
 		function isSessionEvent(event) {
 			return event.type !== "chunkrow/text-chunks" && event.type !== "chunkrow/reasoning-chunks" && event.type !== "chunkrow/tool-call-chunks";
 		}
@@ -6378,7 +6382,7 @@ window.__ModuleLoader__.load({
 			ctx.uiConversation.events.register(turnTailDefinition);
 		}
 		//#endregion
-		//#region lib/types/client/conversation-nodes/register.js
+		//#region src/client/conversation-nodes/register.ts
 		/**
 		* Register the Chat business Definitions and target builder contributed by this package.
 		* @param ctx - owning UI Conversation context.
@@ -6400,7 +6404,7 @@ window.__ModuleLoader__.load({
 			registerChatConversationView(ctx);
 		}
 		//#endregion
-		//#region lib/types/client/details/tool-node-reader.js
+		//#region src/client/details/tool-node-reader.ts
 		function toolNode(node) {
 			return node?.kind === "tool-call" ? node : void 0;
 		}
@@ -6448,7 +6452,7 @@ window.__ModuleLoader__.load({
 			"title": "rFJJpq_title"
 		};
 		//#endregion
-		//#region lib/types/client/details/DetailsPanel.js
+		//#region src/client/details/DetailsPanel.tsx
 		function settledMaterial(node, callId) {
 			return {
 				name: node.call?.name ?? callId,
@@ -6487,26 +6491,26 @@ window.__ModuleLoader__.load({
 			const sessionCwd = useSessions((list) => list.byId[sessionId]?.cwd);
 			const callId = selection?.callId;
 			const material = useChat((s) => callId === void 0 ? null : materialFor(s, callId), (a, b) => (0, _deepseek_ai_dsh_client_store.shallowEqual)(a, b));
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: DetailsPanel_module_css_default.root,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: DetailsPanel_module_css_default.header,
-					children: [(0, react_jsx_runtime.jsx)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: DetailsPanel_module_css_default.title,
 						children: selection === null ? t("details.title") : material?.name ?? selection.toolName ?? t("details.title")
-					}), (0, react_jsx_runtime.jsx)("button", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 						type: "button",
 						className: DetailsPanel_module_css_default.close,
 						"aria-label": t("details.close"),
 						onClick: () => {
 							closeDetails();
 						},
-						children: (0, react_jsx_runtime.jsx)("svg", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 							viewBox: "0 0 16 16",
 							width: "14",
 							height: "14",
 							"aria-hidden": true,
-							children: (0, react_jsx_runtime.jsx)("path", {
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 								d: "M4 4l8 8M12 4l-8 8",
 								stroke: "currentColor",
 								strokeWidth: "1.5",
@@ -6514,38 +6518,38 @@ window.__ModuleLoader__.load({
 							})
 						})
 					})]
-				}), (0, react_jsx_runtime.jsx)("div", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: DetailsPanel_module_css_default.body,
-					children: selection === null || callId === void 0 ? (0, react_jsx_runtime.jsx)("div", {
+					children: selection === null || callId === void 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: DetailsPanel_module_css_default.empty,
 						children: t("details.empty")
-					}) : material === null ? (0, react_jsx_runtime.jsx)("div", {
+					}) : material === null ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: DetailsPanel_module_css_default.empty,
 						children: t("details.notInWindow")
-					}) : (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [material.argsRaw !== null && (0, react_jsx_runtime.jsxs)("section", {
+					}) : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [material.argsRaw !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("section", {
 						className: DetailsPanel_module_css_default.section,
-						children: [(0, react_jsx_runtime.jsx)("div", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: DetailsPanel_module_css_default.sectionLabel,
 							children: t("details.input")
-						}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.CodeBlock, {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.CodeBlock, {
 							code: pretty(material.argsRaw),
 							lang: "json",
 							copyLabel: t("copy"),
 							copiedLabel: t("copied")
 						})]
-					}), (0, react_jsx_runtime.jsxs)("section", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("section", {
 						className: DetailsPanel_module_css_default.section,
-						children: [(0, react_jsx_runtime.jsx)("div", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: DetailsPanel_module_css_default.sectionLabel,
 							children: t("details.output")
-						}), (0, react_jsx_runtime.jsx)(react.Fragment, { children: renderSlot("conversation.details.tool", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(react.Fragment, { children: renderSlot("conversation.details.tool", {
 							block: material.block,
 							cwd: sessionCwd
-						}, { fallback: "kind" in material.block ? (0, react_jsx_runtime.jsx)("pre", {
+						}, { fallback: "kind" in material.block ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("pre", {
 							className: DetailsPanel_module_css_default.code,
 							"data-error": material.block.isError || void 0,
 							children: rawResultText(material.block)
-						}) : (0, react_jsx_runtime.jsx)("div", {
+						}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: DetailsPanel_module_css_default.empty,
 							children: t("details.running")
 						}) }) }, callId)]
@@ -6573,7 +6577,7 @@ window.__ModuleLoader__.load({
 			"title": "vYWcpG_title"
 		};
 		//#endregion
-		//#region lib/types/client/settings/TranscriptViewRow.js
+		//#region src/client/settings/TranscriptViewRow.tsx
 		/** General Settings row for completed-Turn transcript presentation. */
 		const OPTIONS = [{
 			id: "normal",
@@ -6598,7 +6602,7 @@ window.__ModuleLoader__.load({
 				closeMenu();
 				setTranscriptView(id);
 			};
-			const selector = (0, react_jsx_runtime.jsxs)("button", {
+			const selector = /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 				type: "button",
 				className: TranscriptViewRow_module_css_default.selector,
 				"aria-haspopup": "menu",
@@ -6606,20 +6610,20 @@ window.__ModuleLoader__.load({
 				onClick: () => {
 					setOpen((value) => !value);
 				},
-				children: [t(selectedLabel), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, { className: TranscriptViewRow_module_css_default.chevron })]
+				children: [t(selectedLabel), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, { className: TranscriptViewRow_module_css_default.chevron })]
 			});
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: TranscriptViewRow_module_css_default.row,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: TranscriptViewRow_module_css_default.rowText,
-					children: [(0, react_jsx_runtime.jsx)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: TranscriptViewRow_module_css_default.title,
 						children: t("settings.transcript.title")
-					}), (0, react_jsx_runtime.jsx)("div", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: TranscriptViewRow_module_css_default.desc,
 						children: t("settings.transcript.description")
 					})]
-				}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
 					open,
 					onClose: closeMenu,
 					items: OPTIONS.map((option) => ({
@@ -7427,7 +7431,7 @@ window.__ModuleLoader__.load({
 			"preserve"
 		], ({ inner }, isInner) => inner.toString(isInner));
 		//#endregion
-		//#region lib/types/chat-settings.js
+		//#region src/chat-settings.ts
 		/** Chat transcript preferences stored in the Host user-settings document. */
 		/** Settings namespace owned by the Chat target. */
 		const CHAT_SETTINGS_NAMESPACE = "ui-chat";
@@ -7439,7 +7443,7 @@ window.__ModuleLoader__.load({
 		const DEFAULT_TRANSCRIPT_VIEW_MODE = "compact";
 		Schema.object({ [TRANSCRIPT_VIEW_FIELD]: Schema.union([...TRANSCRIPT_VIEW_MODES]).default(DEFAULT_TRANSCRIPT_VIEW_MODE) });
 		//#endregion
-		//#region lib/types/client/transcript-view.js
+		//#region src/client/transcript-view.ts
 		/** Host-backed completed-Turn transcript presentation policy. */
 		/** Live transcript preference consumed by Chat and its Settings row. */
 		var TranscriptViewPolicy = class {
@@ -7473,7 +7477,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/apply.js
+		//#region src/client/apply.ts
 		const CHAT_NODE_INJECT = { hooks: { turnData: ({ useChat }, nodeKey) => function useTurnData(key) {
 			return useChat((snapshot) => {
 				const location = snapshot.nodes.get(nodeKey)?.location;

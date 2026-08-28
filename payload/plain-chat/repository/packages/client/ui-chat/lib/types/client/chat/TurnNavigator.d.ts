@@ -3,10 +3,12 @@ import type { TurnNavigationItem } from '../contract/snapshot.ts';
 interface TurnNavigatorProps {
     readonly items: readonly TurnNavigationItem[];
     readonly activeTurn: number | null;
+    /** Older bounded pages are still being accumulated into the complete rail. */
+    readonly settling: boolean;
     readonly onNavigate: (item: TurnNavigationItem) => void;
     readonly t: ChatViewSlotProps['t'];
 }
-declare function TurnNavigatorRail({ items, activeTurn, onNavigate, t }: TurnNavigatorProps): import("react").JSX.Element | null;
+declare function TurnNavigatorRail({ items, activeTurn, settling, onNavigate, t }: TurnNavigatorProps): import("react").JSX.Element | null;
 /**
  * Compact rail of the currently loaded Turns with hover and focus previews.
  *
