@@ -98,7 +98,7 @@ export declare class ConversationController extends Service implements IConversa
      * @param signal - optional cancellation for the complete Host admission.
      * @returns the Host admission outcome; local attachment preparation failures reject.
      */
-    sendSession(session: SessionFace, text: string, imageIds: readonly DraftAttachmentId[], mode: InputSubmitMode, signal?: AbortSignal): Promise<SubmitOutcome>;
+    sendSession(session: SessionFace, text: string, imageIds: readonly DraftAttachmentId[], mode: InputSubmitMode, signal?: AbortSignal, webSearchEnabled?: boolean): Promise<SubmitOutcome>;
     /**
      * Create runtime-only draft images and their object URLs.
      * @param files - browser files to register after MIME validation.

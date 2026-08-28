@@ -568,6 +568,7 @@ const _deepseek_ai_dsh_api_session_controller_session_prompt_parameter_0$schema 
   'data': z.string().readonly(),
   'name': z.string().readonly().optional(),
 })])).readonly(),
+  'webSearchEnabled': z.boolean().readonly().optional(),
   'clientTimeZone': z.string().readonly().optional(),
 })
 const _deepseek_ai_dsh_api_session_controller_session_prompt_result$schema = z.object({
@@ -1718,7 +1719,7 @@ export const TYPERT = {
           },
           {
             "name": "SessionPromptRequest",
-            "declaration": "export interface SessionPromptRequest {\n    readonly requestId: SessionRequestId;\n    readonly sessionId: SessionId;\n    readonly mode: 'queue' | 'steer';\n    readonly content: readonly PromptContentPart[];\n    readonly clientTimeZone?: string;\n}"
+            "declaration": "export interface SessionPromptRequest {\n    readonly requestId: SessionRequestId;\n    readonly sessionId: SessionId;\n    readonly mode: 'queue' | 'steer';\n    readonly content: readonly PromptContentPart[];\n    readonly webSearchEnabled?: boolean;\n    readonly clientTimeZone?: string;\n}"
           },
           {
             "name": "SessionPromptValue",

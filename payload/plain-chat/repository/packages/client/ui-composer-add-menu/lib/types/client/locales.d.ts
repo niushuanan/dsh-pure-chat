@@ -18,7 +18,10 @@ export declare const zh: {
     'skill.invoke': string;
     'catalog.empty': string;
     'web.enabled': string;
-    'web.hint': string;
+    'web.disabled': string;
+    'web.label': string;
+    'web.enableHint': string;
+    'web.disableHint': string;
 };
 /** Composer add-menu dictionary key union. */
 export type ComposerAddMenuKey = keyof typeof zh;
@@ -41,6 +44,9 @@ export declare const en: {
     'skill.invoke': string;
     'catalog.empty': string;
     'web.enabled': string;
-    'web.hint': string;
+    'web.disabled': string;
+    'web.label': string;
+    'web.enableHint': string;
+    'web.disableHint': string;
 };
 //# sourceMappingURL=locales.d.ts.map

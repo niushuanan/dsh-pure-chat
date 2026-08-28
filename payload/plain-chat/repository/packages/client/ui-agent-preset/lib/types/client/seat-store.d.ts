@@ -43,7 +43,7 @@ export declare class AgentPresetSeatController {
     private fallback;
     /** Set while a pick is waiting for a session; cleared once applied. */
     private staged;
-    constructor(remote: Pick<ClientRemote, 'agentPresets'>,
+    constructor(remote: Pick<ClientRemote, 'agentPresets'>, 
     /** The session the hero is about to hand over to, when there is one. */
     currentSession: () => Pick<SessionSummary, 'id' | 'blank' | 'projectionValues'> | undefined);
     private set;

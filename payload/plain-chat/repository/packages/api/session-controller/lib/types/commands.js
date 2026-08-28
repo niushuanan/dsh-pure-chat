@@ -65,6 +65,8 @@ export class SessionCommandController {
     ctx;
     agents;
     defaultCwd;
+    /** Active per-agent guards installed by the ordinary-chat web switch. */
+    webSearchGuards = new WeakMap();
     /**
      * @param ctx - Host context carrying Agent, model, attachment, title, and Workspace services.
      * @param agents - sole owner of create, resume, and Session-local model selection.
@@ -277,6 +279,7 @@ export class SessionCommandController {
             reject('invalid-time-zone', 'clientTimeZone must be UTC or a valid IANA Area/Location name', { value: request.clientTimeZone });
         }
         const agent = await this.resolveAgent(request.sessionId);
+        this.applyWebSearchPolicy(agent, request.webSearchEnabled);
         const selection = this.agents.selectionFor(agent).current;
         if (!routeServed(this.ctx, selection.provider)) {
             reject('model-unavailable', `no adapter serves provider "${selection.provider}"; select a model for this session`, { provider: selection.provider, model: selection.model });
@@ -314,6 +317,23 @@ export class SessionCommandController {
             return { accepted: true };
         };
         return hasImage ? this.agents.serializeImageAdmission(agent, admit) : admit();
+    }
+    /** Replace the exact agent-scoped execution guard; omitted policy preserves older clients. */
+    applyWebSearchPolicy(agent, enabled) {
+        if (enabled === undefined)
+            return;
+        const current = this.webSearchGuards.get(agent);
+        if (enabled) {
+            current?.();
+            this.webSearchGuards.delete(agent);
+            return;
+        }
+        if (current !== undefined)
+            return;
+        const dispose = agent.ctx.tools.guard(execution => (execution.name === 'web_search' || execution.name === 'web_fetch'
+            ? 'Web search is disabled by the user for this chat.'
+            : undefined));
+        this.webSearchGuards.set(agent, dispose);
     }
     /**
      * Read one durable image after proving the Session log references it.

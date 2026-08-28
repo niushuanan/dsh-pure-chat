@@ -4,11 +4,11 @@ window.__ModuleLoader__.load({
 		var module = { exports: {} };
 		var exports = module.exports;
 		Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
-		let react_jsx_runtime = require("react/jsx-runtime");
 		let react = require("react");
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
+		let react_jsx_runtime = require("react/jsx-runtime");
 		//#region \0dsh-css:/Users/zhuanghongkai/Desktop/迭代DSH/xiaozhuang-dsh/packages/client/ui-composer-add-menu/src/client/ComposerAddMenu.module.css.mjs
-		const css = ".xl1nXW_root{flex:none;align-items:center;gap:4px;display:flex;position:relative}.xl1nXW_trigger{background:var(--dsw-specific-selector);width:28px;height:28px;color:var(--dsw-alias-label-primary);cursor:pointer;border:0;border-radius:999px;place-items:center;padding:0;transition:background-color .14s;display:grid}.xl1nXW_trigger:hover:not(:disabled),.xl1nXW_trigger[aria-expanded=true]{background:var(--dsw-alias-interactive-bg-hover-solid)}.xl1nXW_trigger:focus-visible{outline:2px solid color-mix(in srgb, var(--dsw-alias-brand-primary) 34%, transparent);outline-offset:2px}.xl1nXW_trigger:disabled{opacity:.5;cursor:default}.xl1nXW_web{background:color-mix(in srgb, var(--dsw-alias-brand-primary) 10%, transparent);width:28px;height:28px;color:var(--dsw-alias-brand-primary);border-radius:999px;place-items:center;display:grid}.xl1nXW_menu{--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);z-index:40;border:1px solid color-mix(in srgb, var(--dsw-alias-label-tertiary) 15%, transparent);background:var(--dsw-alias-bg-layer-1);border-radius:14px;flex-direction:column;width:360px;max-height:min(430px,100vh - 140px);padding:6px;display:flex;position:absolute;bottom:calc(100% + 10px);left:0;overflow:hidden;box-shadow:0 12px 32px #0f172a1c,0 2px 8px #0f172a0d}.xl1nXW_section{color:var(--dsw-alias-label-caption);flex:none;padding:7px 9px 4px;font-size:10px;font-weight:500;line-height:16px}.xl1nXW_divided{border-top:1px solid var(--dsw-alias-border-l2);margin-top:4px;padding-top:9px}.xl1nXW_scroll{overscroll-behavior:contain;scrollbar-width:thin;min-height:0;overflow:hidden auto}.xl1nXW_item{width:100%;min-height:38px;color:var(--dsw-alias-label-primary);text-align:left;cursor:pointer;background:0 0;border:0;border-radius:9px;grid-template-columns:20px max-content minmax(0,1fr);align-items:center;gap:8px;padding:6px 9px;display:grid}.xl1nXW_item:hover:not(:disabled),.xl1nXW_item:focus-visible{background:var(--dsw-alias-interactive-bg-hover);outline:0}.xl1nXW_item:focus-visible{box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--dsw-alias-brand-primary) 30%, transparent)}.xl1nXW_item:disabled{cursor:default;opacity:.45}.xl1nXW_icon{width:20px;height:20px;color:var(--dsw-alias-label-secondary);place-items:center;display:grid}.xl1nXW_icon svg{width:16px;height:16px}.xl1nXW_title{white-space:nowrap;font-size:13px;font-weight:500;line-height:19px}.xl1nXW_description{min-width:0;color:var(--dsw-alias-label-caption);text-overflow:ellipsis;white-space:nowrap;font-size:11px;line-height:18px;overflow:hidden}.xl1nXW_empty{color:var(--dsw-alias-label-caption);padding:8px 9px 10px 37px;font-size:11px;line-height:18px}.xl1nXW_file{display:none}@media (width<=520px){.xl1nXW_menu{width:min(360px,100vw - 32px)}.xl1nXW_item{grid-template-columns:20px minmax(0,1fr)}.xl1nXW_description{display:none}}@media (prefers-reduced-motion:reduce){.xl1nXW_trigger{transition:none}}";
+		const css = ".xl1nXW_root{flex:none;align-items:center;gap:8px;display:flex;position:relative}.xl1nXW_trigger{background:var(--dsw-specific-selector);width:28px;height:28px;color:var(--dsw-alias-label-primary);cursor:pointer;border:0;border-radius:999px;place-items:center;padding:0;transition:background-color .14s;display:grid}.xl1nXW_trigger:hover:not(:disabled),.xl1nXW_trigger[aria-expanded=true]{background:var(--dsw-alias-interactive-bg-hover-solid)}.xl1nXW_trigger:focus-visible{outline:2px solid color-mix(in srgb, var(--dsw-alias-brand-primary) 34%, transparent);outline-offset:2px}.xl1nXW_trigger:disabled{opacity:.5;cursor:default}.xl1nXW_web{border:1px solid var(--dsw-alias-border-l2);height:28px;color:var(--dsw-alias-label-secondary);font:inherit;white-space:nowrap;cursor:pointer;background:0 0;border-radius:999px;justify-content:center;align-items:center;gap:5px;padding:0 11px;font-size:12px;line-height:1;transition:border-color .14s,color .14s,background-color .14s;display:inline-flex}.xl1nXW_web[aria-pressed=true]{border-color:color-mix(in srgb, var(--dsw-alias-brand-primary-new-colorprimary-new-color) 58%, transparent);color:var(--dsw-alias-brand-primary-new-colorprimary-new-color)}.xl1nXW_web:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.xl1nXW_web:focus-visible{outline:2px solid color-mix(in srgb, var(--dsw-alias-brand-primary-new-colorprimary-new-color) 34%, transparent);outline-offset:2px}.xl1nXW_web:disabled{opacity:.5;cursor:default}.xl1nXW_menu{--dsh-scrollbar-thumb:var(--dsw-alias-scrollbar-bg-l2);--dsh-scrollbar-thumb-hover:var(--dsw-alias-scrollbar-hover-l2);z-index:40;border:1px solid color-mix(in srgb, var(--dsw-alias-label-tertiary) 15%, transparent);background:var(--dsw-alias-bg-layer-1);border-radius:14px;flex-direction:column;width:360px;max-height:min(430px,100vh - 140px);padding:6px;display:flex;position:absolute;bottom:calc(100% + 10px);left:0;overflow:hidden;box-shadow:0 12px 32px #0f172a1c,0 2px 8px #0f172a0d}.xl1nXW_section{color:var(--dsw-alias-label-caption);flex:none;padding:7px 9px 4px;font-size:10px;font-weight:500;line-height:16px}.xl1nXW_divided{border-top:1px solid var(--dsw-alias-border-l2);margin-top:4px;padding-top:9px}.xl1nXW_scroll{overscroll-behavior:contain;scrollbar-width:thin;min-height:0;overflow:hidden auto}.xl1nXW_item{width:100%;min-height:38px;color:var(--dsw-alias-label-primary);text-align:left;cursor:pointer;background:0 0;border:0;border-radius:9px;grid-template-columns:20px max-content minmax(0,1fr);align-items:center;gap:8px;padding:6px 9px;display:grid}.xl1nXW_item:hover:not(:disabled),.xl1nXW_item:focus-visible{background:var(--dsw-alias-interactive-bg-hover);outline:0}.xl1nXW_item:focus-visible{box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--dsw-alias-brand-primary) 30%, transparent)}.xl1nXW_item:disabled{cursor:default;opacity:.45}.xl1nXW_icon{width:20px;height:20px;color:var(--dsw-alias-label-secondary);place-items:center;display:grid}.xl1nXW_icon svg{width:16px;height:16px}.xl1nXW_title{white-space:nowrap;font-size:13px;font-weight:500;line-height:19px}.xl1nXW_description{min-width:0;color:var(--dsw-alias-label-caption);text-overflow:ellipsis;white-space:nowrap;font-size:11px;line-height:18px;overflow:hidden}.xl1nXW_empty{color:var(--dsw-alias-label-caption);padding:8px 9px 10px 37px;font-size:11px;line-height:18px}.xl1nXW_file{display:none}@media (width<=520px){.xl1nXW_menu{width:min(360px,100vw - 32px)}.xl1nXW_item{grid-template-columns:20px minmax(0,1fr)}.xl1nXW_description{display:none}}@media (prefers-reduced-motion:reduce){.xl1nXW_trigger,.xl1nXW_web{transition:none}}";
 		const tagId = "@deepseek-ai/dsh-composer-add-menu/ComposerAddMenu.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
 			const tag = document.createElement("style");
@@ -33,10 +33,10 @@ window.__ModuleLoader__.load({
 			"web": "xl1nXW_web"
 		};
 		//#endregion
-		//#region lib/types/client/ComposerAddMenu.js
+		//#region src/client/ComposerAddMenu.tsx
 		/** One-layer native add directory over the conversation owner's live catalogs. */
 		function ComposerAddMenu(props) {
-			const { mode, t, disabled, commandMenuOpen, canAddImages, imageMediaTypes, commandItems, slashItems, canReferenceFiles, onToggleCommandMenu, onToggleReferenceMenu, onInsertSlashItem, onAddImages, onAddTextFiles, focusInput } = props;
+			const { mode, t, webSearchEnabled, disabled, commandMenuOpen, canAddImages, imageMediaTypes, commandItems, slashItems, canReferenceFiles, onToggleCommandMenu, onToggleReferenceMenu, onInsertSlashItem, onAddImages, onAddTextFiles, onSetWebSearchEnabled, focusInput } = props;
 			const [open, setOpen] = (0, react.useState)(false);
 			const rootRef = (0, react.useRef)(null);
 			const imageInputRef = (0, react.useRef)(null);
@@ -92,16 +92,16 @@ window.__ModuleLoader__.load({
 			const officialNames = new Set(commandItems.map((item) => item.name));
 			const skillItems = slashItems.filter((name) => !officialNames.has(name));
 			const accept = imageMediaTypes.length > 0 ? imageMediaTypes.join(",") : "image/*";
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: ComposerAddMenu_module_css_default.root,
 				ref: rootRef,
 				"data-composer-add-menu": "",
 				children: [
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 						label: t("trigger.add"),
 						side: "top",
 						delayMs: 500,
-						children: (0, react_jsx_runtime.jsx)("button", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 							type: "button",
 							className: ComposerAddMenu_module_css_default.trigger,
 							"aria-label": t("trigger.add"),
@@ -111,21 +111,27 @@ window.__ModuleLoader__.load({
 							disabled,
 							onMouseDown: keepFocus,
 							onClick: toggle,
-							children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPlusOutline16, { size: 14 })
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPlusOutline16, { size: 14 })
 						})
 					}),
-					mode === "chat" ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
-						label: t("web.hint"),
+					mode === "chat" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+						label: t(webSearchEnabled ? "web.disableHint" : "web.enableHint"),
 						side: "top",
 						delayMs: 500,
-						children: (0, react_jsx_runtime.jsx)("span", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
+							type: "button",
 							className: ComposerAddMenu_module_css_default.web,
-							role: "status",
-							"aria-label": t("web.enabled"),
-							children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconGlobeOutline14, {})
+							"aria-label": t(webSearchEnabled ? "web.enabled" : "web.disabled"),
+							"aria-pressed": webSearchEnabled,
+							disabled,
+							onMouseDown: keepFocus,
+							onClick: () => {
+								onSetWebSearchEnabled(!webSearchEnabled);
+							},
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconGlobeOutline14, {}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", { children: t("web.label") })]
 						})
 					}) : null,
-					(0, react_jsx_runtime.jsx)("input", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("input", {
 						ref: imageInputRef,
 						className: ComposerAddMenu_module_css_default.file,
 						type: "file",
@@ -135,7 +141,7 @@ window.__ModuleLoader__.load({
 						"aria-hidden": "true",
 						onChange: imageChanged
 					}),
-					(0, react_jsx_runtime.jsx)("input", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("input", {
 						ref: textInputRef,
 						className: ComposerAddMenu_module_css_default.file,
 						type: "file",
@@ -145,18 +151,18 @@ window.__ModuleLoader__.load({
 						"aria-hidden": "true",
 						onChange: textChanged
 					}),
-					open ? (0, react_jsx_runtime.jsxs)("div", {
+					open ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						className: ComposerAddMenu_module_css_default.menu,
 						id: menuId,
 						role: "menu",
 						"aria-label": t(mode === "chat" ? "menu.chat" : "menu.work"),
 						children: [
-							(0, react_jsx_runtime.jsx)("div", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: ComposerAddMenu_module_css_default.section,
 								role: "presentation",
 								children: t("section.add")
 							}),
-							(0, react_jsx_runtime.jsxs)("button", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 								type: "button",
 								className: ComposerAddMenu_module_css_default.item,
 								role: "menuitem",
@@ -166,22 +172,22 @@ window.__ModuleLoader__.load({
 									setOpen(false);
 								},
 								children: [
-									(0, react_jsx_runtime.jsx)("span", {
+									/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 										className: ComposerAddMenu_module_css_default.icon,
 										"aria-hidden": "true",
-										children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPaperclipOutline16, {})
+										children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPaperclipOutline16, {})
 									}),
-									(0, react_jsx_runtime.jsx)("span", {
+									/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 										className: ComposerAddMenu_module_css_default.title,
 										children: t(mode === "chat" ? "image.chatTitle" : "image.workTitle")
 									}),
-									(0, react_jsx_runtime.jsx)("span", {
+									/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 										className: ComposerAddMenu_module_css_default.description,
 										children: t(canAddImages ? "image.select" : "image.unsupported")
 									})
 								]
 							}),
-							mode === "chat" ? (0, react_jsx_runtime.jsxs)("button", {
+							mode === "chat" ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 								type: "button",
 								className: ComposerAddMenu_module_css_default.item,
 								role: "menuitem",
@@ -190,53 +196,53 @@ window.__ModuleLoader__.load({
 									setOpen(false);
 								},
 								children: [
-									(0, react_jsx_runtime.jsx)("span", {
+									/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 										className: ComposerAddMenu_module_css_default.icon,
 										"aria-hidden": "true",
-										children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderOpenOutline16, {})
+										children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderOpenOutline16, {})
 									}),
-									(0, react_jsx_runtime.jsx)("span", {
+									/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 										className: ComposerAddMenu_module_css_default.title,
 										children: t("file.title")
 									}),
-									(0, react_jsx_runtime.jsx)("span", {
+									/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 										className: ComposerAddMenu_module_css_default.description,
 										children: t("file.description")
 									})
 								]
 							}) : null,
-							mode === "work" ? (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
-								(0, react_jsx_runtime.jsxs)("button", {
+							mode === "work" ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+								/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 									type: "button",
 									className: ComposerAddMenu_module_css_default.item,
 									role: "menuitem",
 									disabled: !canReferenceFiles,
 									onClick: chooseReference,
 									children: [
-										(0, react_jsx_runtime.jsx)("span", {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 											className: ComposerAddMenu_module_css_default.icon,
 											"aria-hidden": "true",
-											children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderOpenOutline16, {})
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderOpenOutline16, {})
 										}),
-										(0, react_jsx_runtime.jsx)("span", {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 											className: ComposerAddMenu_module_css_default.title,
 											children: t("reference.title")
 										}),
-										(0, react_jsx_runtime.jsx)("span", {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 											className: ComposerAddMenu_module_css_default.description,
 											children: t(canReferenceFiles ? "reference.enabled" : "reference.disabled")
 										})
 									]
 								}),
-								(0, react_jsx_runtime.jsx)("div", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 									className: `${ComposerAddMenu_module_css_default.section} ${ComposerAddMenu_module_css_default.divided}`,
 									role: "presentation",
 									children: t("section.catalog")
 								}),
-								(0, react_jsx_runtime.jsxs)("div", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 									className: ComposerAddMenu_module_css_default.scroll,
 									children: [
-										commandItems.map((item) => (0, react_jsx_runtime.jsxs)("button", {
+										commandItems.map((item) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 											type: "button",
 											className: ComposerAddMenu_module_css_default.item,
 											role: "menuitem",
@@ -244,22 +250,22 @@ window.__ModuleLoader__.load({
 												chooseSlash(item.name);
 											},
 											children: [
-												(0, react_jsx_runtime.jsx)("span", {
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 													className: ComposerAddMenu_module_css_default.icon,
 													"aria-hidden": "true",
-													children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCordisPluginOutline14, { size: 16 })
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCordisPluginOutline14, { size: 16 })
 												}),
-												(0, react_jsx_runtime.jsx)("span", {
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 													className: ComposerAddMenu_module_css_default.title,
 													children: item.name
 												}),
-												(0, react_jsx_runtime.jsx)("span", {
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 													className: ComposerAddMenu_module_css_default.description,
 													children: item.description
 												})
 											]
 										}, `command:${item.name}`)),
-										skillItems.map((name) => (0, react_jsx_runtime.jsxs)("button", {
+										skillItems.map((name) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 											type: "button",
 											className: ComposerAddMenu_module_css_default.item,
 											role: "menuitem",
@@ -267,22 +273,22 @@ window.__ModuleLoader__.load({
 												chooseSlash(name);
 											},
 											children: [
-												(0, react_jsx_runtime.jsx)("span", {
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 													className: ComposerAddMenu_module_css_default.icon,
 													"aria-hidden": "true",
-													children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconSkillOutline16, {})
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconSkillOutline16, {})
 												}),
-												(0, react_jsx_runtime.jsx)("span", {
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 													className: ComposerAddMenu_module_css_default.title,
 													children: name
 												}),
-												(0, react_jsx_runtime.jsx)("span", {
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 													className: ComposerAddMenu_module_css_default.description,
 													children: t("skill.invoke", { name })
 												})
 											]
 										}, `skill:${name}`)),
-										commandItems.length === 0 && skillItems.length === 0 ? (0, react_jsx_runtime.jsx)("div", {
+										commandItems.length === 0 && skillItems.length === 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 											className: ComposerAddMenu_module_css_default.empty,
 											children: t("catalog.empty")
 										}) : null
@@ -295,7 +301,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/locales.js
+		//#region src/client/locales.ts
 		/** `composerAddMenu` namespace dictionaries. */
 		/** Simplified Chinese dictionary (the key-set source of truth). */
 		const zh = {
@@ -316,7 +322,10 @@ window.__ModuleLoader__.load({
 			"skill.invoke": "调用 /{name}",
 			"catalog.empty": "暂无可用项目",
 			"web.enabled": "联网搜索已开启",
-			"web.hint": "联网搜索已开启，将按需搜索"
+			"web.disabled": "联网搜索已关闭",
+			"web.label": "联网搜索",
+			"web.enableHint": "开启联网搜索",
+			"web.disableHint": "关闭联网搜索"
 		};
 		/** English dictionary, checked complete against the Chinese key set. */
 		const en = {
@@ -337,10 +346,13 @@ window.__ModuleLoader__.load({
 			"skill.invoke": "Invoke /{name}",
 			"catalog.empty": "No items available",
 			"web.enabled": "Web search enabled",
-			"web.hint": "Web search is enabled and used when needed"
+			"web.disabled": "Web search disabled",
+			"web.label": "Web search",
+			"web.enableHint": "Enable web search",
+			"web.disableHint": "Disable web search"
 		};
 		//#endregion
-		//#region lib/types/client/index.js
+		//#region src/client/index.ts
 		const NS = "composerAddMenu";
 		const inject = ["slots", "locale"];
 		/** Occupy the native composer add seat with the unified one-layer directory. */

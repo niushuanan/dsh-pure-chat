@@ -568,6 +568,7 @@ const _deepseek_ai_dsh_api_session_controller_session_prompt_parameter_0$schema 
   'data': z.string().readonly(),
   'name': z.string().readonly().optional(),
 })])).readonly(),
+  'webSearchEnabled': z.boolean().readonly().optional(),
   'clientTimeZone': z.string().readonly().optional(),
 })
 const _deepseek_ai_dsh_api_session_controller_session_prompt_result$schema = z.object({

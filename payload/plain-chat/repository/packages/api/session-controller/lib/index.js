@@ -557,6 +557,8 @@ var SessionCommandController = class {
 	ctx;
 	agents;
 	defaultCwd;
+	/** Active per-agent guards installed by the ordinary-chat web switch. */
+	webSearchGuards = /* @__PURE__ */ new WeakMap();
 	/**
 	* @param ctx - Host context carrying Agent, model, attachment, title, and Workspace services.
 	* @param agents - sole owner of create, resume, and Session-local model selection.
@@ -736,6 +738,7 @@ var SessionCommandController = class {
 		const clientTimeZone = request.clientTimeZone === void 0 ? void 0 : canonicalClientTimeZone(request.clientTimeZone);
 		if (request.clientTimeZone !== void 0 && clientTimeZone === void 0) reject$2("invalid-time-zone", "clientTimeZone must be UTC or a valid IANA Area/Location name", { value: request.clientTimeZone });
 		const agent = await this.resolveAgent(request.sessionId);
+		this.applyWebSearchPolicy(agent, request.webSearchEnabled);
 		const selection = this.agents.selectionFor(agent).current;
 		if (!routeServed(this.ctx, selection.provider)) reject$2("model-unavailable", `no adapter serves provider "${selection.provider}"; select a model for this session`, {
 			provider: selection.provider,
@@ -768,6 +771,19 @@ var SessionCommandController = class {
 			return { accepted: true };
 		};
 		return hasImage ? this.agents.serializeImageAdmission(agent, admit) : admit();
+	}
+	/** Replace the exact agent-scoped execution guard; omitted policy preserves older clients. */
+	applyWebSearchPolicy(agent, enabled) {
+		if (enabled === void 0) return;
+		const current = this.webSearchGuards.get(agent);
+		if (enabled) {
+			current?.();
+			this.webSearchGuards.delete(agent);
+			return;
+		}
+		if (current !== void 0) return;
+		const dispose = agent.ctx.tools.guard((execution) => execution.name === "web_search" || execution.name === "web_fetch" ? "Web search is disabled by the user for this chat." : void 0);
+		this.webSearchGuards.set(agent, dispose);
 	}
 	/**
 	* Read one durable image after proving the Session log references it.

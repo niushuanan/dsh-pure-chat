@@ -7,6 +7,8 @@ export declare class SessionCommandController {
     private readonly ctx;
     private readonly agents;
     private readonly defaultCwd;
+    /** Active per-agent guards installed by the ordinary-chat web switch. */
+    private readonly webSearchGuards;
     /**
      * @param ctx - Host context carrying Agent, model, attachment, title, and Workspace services.
      * @param agents - sole owner of create, resume, and Session-local model selection.
@@ -43,6 +45,8 @@ export declare class SessionCommandController {
      * @returns acknowledgement that the Agent accepted the prompt.
      */
     prompt(request: SessionPromptRequest): Promise<SessionPromptValue>;
+    /** Replace the exact agent-scoped execution guard; omitted policy preserves older clients. */
+    private applyWebSearchPolicy;
     /**
      * Read one durable image after proving the Session log references it.
      * @param request - Session and attachment identities used for authorization.

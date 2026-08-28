@@ -29,12 +29,12 @@ window.__ModuleLoader__.load({
 		let _deepseek_ai_dsh_client_store = require("@deepseek-ai/dsh-client-store");
 		let _deepseek_ai_dsh_client_ui_slots = require("@deepseek-ai/dsh-client-ui-slots");
 		let _deepseek_ai_cordis = require("@deepseek-ai/cordis");
-		let react_jsx_runtime = require("react/jsx-runtime");
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
+		let react_jsx_runtime = require("react/jsx-runtime");
 		let react = require("react");
 		react = __toESM(react, 1);
 		let react_dom = require("react-dom");
-		//#region lib/types/client/contract/request-inspection.js
+		//#region src/client/contract/request-inspection.ts
 		/**
 		* Canonicalize one request header and classify its model-visible prompt change.
 		* @param previous - Prompt from the preceding loaded request header, when available.
@@ -64,7 +64,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/contract/conversation.js
+		//#region src/client/contract/conversation.ts
 		/**
 		* Build a stable collision-free key for one Definition-local business identity.
 		* @param kind - Definition kind.
@@ -75,7 +75,7 @@ window.__ModuleLoader__.load({
 			return `${kind.length}:${kind}${id}`;
 		}
 		//#endregion
-		//#region lib/types/client/conversation/location-index.js
+		//#region src/client/conversation/location-index.ts
 		var MutableLocationDataStore = class {
 			entries = /* @__PURE__ */ new Map();
 			get(key) {
@@ -484,7 +484,7 @@ window.__ModuleLoader__.load({
 			throw new Error(`conversation Step data "${data.key}" requires a step`);
 		}
 		//#endregion
-		//#region lib/types/client/conversation/assembler.js
+		//#region src/client/conversation/assembler.ts
 		const PUBLICATION_RANK = {
 			none: 0,
 			"animation-frame": 1,
@@ -1117,7 +1117,7 @@ window.__ModuleLoader__.load({
 			return state;
 		}
 		//#endregion
-		//#region lib/types/client/conversation/definition-registry.js
+		//#region src/client/conversation/definition-registry.ts
 		/** Shared lifecycle and stable-entry storage for one Conversation Definition registry. */
 		var ConversationDefinitionRegistry = class {
 			ctx;
@@ -1177,7 +1177,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/conversation/event-registry.js
+		//#region src/client/conversation/event-registry.ts
 		/** Runtime registry of independently owned Conversation business Definitions. */
 		var ConversationEventRegistry = class extends ConversationDefinitionRegistry {
 			fallback;
@@ -1248,7 +1248,7 @@ window.__ModuleLoader__.load({
 			return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 		}
 		//#endregion
-		//#region lib/types/client/conversation/historical-images.js
+		//#region src/client/conversation/historical-images.ts
 		/** Resolve durable Conversation images and release their browser URLs with Session scope. */
 		var HistoricalImageCache = class {
 			sessions;
@@ -1399,7 +1399,7 @@ window.__ModuleLoader__.load({
 			if (url.startsWith("blob:")) URL.revokeObjectURL(url);
 		}
 		//#endregion
-		//#region lib/types/client/conversation/view-registry.js
+		//#region src/client/conversation/view-registry.ts
 		/** Runtime registry of per-target Conversation snapshot builders. */
 		var ConversationViewRegistry = class extends ConversationDefinitionRegistry {
 			/**
@@ -1412,7 +1412,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/conversation/assembly.js
+		//#region src/client/conversation/assembly.ts
 		/** Per-Session target-neutral Conversation assembly. */
 		var BoundConversation = class {
 			assembler;
@@ -1620,7 +1620,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/stores.js
+		//#region src/client/stores.ts
 		/** Per-session Conversation store shared by the shell body and header. */
 		/**
 		* Declare per-session draft persistence and View selection.
@@ -1655,7 +1655,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/service.js
+		//#region src/client/service.ts
 		/**
 		* Scope-addressed conversation send, cancel, and history orchestration.
 		*
@@ -1786,7 +1786,7 @@ window.__ModuleLoader__.load({
 			* @param signal - optional cancellation for the complete Host admission.
 			* @returns the Host admission outcome; local attachment preparation failures reject.
 			*/
-			async sendSession(session, text, imageIds, mode, signal) {
+			async sendSession(session, text, imageIds, mode, signal, webSearchEnabled = true) {
 				const attachments = this.draftImages(imageIds);
 				if (attachments.length !== imageIds.length) throw new Error("conversation.sendSession: one or more draft images are no longer available");
 				if (session.getSnapshot().subagent !== null) {
@@ -1824,7 +1824,7 @@ window.__ModuleLoader__.load({
 					submission.abandon();
 					throw error;
 				}
-				if (!(await session.prompt(content, mode, signal, submission.requestId)).ok) return { kind: "error" };
+				if (!(await session.prompt(content, mode, signal, submission.requestId, { webSearchEnabled })).ok) return { kind: "error" };
 				if (retirement !== void 0 && (await retirement).reason !== "observed") return { kind: "error" };
 				return { kind: "success" };
 			}
@@ -1967,7 +1967,7 @@ window.__ModuleLoader__.load({
 			if (url.startsWith("blob:")) URL.revokeObjectURL(url);
 		}
 		//#endregion
-		//#region lib/types/client/input/blocks.js
+		//#region src/client/input/blocks.ts
 		/**
 		* Composer blocks: the one way another plugin stops a session's input.
 		*
@@ -2004,7 +2004,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/input/queue-store.js
+		//#region src/client/input/queue-store.ts
 		/**
 		* Project a session's transient inbox rows as a bare observable (subscribe/getSnapshot).
 		* The wiring layer overlays this onto InputState.queue; the runtime
@@ -10306,7 +10306,7 @@ window.__ModuleLoader__.load({
 		}
 		Date.now;
 		//#endregion
-		//#region lib/types/client/input/machine.js
+		//#region src/client/input/machine.ts
 		/** Exhaustiveness backstop for the closed InputEvent union. */
 		function unreachable(value) {
 			throw new Error(`unreachable input event: ${JSON.stringify(value)}`);
@@ -10572,7 +10572,7 @@ window.__ModuleLoader__.load({
 			"marker": "KmrFCq_marker"
 		};
 		//#endregion
-		//#region lib/types/client/input/editor/ReferenceChip.js
+		//#region src/client/input/editor/ReferenceChip.tsx
 		/**
 		* Visual body of one inline reference chip: the DecoratorNode's React
 		* face. Pure display — identity, invalidation, and lifecycle live on the
@@ -10584,25 +10584,25 @@ window.__ModuleLoader__.load({
 		* @returns the chip body (icon + truncating label).
 		*/
 		function ReferenceChip({ label, appearance, invalid }) {
-			return (0, react_jsx_runtime.jsxs)("span", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 				className: clsx(ReferenceChip_module_css_default.chip, invalid && ReferenceChip_module_css_default.invalid),
 				title: label,
-				children: [appearance === void 0 ? (0, react_jsx_runtime.jsx)("span", {
+				children: [appearance === void 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					className: ReferenceChip_module_css_default.marker,
 					"aria-hidden": true,
 					children: "@"
-				}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.ReferenceIcon, {
+				}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.ReferenceIcon, {
 					kind: appearance,
 					size: 14,
 					className: ReferenceChip_module_css_default.icon
-				}), (0, react_jsx_runtime.jsx)("span", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 					className: ReferenceChip_module_css_default.label,
 					children: label
 				})]
 			});
 		}
 		//#endregion
-		//#region lib/types/client/input/editor/chip-node.js
+		//#region src/client/input/editor/chip-node.tsx
 		/** One inline reference occurrence as an atomic decorator node. */
 		var ReferenceChipNode = class ReferenceChipNode extends Li {
 			/** Owning source name (serializer routing key). */
@@ -10739,7 +10739,7 @@ window.__ModuleLoader__.load({
 			}
 			/** React face rendered into the host element by the decorator portal. */
 			decorate() {
-				return (0, react_jsx_runtime.jsx)(ReferenceChip, {
+				return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ReferenceChip, {
 					label: this.__label,
 					appearance: this.__appearance,
 					invalid: this.__invalid
@@ -10763,7 +10763,7 @@ window.__ModuleLoader__.load({
 			return node instanceof ReferenceChipNode;
 		}
 		//#endregion
-		//#region lib/types/client/input/editor/claim-decor.js
+		//#region src/client/input/editor/claim-decor.ts
 		/** Inline style carried by the claim-token node (the old backdrop's hlToken color). */
 		const TOKEN_STYLE = "color: var(--dsw-alias-state-warn-label)";
 		/** The document's first text leaf, or null (empty document / leading chip). */
@@ -10886,15 +10886,7 @@ window.__ModuleLoader__.load({
 			})];
 		}
 		//#endregion
-		//#region lib/types/client/input/decorations.js
-		/**
-		* Plain-text reference scan (the plain-text-reference decision;
-		* see .agents/notes/implemented/architecture/2026-07-25-web-input-machine-and-slash-pipeline.md):
-		* a `/name` or `@name` token whose name is on the trigger's lexicon, and
-		* syntax-recognizable `@dir/` folder tokens. Pure derivation — the editor's
-		* text-ref entity transform consumes these ranges; editing the text out of
-		* match shape simply drops the range next scan.
-		*/
+		//#region src/client/input/decorations.ts
 		/** Token matcher: a trigger char at line start or after whitespace, then a word-ish name (never crosses \n). */
 		const TEXT_REF_RE = /(^|\s)([/@])([\w-]+)/g;
 		const FOLDER_REF_RE = /(^|\s)(@(?:"[^"\n]*\/|[^\s"]+\/))/g;
@@ -10953,7 +10945,7 @@ window.__ModuleLoader__.load({
 		}
 		var composer_editor_module_css_default = { "textRef": "IQ4oka_textRef" };
 		//#endregion
-		//#region lib/types/client/input/editor/text-ref.js
+		//#region src/client/input/editor/text-ref.ts
 		/** One matched plain-text reference as a styled, fully editable text node. */
 		var TextRefNode = class TextRefNode extends Wo {
 			/** Lexical node registry type tag. */
@@ -11206,7 +11198,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/input/editor/span-map.js
+		//#region src/client/input/editor/span-map.ts
 		/**
 		* Resolve one detect offset to a selection point. Ownership rule: the first
 		* segment whose half-open [start, end) contains the offset resolves it; the
@@ -11304,7 +11296,7 @@ window.__ModuleLoader__.load({
 			return true;
 		}
 		//#endregion
-		//#region lib/types/client/input/facade.js
+		//#region src/client/input/facade.ts
 		/** Guard tier from the machine phase. */
 		function guardOf(phase) {
 			switch (phase) {
@@ -11359,6 +11351,9 @@ window.__ModuleLoader__.load({
 				pruneImages: (ids) => {
 					this.pruneImages(ids);
 				},
+				setWebSearchEnabled: (enabled) => {
+					this.setWebSearchEnabled(enabled);
+				},
 				submit: () => {
 					this.submit("queue");
 				}
@@ -11379,6 +11374,7 @@ window.__ModuleLoader__.load({
 			noticeSeq = 0;
 			lastMirroredDraft = "";
 			imageIds = [];
+			webSearchEnabled = true;
 			disposed = false;
 			/** Draft persistence mirror (Conversation store write; receives the clipboard projection). */
 			mirrorFn;
@@ -11525,6 +11521,12 @@ window.__ModuleLoader__.load({
 				const next = this.imageIds.filter((id) => keep.has(id));
 				if (next.length === this.imageIds.length) return;
 				this.imageIds = next;
+				this.publish();
+			}
+			/** Update the plain-chat web capability without disturbing draft or editor focus. */
+			setWebSearchEnabled(enabled) {
+				if (this.webSearchEnabled === enabled) return;
+				this.webSearchEnabled = enabled;
 				this.publish();
 			}
 			/**
@@ -12092,6 +12094,7 @@ window.__ModuleLoader__.load({
 				return {
 					draft: this.projection.clipboardText,
 					imageIds: this.imageIds,
+					webSearchEnabled: this.webSearchEnabled,
 					draftRev: this.rev,
 					phase: core.phase,
 					...core.claim !== void 0 ? { claim: core.claim } : {},
@@ -12109,7 +12112,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/input/hub.js
+		//#region src/client/input/hub.ts
 		/** Session-addressed input facade registry (SessionInputResolver face + composer-layer extras). */
 		var InputHub = class {
 			rootCtx;
@@ -12150,7 +12153,7 @@ window.__ModuleLoader__.load({
 					inputTriggers: () => this.controller(actx),
 					popup: () => this.popup(actx),
 					queue: queueReadFaceOf(session),
-					defaultSink: (text, imageIds, mode, signal) => this.sink(session, text, imageIds, mode, signal),
+					defaultSink: (text, imageIds, mode, signal) => this.sink(id, session, text, imageIds, mode, signal),
 					steerQueue: () => {
 						this.steerQueue(session, shell);
 					},
@@ -12220,9 +12223,9 @@ window.__ModuleLoader__.load({
 			* exactly one path; a failed first prompt is an ordinary prompt failure
 			* (banner via promptError, draft restored only while untouched).
 			*/
-			sink(session, text, imageIds, mode, signal) {
+			sink(sessionId, session, text, imageIds, mode, signal) {
 				if (text === "" && imageIds.length === 0) return Promise.resolve({ kind: "success" });
-				return this.conversation().sendSession(session, text, imageIds, mode, signal);
+				return this.conversation().sendSession(session, text, imageIds, mode, signal, this.shell(sessionId).snapshot.webSearchEnabled);
 			}
 			/**
 			* Steer every still-pending queued message into the running turn, in FIFO
@@ -13057,7 +13060,7 @@ window.__ModuleLoader__.load({
 			"preserve"
 		], ({ inner }, isInner) => inner.toString(isInner));
 		//#endregion
-		//#region lib/types/submission-settings.js
+		//#region src/submission-settings.ts
 		/** Busy-Enter preference stored in the Host user-settings document. */
 		/** Settings namespace owned by the conversation plugin. */
 		const CONVERSATION_SETTINGS_NAMESPACE = "ui-conversation";
@@ -13069,7 +13072,7 @@ window.__ModuleLoader__.load({
 		const DEFAULT_BUSY_ENTER_BEHAVIOR = "queue";
 		Schema.object({ [BUSY_ENTER_FIELD]: Schema.union([...BUSY_ENTER_BEHAVIORS]).default(DEFAULT_BUSY_ENTER_BEHAVIOR) });
 		//#endregion
-		//#region lib/types/client/input/submission-policy.js
+		//#region src/client/input/submission-policy.ts
 		/**
 		* Composer submission policy. It owns the live busy-Enter
 		* preference and resolves keyboard gestures into queue/steer delivery modes;
@@ -13133,7 +13136,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/locales.js
+		//#region src/client/locales.ts
 		/** `conversation` namespace dictionaries. */
 		/** Dictionary namespace owned by this plugin. */
 		const NS = "conversation";
@@ -13453,7 +13456,7 @@ window.__ModuleLoader__.load({
 			"row": "J8Nr1G_row"
 		};
 		//#endregion
-		//#region lib/types/client/queue/QueueDock.js
+		//#region src/client/queue/QueueDock.tsx
 		/**
 		* Queue strip: one item renders directly; multiple items default to a
 		* collapsible count header; an empty queue renders nothing.
@@ -13502,12 +13505,12 @@ window.__ModuleLoader__.load({
 					}]
 				}, t("queue.editFailed"))) setEditing(null);
 			};
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: QueueDock_module_css_default.dock,
 				"data-queue-dock": "",
-				children: (0, react_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: QueueDock_module_css_default.panel,
-					children: [queue.length > 1 && (0, react_jsx_runtime.jsxs)("button", {
+					children: [queue.length > 1 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 						type: "button",
 						className: QueueDock_module_css_default.header,
 						"aria-controls": listId,
@@ -13517,34 +13520,34 @@ window.__ModuleLoader__.load({
 							setCollapsed((value) => !value);
 						},
 						children: [
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: QueueDock_module_css_default.lead,
 								"aria-hidden": true,
-								children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: QueueDock_module_css_default.count,
 								children: t("queue.count", { n: queue.length })
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: QueueDock_module_css_default.chevron,
 								"aria-hidden": true,
-								children: expanded ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronUpOutline14, {})
+								children: expanded ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronUpOutline14, {})
 							})
 						]
-					}), (0, react_jsx_runtime.jsx)("ul", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 						id: listId,
 						className: QueueDock_module_css_default.list,
 						hidden: !listVisible,
-						children: listVisible && queue.map((row) => (0, react_jsx_runtime.jsxs)("li", {
+						children: listVisible && queue.map((row) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 							className: QueueDock_module_css_default.row,
 							children: [
-								queue.length === 1 && (0, react_jsx_runtime.jsx)("span", {
+								queue.length === 1 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: QueueDock_module_css_default.lead,
 									"aria-hidden": true,
-									children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
+									children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconQueueOutline14, {})
 								}),
-								editing?.id === row.id ? (0, react_jsx_runtime.jsx)("input", {
+								editing?.id === row.id ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("input", {
 									autoFocus: true,
 									className: QueueDock_module_css_default.editor,
 									"aria-label": t("queue.edit"),
@@ -13565,17 +13568,17 @@ window.__ModuleLoader__.load({
 											saveEdit();
 										}
 									}
-								}) : (0, react_jsx_runtime.jsx)("span", {
+								}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: QueueDock_module_css_default.preview,
 									children: (0, _deepseek_ai_dsh_client_ui_primitives.projectUserText)(row.preview, [])
 								}),
-								queueMutable && (0, react_jsx_runtime.jsx)("div", {
+								queueMutable && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 									className: QueueDock_module_css_default.actions,
-									children: editing?.id === row.id ? (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+									children: editing?.id === row.id ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 										label: t("queue.save"),
 										side: "bottom",
 										delayMs: 500,
-										children: (0, react_jsx_runtime.jsx)("button", {
+										children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 											type: "button",
 											className: QueueDock_module_css_default.action,
 											"aria-label": t("queue.save"),
@@ -13583,13 +13586,13 @@ window.__ModuleLoader__.load({
 											onClick: () => {
 												saveEdit();
 											},
-											children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, { size: 14 })
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCheckOutline16, { size: 14 })
 										})
-									}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+									}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 										label: t("queue.cancelEdit"),
 										side: "bottom",
 										delayMs: 500,
-										children: (0, react_jsx_runtime.jsx)("button", {
+										children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 											type: "button",
 											className: QueueDock_module_css_default.action,
 											"aria-label": t("queue.cancelEdit"),
@@ -13597,15 +13600,15 @@ window.__ModuleLoader__.load({
 											onClick: () => {
 												setEditing(null);
 											},
-											children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCloseOutline16, { size: 14 })
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconCloseOutline16, { size: 14 })
 										})
-									})] }) : (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
-										(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+									})] }) : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: t("queue.edit"),
 											side: "bottom",
 											delayMs: 500,
 											disabled: row.text === null,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: QueueDock_module_css_default.action,
 												"aria-label": t("queue.edit"),
@@ -13617,14 +13620,14 @@ window.__ModuleLoader__.load({
 														text: row.text
 													});
 												},
-												children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconEditOutline16, { size: 14 })
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconEditOutline16, { size: 14 })
 											})
 										}),
-										(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: t("queue.remove"),
 											side: "bottom",
 											delayMs: 500,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: QueueDock_module_css_default.action,
 												"aria-label": t("queue.remove"),
@@ -13632,15 +13635,15 @@ window.__ModuleLoader__.load({
 												onClick: () => {
 													applyAction(row.id, { kind: "remove" }, t("queue.removeFailed"));
 												},
-												children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTrashOutline16, { size: 14 })
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTrashOutline16, { size: 14 })
 											})
 										}),
-										(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: t("queue.steer"),
 											side: "bottom",
 											delayMs: 500,
 											disabled: !running,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: QueueDock_module_css_default.action,
 												"aria-label": t("queue.steer"),
@@ -13649,7 +13652,7 @@ window.__ModuleLoader__.load({
 												onClick: () => {
 													applyAction(row.id, { kind: "steer" }, t("queue.steerFailed"));
 												},
-												children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconSendOutline14, {})
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconSendOutline14, {})
 											})
 										})
 									] })
@@ -13709,7 +13712,7 @@ window.__ModuleLoader__.load({
 			"title": "_2hRKsG_title"
 		};
 		//#endregion
-		//#region lib/types/client/settings/EnterBehaviorRow.js
+		//#region src/client/settings/EnterBehaviorRow.tsx
 		/** General Settings row for the Composer's busy-state Enter preference. */
 		const OPTIONS = [{
 			id: "queue",
@@ -13727,18 +13730,18 @@ window.__ModuleLoader__.load({
 			const behavior = useBusyEnter((value) => value);
 			const [open, setOpen] = (0, react.useState)(false);
 			const selectedLabel = behavior === "queue" ? "settings.enter.queue" : "settings.enter.steer";
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: EnterBehaviorRow_module_css_default.row,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: EnterBehaviorRow_module_css_default.rowText,
-					children: [(0, react_jsx_runtime.jsx)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: EnterBehaviorRow_module_css_default.title,
 						children: t("settings.enter.title")
-					}), (0, react_jsx_runtime.jsx)("div", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: EnterBehaviorRow_module_css_default.desc,
 						children: t("settings.enter.description")
 					})]
-				}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
 					open,
 					onClose: () => {
 						setOpen(false);
@@ -13754,7 +13757,7 @@ window.__ModuleLoader__.load({
 					},
 					align: "end",
 					portal: true,
-					anchor: (0, react_jsx_runtime.jsxs)("button", {
+					anchor: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 						type: "button",
 						className: EnterBehaviorRow_module_css_default.selector,
 						"aria-haspopup": "menu",
@@ -13762,13 +13765,13 @@ window.__ModuleLoader__.load({
 						onClick: () => {
 							setOpen((value) => !value);
 						},
-						children: [t(selectedLabel), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, { className: EnterBehaviorRow_module_css_default.chevron })]
+						children: [t(selectedLabel), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, { className: EnterBehaviorRow_module_css_default.chevron })]
 					})
 				})]
 			});
 		}
 		//#endregion
-		//#region lib/types/client/contract/snapshot.js
+		//#region src/client/contract/snapshot.ts
 		/** Empty Conversation value used before a Session binding is available. */
 		const EMPTY_CONVERSATION_SNAPSHOT = {
 			views: { get: () => void 0 },
@@ -13827,7 +13830,7 @@ window.__ModuleLoader__.load({
 			"workspaceRow": "HJMhcW_workspaceRow"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/EmptyHero.js
+		//#region src/client/skeleton/EmptyHero.tsx
 		/**
 		* Basename label for the workspace chip (the shared derivation);
 		* separator-only paths echo the raw cwd.
@@ -13850,7 +13853,7 @@ window.__ModuleLoader__.load({
 		* @returns the chip button element.
 		*/
 		function WorkspaceChip({ buttonRef, label, menuOpen = false, onClick, t }) {
-			return (0, react_jsx_runtime.jsxs)("button", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 				ref: buttonRef,
 				type: "button",
 				className: HeroShell_module_css_default.workspace,
@@ -13859,18 +13862,18 @@ window.__ModuleLoader__.load({
 				"aria-expanded": menuOpen,
 				onClick,
 				children: [
-					label === void 0 ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderClose16, {
+					label === void 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderClose16, {
 						className: HeroShell_module_css_default.folder,
 						size: 16
-					}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderOpen16, {
+					}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconFolderOpen16, {
 						className: HeroShell_module_css_default.folder,
 						size: 16
 					}),
-					(0, react_jsx_runtime.jsx)("span", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 						className: HeroShell_module_css_default.workspaceLabel,
 						children: label ?? t("hero.chooseWorkspace")
 					}),
-					(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {
 						className: HeroShell_module_css_default.chevron,
 						size: 12
 					})
@@ -13886,12 +13889,12 @@ window.__ModuleLoader__.load({
 		*/
 		function HeroGlow({ className }) {
 			const glowFilterId = `empty-glow-${(0, react.useId)().replace(/:/g, "")}`;
-			return (0, react_jsx_runtime.jsxs)("svg", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				className,
 				viewBox: "0 0 1051 468",
 				fill: "none",
 				"aria-hidden": "true",
-				children: [(0, react_jsx_runtime.jsx)("defs", { children: (0, react_jsx_runtime.jsxs)("filter", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("filter", {
 					id: glowFilterId,
 					x: "0",
 					y: "0",
@@ -13900,24 +13903,24 @@ window.__ModuleLoader__.load({
 					filterUnits: "userSpaceOnUse",
 					colorInterpolationFilters: "sRGB",
 					children: [
-						(0, react_jsx_runtime.jsx)("feFlood", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("feFlood", {
 							floodOpacity: "0",
 							result: "BackgroundImageFix"
 						}),
-						(0, react_jsx_runtime.jsx)("feBlend", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("feBlend", {
 							mode: "normal",
 							in: "SourceGraphic",
 							in2: "BackgroundImageFix",
 							result: "shape"
 						}),
-						(0, react_jsx_runtime.jsx)("feGaussianBlur", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("feGaussianBlur", {
 							stdDeviation: "50",
 							result: "effect1_foregroundBlur"
 						})
 					]
-				}) }), (0, react_jsx_runtime.jsx)("g", {
+				}) }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("g", {
 					filter: `url(#${glowFilterId})`,
-					children: (0, react_jsx_runtime.jsx)("ellipse", {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("ellipse", {
 						cx: "525.5",
 						cy: "234",
 						rx: "425.5",
@@ -13935,33 +13938,33 @@ window.__ModuleLoader__.load({
 		* @returns the centered hero element tree.
 		*/
 		function HeroShell({ t, renderSlot, children }) {
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: HeroShell_module_css_default.root,
-				children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: HeroShell_module_css_default.stack,
-					children: [(0, react_jsx_runtime.jsxs)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						className: HeroShell_module_css_default.headline,
 						children: [
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: HeroShell_module_css_default.fishHitbox,
 								children: renderSlot("conversation.hero.brand.mark", {
 									size: 34,
 									className: HeroShell_module_css_default.fish
-								}, { fallback: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.FishLogo, {
+								}, { fallback: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.FishLogo, {
 									size: 34,
 									className: HeroShell_module_css_default.fish
 								}) })
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: HeroShell_module_css_default.headlineText,
 								children: t("hero.headline")
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: HeroShell_module_css_default.previewBadge,
 								children: "DeepSeek Harness"
 							})
 						]
-					}), (0, react_jsx_runtime.jsx)("div", { className: HeroShell_module_css_default.body })]
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", { className: HeroShell_module_css_default.body })]
 				}), children]
 			});
 		}
@@ -14005,7 +14008,7 @@ window.__ModuleLoader__.load({
 			"workspaceFrame": "X3p44q_workspaceFrame"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/ConversationRoot.js
+		//#region src/client/skeleton/ConversationRoot.tsx
 		/** localStorage key for the dragged transcript width preference (px). */
 		const WIDTH_PREF_KEY = "dsh.conversation.contentWidth";
 		/** Floor for a dragged content width; matches the layout center-column minimum. */
@@ -14089,7 +14092,7 @@ window.__ModuleLoader__.load({
 				setDragging(false);
 				callbacks.current.onEnd();
 			}, []);
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ConversationRoot_module_css_default.widthHandle,
 				"data-side": props.side,
 				"data-width-handle": props.side,
@@ -14191,10 +14194,10 @@ window.__ModuleLoader__.load({
 				input: inputState
 			};
 			const chipTitle = pendingWorkspace?.title ?? (sessionId === void 0 ? void 0 : sessionWorkspace?.title ?? (workspaces.phase === "ready" || cwd === void 0 || cwd === "" ? void 0 : workspaceLabel(cwd)));
-			const heroWorkspaceRow = plainChat ? null : (0, react_jsx_runtime.jsxs)("div", {
+			const heroWorkspaceRow = plainChat ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: ConversationRoot_module_css_default.heroWorkspaceRow,
 				children: [
-					(0, react_jsx_runtime.jsx)(WorkspaceChip, {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)(WorkspaceChip, {
 						buttonRef: pickerAnchor,
 						label: chipTitle,
 						menuOpen: pickerOpen,
@@ -14242,11 +14245,11 @@ window.__ModuleLoader__.load({
 				rightItems: zone === void 0 || plainChat ? null : renderSlot("conversation.input.right", zone),
 				footer: !hero && zone !== void 0 ? renderSlot("conversation.composer.dock", zone) : null
 			});
-			const composerBar = (0, react_jsx_runtime.jsxs)("div", {
+			const composerBar = /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: clsx(ConversationRoot_module_css_default.composerStack, hero && ConversationRoot_module_css_default.composerHero),
 				children: [
-					hero && (0, react_jsx_runtime.jsx)(HeroGlow, { className: ConversationRoot_module_css_default.heroGlow }),
-					hero && (0, react_jsx_runtime.jsx)(HeroShell, {
+					hero && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(HeroGlow, { className: ConversationRoot_module_css_default.heroGlow }),
+					hero && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(HeroShell, {
 						t,
 						renderSlot
 					}),
@@ -14265,30 +14268,30 @@ window.__ModuleLoader__.load({
 				fallbackOnly: sessionId === void 0,
 				overlay: true
 			});
-			const composerSeat = (0, react_jsx_runtime.jsx)("div", {
+			const composerSeat = /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				ref: seatResizeRef,
 				className: ConversationRoot_module_css_default.composerSeat,
 				"data-composer-seat": "",
 				children: composer
 			});
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ConversationRoot_module_css_default.root,
 				"data-phase": phase,
-				children: (0, react_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ConversationRoot_module_css_default.workspaceFrame,
 					children: [
-						(0, react_jsx_runtime.jsxs)("div", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							ref: rootResizeRef,
 							className: ConversationRoot_module_css_default.conversationColumn,
 							"data-conversation-column": "",
 							children: [
 								sessionId === void 0 ? null : renderSlot("conversation.session.header", {}),
-								(0, react_jsx_runtime.jsxs)("div", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 									className: ConversationRoot_module_css_default.scrollBody,
 									"data-conversation-scroll": "",
 									children: [sessionId === void 0 ? null : renderSlot("conversation.session", {}), composerSeat]
 								}),
-								phase === "active" && ["left", "right"].map((side) => (0, react_jsx_runtime.jsx)(WidthHandle, {
+								phase === "active" && ["left", "right"].map((side) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)(WidthHandle, {
 									side,
 									onStart: onHandleStart,
 									onDrag: onHandleDrag,
@@ -14304,7 +14307,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/skeleton/ConversationSession.js
+		//#region src/client/skeleton/ConversationSession.tsx
 		/** Strict per-session header/body content inserted into the resident conversation layout. */
 		const DEFAULT_VIEW_ID = "chat";
 		/** Resolve a persisted selection, then registered Chat, without choosing another View. */
@@ -14348,19 +14351,19 @@ window.__ModuleLoader__.load({
 			const session = useSession((s) => s);
 			const conversation = useConversation((s) => s);
 			const hideChrome = session.blank && conversationPhase(session, conversation) === "blank";
-			return (0, react_jsx_runtime.jsx)("header", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("header", {
 				className: clsx(ConversationRoot_module_css_default.header, hideChrome && ConversationRoot_module_css_default.headerHidden),
 				"aria-hidden": hideChrome || void 0,
-				children: !hideChrome && (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsxs)("div", {
+				children: !hideChrome && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ConversationRoot_module_css_default.titleRow,
-					children: [(0, react_jsx_runtime.jsxs)("div", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						className: ConversationRoot_module_css_default.titleCluster,
-						children: [(0, react_jsx_runtime.jsxs)("nav", {
+						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("nav", {
 							className: ConversationRoot_module_css_default.crumbs,
 							"aria-label": t("session.hierarchy"),
 							children: [ancestry.map((summary, index) => {
 								const last = index === ancestry.length - 1;
-								const title = (0, react_jsx_runtime.jsx)("button", {
+								const title = /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 									type: "button",
 									className: clsx(ConversationRoot_module_css_default.crumb, summary.subagent && ConversationRoot_module_css_default.crumbSubagent, last && ConversationRoot_module_css_default.crumbCurrent),
 									disabled: last,
@@ -14377,29 +14380,29 @@ window.__ModuleLoader__.load({
 										open(summary.id);
 									} }
 								};
-								return (0, react_jsx_runtime.jsxs)("span", {
+								return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 									className: ConversationRoot_module_css_default.crumbSeg,
-									children: [index > 0 && (0, react_jsx_runtime.jsx)("span", {
+									children: [index > 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 										className: ConversationRoot_module_css_default.crumbSep,
 										children: "/"
-									}), lineage ? summary.subagent ? renderSlot("conversation.session.header.lineage", lineageOwner, { fallback: title }) : (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [title, renderSlot("conversation.session.header.lineage", lineageOwner, { fallback: null })] }) : title]
+									}), lineage ? summary.subagent ? renderSlot("conversation.session.header.lineage", lineageOwner, { fallback: title }) : /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [title, renderSlot("conversation.session.header.lineage", lineageOwner, { fallback: null })] }) : title]
 								}, summary.id);
-							}), ancestry.length === 0 && (0, react_jsx_runtime.jsx)("span", {
+							}), ancestry.length === 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: ConversationRoot_module_css_default.crumbCurrent,
 								children: sessionId
 							})]
-						}), (0, react_jsx_runtime.jsx)("div", {
+						}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: ConversationRoot_module_css_default.headerActions,
 							children: renderSlot("conversation.session.header.actions", {})
 						})]
-					}), (0, react_jsx_runtime.jsx)("div", {
+					}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: ConversationRoot_module_css_default.headerUtilities,
 						children: renderSlot("conversation.session.header.utilities", {})
 					})]
-				}), tabs.length > 1 && (0, react_jsx_runtime.jsx)("div", {
+				}), tabs.length > 1 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 					className: ConversationRoot_module_css_default.tabs,
 					role: "tablist",
-					children: tabs.map((viewTab) => (0, react_jsx_runtime.jsx)("button", {
+					children: tabs.map((viewTab) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 						type: "button",
 						role: "tab",
 						"aria-selected": viewTab.id === active?.id,
@@ -14433,7 +14436,7 @@ window.__ModuleLoader__.load({
 				};
 			}, [inputActions]);
 			if (session.blank && conversationPhase(session, conversation) === "blank") return null;
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				className: ConversationRoot_module_css_default.viewArea,
 				children: active !== void 0 && renderSlot("conversation.view", {
 					viewRequest,
@@ -14443,7 +14446,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/input/editor/ComposerContentEditable.js
+		//#region src/client/input/editor/ComposerContentEditable.tsx
 		/**
 		* The composer's contenteditable host: binds one shell-owned Lexical editor
 		* to a resident div. Session-maybe by design — a null editor renders the
@@ -14470,7 +14473,7 @@ window.__ModuleLoader__.load({
 			(0, react.useLayoutEffect)(() => {
 				if (editor !== null) editor.setEditable(editable);
 			}, [editor, editable]);
-			return (0, react_jsx_runtime.jsx)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 				ref,
 				contentEditable: editor !== null && editable,
 				suppressContentEditableWarning: true,
@@ -14481,7 +14484,7 @@ window.__ModuleLoader__.load({
 			});
 		}
 		//#endregion
-		//#region lib/types/client/input/editor/DecoratorPortals.js
+		//#region src/client/input/editor/DecoratorPortals.tsx
 		/**
 		* Decorator render loop: portals every decorator node's React face into its
 		* host element (what @lexical/react's composer does internally, scoped to
@@ -14503,13 +14506,13 @@ window.__ModuleLoader__.load({
 				});
 			}, [editor]);
 			if (editor === null) return null;
-			return (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: Object.entries(decorators).map(([key, jsx]) => {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(react_jsx_runtime.Fragment, { children: Object.entries(decorators).map(([key, jsx]) => {
 				const el = editor.getElementByKey(key);
 				return el === null ? null : (0, react_dom.createPortal)(jsx, el, key);
 			}) });
 		}
 		//#endregion
-		//#region lib/types/client/input/editor/keymap.js
+		//#region src/client/input/editor/keymap.ts
 		/** Composition state a keydown can trust (see the module doc's Safari note). */
 		function isComposingEvent(event, recentlyComposing) {
 			return event.isComposing || event.keyCode === 229 || recentlyComposing();
@@ -14587,8 +14590,7 @@ window.__ModuleLoader__.load({
 			}, 4));
 		}
 		//#endregion
-		//#region lib/types/client/image-labels.js
-		/** Attachment error and limit copy owned by the conversation input flow. */
+		//#region src/client/image-labels.ts
 		/**
 		* Byte count as user-facing megabytes (`10MB`, `2.5MB`).
 		* @param bytes - the byte count.
@@ -14632,7 +14634,7 @@ window.__ModuleLoader__.load({
 			return t("image.sendFailed", { reason });
 		}
 		//#endregion
-		//#region lib/types/client/context-occupancy.js
+		//#region src/client/context-occupancy.ts
 		/**
 		* Resolve bounded display occupancy from independently updated pressure fields.
 		* @param pressure - latest token-meter projection.
@@ -14678,7 +14680,7 @@ window.__ModuleLoader__.load({
 			"trigger": "yVdBcG_trigger"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/ContextMeter.js
+		//#region src/client/skeleton/ContextMeter.tsx
 		/** Composer context-occupancy meter: a ring beside the send button fed by the
 		* `contextPressure` projection, with a click-open panel of the heuristic
 		* `contextBreakdown` composition (system prompt, tools, conversation).
@@ -14763,15 +14765,15 @@ window.__ModuleLoader__.load({
 				color: row.color,
 				width: percent * breakdown[row.key] / breakdownTotal
 			}))).filter((part) => part.width > 0);
-			return (0, react_jsx_runtime.jsxs)("span", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
 				ref: rootRef,
 				className: ContextMeter_module_css_default.root,
-				children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 					label: t("context.aria", { percent: reading }),
 					side: "top",
 					delayMs: 200,
 					disabled: open,
-					children: (0, react_jsx_runtime.jsx)("button", {
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 						type: "button",
 						className: ContextMeter_module_css_default.trigger,
 						"aria-label": t("context.aria", { percent: reading }),
@@ -14780,17 +14782,17 @@ window.__ModuleLoader__.load({
 						onClick: () => {
 							setOpen(!open);
 						},
-						children: (0, react_jsx_runtime.jsxs)("svg", {
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 							viewBox: "0 0 14 14",
 							width: "14",
 							height: "14",
 							"aria-hidden": true,
-							children: [(0, react_jsx_runtime.jsx)("circle", {
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 								className: ContextMeter_module_css_default.track,
 								cx: "7",
 								cy: "7",
 								r: RADIUS
-							}), (0, react_jsx_runtime.jsx)("circle", {
+							}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 								className: ContextMeter_module_css_default.fill,
 								cx: "7",
 								cy: "7",
@@ -14800,47 +14802,47 @@ window.__ModuleLoader__.load({
 							})]
 						})
 					})
-				}), open && (0, react_jsx_runtime.jsxs)("div", {
+				}), open && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: ContextMeter_module_css_default.panel,
 					role: "dialog",
 					"aria-label": t("context.used"),
 					children: [
-						(0, react_jsx_runtime.jsxs)("div", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 							className: ContextMeter_module_css_default.header,
 							children: [
-								(0, react_jsx_runtime.jsx)("span", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: ContextMeter_module_css_default.headline,
 									children: headBefore
 								}),
-								(0, react_jsx_runtime.jsx)("span", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: ContextMeter_module_css_default.percent,
 									children: reading
 								}),
-								(0, react_jsx_runtime.jsx)("span", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: ContextMeter_module_css_default.headline,
 									children: headAfter
 								}),
-								(0, react_jsx_runtime.jsx)("span", {
+								/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: ContextMeter_module_css_default.figures,
 									children: `~${formatTokens(context.usedTokens, t)} / ${formatTokens(context.contextWindow, t)}`
 								})
 							]
 						}),
-						(0, react_jsx_runtime.jsx)("div", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 							className: ContextMeter_module_css_default.bar,
-							children: segments.map((segment) => (0, react_jsx_runtime.jsx)("div", {
+							children: segments.map((segment) => /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: segment.color === void 0 ? ContextMeter_module_css_default.segment : `${ContextMeter_module_css_default.segment} ${segment.color}`,
 								style: { width: `${segment.width}%` }
 							}, segment.key))
 						}),
-						breakdown !== void 0 && (0, react_jsx_runtime.jsx)("dl", {
+						breakdown !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dl", {
 							className: ContextMeter_module_css_default.rows,
-							children: ROWS.map((row) => (0, react_jsx_runtime.jsxs)("div", {
+							children: ROWS.map((row) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 								className: ContextMeter_module_css_default.row,
-								children: [(0, react_jsx_runtime.jsxs)("dt", { children: [(0, react_jsx_runtime.jsx)("span", {
+								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("dt", { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 									className: `${ContextMeter_module_css_default.swatch} ${row.color}`,
 									"aria-hidden": true
-								}), t(row.label)] }), (0, react_jsx_runtime.jsx)("dd", { children: `~${formatTokens(breakdown[row.key], t)}` })]
+								}), t(row.label)] }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("dd", { children: `~${formatTokens(breakdown[row.key], t)}` })]
 							}, row.key))
 						})
 					]
@@ -14866,74 +14868,74 @@ window.__ModuleLoader__.load({
 			"triggerLabel": "JSh6gW_triggerLabel"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/PermissionSelect.js
+		//#region src/client/skeleton/PermissionSelect.tsx
 		const FULL_ACCESS = "danger-full-access";
 		const TEAMWORK_OPTION = "teamwork-toggle";
 		const shieldOutline = "M8.20554 0.899994L14.7901 3.36857V7.01026C14.7901 12 11.0466 14.2103 8.20554 15.3C5.36446 14.2103 1.62012 12 1.62012 7.01026V3.36857L8.20554 0.899994Z";
 		const permissionGlyphs = {
-			"read-only": (0, react_jsx_runtime.jsxs)("svg", {
+			"read-only": /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: "16",
 				height: "16",
 				viewBox: "0 0 16 16",
 				fill: "none",
 				"aria-hidden": true,
-				children: [(0, react_jsx_runtime.jsx)("path", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 					d: shieldOutline,
 					stroke: "currentColor",
 					strokeWidth: "1.31831",
 					strokeLinejoin: "round"
-				}), (0, react_jsx_runtime.jsx)("path", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 					d: "M12.1654 5.7552L8.9447 9.41475C8.73044 9.65816 8.53628 9.8804 8.35774 10.0423C8.1713 10.2114 7.94235 10.3717 7.64016 10.4254C7.48207 10.4535 7.32 10.4552 7.16151 10.4294C6.85843 10.3801 6.62728 10.2223 6.43836 10.0559C6.25752 9.89653 6.06037 9.67732 5.84264 9.43705L4.72925 8.20897L5.63557 7.38707L6.74897 8.61594C6.98603 8.87755 7.12974 9.03533 7.24673 9.13839C7.31033 9.19443 7.34485 9.21476 7.35823 9.22122C7.38068 9.22484 7.40352 9.22515 7.42593 9.22122C7.40522 9.22502 7.42893 9.23294 7.53583 9.136C7.65132 9.03126 7.79316 8.87139 8.02643 8.60638L11.2479 4.94763L12.1654 5.7552Z",
 					fill: "currentColor"
 				})]
 			}),
-			"workspace-write": (0, react_jsx_runtime.jsxs)("svg", {
+			"workspace-write": /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: "16",
 				height: "16",
 				viewBox: "0 0 16 16",
 				fill: "none",
 				"aria-hidden": true,
 				children: [
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M8.08887 0.251709C8.20479 0.23085 8.32486 0.241168 8.43652 0.282959L15.0215 2.75171C15.2787 2.84819 15.4492 3.09414 15.4492 3.3689V7.0105C15.4492 7.10986 15.4441 7.2081 15.4414 7.30542C15.0285 7.07175 14.5905 6.87695 14.1309 6.73022V3.82495L8.20508 1.60327L2.2793 3.82495V7.0105C2.27936 9.7171 3.4745 11.5379 5.02734 12.7947C5.01025 12.9942 5 13.1962 5 13.4001C5.00001 13.7617 5.02722 14.1169 5.08008 14.4636C2.91555 13.0393 0.961014 10.752 0.960938 7.0105V3.3689C0.960938 3.09417 1.13146 2.84821 1.38867 2.75171L7.97461 0.282959L8.08887 0.251709Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M11.3525 5.64688V6.85688H5V5.64688H11.3525Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M9.5824 8.29376V9.50376H5V8.29376H9.5824Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M14.6647 15.6852H10.0338C10.3878 15.3751 10.7567 15.0517 11.0772 14.7706C11.2531 14.6164 11.4144 14.4746 11.5511 14.3547H14.6647V15.6852Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M8.14852 14.1308L7.33925 15.4976C7.22458 15.6912 7.42245 15.9194 7.63037 15.8333L9.09785 15.2254L15.0399 10.0719L14.0905 8.97733L8.14852 14.1308Z",
 						fill: "currentColor"
 					})
 				]
 			}),
-			[FULL_ACCESS]: (0, react_jsx_runtime.jsxs)("svg", {
+			[FULL_ACCESS]: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: "16",
 				height: "16",
 				viewBox: "0 0 16 16",
 				fill: "none",
 				"aria-hidden": true,
 				children: [
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: shieldOutline,
 						stroke: "currentColor",
 						strokeWidth: "1.31831",
 						strokeLinejoin: "round"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M9.10094 4.5V8.75939H7.59888V4.5H9.10094Z",
 						fill: "currentColor"
 					}),
-					(0, react_jsx_runtime.jsx)("path", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 						d: "M9.10094 9.8114V11.5H7.59888V9.8114H9.10094Z",
 						fill: "currentColor"
 					})
@@ -14992,7 +14994,7 @@ window.__ModuleLoader__.load({
 			}, {
 				id: TEAMWORK_OPTION,
 				label: "Teamwork",
-				icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTeamworkOutline16, {})
+				icon: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTeamworkOutline16, {})
 			});
 			const submit = (id) => {
 				setPick(id);
@@ -15028,7 +15030,7 @@ window.__ModuleLoader__.load({
 				closeConfirmation();
 				submit(id);
 			};
-			return (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Menu, {
 				open,
 				items,
 				selectedIds: [currentValue, ...teamworkActive ? [TEAMWORK_OPTION] : []],
@@ -15037,7 +15039,7 @@ window.__ModuleLoader__.load({
 					setOpen(false);
 				},
 				side: "top",
-				anchor: (0, react_jsx_runtime.jsxs)("button", {
+				anchor: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 					type: "button",
 					className: PermissionSelect_module_css_default.trigger,
 					"aria-label": t("input.accessMode", { name: combinedLabel }),
@@ -15047,23 +15049,23 @@ window.__ModuleLoader__.load({
 						setOpen(!open);
 					},
 					children: [
-						permissionGlyph(currentValue) !== void 0 && (0, react_jsx_runtime.jsx)("span", {
+						permissionGlyph(currentValue) !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: PermissionSelect_module_css_default.triggerIcon,
 							"aria-hidden": true,
 							children: permissionGlyph(currentValue)
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: PermissionSelect_module_css_default.triggerLabel,
 							children: combinedLabel
 						}),
-						(0, react_jsx_runtime.jsx)("span", {
+						/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 							className: clsx(PermissionSelect_module_css_default.chevron, open && PermissionSelect_module_css_default.chevronOpen),
 							"aria-hidden": true,
-							children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
+							children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
 						})
 					]
 				})
-			}), (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.RiskConfirmation, {
+			}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.RiskConfirmation, {
 				open: confirmation !== null,
 				title: t("access.confirm.title"),
 				description: t("access.confirm.description"),
@@ -15114,7 +15116,7 @@ window.__ModuleLoader__.load({
 			"trailing": "Yxn_Ca_trailing"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/InputBar.js
+		//#region src/client/skeleton/InputBar.tsx
 		/** The default composer body: the 'conversation.composer.bar' slot entry.
 		* Machine state arrives through the standard provide channel
 		* (useInput + inputActions); the keyboard/DOM command face and stop arrive
@@ -15361,11 +15363,11 @@ window.__ModuleLoader__.load({
 			const onToggleReferenceMenu = () => {
 				if (keyboard !== void 0) toggleReferenceMenu?.(keyboard.caretSpan());
 			};
-			const nativeAdd = (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+			const nativeAdd = /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 				label: t("input.commands"),
 				side: "top",
 				delayMs: 500,
-				children: (0, react_jsx_runtime.jsx)("button", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 					type: "button",
 					className: InputBar_module_css_default.add,
 					"aria-label": t("input.commands"),
@@ -15374,11 +15376,12 @@ window.__ModuleLoader__.load({
 					disabled: locked || toggleCommandMenu === void 0,
 					onMouseDown: keepFocus,
 					onClick: onToggleCommandMenu,
-					children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPlusOutline16, { size: 14 })
+					children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconPlusOutline16, { size: 14 })
 				})
 			});
 			const addControl = sessionId === void 0 ? null : renderSlot("conversation.input.add", {
 				mode,
+				webSearchEnabled: input?.webSearchEnabled ?? true,
 				disabled: locked || machineBusy,
 				commandMenuOpen,
 				canAddImages: canAcceptDrop,
@@ -15397,6 +15400,10 @@ window.__ModuleLoader__.load({
 				},
 				onAddImages: intakeImages,
 				onAddTextFiles: addTextFiles,
+				onSetWebSearchEnabled: (enabled) => {
+					inputActions?.setWebSearchEnabled?.(enabled);
+					focusInput();
+				},
 				focusInput
 			});
 			const onWorkspaceKeyDown = (e) => {
@@ -15418,7 +15425,7 @@ window.__ModuleLoader__.load({
 				/* v8 ignore next -- defensive: the primary button is disabled while empty||disabled, so a click cannot reach the false arm. */
 				if (!empty && !disabled && !machineBusy) inputActions.submit();
 			};
-			const accessSelect = command === void 0 || plainChat ? null : (0, react_jsx_runtime.jsx)(PermissionSelect, {
+			const accessSelect = command === void 0 || plainChat ? null : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(PermissionSelect, {
 				value: permissions,
 				teamwork,
 				locked,
@@ -15435,21 +15442,21 @@ window.__ModuleLoader__.load({
 				return translated !== hintKey ? translated : rawHint;
 			})();
 			const placeholderText = placeholder ?? (parentOffline ? t("placeholder.parentOffline") : disabled ? t("placeholder.unavailable") : canSteerQueue ? t("placeholder.steerQueue") : planActive ? t("placeholder.plan") : t("placeholder.default"));
-			return (0, react_jsx_runtime.jsxs)("div", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 				className: clsx(InputBar_module_css_default.root, variant === "hero" && InputBar_module_css_default.hero),
 				children: [
-					toast !== null && (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Toast, {
+					toast !== null && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Toast, {
 						text: toast.text,
-						icon: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconWarningOutline16, {}),
+						icon: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconWarningOutline16, {}),
 						anchor: cardRef.current,
 						onDone: dismissToast
 					}, toast.seq),
-					notice?.level === "info" && (0, react_jsx_runtime.jsx)("div", {
+					notice?.level === "info" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: InputBar_module_css_default.notice,
 						role: "status",
 						children: notice.text
 					}),
-					(0, react_jsx_runtime.jsxs)("div", {
+					/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 						ref: cardRef,
 						className: clsx(InputBar_module_css_default.card, workspaceTrigger && InputBar_module_css_default.cardWorkspaceTrigger),
 						"data-composer-card": true,
@@ -15458,11 +15465,11 @@ window.__ModuleLoader__.load({
 							e.stopPropagation();
 						} : void 0,
 						children: [
-							overlay !== void 0 && (0, react_jsx_runtime.jsx)("div", {
+							overlay !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: InputBar_module_css_default.overlayAnchor,
 								children: overlay
 							}),
-							accessory !== void 0 && (0, react_jsx_runtime.jsx)("div", {
+							accessory !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								className: InputBar_module_css_default.accessory,
 								children: accessory
 							}),
@@ -15478,14 +15485,14 @@ window.__ModuleLoader__.load({
 									size: imageSizeText(imageLimits.maxImageBytes)
 								}
 							}),
-							(0, react_jsx_runtime.jsx)("div", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 								ref: scrollRef,
 								className: InputBar_module_css_default.scroll,
 								"data-input-scroll": true,
-								children: (0, react_jsx_runtime.jsxs)("div", {
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 									className: InputBar_module_css_default.grow,
 									children: [
-										(0, react_jsx_runtime.jsx)(ComposerContentEditable, {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(ComposerContentEditable, {
 											editor: workspaceTrigger ? null : editor,
 											editable,
 											className: clsx(InputBar_module_css_default.input, editorDisabled && InputBar_module_css_default.inputDisabled),
@@ -15499,54 +15506,54 @@ window.__ModuleLoader__.load({
 											onKeyDown: workspaceTrigger ? onWorkspaceKeyDown : void 0,
 											style: hint === null ? void 0 : { "--dsh-composer-hint": JSON.stringify(hint) }
 										}),
-										empty && !claimActive && (0, react_jsx_runtime.jsx)("div", {
+										empty && !claimActive && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 											"aria-hidden": true,
 											className: InputBar_module_css_default.placeholder,
 											"data-composer-placeholder": true,
 											children: placeholderText
 										}),
-										(0, react_jsx_runtime.jsx)(DecoratorPortals, { editor: workspaceTrigger ? null : editor })
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(DecoratorPortals, { editor: workspaceTrigger ? null : editor })
 									]
 								})
 							}),
-							(0, react_jsx_runtime.jsxs)("div", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 								className: InputBar_module_css_default.row,
-								children: [(0, react_jsx_runtime.jsxs)("div", {
+								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 									className: InputBar_module_css_default.tools,
 									children: [
 										addControl ?? (!plainChat ? nativeAdd : null),
-										!plainChat && (0, react_jsx_runtime.jsxs)("div", {
+										!plainChat && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 											className: InputBar_module_css_default.modes,
 											children: [accessSelect, sessionId === void 0 ? null : renderSlot("conversation.input.plan", { locked })]
 										}),
 										!plainChat && leftItems
 									]
-								}), (0, react_jsx_runtime.jsxs)("div", {
+								}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 									className: InputBar_module_css_default.trailing,
 									children: [
 										!plainChat && rightItems,
 										sessionId === void 0 ? null : renderSlot("conversation.input.model", { locked: modelSeatLocked }),
-										(0, react_jsx_runtime.jsx)(ContextMeter, {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(ContextMeter, {
 											useProjection,
 											t
 										}),
-										interruptible && (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+										interruptible && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: t("input.stop"),
 											side: "top",
 											delayMs: 500,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: InputBar_module_css_default.primary,
 												"aria-label": t("input.stop"),
 												disabled: stop === void 0,
 												onMouseDown: keepFocus,
 												onClick: stop,
-												children: (0, react_jsx_runtime.jsx)("svg", {
+												children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 													viewBox: "0 0 16 16",
 													width: "16",
 													height: "16",
 													"aria-hidden": true,
-													children: (0, react_jsx_runtime.jsx)("rect", {
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("rect", {
 														x: "3",
 														y: "3",
 														width: "10",
@@ -15557,23 +15564,23 @@ window.__ModuleLoader__.load({
 												})
 											})
 										}),
-										(0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
+										/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.Tooltip, {
 											label: primaryLabel,
 											side: "top",
 											delayMs: 500,
-											children: (0, react_jsx_runtime.jsx)("button", {
+											children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 												type: "button",
 												className: InputBar_module_css_default.primary,
 												"aria-label": primaryLabel,
 												disabled: primaryStops ? stop === void 0 : empty || disabled || machineBusy,
 												onMouseDown: keepFocus,
 												onClick: onPrimary,
-												children: primaryStops ? (0, react_jsx_runtime.jsx)("svg", {
+												children: primaryStops ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 													viewBox: "0 0 16 16",
 													width: "16",
 													height: "16",
 													"aria-hidden": true,
-													children: (0, react_jsx_runtime.jsx)("rect", {
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("rect", {
 														x: "3",
 														y: "3",
 														width: "10",
@@ -15581,12 +15588,12 @@ window.__ModuleLoader__.load({
 														rx: "3",
 														fill: "currentColor"
 													})
-												}) : (0, react_jsx_runtime.jsx)("svg", {
+												}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 													viewBox: "0 0 16 16",
 													width: "16",
 													height: "16",
 													"aria-hidden": true,
-													children: (0, react_jsx_runtime.jsx)("path", {
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 														d: "M8.3125 0.980183C8.66767 1.0531 8.97902 1.20418 9.2627 1.43233C9.48724 1.61297 9.73029 1.85793 9.97949 2.10714L14.707 6.83468L13.293 8.24874L9 3.95577V15.0417H7V3.95577L2.70703 8.24874L1.29297 6.83468L6.02051 2.10714C6.26971 1.85793 6.51277 1.61297 6.7373 1.43233C6.97662 1.23986 7.28445 1.04402 7.6875 0.980183C7.8973 0.947006 8.1031 0.95516 8.3125 0.980183Z",
 														fill: "currentColor"
 													})
@@ -15631,7 +15638,7 @@ window.__ModuleLoader__.load({
 			"todo-progress-spin": "b3lcZa_todo-progress-spin"
 		};
 		//#endregion
-		//#region lib/types/client/skeleton/TodoPanel.js
+		//#region src/client/skeleton/TodoPanel.tsx
 		/** Local exhaustiveness helper — client packages do not depend on `dsh-llm`. */
 		/* v8 ignore next 3 -- closed-union backstop; only reached if status is forged */
 		function assertNever(value) {
@@ -15639,20 +15646,20 @@ window.__ModuleLoader__.load({
 		}
 		/** Status glyphs share the figma 14×14 artboard; the 16×16 `.glyph` cell centers them. */
 		function CompletedGlyph() {
-			return (0, react_jsx_runtime.jsxs)("svg", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: 14,
 				height: 14,
 				viewBox: "0 0 14 14",
 				fill: "none",
 				"aria-hidden": "true",
 				className: TodoPanel_module_css_default.glyphCompleted,
-				children: [(0, react_jsx_runtime.jsx)("circle", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 					cx: "7",
 					cy: "7",
 					r: "6.4",
 					stroke: "currentColor",
 					strokeWidth: "1.2"
-				}), (0, react_jsx_runtime.jsx)("path", {
+				}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("path", {
 					d: "M10.9631 5.71411L7.70154 8.97571C7.48011 9.19714 7.27736 9.40099 7.09229 9.54993C6.89742 9.70669 6.66314 9.85279 6.3634 9.90027C6.2049 9.92534 6.04339 9.92534 5.88489 9.90027C5.58515 9.85279 5.35087 9.70669 5.15601 9.54993C4.97093 9.40099 4.76818 9.19714 4.54675 8.97571L3.03516 7.46411L3.96313 6.53613L5.47473 8.04773C5.7169 8.28989 5.86196 8.43389 5.97888 8.52795C6.08597 8.61409 6.10875 8.60701 6.08997 8.604C6.11259 8.60758 6.13571 8.60758 6.15833 8.604C6.13954 8.60701 6.16232 8.61409 6.26941 8.52795C6.38633 8.43389 6.53139 8.28989 6.77356 8.04773L10.0352 4.78613L10.9631 5.71411Z",
 					fill: "currentColor"
 				})]
@@ -15661,26 +15668,26 @@ window.__ModuleLoader__.load({
 		/** In-progress: business-blue ring fading out; CSS spins the svg. */
 		function ProgressGlyph() {
 			const gradientId = (0, react.useId)();
-			return (0, react_jsx_runtime.jsxs)("svg", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("svg", {
 				width: 14,
 				height: 14,
 				viewBox: "0 0 14 14",
 				fill: "none",
 				"aria-hidden": "true",
 				className: TodoPanel_module_css_default.glyphProgress,
-				children: [(0, react_jsx_runtime.jsx)("defs", { children: (0, react_jsx_runtime.jsxs)("linearGradient", {
+				children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("defs", { children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("linearGradient", {
 					id: gradientId,
 					x1: "2.5",
 					y1: "12",
 					x2: "10.5",
 					y2: "3.5",
 					gradientUnits: "userSpaceOnUse",
-					children: [(0, react_jsx_runtime.jsx)("stop", { stopColor: "currentColor" }), (0, react_jsx_runtime.jsx)("stop", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("stop", { stopColor: "currentColor" }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("stop", {
 						offset: "1",
 						stopColor: "currentColor",
 						stopOpacity: "0"
 					})]
-				}) }), (0, react_jsx_runtime.jsx)("circle", {
+				}) }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 					cx: "7",
 					cy: "7",
 					r: "6.4",
@@ -15691,14 +15698,14 @@ window.__ModuleLoader__.load({
 		}
 		/** Pending: dashed unstarted ring (figma dash 2.4 2.4). */
 		function PendingGlyph() {
-			return (0, react_jsx_runtime.jsx)("svg", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("svg", {
 				width: 14,
 				height: 14,
 				viewBox: "0 0 14 14",
 				fill: "none",
 				"aria-hidden": "true",
 				className: TodoPanel_module_css_default.glyphPending,
-				children: (0, react_jsx_runtime.jsx)("circle", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("circle", {
 					cx: "7",
 					cy: "7",
 					r: "6.4",
@@ -15710,9 +15717,9 @@ window.__ModuleLoader__.load({
 		}
 		function StatusGlyph({ status }) {
 			switch (status) {
-				case "completed": return (0, react_jsx_runtime.jsx)(CompletedGlyph, {});
-				case "in_progress": return (0, react_jsx_runtime.jsx)(ProgressGlyph, {});
-				case "pending": return (0, react_jsx_runtime.jsx)(PendingGlyph, {});
+				case "completed": return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(CompletedGlyph, {});
+				case "in_progress": return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(ProgressGlyph, {});
+				case "pending": return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(PendingGlyph, {});
 				/* v8 ignore next -- closed TodoItem status union */
 				default: return assertNever(status);
 			}
@@ -15731,13 +15738,13 @@ window.__ModuleLoader__.load({
 		function TodoPanel({ todos, t }) {
 			const [collapsed, setCollapsed] = (0, react.useState)(true);
 			if (todos.length === 0) return null;
-			return (0, react_jsx_runtime.jsx)("section", {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)("section", {
 				className: TodoPanel_module_css_default.root,
 				"data-testid": "todo-panel",
 				"aria-label": t("todo.title"),
-				children: (0, react_jsx_runtime.jsxs)("div", {
+				children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
 					className: TodoPanel_module_css_default.body,
-					children: [(0, react_jsx_runtime.jsxs)("button", {
+					children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
 						type: "button",
 						className: TodoPanel_module_css_default.header,
 						"aria-expanded": !collapsed,
@@ -15745,35 +15752,35 @@ window.__ModuleLoader__.load({
 							setCollapsed((v) => !v);
 						},
 						children: [
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.lead,
 								"aria-hidden": true,
-								children: (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChecklistOutline14, {})
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChecklistOutline14, {})
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.title,
 								children: t("todo.title")
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.progress,
 								children: progressLabel(todos, t)
 							}),
-							(0, react_jsx_runtime.jsx)("span", {
+							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.chevron,
 								"aria-hidden": true,
-								children: collapsed ? (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronUpOutline14, {}) : (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
+								children: collapsed ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronUpOutline14, {}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {})
 							})
 						]
-					}), !collapsed && (0, react_jsx_runtime.jsx)("ul", {
+					}), !collapsed && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
 						className: TodoPanel_module_css_default.list,
-						children: todos.map((item) => (0, react_jsx_runtime.jsxs)("li", {
+						children: todos.map((item) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", {
 							className: TodoPanel_module_css_default.item,
 							"data-status": item.status,
-							children: [(0, react_jsx_runtime.jsx)("span", {
+							children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.glyph,
 								"aria-hidden": true,
-								children: (0, react_jsx_runtime.jsx)(StatusGlyph, { status: item.status })
-							}), (0, react_jsx_runtime.jsx)("span", {
+								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(StatusGlyph, { status: item.status })
+							}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 								className: TodoPanel_module_css_default.content,
 								children: item.content
 							})]
@@ -15784,7 +15791,7 @@ window.__ModuleLoader__.load({
 		}
 		/** Renders the current todo projection, or nothing when it is absent. */
 		function TodoDock({ useProjection, t }) {
-			return (0, react_jsx_runtime.jsx)(TodoPanel, {
+			return /* @__PURE__ */ (0, react_jsx_runtime.jsx)(TodoPanel, {
 				todos: useProjection("todos") ?? [],
 				t
 			});
@@ -15803,7 +15810,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/apply.js
+		//#region src/client/apply.ts
 		/** Services required by the Conversation plugin. */
 		const inject = [
 			"slots",

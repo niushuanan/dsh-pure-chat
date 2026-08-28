@@ -3,7 +3,7 @@ import type { AttachmentIdType, ImageAttachmentRef } from '@deepseek-ai/dsh-atta
 import type { SubagentAddress } from '@deepseek-ai/dsh-subagent/client';
 import type { MessageId } from '@deepseek-ai/dsh-llm/brand';
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
-import type { PromptContentPart, QueueAction, SessionControlFrame, SessionQueuedItem, SessionRequestId } from '../../types.ts';
+import type { PromptContentPart, QueueAction, SessionControlFrame, SessionQueuedItem, SessionPromptOptions, SessionRequestId } from '../../types.ts';
 import type { ClientResult } from '../contract/result.ts';
 import type { BeginSubmissionInput, SessionFace, SubmissionHandle } from '../contract/session.ts';
 import type { SessionSnapshot } from '../contract/snapshot.ts';
@@ -137,7 +137,7 @@ export declare class Session implements SessionFace {
      * @param requestId - identity from {@link beginSubmission}; a failed identified prompt retires its echo.
      * @returns the prompt result (also mirrored into promptError on failure).
      */
-    prompt(content: PromptContentPart[], mode: 'queue' | 'steer', signal?: AbortSignal, requestId?: SessionRequestId): Promise<ClientResult<{
+    prompt(content: PromptContentPart[], mode: 'queue' | 'steer', signal?: AbortSignal, requestId?: SessionRequestId, options?: SessionPromptOptions): Promise<ClientResult<{
         accepted: true;
     }>>;
     /**

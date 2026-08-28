@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "kind": "xiaozhuang-dsh-plugin-export",
-  "createdAt": "2026-08-28T19:15:00.000Z",
-  "sourceCommit": "567cf81462ac2b29128cc5351e72c320956b7bcc",
+  "createdAt": "2026-08-28T19:39:15.352Z",
+  "sourceCommit": "cba8030b7a890df2f4f4d4238899e02e8845e30e",
   "plugins": [
     {
       "id": "plain-chat",
@@ -174,18 +174,18 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/README.md",
-      "size": 2284,
-      "sha256": "9c86d7b7938b55a651225094d98c090258abc1bfa36377087adf08500e0255ac"
+      "size": 2388,
+      "sha256": "fc357b4c8abe6058ab4eeca7ee178a09b48a51c0abfc19b61b550cb5f3e137d8"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/README.zh.md",
-      "size": 1997,
-      "sha256": "e32b7bd8cdda7d91450eec2ea0b5db08008a692fd86fbc0e4b6edbd74e48e959"
+      "size": 2102,
+      "sha256": "0691e9d10fe261b7ad5df1aac90b75dd52881b23dcdcd27388b29f25aeb46506"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/lib/client.js",
-      "size": 17199,
-      "sha256": "c6ada953ba0e82051114bfe7357209ebabcb2485d0b9224c2c50fec774e2ae14"
+      "size": 19070,
+      "sha256": "ce59f8c4cc60ed12a4d40c5ceb224fa6e33f4a24190ca194a646c6d04d633d6a"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/lib/index.js",
@@ -209,8 +209,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/lib/types/client/locales.d.ts",
-      "size": 1428,
-      "sha256": "f1ce05c08cc89e55d75415bda022da2990ea74238fb899ff18d190ea68d0f8eb"
+      "size": 1608,
+      "sha256": "360b2ceeba03496d24376c78b3950ec34d830eeafef0cf822c66242f928494f5"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/lib/types/index.d.ts",
@@ -229,13 +229,13 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/src/client/ComposerAddMenu.module.css",
-      "size": 3165,
-      "sha256": "0f4c37e722446ade0a91e5dfa80845939b7e490b161461f49444bc5493222997"
+      "size": 3870,
+      "sha256": "7531ca1a056a5bb9d6de0887e710d7e68926f221e3e0bbb9841ca98e44ad4b6b"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/src/client/ComposerAddMenu.tsx",
-      "size": 7196,
-      "sha256": "290738390ddf8ff8c7a2773adb34d40a571a33cbe9cf7a4d5b572a8331f1ff9a"
+      "size": 7560,
+      "sha256": "8e032d6ade3ae489628542be1de28083be3f39ef33c25f02c305d6729d17cc2c"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/src/client/index.ts",
@@ -244,8 +244,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/src/client/locales.ts",
-      "size": 1981,
-      "sha256": "29767a05ce6383f528c8b190fe9c630ec2808b9dfe77fbbda64e665617a62e6e"
+      "size": 2177,
+      "sha256": "3465794a1797ac68d39e4eda494e49fc96465053bf8fbd4f5b5f97a3cf0578de"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-composer-add-menu/src/css-modules.d.ts",
@@ -1384,8 +1384,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/client.js",
-      "size": 608725,
-      "sha256": "27dcec06065b56760f91ab9185bcd75a015176b2aabd2a746ca2935e2564388a"
+      "size": 611788,
+      "sha256": "e06378f3667615180f54860ebd67a2075ca323e72cd85d1afccbcdd6f5a3d51f"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/index.js",
@@ -1544,8 +1544,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/contract/input.d.ts",
-      "size": 18246,
-      "sha256": "f0383fbcec512c7dc20037705feff09124cf273363b465ade29da2f65df21c40"
+      "size": 18642,
+      "sha256": "50903fc4089b3fa0933210a4292706315738d91ae67fe563727f5b524604dc3a"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/contract/queue.d.ts",
@@ -1564,8 +1564,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/contract/slots.d.ts",
-      "size": 19043,
-      "sha256": "c414785b9c576a958e9da42185b9d1066ad8882bd7d6dcd4fe88325f209da054"
+      "size": 19282,
+      "sha256": "565a970b9419ecbbcf0725c1ae938ce9ba43ee4584d179bd2d39d8099b9f41c6"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/contract/snapshot.d.ts",
@@ -1754,8 +1754,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/facade.d.ts",
-      "size": 15121,
-      "sha256": "4dc048eb1fac92ee9248b6d64fcce03c63ec923164d4924f0883afd1414b3cf0"
+      "size": 15290,
+      "sha256": "ebedbe9cfe755034b7d1e7b7611f41d25f6c58ea20ef212cad486fc2f7677f89"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/input/hub.d.ts",
@@ -1799,8 +1799,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/service.d.ts",
-      "size": 7860,
-      "sha256": "e810d2605feab90dd178de46a96216a57330d0afaf17ece28612c9b318ae5c11"
+      "size": 7888,
+      "sha256": "3b8411d33c3748226889fba51cae677d27b7de8e9602ce627936d59e5ba81f5f"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/lib/types/client/settings/EnterBehaviorRow.d.ts",
@@ -1919,8 +1919,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/contract/input.ts",
-      "size": 17541,
-      "sha256": "9366f614a290a1284b0ab6798f9cb4d326a0edac1a5fed19619e8812d4eeeec3"
+      "size": 17921,
+      "sha256": "137269ebf2fee45e18ea776e686c2b49dadb903b0660ed46f3fdc6ff75c347e2"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/contract/queue.ts",
@@ -1939,8 +1939,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/contract/slots.ts",
-      "size": 17653,
-      "sha256": "1e47058470548bee1b150c1d4ddca18761f690c6c1ce0f9194702443192f60c7"
+      "size": 17882,
+      "sha256": "086ea89a114ac6b211637d1d0d260a879594a6970bd16d76542e0b67eddffc7f"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/contract/snapshot.ts",
@@ -2064,13 +2064,13 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/facade.ts",
-      "size": 38140,
-      "sha256": "87df54bf5fcf91b3c4eb5ac354ec96a245992ce489023b5af8fe9815ace916e8"
+      "size": 38544,
+      "sha256": "610faf95a5c51435bc4a061983dd16db998fc0879ac166fad41d86ca4a19c25c"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/hub.ts",
-      "size": 10068,
-      "sha256": "a0e6a53c146c7a250c1164b877ef9eadf1a296871cc884a038f58a480a6c9078"
+      "size": 10192,
+      "sha256": "c21bcbcd7cbe1e63d65c790dd50aa360d6a8f78b6e5795b6db65c1b29fca63c5"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/input/machine.ts",
@@ -2104,8 +2104,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/service.ts",
-      "size": 17010,
-      "sha256": "968a770ef45f61514be53eb677bcd815aabd1f147c250e5eca78e764a7147bf5"
+      "size": 17061,
+      "sha256": "4db679971dce6b9faabdda78af450ad401395b376fb03ceca1dee27528235b02"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/settings/EnterBehaviorRow.module.css",
@@ -2159,8 +2159,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/InputBar.tsx",
-      "size": 28504,
-      "sha256": "64429367842c65d442c5200ceba60408c9f06287e2137f2a23af410d8a997890"
+      "size": 28678,
+      "sha256": "66df0d9b0bd1219e47dab991ca95e987c9798e9da354ff3228adbe4c4264b328"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-conversation/src/client/skeleton/PermissionSelect.module.css",
@@ -2284,13 +2284,13 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/seat-store.d.ts",
-      "size": 4352,
-      "sha256": "e674dc832ffd3eb06830cc26a152f53548f1cea1c07348f84eeafa38b8ec927f"
+      "size": 4353,
+      "sha256": "76fb875b290e5ce6a626fee78d233ebc64e36d647c1fe38c62cd47ab9dfae01a"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/section-store.d.ts",
-      "size": 8108,
-      "sha256": "fdb222e875212e587e33f1bbcc22d4f8de33901a02f877da1e0bb74646940255"
+      "size": 8109,
+      "sha256": "6120bd371b8b95d500364a14204fab8988bed3d57a7be1c5cdb6125a3136801b"
     },
     {
       "path": "payload/plain-chat/repository/packages/client/ui-agent-preset/lib/types/client/session-switch-store.d.ts",
@@ -3204,13 +3204,13 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/client.js",
-      "size": 112470,
-      "sha256": "67081934244ce26b36f2e61171f0de9937b27a29aa356b936d7946469320ddc5"
+      "size": 112056,
+      "sha256": "c9a90c19d5a411d2f4789696a7e63f8083a4cad7eb430710471af37dcb0d060f"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/index.js",
-      "size": 107648,
-      "sha256": "500484ac53901d3cc2f4a9c283fd00e5a6f4de0b5377be8a5d1541dc048426de"
+      "size": 108410,
+      "sha256": "6934fd6efc423398bc2d54eede825606e9019841951d9f353f909c4ea3f0c324"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/invariant.js",
@@ -3224,8 +3224,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/typert.host.js",
-      "size": 139493,
-      "sha256": "3bcf3f21485a24c731d367f51cb1743aa9a9143b405e5d6b6f8a2e111243428b"
+      "size": 139592,
+      "sha256": "05d3bf9743852363a0e561cea6220d3e8340dbca65317413d051a06afe536c6e"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/typert.remote-client.d.ts",
@@ -3234,8 +3234,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/typert.remote-client.js",
-      "size": 44883,
-      "sha256": "20c8f6a053e36a7e9d3c2cf3ad5ffb21bc5ab80458a89a46e577a5be4ac55441"
+      "size": 44940,
+      "sha256": "476b0a309a91df06932f136afc050dcc92a55fbe44fa9bdfc87ef4f47b1237ee"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/agent.d.ts",
@@ -3279,8 +3279,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/client/contract/session.d.ts",
-      "size": 6754,
-      "sha256": "ecbe18178b5624850e18882c9446ad8ffd696d946aaa740a0b94a0b79c131350"
+      "size": 6808,
+      "sha256": "ffdf3393ffd60f53982498015a6feacedf18df3305aa8590a1091f315a9adae8"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/client/contract/session.js",
@@ -3429,13 +3429,13 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/client/sessions/session.d.ts",
-      "size": 14468,
-      "sha256": "45b0478bdee1e2f7036ead6fa043b45c527dde4dd20308ab85d230e85cc93625"
+      "size": 14522,
+      "sha256": "5e83cd5b3b2b5ce629e181c0ec2c5155d5d25f609449e5556f6574dee5ad2ba4"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/client/sessions/session.js",
-      "size": 31373,
-      "sha256": "9aeb12a9cdcc869c9af621c92e3eba8a2007833b7ee2d034ede4efa8f543d3be"
+      "size": 31550,
+      "sha256": "f1ffcc64b3d9f79c571b5cc64c1ab6c91a274298ca727ab7adaad63be997d235"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/client/time-zone.d.ts",
@@ -3469,13 +3469,13 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/commands.d.ts",
-      "size": 3745,
-      "sha256": "cde3da93a51a8412037a9bfffd0ea10b9a78026337fcad7289452f47ced4474f"
+      "size": 3994,
+      "sha256": "0d72aa9137bf29706c7abd4a1cde95c7ee1c3be9b53415bf66b5de373e8f4bb5"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/commands.js",
-      "size": 25439,
-      "sha256": "1314814b66432884d10ea5ad4ea9d7f93ccea7648f7a959844868c1a09fb33cc"
+      "size": 26332,
+      "sha256": "c7bf9f3aa37abf9344116b1fa40993bf4e85e3b5ccdcd28f496c77c591162fbd"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/control.d.ts",
@@ -3569,8 +3569,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/types.d.ts",
-      "size": 19732,
-      "sha256": "19165cff792a6e3853641244aabfcf9f200976590efb8c5e91a767aad7bab308"
+      "size": 20030,
+      "sha256": "93d1a50c3076e399749e64717871da96b66c627b1f152cfb39d05a0288afe59c"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/lib/types/types.js",
@@ -3604,8 +3604,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/src/client/contract/session.ts",
-      "size": 6469,
-      "sha256": "2da35105bd8d4fc4c574490c11048f568065b6927ec467d9e7ff03dfffe2df49"
+      "size": 6527,
+      "sha256": "53647c5305a8099ee72a8c1236698587123907aa66f2d8e6e49bbed1a03aa2b1"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/src/client/contract/sessions.ts",
@@ -3679,8 +3679,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/src/client/sessions/session.ts",
-      "size": 32933,
-      "sha256": "e3b9973c8ab59e44a3f2148636ca3d31686fc7155ac8838f1553b542ef2aa2ba"
+      "size": 33127,
+      "sha256": "713bd02b4a32d8541781e44ec6243b9602f2ac62a14f9da9a57abcdea8e35ee8"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/src/client/time-zone.ts",
@@ -3699,8 +3699,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/src/commands.ts",
-      "size": 23183,
-      "sha256": "f0287b9d22dddd1d5aae6a6794e7bac019c10ed23decf8d154fe505f02584128"
+      "size": 24066,
+      "sha256": "7433acdafb640d0ec79e924ee30651b10a702fac2565ab32c13ce4dc83a362eb"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/src/control.ts",
@@ -3749,8 +3749,8 @@
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/src/types.ts",
-      "size": 18577,
-      "sha256": "7a6a1fe67ce27495a1c928d2a552357b49d11545bc9e53616213ec943b252c4b"
+      "size": 18868,
+      "sha256": "4f9c2ac8b7ea451a87b258305b38e84a4ea743c5db07cf4b41824368303b05ca"
     },
     {
       "path": "payload/plain-chat/repository/packages/api/session-controller/tsconfig.client.json",

@@ -107,7 +107,7 @@ export declare class AgentPresetSectionController {
     private readonly rosterChanged;
     /** Page snapshot the renderer subscribes to. */
     readonly store: SnapshotStore<AgentPresetSectionState>;
-    constructor(remote: Pick<ClientRemote, 'agentPresets' | 'settings'>,
+    constructor(remote: Pick<ClientRemote, 'agentPresets' | 'settings'>, 
     /**
      * Called after this page changes the roster DIRECTORY, so the other
      * surfaces reading the same roster re-read it. A settings field moving is

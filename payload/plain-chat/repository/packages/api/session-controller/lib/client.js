@@ -7,8 +7,7 @@ window.__ModuleLoader__.load({
 		let _deepseek_ai_dsh_api_gateway_client = require("@deepseek-ai/dsh-api-gateway/client");
 		let _deepseek_ai_dsh_client_store = require("@deepseek-ai/dsh-client-store");
 		let _deepseek_ai_cordis = require("@deepseek-ai/cordis");
-		//#region lib/types/client/sessions/history-records.js
-		/** Client range access and type narrowing for aligned Session history records. */
+		//#region src/client/sessions/history-records.ts
 		/**
 		* Narrow aligned wire records to their Client event types without allocation.
 		* @param records - validated history transport records.
@@ -36,15 +35,13 @@ window.__ModuleLoader__.load({
 			return record.event.seq + length - 1;
 		}
 		//#endregion
-		//#region lib/types/types.js
-		/** Browser-safe request, result, and lifecycle vocabulary for the Session Remote service. */
+		//#region src/types.ts
 		/** Maximum number of Sessions returned by one search. */
 		const SESSION_SEARCH_RESULT_LIMIT = 20;
 		/** Maximum search snippet length in Unicode code points. */
 		const SESSION_SEARCH_SNIPPET_MAX_CODE_POINTS = 240;
 		//#endregion
-		//#region lib/types/client/transport.js
-		/** Session-specific adapters for Gateway-owned Remote stream lifecycles. */
+		//#region src/client/transport.ts
 		function toSessionJournalChange(change) {
 			switch (change.type) {
 				case "replace":
@@ -161,7 +158,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region ../../util/workspace-path/lib/index.js
+		//#region ../../util/workspace-path/src/index.ts
 		/**
 		* Read the final non-empty segment of a Workspace path for display.
 		* Workspace-label surfaces use this helper instead of deriving another basename.
@@ -174,7 +171,7 @@ window.__ModuleLoader__.load({
 			return trimmed.slice(separator + 1);
 		}
 		//#endregion
-		//#region lib/types/client/scope.js
+		//#region src/client/scope.ts
 		/**
 		* Client Agent-scope primitive: mint a Cordis context tagged with the owning
 		* Agent's identity. The mechanism mirrors the host `dsh-scope` architecture
@@ -227,7 +224,7 @@ window.__ModuleLoader__.load({
 			return ctx[kScope];
 		}
 		//#endregion
-		//#region lib/types/client/ordered-baseline.js
+		//#region src/client/ordered-baseline.ts
 		/**
 		* Merge an authoritative baseline without moving identities already visible to
 		* the client. Baseline-only identities are inserted relative to the nearest
@@ -264,8 +261,7 @@ window.__ModuleLoader__.load({
 			return merged;
 		}
 		//#endregion
-		//#region lib/types/client/contract/result.js
-		/** Client operation results spanning the Session and subagent Remote calls. */
+		//#region src/client/contract/result.ts
 		/**
 		* Fold a rejected carrier operation into the Client Session failure vocabulary.
 		* @param error - rejection from a Remote or local carrier call.
@@ -282,7 +278,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/sessions/lineage.js
+		//#region src/client/sessions/lineage.ts
 		/**
 		* Summaries -> flat list with lineage indentation. Root and sibling order
 		* follows the established input order; this projection never re-sorts a
@@ -323,7 +319,7 @@ window.__ModuleLoader__.load({
 			return out;
 		}
 		//#endregion
-		//#region lib/types/client/sessions/notifier.js
+		//#region src/client/sessions/notifier.ts
 		/**
 		* Batches structural updates in microtasks and stream updates by animation
 		* frame. Reads may rebuild a dirty snapshot without consuming the pending
@@ -411,7 +407,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/sessions/projection-store.js
+		//#region src/client/sessions/projection-store.ts
 		/**
 		* One session's projection values. Framework semantics, uniform across every
 		* key: a baseline seeds rows at its cut, a push frame updates one row, and in
@@ -533,7 +529,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region ../../util/crypto/lib/index.js
+		//#region ../../util/crypto/src/index.ts
 		/**
 		* Random v4 UUID, minted from `crypto.getRandomValues`.
 		* @returns the UUID string.
@@ -546,7 +542,7 @@ window.__ModuleLoader__.load({
 			return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 		}
 		//#endregion
-		//#region lib/types/client/contract/events.js
+		//#region src/client/contract/events.ts
 		/** Observable contiguous Session event window consumed by domain assemblers. */
 		function leaf(entries) {
 			return {
@@ -658,7 +654,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/time-zone.js
+		//#region src/client/time-zone.ts
 		/** Browser-owned time-zone sampling for prompt RPC provenance. */
 		/**
 		* Resolve the current browser IANA zone for one outbound operation.
@@ -671,7 +667,7 @@ window.__ModuleLoader__.load({
 			return timeZone;
 		}
 		//#endregion
-		//#region lib/types/client/sessions/queue-mirror.js
+		//#region src/client/sessions/queue-mirror.ts
 		const QUEUE_PREVIEW_CHARS = 200;
 		function previewOf(content) {
 			const flat = content.map((block) => block.type === "text" ? block.text : `[${block.type}]`).join(" ").replace(/\s+/g, " ").trim();
@@ -862,7 +858,7 @@ window.__ModuleLoader__.load({
 			* @param requestId - identity from {@link beginSubmission}; a failed identified prompt retires its echo.
 			* @returns the prompt result (also mirrored into promptError on failure).
 			*/
-			async prompt(content, mode, signal, requestId) {
+			async prompt(content, mode, signal, requestId, options) {
 				this.promptError = null;
 				this.lastAgentError = null;
 				this.promptAttempted = true;
@@ -877,6 +873,7 @@ window.__ModuleLoader__.load({
 							sessionId: this.sessionId,
 							mode,
 							content,
+							...options?.webSearchEnabled === void 0 ? {} : { webSearchEnabled: options.webSearchEnabled },
 							clientTimeZone
 						}, signal));
 					} else if (this.address.mode === "one-shot") result = {
@@ -1390,7 +1387,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/sessions/manager.js
+		//#region src/client/sessions/manager.ts
 		function catalogAvailability(parentAvailable) {
 			return parentAvailable === void 0 ? {} : { parentAvailable };
 		}
@@ -2180,7 +2177,7 @@ window.__ModuleLoader__.load({
 			};
 		}
 		//#endregion
-		//#region lib/types/client/sessions/service.js
+		//#region src/client/sessions/service.ts
 		/** Structured session-create failure. */
 		var SessionCreateError = class extends Error {
 			rpcError;
@@ -2707,7 +2704,7 @@ window.__ModuleLoader__.load({
 			}
 		};
 		//#endregion
-		//#region lib/types/client/window-context.js
+		//#region src/client/window-context.ts
 		/** Query marker carried only by DSH windows opened through the multi-window plugin. */
 		const DSH_WINDOW_ROLE_PARAM = "dsh-window";
 		/** Stable per-window identity used to isolate persisted navigation. */
@@ -2762,12 +2759,11 @@ window.__ModuleLoader__.load({
 			return url.toString();
 		}
 		//#endregion
-		//#region lib/types/client/drag-transfer.js
+		//#region src/client/drag-transfer.ts
 		/** Native drag payload identifying one conversation from the directory sidebar. */
 		const SESSION_DRAG_MIME = "application/x-dsh-session-id";
 		//#endregion
-		//#region lib/types/client/index.js
-		/** Client Session object layer, Agent scopes, and Remote lifecycle wiring. */
+		//#region src/client/index.ts
 		/** Required wire, Remote, and Context projection services. */
 		const inject = [
 			"connection",

@@ -144,7 +144,7 @@ export class Session {
      * @param requestId - identity from {@link beginSubmission}; a failed identified prompt retires its echo.
      * @returns the prompt result (also mirrored into promptError on failure).
      */
-    async prompt(content, mode, signal, requestId) {
+    async prompt(content, mode, signal, requestId, options) {
         this.promptError = null;
         this.lastAgentError = null;
         // Synchronous, before the first await: the blank → engaging edge must be
@@ -163,6 +163,9 @@ export class Session {
                     sessionId: this.sessionId,
                     mode,
                     content,
+                    ...(options?.webSearchEnabled === undefined
+                        ? {}
+                        : { webSearchEnabled: options.webSearchEnabled }),
                     clientTimeZone,
                 }, signal));
             }

@@ -74,6 +74,7 @@ export declare class SessionInputShell implements SessionInput {
     private noticeSeq;
     private lastMirroredDraft;
     private imageIds;
+    private webSearchEnabled;
     private disposed;
     /** Draft persistence mirror (Conversation store write; receives the clipboard projection). */
     private mirrorFn;
@@ -130,6 +131,8 @@ export declare class SessionInputShell implements SessionInput {
      * @param available - live registry ids.
      */
     pruneImages(available: readonly DraftAttachmentId[]): void;
+    /** Update the plain-chat web capability without disturbing draft or editor focus. */
+    setWebSearchEnabled(enabled: boolean): void;
     /**
      * Clear the draft as a successful-send commit: the editor empties (no undo
      * unit) and the undo history is cut, so Ctrl/Cmd-Z cannot resurrect sent

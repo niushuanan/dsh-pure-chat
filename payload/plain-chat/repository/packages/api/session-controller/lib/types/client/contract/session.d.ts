@@ -12,7 +12,7 @@ import type { MessageId } from '@deepseek-ai/dsh-llm/brand';
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
 import type { RemoteResult } from '@deepseek-ai/dsh-typert-protocol';
 import type { ObservableSnapshot } from '@deepseek-ai/dsh-client-store';
-import type { PromptContentPart, QueueAction, SessionRequestId } from '../../types.ts';
+import type { PromptContentPart, QueueAction, SessionPromptOptions, SessionRequestId } from '../../types.ts';
 import type { ClientResult } from './result.ts';
 import type { PendingSubmissionImage, SessionSnapshot } from './snapshot.ts';
 /**
@@ -77,7 +77,7 @@ export interface ISession {
      * @param requestId - identity from {@link beginSubmission}; a failed identified prompt retires its echo.
      * @returns acceptance, or the business error (also mirrored into snapshot.promptError).
      */
-    prompt(content: PromptContentPart[], mode: 'queue' | 'steer', signal?: AbortSignal, requestId?: SessionRequestId): Promise<ClientResult<{
+    prompt(content: PromptContentPart[], mode: 'queue' | 'steer', signal?: AbortSignal, requestId?: SessionRequestId, options?: SessionPromptOptions): Promise<ClientResult<{
         accepted: true;
     }>>;
     /**
